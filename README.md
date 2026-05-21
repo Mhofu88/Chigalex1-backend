@@ -1,2 +1,3 @@
 # Chigalex1-backend
-Pi Education Platform 
+
+SADC Pi Network Pioneer Education Hub
