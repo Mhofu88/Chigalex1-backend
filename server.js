@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors());
 
 const PI_API_KEY = process.env.PI_API_KEY; // Get from Pi Developer Portal
-const PI_WALLET_ADDRESS = "GXXXXXXXXXXXXXXXXXXXX"; // Your Pi wallet address
+const PI_WALLET_ADDRESS = "GABWRTXUPYTRO7RBCMIPKP55UZ6LKVPSX2NOMXXFBFOOZEFQTKJSGZ7J"; // Your Pi wallet address
 const MEMBERSHIP_AMOUNT = 1;
 
 // Simple database - use MongoDB/Postgres in production
