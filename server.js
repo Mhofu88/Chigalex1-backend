@@ -6,14 +6,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PI_API_KEY = process.env.PI_API_KEY; // Get from Pi Developer Portal
-const PI_WALLET_ADDRESS = "GXXXXXXXXXXXXXXXXXXXX"; // Your Pi wallet address
+const PI_API_KEY = process.env.PI_API_KEY; 
+const PI_WALLET_ADDRESS = "GXXXXXXXXXXXXXXXXXXXX"; // REPLACE with your Pi mainnet wallet address
 const MEMBERSHIP_AMOUNT = 1;
 
-// Simple database - use MongoDB/Postgres in production
 let paidUsers = new Set();
 
-// Approve payment
 app.post('/approve-payment', async (req, res) => {
   const { paymentId } = req.body;
   try {
@@ -26,7 +24,6 @@ app.post('/approve-payment', async (req, res) => {
   }
 });
 
-// Complete and verify payment
 app.post('/complete-payment', async (req, res) => {
   const { paymentId, txid, username } = req.body;
   try {
@@ -35,16 +32,10 @@ app.post('/complete-payment', async (req, res) => {
     });
     
     const p = payment.data;
-    
-    // Verify payment
-    if (p.amount === MEMBERSHIP_AMOUNT && 
-        p.receiver === PI_WALLET_ADDRESS && 
-        p.status.developer_completed === false) {
-      
+    if (p.amount === MEMBERSHIP_AMOUNT && p.receiver === PI_WALLET_ADDRESS) {
       await axios.post(`https://api.minepi.com/v2/payments/${paymentId}/complete`, { txid }, {
         headers: { 'Authorization': `Key ${PI_API_KEY}` }
       });
-      
       paidUsers.add(username);
       res.json({ success: true });
     } else {
@@ -55,11 +46,11 @@ app.post('/complete-payment', async (req, res) => {
   }
 });
 
-// Check if user paid
 app.get('/check-membership', (req, res) => {
   const { username } = req.query;
   res.json({ paid: paidUsers.has(username) });
 });
 
+app.get('/', (req, res) => res.send('Chigalex1 Backend Online'));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
