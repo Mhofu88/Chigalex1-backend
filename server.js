@@ -1,75 +1,65 @@
 const express = require('express');
+const axios = require('axios');
 const cors = require('cors');
 const app = express();
 
-const PORT = process.env.PORT || 3000;
-const API_KEY = process.env.PI_API_KEY; // Set this in Render Environment
-
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
-// Test route
-app.get('/', (req, res) => {
-  res.send('Chigalex1 Backend Online');
-});
+const PI_API_KEY = process.env.PI_API_KEY; // Get from Pi Developer Portal
+const PI_WALLET_ADDRESS = "GXXXXXXXXXXXXXXXXXXXX"; // Your Pi wallet address
+const MEMBERSHIP_AMOUNT = 1;
 
-// Create payment
-app.post('/create-payment', async (req, res) => {
-  try {
-    const { amount, memo, metadata } = req.body;
-    
-    const payment = await fetch('https://api.minepi.com/v2/payments', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Key ${API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        amount: amount,
-        memo: memo,
-        metadata: metadata
-      })
-    }).then(r => r.json());
-
-    res.json(payment);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+// Simple database - use MongoDB/Postgres in production
+let paidUsers = new Set();
 
 // Approve payment
 app.post('/approve-payment', async (req, res) => {
+  const { paymentId } = req.body;
   try {
-    const { paymentId } = req.body;
-    
-    const result = await fetch(`https://api.minepi.com/v2/payments/${paymentId}/approve`, {
-      method: 'POST',
-      headers: { 'Authorization': `Key ${API_KEY}` }
-    }).then(r => r.json());
-
-    res.json(result);
+    await axios.post(`https://api.minepi.com/v2/payments/${paymentId}/approve`, {}, {
+      headers: { 'Authorization': `Key ${PI_API_KEY}` }
+    });
+    res.json({ success: true });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// Complete payment
+// Complete and verify payment
 app.post('/complete-payment', async (req, res) => {
+  const { paymentId, txid, username } = req.body;
   try {
-    const { paymentId, txid } = req.body;
+    const payment = await axios.get(`https://api.minepi.com/v2/payments/${paymentId}`, {
+      headers: { 'Authorization': `Key ${PI_API_KEY}` }
+    });
     
-    const result = await fetch(`https://api.minepi.com/v2/payments/${paymentId}/complete`, {
-      method: 'POST',
-      headers: { 'Authorization': `Key ${API_KEY}` },
-      body: JSON.stringify({ txid })
-    }).then(r => r.json());
-
-    res.json(result);
+    const p = payment.data;
+    
+    // Verify payment
+    if (p.amount === MEMBERSHIP_AMOUNT && 
+        p.receiver === PI_WALLET_ADDRESS && 
+        p.status.developer_completed === false) {
+      
+      await axios.post(`https://api.minepi.com/v2/payments/${paymentId}/complete`, { txid }, {
+        headers: { 'Authorization': `Key ${PI_API_KEY}` }
+      });
+      
+      paidUsers.add(username);
+      res.json({ success: true });
+    } else {
+      res.status(400).json({ error: "Invalid payment" });
+    }
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// Check if user paid
+app.get('/check-membership', (req, res) => {
+  const { username } = req.query;
+  res.json({ paid: paidUsers.has(username) });
 });
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on ${PORT}`));
