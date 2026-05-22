@@ -1,0 +1,17 @@
+{
+  "name": "chigalex1-backend",
+  "version": "1.0.0",
+  "description": "Chigalex1 – Pi Network Pioneer Education Hub Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "@upstash/redis": "^1.28.0"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
