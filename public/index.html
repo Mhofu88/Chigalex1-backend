@@ -1,0 +1,902 @@
+cat > /mnt/user-data/outputs/index.html << 'ENDOFFILE'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chigalex1 – Pi Network Pioneer Education Hub</title>
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<style>
+/* ── ALL FONTS EMBEDDED — no external dependency ── */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap');
+
+:root{
+  --pi:#7B2D8B;--pi-l:#9B59B6;--gold:#F5C518;
+  --bg:#0D0A1A;--surface:#211A3A;--surface2:#2A2048;
+  --text:#F0EBF8;--text2:#B8A8D8;--text3:#7A6A9A;
+  --accent:#00D4AA;--warn:#FF7043;--r:16px;
+}
+
+/* ── RESET ── */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;min-height:100vh;}
+body{
+  font-family:'Sora',Arial,sans-serif;
+  background:#0D0A1A;
+  background-color:#0D0A1A;
+  color:#F0EBF8;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ── BACKGROUND GRADIENT ── */
+body::before{
+  content:'';
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 30%,rgba(26,13,46,0.9) 0%,transparent 60%),
+    radial-gradient(ellipse at 80% 70%,rgba(13,26,46,0.9) 0%,transparent 60%);
+}
+
+/* ── GATE OVERLAY ── */
+#gate{
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  z-index:200;
+  background:rgba(13,10,26,0.97);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.gbox{
+  background:#211A3A;
+  border:1.5px solid rgba(123,45,139,0.6);
+  border-radius:24px;
+  padding:36px 30px;
+  max-width:440px;
+  width:100%;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.glogo{
+  width:72px;height:72px;
+  background:linear-gradient(135deg,#7B2D8B,#F5C518);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.2rem;font-weight:900;color:#fff;
+  margin:0 auto 18px;
+  box-shadow:0 0 32px rgba(123,45,139,0.7);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 28px rgba(123,45,139,0.6);}
+  50%{box-shadow:0 0 48px rgba(245,197,24,0.6);}
+}
+
+.gbox h2{font-size:1.4rem;font-weight:800;margin-bottom:8px;color:#F0EBF8;}
+.gsub{color:#B8A8D8;font-size:.88rem;line-height:1.6;margin-bottom:20px;}
+
+.fee-box{
+  background:#2A2048;
+  border:1px solid rgba(245,197,24,0.4);
+  border-radius:12px;padding:14px;margin-bottom:20px;
+}
+.fee-amt{font-size:1.7rem;font-weight:800;color:#F5C518;}
+.fee-desc{color:#B8A8D8;font-size:.78rem;margin-top:4px;}
+
+/* ── BUTTONS ── */
+.btn{
+  display:block;
+  background:linear-gradient(135deg,#7B2D8B,#9B59B6);
+  color:#fff;border:none;
+  padding:13px 22px;border-radius:100px;
+  font-family:'Sora',Arial,sans-serif;
+  font-size:.95rem;font-weight:700;
+  cursor:pointer;width:100%;margin-top:10px;
+  transition:opacity 0.2s,transform 0.2s;
+  box-shadow:0 4px 20px rgba(123,45,139,0.5);
+  text-align:center;
+  letter-spacing:0.01em;
+}
+.btn:hover:not(:disabled){transform:translateY(-2px);opacity:0.9;}
+.btn:disabled{opacity:0.4;cursor:not-allowed;}
+.btn-out{
+  background:transparent !important;
+  border:1.5px solid rgba(245,197,24,0.5) !important;
+  color:#F5C518 !important;
+  box-shadow:none !important;
+}
+.btn-sm{
+  display:inline-block;
+  width:auto;
+  padding:10px 22px;
+  font-size:.87rem;
+}
+
+.spin{
+  display:inline-block;width:14px;height:14px;
+  border:2px solid rgba(255,255,255,0.3);
+  border-top-color:#fff;border-radius:50%;
+  animation:sp 0.7s linear infinite;
+  margin-right:7px;vertical-align:middle;
+}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+.gerr{color:#FF7043;font-size:.82rem;margin-top:10px;min-height:18px;}
+.gnote{font-size:.72rem;color:#7A6A9A;margin-top:12px;}
+
+.gsel{
+  width:100%;margin-top:14px;
+  background:#2A2048;
+  border:1px solid rgba(123,45,139,0.4);
+  color:#F0EBF8;padding:8px 10px;
+  border-radius:8px;
+  font-family:'Sora',Arial,sans-serif;font-size:.82rem;
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(13,10,26,0.92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(123,45,139,0.35);
+  padding:0 22px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:62px;
+}
+.nlogo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;color:#F0EBF8;}
+.nsym{
+  width:34px;height:34px;
+  background:linear-gradient(135deg,#7B2D8B,#F5C518);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;font-weight:900;color:#fff;
+  flex-shrink:0;
+}
+.nsubtitle{font-size:.58rem;color:#F5C518;font-weight:700;letter-spacing:.08em;}
+.uchip{
+  background:#2A2048;
+  border:1px solid rgba(245,197,24,0.35);
+  border-radius:100px;padding:5px 14px;
+  font-size:.78rem;color:#F5C518;font-weight:700;display:none;
+}
+.lsel{
+  background:#211A3A;border:1px solid rgba(123,45,139,0.35);
+  color:#F0EBF8;padding:6px 10px;border-radius:8px;
+  font-family:'Sora',Arial,sans-serif;font-size:.78rem;
+}
+
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:1;
+  text-align:center;padding:70px 20px 52px;
+}
+.hbadge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(245,197,24,0.13);
+  border:1px solid rgba(245,197,24,0.45);
+  color:#F5C518;border-radius:100px;
+  padding:5px 16px;font-size:.74rem;
+  font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.hero h1{
+  font-size:clamp(1.9rem,5.5vw,3.5rem);
+  font-weight:800;line-height:1.1;
+  background:linear-gradient(135deg,#ffffff 0%,#F5C518 50%,#9B59B6 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:16px;
+}
+.hero p{color:#B8A8D8;font-size:.95rem;line-height:1.7;max-width:580px;margin:0 auto 28px;}
+.hcta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.ref-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.35);
+  color:#00D4AA;border-radius:100px;padding:6px 18px;
+  font-size:.82rem;font-weight:700;margin-top:14px;
+}
+
+/* ── DIVIDER ── */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(123,45,139,0.45),transparent);
+  margin:0 20px;position:relative;z-index:1;
+}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;padding:52px 20px;max-width:1060px;margin:0 auto;}
+.slbl{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00D4AA;margin-bottom:8px;}
+.stit{font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:800;margin-bottom:10px;color:#F0EBF8;}
+.ssub{color:#B8A8D8;font-size:.9rem;line-height:1.7;max-width:540px;margin-bottom:30px;}
+
+/* ── CARDS GRID ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:16px;}
+.card{
+  background:#211A3A;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;padding:24px;
+  transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;
+}
+.card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(245,197,24,0.35);
+  box-shadow:0 12px 40px rgba(123,45,139,0.25);
+}
+.ci{font-size:1.8rem;margin-bottom:12px;}
+.card h3{font-size:.95rem;font-weight:700;margin-bottom:7px;color:#F0EBF8;}
+.card p{color:#B8A8D8;font-size:.84rem;line-height:1.6;}
+
+/* ── TABS ── */
+.tabs{
+  display:flex;gap:5px;flex-wrap:wrap;
+  background:#211A3A;
+  border-radius:100px;padding:5px;
+  margin-bottom:30px;
+  display:inline-flex;
+}
+.tab{
+  padding:9px 18px;border-radius:100px;border:none;
+  background:transparent;color:#B8A8D8;
+  font-family:'Sora',Arial,sans-serif;
+  font-size:.84rem;font-weight:600;cursor:pointer;
+  transition:all 0.2s;
+}
+.tab.on{
+  background:linear-gradient(135deg,#7B2D8B,#9B59B6);
+  color:#fff;
+}
+.tab:hover:not(.on){color:#F0EBF8;background:rgba(255,255,255,0.06);}
+.tc{display:none;}
+.tc.on{display:block;animation:fi 0.3s ease;}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column;gap:13px;}
+.step{
+  display:flex;gap:16px;align-items:flex-start;
+  background:#211A3A;
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:16px;padding:20px;
+  cursor:pointer;
+  transition:border-color 0.2s,transform 0.2s;
+}
+.step:hover{border-color:rgba(123,45,139,0.55);transform:translateX(4px);}
+.step.on{border-color:#7B2D8B;}
+.sn{
+  width:40px;height:40px;flex-shrink:0;
+  background:linear-gradient(135deg,#7B2D8B,#F5C518);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;font-weight:800;color:#fff;
+  box-shadow:0 4px 14px rgba(123,45,139,0.4);
+}
+.sb{flex:1;}
+.st{font-size:.96rem;font-weight:700;margin-bottom:4px;color:#F0EBF8;}
+.sd{color:#B8A8D8;font-size:.85rem;line-height:1.6;}
+.sdt{
+  display:none;margin-top:13px;padding-top:13px;
+  border-top:1px solid rgba(255,255,255,0.09);
+  color:#B8A8D8;font-size:.84rem;line-height:1.72;
+}
+.step.on .sdt{display:block;}
+.sa{margin-left:auto;color:#7A6A9A;font-size:.9rem;transition:transform 0.3s;flex-shrink:0;padding-top:2px;}
+.step.on .sa{transform:rotate(180deg);color:#F5C518;}
+
+/* ── TIPS ── */
+.tip{
+  display:flex;gap:9px;align-items:flex-start;
+  background:rgba(0,212,170,0.09);
+  border:1px solid rgba(0,212,170,0.28);
+  border-radius:10px;padding:11px 14px;margin-top:10px;
+}
+.tip p{color:#00D4AA;font-size:.81rem;line-height:1.55;}
+.wtip{background:rgba(255,112,67,0.09);border-color:rgba(255,112,67,0.3);}
+.wtip p{color:#FF7043;}
+
+/* ── MAP OF PI STEPS ── */
+.mstep{
+  display:flex;gap:14px;align-items:flex-start;
+  background:#211A3A;
+  border:1px solid rgba(0,212,170,0.22);
+  border-radius:16px;padding:18px;margin-bottom:12px;
+}
+.mn{
+  width:36px;height:36px;flex-shrink:0;
+  background:linear-gradient(135deg,#00D4AA,#006d56);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;font-weight:800;color:#fff;
+}
+.mt{font-weight:700;font-size:.92rem;margin-bottom:4px;color:#F0EBF8;}
+.md{color:#B8A8D8;font-size:.84rem;line-height:1.62;}
+
+/* ── FAQ ── */
+.fi{border-bottom:1px solid rgba(255,255,255,0.09);padding:15px 0;cursor:pointer;}
+.fi:last-child{border-bottom:none;}
+.fq{
+  display:flex;justify-content:space-between;align-items:center;
+  font-weight:600;font-size:.9rem;gap:12px;color:#F0EBF8;
+}
+.fa{
+  display:none;color:#B8A8D8;font-size:.85rem;
+  line-height:1.72;margin-top:10px;
+}
+.fi.on .fa{display:block;animation:fi 0.3s ease;}
+.farr{color:#7A6A9A;transition:transform 0.3s;flex-shrink:0;font-size:.9rem;}
+.fi.on .farr{transform:rotate(180deg);color:#F5C518;}
+.ntag{
+  font-size:.66rem;
+  background:rgba(0,212,170,0.22);color:#00D4AA;
+  border-radius:5px;padding:2px 7px;
+  margin-left:7px;font-weight:700;
+}
+
+/* ── ASK SECTION ── */
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.aform{
+  background:#211A3A;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;padding:24px;
+}
+.aform h3{font-weight:700;margin-bottom:6px;color:#F0EBF8;}
+.asub{color:#B8A8D8;font-size:.83rem;margin-bottom:18px;line-height:1.55;}
+.fg{margin-bottom:13px;}
+.fg label{
+  display:block;font-size:.75rem;font-weight:600;
+  color:#B8A8D8;margin-bottom:5px;letter-spacing:.02em;
+}
+.fg input,.fg textarea{
+  width:100%;
+  background:#2A2048;
+  border:1.5px solid rgba(255,255,255,0.11);
+  border-radius:10px;padding:10px 13px;
+  color:#F0EBF8;
+  font-family:'Sora',Arial,sans-serif;font-size:.87rem;
+}
+.fg textarea{min-height:88px;resize:vertical;}
+.fg input:focus,.fg textarea:focus{
+  outline:none;border-color:#7B2D8B;
+  box-shadow:0 0 0 3px rgba(123,45,139,0.2);
+}
+.qai{background:#2A2048;border-radius:10px;padding:16px;margin-bottom:11px;}
+.qq{font-weight:600;font-size:.87rem;margin-bottom:6px;color:#F0EBF8;}
+.qa{
+  background:rgba(0,212,170,0.08);
+  border:1px solid rgba(0,212,170,0.22);
+  border-radius:8px;padding:10px;
+  color:#00D4AA;font-size:.84rem;line-height:1.6;
+}
+.okbox{
+  background:rgba(0,212,170,0.11);
+  border:1px solid rgba(0,212,170,0.32);
+  color:#00D4AA;border-radius:10px;
+  padding:10px 14px;font-size:.83rem;
+  margin-top:11px;display:none;
+}
+
+/* ── DISCLAIMER ── */
+.disc{
+  background:rgba(245,197,24,0.05);
+  border:1px solid rgba(245,197,24,0.28);
+  border-radius:16px;padding:24px;
+}
+.disc p{color:#B8A8D8;font-size:.86rem;line-height:1.78;}
+
+/* ── LANGUAGE GRID ── */
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:9px;}
+.lbtn{
+  background:#211A3A;
+  border:1.5px solid rgba(255,255,255,0.09);
+  border-radius:10px;padding:11px 13px;
+  color:#B8A8D8;
+  font-family:'Sora',Arial,sans-serif;font-size:.84rem;font-weight:600;
+  cursor:pointer;text-align:left;
+  transition:all 0.2s;
+  display:flex;align-items:center;gap:8px;
+}
+.lbtn:hover,.lbtn.on{
+  border-color:#7B2D8B;color:#F0EBF8;
+  background:rgba(123,45,139,0.18);
+}
+
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding:32px 20px;text-align:center;
+  color:#7A6A9A;font-size:.81rem;
+}
+footer a{color:#9B59B6;text-decoration:none;}
+footer a:hover{color:#F5C518;}
+
+/* ── SECURITY CARD BORDERS ── */
+.sec-warn{border-color:rgba(255,112,67,0.35) !important;}
+.sec-ok{border-color:rgba(0,212,170,0.35) !important;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:660px){
+  .agrid{grid-template-columns:1fr;}
+  .hero{padding:52px 15px 36px;}
+  section{padding:36px 15px;}
+  nav{padding:0 14px;}
+  .tabs{border-radius:14px;}
+  .gbox{padding:28px 20px;}
+}
+@media(max-width:420px){
+  .hero h1{font-size:1.75rem;}
+  .hcta{flex-direction:column;align-items:center;}
+  .btn-sm{width:100%;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ MEMBERSHIP GATE ══ -->
+<div id="gate">
+  <div class="gbox">
+    <div class="glogo">π</div>
+    <h2>Welcome to Chigalex1</h2>
+    <p class="gsub">The SADC Pi Network Pioneer Education Hub.<br/>Login with Pi to access all training.</p>
+    <div class="fee-box">
+      <div class="fee-amt">1 π</div>
+      <div class="fee-desc">One-time membership · Lifetime access to all training</div>
+    </div>
+    <button class="btn" id="loginBtn" onclick="piLogin()">🔐 Login with Pi Network</button>
+    <div id="uinfo" style="display:none;margin-top:13px;padding:10px;background:#2A2048;border-radius:10px;font-size:.84rem;color:#F0EBF8;"></div>
+    <button class="btn" id="payBtn" style="display:none;" onclick="piPay()">💳 Pay 1π &amp; Enter Training</button>
+    <button class="btn btn-out" id="enterBtn" style="display:none;" onclick="openApp()">✅ Enter Training Hub</button>
+    <div class="gerr" id="gerr"></div>
+    <p class="gnote">⚠️ Must be opened inside the Pi Browser app</p>
+    <select class="gsel" onchange="setLang(this.value)">
+      <option value="en">🇬🇧 English</option>
+      <option value="sn">🇿🇼 Shona</option>
+      <option value="zu">🇿🇦 isiZulu</option>
+      <option value="nd">🇿🇼 Ndebele</option>
+      <option value="sw">🇹🇿 Kiswahili</option>
+      <option value="pt">🇲🇿 Português</option>
+      <option value="fr">🇨🇩 Français</option>
+      <option value="af">🇿🇦 Afrikaans</option>
+      <option value="st">🇿🇦 Sesotho</option>
+      <option value="tn">🇧🇼 Setswana</option>
+      <option value="ny">🇲🇼 Chichewa</option>
+    </select>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nlogo">
+    <div class="nsym">π</div>
+    <div>
+      <div>Chigalex1</div>
+      <div class="nsubtitle">PIONEER HUB</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="uchip" id="navUser"></div>
+    <select class="lsel" onchange="setLang(this.value)">
+      <option value="en">🇬🇧 EN</option>
+      <option value="sn">🇿🇼 SN</option>
+      <option value="nd">🇿🇼 ND</option>
+      <option value="zu">🇿🇦 ZU</option>
+      <option value="xh">🇿🇦 XH</option>
+      <option value="st">🇿🇦 ST</option>
+      <option value="tn">🇧🇼 TN</option>
+      <option value="ny">🇲🇼 NY</option>
+      <option value="pt">🇲🇿 PT</option>
+      <option value="fr">🇨🇩 FR</option>
+      <option value="sw">🇹🇿 SW</option>
+      <option value="af">🇿🇦 AF</option>
+      <option value="mg">🇲🇬 MG</option>
+    </select>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hbadge">🌍 SADC Pioneer Education DApp</div>
+  <h1>Your Complete Guide<br/>to Pi Network</h1>
+  <p>Registration · KYC · KYB · Map of Pi — step by step, in your SADC language.</p>
+  <div class="hcta">
+    <button class="btn btn-sm" onclick="sc('learn')">🚀 Start Learning</button>
+    <button class="btn btn-sm btn-out" onclick="sc('mapofpi')">🗺️ Map of Pi</button>
+  </div>
+  <div><div class="ref-badge">📲 Referral code: <strong style="margin-left:4px;letter-spacing:.05em;">chigalex1</strong></div></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ OVERVIEW ══ -->
+<section>
+  <div class="slbl">What You'll Learn</div>
+  <div class="stit">Everything a Pioneer Needs</div>
+  <div class="cards">
+    <div class="card"><div class="ci">📱</div><h3>Registration</h3><p>Download Pi Network, create your account and enter referral code <strong>chigalex1</strong> to start mining.</p></div>
+    <div class="card"><div class="ci">🪪</div><h3>Individual KYC</h3><p>Verify your identity to unlock your Pi wallet and access the mainnet.</p></div>
+    <div class="card"><div class="ci">🏢</div><h3>Business KYB</h3><p>Register your business to accept Pi payments and reach 50M+ pioneers globally.</p></div>
+    <div class="card"><div class="ci">🗺️</div><h3>Map of Pi</h3><p>Get listed on mapofpi.com — the official Pi business directory. Free after KYB approval.</p></div>
+    <div class="card"><div class="ci">🔐</div><h3>Security</h3><p>Protect your passphrase and avoid scams targeting Pi pioneers in SADC.</p></div>
+    <div class="card"><div class="ci">💬</div><h3>Ask a Question</h3><p>Submit questions to the Chigalex1 administrator for expert community answers.</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ LEARN ══ -->
+<section id="learn">
+  <div class="slbl">Step-by-Step</div>
+  <div class="stit">Pi Network Training</div>
+  <div class="tabs">
+    <button class="tab on" onclick="swTab('reg',this)">📱 Registration</button>
+    <button class="tab" onclick="swTab('kyc',this)">🪪 KYC</button>
+    <button class="tab" onclick="swTab('kyb',this)">🏢 KYB</button>
+    <button class="tab" onclick="swTab('sec',this)">🔐 Security</button>
+  </div>
+
+  <!-- REGISTRATION -->
+  <div class="tc on" id="tc-reg">
+    <div class="steps">
+      <div class="step" onclick="tog(this)">
+        <div class="sn">1</div>
+        <div class="sb">
+          <div class="st">Download the Pi Network App</div>
+          <div class="sd">Get the official app from Google Play or Apple App Store.</div>
+          <div class="sdt">Search <strong>"Pi Network"</strong> — look for the purple π icon by <strong>SocialChain Inc.</strong> Only download from official stores. Requires Android 5.0+ or iOS 12+. Beware of fake Pi apps — always check the publisher name before installing.</div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+      <div class="step" onclick="tog(this)">
+        <div class="sn">2</div>
+        <div class="sb">
+          <div class="st">Sign Up with Phone or Facebook</div>
+          <div class="sd">Use a real phone number you own — it links to your KYC later.</div>
+          <div class="sdt">Tap <strong>Sign Up</strong>. Choose mobile number (recommended) or Facebook. Enter the OTP sent to your phone. Pick a unique username — this is your permanent Pi identity.</div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+      <div class="step" onclick="tog(this)">
+        <div class="sn">3</div>
+        <div class="sb">
+          <div class="st">Enter Referral Code: <span style="color:#F5C518;">chigalex1</span></div>
+          <div class="sd">Pi is invite-only. Type exactly: chigalex1 — no spaces.</div>
+          <div class="sdt">
+            <p>When prompted for an invitation code enter:<br/><strong style="color:#F5C518;font-size:1.1rem;letter-spacing:.04em;">chigalex1</strong></p>
+            <div class="tip"><div>💡</div><p>This connects you to a security circle and supports the Chigalex1 Pioneer Hub. Without a valid code you cannot join Pi Network.</p></div>
+          </div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+      <div class="step" onclick="tog(this)">
+        <div class="sn">4</div>
+        <div class="sb">
+          <div class="st">Save Your 24-Word Passphrase</div>
+          <div class="sd">Write it on paper. Store offline. Never share it — ever.</div>
+          <div class="sdt">
+            <p>During wallet setup Pi shows a 24-word seed phrase. Write it on paper and store safely offline. Never photograph or save digitally. Loss of passphrase = permanent loss of Pi balance.</p>
+            <div class="tip wtip"><div>⚠️</div><p>Pi Network staff will NEVER ask for your passphrase. Anyone who does is a scammer.</p></div>
+          </div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+      <div class="step" onclick="tog(this)">
+        <div class="sn">5</div>
+        <div class="sb">
+          <div class="st">Mine Pi Daily</div>
+          <div class="sd">Tap the lightning bolt every 24 hours to earn Pi tokens.</div>
+          <div class="sdt">Tap ⚡ on the home screen once every 24 hours to start a new mining session. Build your Security Circle (3–5 trusted contacts) to boost your rate. Set a daily phone reminder — missed sessions = missed Pi.</div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KYC -->
+  <div class="tc" id="tc-kyc">
+    <div class="tip" style="margin-bottom:20px;"><div>ℹ️</div><p>KYC (Know Your Customer) verifies you are a real unique human. Required before using Pi on the open mainnet.</p></div>
+    <div class="steps">
+      <div class="step" onclick="tog(this)"><div class="sn">1</div><div class="sb"><div class="st">Check Your KYC Invitation</div><div class="sd">Profile → KYC in the Pi app. Wait for your slot to be ready.</div><div class="sdt">KYC is rolled out gradually. Open Pi app → Profile → KYC. If your slot is ready you'll see "Start KYC". Keep your app updated to the latest version.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">2</div><div class="sb"><div class="st">Prepare Your ID Document</div><div class="sd">Valid government-issued ID matching your Pi account name.</div><div class="sdt"><p>Accepted: National ID Card · Passport · Driver's License · Residence Permit<br/><br/>Must be valid (not expired), clearly readable, same name as Pi account.<br/><br/>SADC countries: Zimbabwe · South Africa · Botswana · Zambia · Malawi · Mozambique · Tanzania · DRC · Namibia · Lesotho · Eswatini · Angola · Madagascar · Mauritius · Comoros · Seychelles</p></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">3</div><div class="sb"><div class="st">Liveness Check</div><div class="sd">Look at camera, blink, or move head as instructed by the app.</div><div class="sdt">Sit in good even lighting, face camera directly, remove glasses if prompted. This proves you are a live person, not a photo.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">4</div><div class="sb"><div class="st">Scan Your Document</div><div class="sd">Photograph front and back of ID clearly — no glare or shadows.</div><div class="sdt">Place ID on a flat dark surface in bright light. Avoid glare, shadows, or fingers over text. Review the extracted data on screen and correct any errors before submitting.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">5</div><div class="sb"><div class="st">Wait for Approval &amp; Unlock Wallet</div><div class="sd">Instant or up to several days. Then import wallet with your passphrase.</div><div class="sdt"><p>Common rejections: blurry photo · glare · expired ID · name mismatch. Fix and resubmit.<br/><br/>Once approved: Pi Wallet → Import wallet → enter 24-word passphrase. Your mined Pi transfers to mainnet.</p><div class="tip wtip"><div>⚠️</div><p>Only ever enter your passphrase in the official Pi app — never on external sites.</p></div></div></div><div class="sa">▾</div></div>
+    </div>
+  </div>
+
+  <!-- KYB -->
+  <div class="tc" id="tc-kyb">
+    <div class="tip" style="margin-bottom:20px;"><div>🏢</div><p>KYB (Know Your Business) lets verified businesses accept Pi and appear in the Pi marketplace. Complete personal KYC first.</p></div>
+    <div class="steps">
+      <div class="step" onclick="tog(this)"><div class="sn">1</div><div class="sb"><div class="st">Complete Personal KYC First</div><div class="sd">Business owner must be KYC-approved before applying for KYB.</div><div class="sdt">Complete all 5 KYC steps as an individual. Keep your KYC approval notification. You cannot proceed with KYB without this step.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">2</div><div class="sb"><div class="st">Access Pi Developer Portal</div><div class="sd">Pi Browser → pi://develop.pi, or visit minepi.com/developers.</div><div class="sdt"><p><strong>Pi Browser:</strong> Download Pi Browser app → navigate to <strong>pi://develop.pi</strong><br/><br/><strong>Desktop:</strong> Visit <strong>minepi.com/developers</strong> → log in with Pi credentials → choose Business Registration / KYB.</p></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">3</div><div class="sb"><div class="st">Prepare Business Documents</div><div class="sd">Registration certificate, tax number, address proof, director's KYC.</div><div class="sdt"><p>📄 Certificate of Incorporation / Business Registration [ZIMRA · SARS · ZRA · BURS]<br/>📄 Tax Registration Number certificate<br/>📄 Proof of address — utility bill / bank statement (max 3 months old)<br/>📄 Director's personal KYC documents<br/>📄 Company bank account details<br/><br/>All in English or officially translated. JPG/PNG/PDF, max 5MB each.</p></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">4</div><div class="sb"><div class="st">Fill Business Profile</div><div class="sd">Legal name, type, category, address, description of products/services.</div><div class="sdt">Complete: Legal name · Trading name · Business type (Sole Trader / Partnership / Pvt Ltd / NGO) · Category (Retail / Food / Tech / Services / Agriculture / Health) · Address &amp; country · Website or social media · Description · Preferred payment: Pi. Upload all documents and submit.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">5</div><div class="sb"><div class="st">Await Approval (1–4 Weeks)</div><div class="sd">Pi team reviews manually. Watch email and Pi app notifications.</div><div class="sdt">You'll get a confirmation email. The team may request extra documents. Approval usually takes 1–4 weeks. You'll be notified when approved or if further action is needed.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">6</div><div class="sb"><div class="st">Accept Pi Payments</div><div class="sd">Generate QR code, integrate SDK, and list on Pi marketplace.</div><div class="sdt"><p>🔗 In-store: Pi Wallet → generate QR code → print and display at counter<br/>🔗 Online: Integrate Pi SDK from minepi.com/developers<br/>🔗 Marketplace: List products in Pi Browser marketplace<br/>🔗 Promote in local Pi Telegram, WhatsApp, Facebook groups</p><div class="tip"><div>🚀</div><p>Next: Register on <strong>Map of Pi</strong> for maximum visibility. See the guide below.</p></div></div></div><div class="sa">▾</div></div>
+    </div>
+  </div>
+
+  <!-- SECURITY -->
+  <div class="tc" id="tc-sec">
+    <div class="cards">
+      <div class="card sec-warn"><div class="ci">🚫</div><h3>Never Share Your Passphrase</h3><p>Your 24-word passphrase is your wallet's master key. No Pi staff, validator, or admin will ever legitimately ask for it. Anyone who does is trying to steal your Pi.</p></div>
+      <div class="card sec-warn"><div class="ci">🔗</div><h3>Official Links Only</h3><p><strong>minepi.com</strong> — Pi Network official site<br/><strong>Pi Browser app</strong> — official DApp browser<br/><strong>minepi.com/developers</strong> — developer portal<br/><br/>Any other site asking for Pi login is a scam.</p></div>
+      <div class="card sec-warn"><div class="ci">💸</div><h3>Fake Pi Exchange Scams</h3><p>Anyone offering to sell or buy Pi for cash outside the official ecosystem is running an unauthorized scheme. Report to support@minepi.com.</p></div>
+      <div class="card sec-ok"><div class="ci">✅</div><h3>Verify KYC Sources</h3><p>KYC only happens inside the official Pi app. Never complete KYC via WhatsApp, Telegram bots, external websites, or third-party apps — these are phishing attempts.</p></div>
+      <div class="card sec-ok"><div class="ci">👥</div><h3>Trusted Security Circle</h3><p>Only add people you personally know to your security circle. Adding strangers risks account flagging and a reduced mining rate.</p></div>
+      <div class="card sec-ok"><div class="ci">📲</div><h3>Keep App Updated</h3><p>Always use the latest Pi Network app from Google Play or App Store. Old versions may expire sessions or contain security vulnerabilities.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ MAP OF PI ══ -->
+<section id="mapofpi">
+  <div class="slbl">🗺️ Business Visibility</div>
+  <div class="stit">Register on Map of Pi</div>
+  <p class="ssub">After KYB approval, listing on mapofpi.com puts your business in front of pioneers searching for places to spend Pi — locally and globally.</p>
+  <div class="tip" style="margin-bottom:22px;"><div>🌍</div><p><strong>Map of Pi</strong> is the official Pi business directory on a live map. Pioneers use it to find Pi-accepting businesses nearby. Free to list after KYB approval.</p></div>
+  <div class="mstep"><div class="mn">1</div><div><div class="mt">Confirm KYB is Approved</div><div class="md">Log into the Pi Developer Portal and confirm your business status shows <strong>"Approved"</strong>. Complete the KYB guide above first if not yet approved.</div></div></div>
+  <div class="mstep"><div class="mn">2</div><div><div class="mt">Open Map of Pi in Pi Browser</div><div class="md">Open Pi Browser app. In the address bar type <strong>mapofpi.com</strong> or search "Map of Pi" in the Pi Browser DApp store. Tap <strong>"Sign in with Pi"</strong> to authenticate with your Pi account.</div></div></div>
+  <div class="mstep"><div class="mn">3</div><div><div class="mt">Create Your Business Listing</div><div class="md">Tap <strong>"Add My Business"</strong>. Fill in: Business name · Location (enable location permissions for accurate map pin) · Category · Short description · Logo or photo · Operating hours · Contact / WhatsApp · Website or social media.</div></div></div>
+  <div class="mstep"><div class="mn">4</div><div><div class="mt">Set Pi Payment Details</div><div class="md">Add your Pi username (wallet address) where you receive payments. Set your price display preference (Pi, USD, or local currency). Enable <strong>"Accept Pi Payments"</strong> toggle so pioneers know you accept Pi.</div></div></div>
+  <div class="mstep"><div class="mn">5</div><div><div class="mt">Submit &amp; Go Live</div><div class="md">Review all details and tap <strong>Submit</strong>. Your business pin appears on the map within 24–48 hours after moderation. Share your listing link in local Pi communities to drive pioneers to your business.</div></div></div>
+  <div class="mstep"><div class="mn">6</div><div><div class="mt">Maintain Your Listing</div><div class="md">Update hours, add new products, upload fresh photos, respond to reviews, and adjust Pi pricing regularly. Active listings rank higher in Map of Pi search results.</div></div></div>
+  <div class="tip" style="margin-top:16px;"><div>🚀</div><p>SADC businesses gain first-mover advantage as Pi adoption grows across Zimbabwe, South Africa, Zambia, Botswana and the wider region.</p></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <div class="slbl">FAQ</div>
+  <div class="stit">Frequently Asked Questions</div>
+  <p class="ssub">Admin-added FAQs appear at the top tagged NEW. Core questions are below.</p>
+  <div id="dynFaq"></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>Is Pi Network free to join?</span><span class="farr">▾</span></div><div class="fa">Yes — joining Pi Network is free. The Chigalex1 membership fee (1π) is an independent community app fee, not a charge by Pi Network or SocialChain Inc.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>Do I need to keep the app open to mine Pi?</span><span class="farr">▾</span></div><div class="fa">No. Pi mines in the background. You just need to tap the lightning button once every 24 hours to start a new session. No heavy battery or data usage.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>My KYC document was rejected. What do I do?</span><span class="farr">▾</span></div><div class="fa">Check the rejection reason shown in the app. Common issues: blurry photo, glare on the document, expired ID, or name mismatch with your Pi account. Fix the issue and resubmit with good lighting on a flat surface.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>Can a business do KYB without the owner completing personal KYC?</span><span class="farr">▾</span></div><div class="fa">No. The business owner or authorized representative must first complete personal KYC before submitting a KYB application. Both are required for full business verification.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>When can I spend or withdraw my Pi?</span><span class="farr">▾</span></div><div class="fa">Pi can be spent with KYB-verified businesses that accept Pi. The Open Mainnet (for external trading) is progressively rolling out — KYC-verified pioneers access it first.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>What is Map of Pi and why should my business list there?</span><span class="farr">▾</span></div><div class="fa">mapofpi.com is the official Pi business directory on a live map. 50+ million pioneers use it to find places to spend Pi. Listing is free after KYB approval and gives your business global and local visibility.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>Is Pi Network available in my SADC country?</span><span class="farr">▾</span></div><div class="fa">Yes — Pi Network is available in all 16 SADC member states: Angola, Botswana, Comoros, DRC, Eswatini, Lesotho, Madagascar, Malawi, Mauritius, Mozambique, Namibia, Seychelles, South Africa, Tanzania, Zambia, and Zimbabwe.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>How do I report a Pi Network scam?</span><span class="farr">▾</span></div><div class="fa">Report via the Pi app's support section, email support@minepi.com, or contact @PiCoreTeam on Twitter/X. Never send Pi to anyone claiming to multiply it or pretending to be Pi staff.</div></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ASK A QUESTION ══ -->
+<section>
+  <div class="slbl">💬 Community Support</div>
+  <div class="stit">Ask the Administrator</div>
+  <p class="ssub">Question not in the FAQ? Submit it — the Chigalex1 administrator reviews and publishes answers for the whole community.</p>
+  <div class="agrid">
+    <div class="aform">
+      <h3>✉️ Submit Your Question</h3>
+      <p class="asub">All questions reviewed by the Chigalex1 administrator. Answers published below for the community.</p>
+      <div class="fg"><label>Your Name</label><input type="text" id="aname" placeholder="e.g. Chidi from Harare"/></div>
+      <div class="fg"><label>Email (optional)</label><input type="email" id="aemail" placeholder="For follow-up if needed"/></div>
+      <div class="fg"><label>Your Question</label><textarea id="aq" placeholder="Type your Pi Network question here..."></textarea></div>
+      <button class="btn" onclick="submitQ()">📨 Submit Question</button>
+      <div class="okbox" id="qok">✅ Submitted! The administrator will publish an answer soon.</div>
+    </div>
+    <div>
+      <h3 style="font-weight:700;margin-bottom:16px;color:#F0EBF8;">📢 Published Answers</h3>
+      <div id="pubAns"><p style="color:#7A6A9A;font-size:.86rem;">No answers published yet — be the first to ask!</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ DISCLAIMER ══ -->
+<section>
+  <div class="slbl">⚖️ Disclaimer</div>
+  <div class="stit">Independent Contribution</div>
+  <div class="disc">
+    <p>
+      <strong style="color:#F5C518;">DISCLAIMER</strong><br/><br/>
+      The training materials, step-by-step guides, and information on <strong>Chigalex1</strong> are <strong>independent contributions</strong> made in support of Pi Network's global ambition to make Pi digital currency accessible to everyone, every day, using a smartphone.<br/><br/>
+      Chigalex1 is <strong style="color:#FF7043;">not affiliated with</strong>, endorsed by, or officially connected to Pi Network or SocialChain Inc. The one-time membership fee is an independent community app access fee, not a charge by Pi Network Inc.<br/><br/>
+      For official Pi Network information visit <strong style="color:#00D4AA;">minepi.com</strong>. For Map of Pi visit <strong style="color:#00D4AA;">mapofpi.com</strong>. Verify all information against official Pi Network communications before making decisions.
+    </p>
+  </div>
+</section>
+
+<!-- ══ LANGUAGES ══ -->
+<section>
+  <div class="slbl">🌍 Languages</div>
+  <div class="stit">Choose Your Language</div>
+  <div class="lgrid">
+    <button class="lbtn on" onclick="setLb(this,'en')">🇬🇧 English</button>
+    <button class="lbtn" onclick="setLb(this,'sn')">🇿🇼 Shona</button>
+    <button class="lbtn" onclick="setLb(this,'nd')">🇿🇼 Ndebele</button>
+    <button class="lbtn" onclick="setLb(this,'zu')">🇿🇦 isiZulu</button>
+    <button class="lbtn" onclick="setLb(this,'xh')">🇿🇦 isiXhosa</button>
+    <button class="lbtn" onclick="setLb(this,'st')">🇿🇦 Sesotho</button>
+    <button class="lbtn" onclick="setLb(this,'tn')">🇧🇼 Setswana</button>
+    <button class="lbtn" onclick="setLb(this,'ny')">🇲🇼 Chichewa</button>
+    <button class="lbtn" onclick="setLb(this,'pt')">🇲🇿 Português</button>
+    <button class="lbtn" onclick="setLb(this,'fr')">🇨🇩 Français</button>
+    <button class="lbtn" onclick="setLb(this,'sw')">🇹🇿 Kiswahili</button>
+    <button class="lbtn" onclick="setLb(this,'af')">🇿🇦 Afrikaans</button>
+    <button class="lbtn" onclick="setLb(this,'mg')">🇲🇬 Malagasy</button>
+  </div>
+</section>
+
+<footer>
+  <div style="font-size:1.5rem;margin-bottom:8px;">π</div>
+  <div style="font-weight:800;color:#F5C518;margin-bottom:6px;">Chigalex1</div>
+  <p>Pioneer Education Hub · Independent SADC resource · Referral: <strong style="color:#F5C518;">chigalex1</strong></p>
+  <p style="margin-top:6px;font-size:.75rem;">
+    <a href="https://minepi.com" target="_blank">minepi.com</a> ·
+    <a href="https://mapofpi.com" target="_blank">mapofpi.com</a> ·
+    Not affiliated with Pi Network or SocialChain Inc.
+  </p>
+</footer>
+
+<script>
+const API = window.location.origin;
+let piUser = null;
+
+try { Pi.init({ version:"2.0", sandbox:false }); }
+catch(e){ console.warn('Pi SDK: open in Pi Browser'); }
+
+async function piLogin(){
+  const btn=document.getElementById('loginBtn');
+  btn.disabled=true;
+  btn.innerHTML='<span class="spin"></span>Connecting to Pi...';
+  setErr('');
+  try{
+    const auth=await Pi.authenticate(['username','payments'],handleIncomplete);
+    piUser=auth.user;
+    const ui=document.getElementById('uinfo');
+    ui.style.display='block';
+    ui.innerHTML='✅ Logged in as <strong style="color:#F5C518;">@'+piUser.username+'</strong>';
+    btn.style.display='none';
+    const r=await fetch(API+'/check-membership?username='+piUser.username);
+    const d=await r.json();
+    document.getElementById(d.paid?'enterBtn':'payBtn').style.display='block';
+  }catch(e){
+    setErr('Login failed. Make sure you are in the Pi Browser app.');
+    btn.disabled=false;
+    btn.innerHTML='🔐 Login with Pi Network';
+  }
+}
+
+async function piPay(){
+  const btn=document.getElementById('payBtn');
+  btn.disabled=true;
+  btn.innerHTML='<span class="spin"></span>Opening Pi payment...';
+  setErr('');
+  try{
+    await Pi.createPayment({
+      amount:1,
+      memo:'Chigalex1 Pioneer Hub Membership',
+      metadata:{username:piUser.username,app:'chigalex1'}
+    },{
+      onReadyForServerApproval:async(paymentId)=>{
+        await fetch(API+'/approve-payment',{
+          method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({paymentId})
+        });
+      },
+      onReadyForServerCompletion:async(paymentId,txid)=>{
+        const r=await fetch(API+'/complete-payment',{
+          method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({paymentId,txid,username:piUser.username})
+        });
+        const d=await r.json();
+        if(d.success) openApp();
+        else{setErr('Payment verification failed. Contact support.');resetPayBtn();}
+      },
+      onCancel:()=>{setErr('Payment cancelled.');resetPayBtn();},
+      onError:(e)=>{setErr('Payment error: '+e);resetPayBtn();}
+    });
+  }catch(e){setErr('Payment failed: '+e.message);resetPayBtn();}
+}
+
+function resetPayBtn(){
+  const btn=document.getElementById('payBtn');
+  btn.disabled=false;
+  btn.innerHTML='💳 Pay 1π &amp; Enter Training';
+}
+
+function handleIncomplete(p){console.log('Incomplete payment:',p);}
+
+function openApp(){
+  document.getElementById('gate').style.display='none';
+  if(piUser){
+    const nc=document.getElementById('navUser');
+    nc.style.display='block';
+    nc.textContent='@'+piUser.username;
+  }
+  loadFaqs();
+  loadAnswers();
+}
+
+function setErr(m){document.getElementById('gerr').textContent=m;}
+
+function swTab(n,el){
+  document.querySelectorAll('.tc').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('tc-'+n).classList.add('on');
+  el.classList.add('on');
+}
+
+function tog(el){
+  const was=el.classList.contains('on');
+  el.closest('.steps').querySelectorAll('.step').forEach(s=>s.classList.remove('on'));
+  if(!was) el.classList.add('on');
+}
+
+async function loadFaqs(){
+  try{
+    const r=await fetch(API+'/faqs');
+    const d=await r.json();
+    const el=document.getElementById('dynFaq');
+    if(!d.faqs||!d.faqs.length)return;
+    el.innerHTML=d.faqs.slice().reverse().map(f=>
+      '<div class="fi" onclick="this.classList.toggle(\'on\')">'+
+      '<div class="fq"><span>'+esc(f.question)+'<span class="ntag">NEW</span></span><span class="farr">▾</span></div>'+
+      '<div class="fa">'+esc(f.answer)+'</div></div>'
+    ).join('');
+  }catch(e){}
+}
+
+async function submitQ(){
+  const name=document.getElementById('aname').value.trim();
+  const email=document.getElementById('aemail').value.trim();
+  const q=document.getElementById('aq').value.trim();
+  if(!name||!q)return;
+  try{
+    await fetch(API+'/questions',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,email,question:q})
+    });
+    document.getElementById('aname').value='';
+    document.getElementById('aemail').value='';
+    document.getElementById('aq').value='';
+    const ok=document.getElementById('qok');
+    ok.style.display='block';
+    setTimeout(()=>ok.style.display='none',4000);
+  }catch(e){alert('Could not submit. Please try again.');}
+}
+
+async function loadAnswers(){
+  try{
+    const r=await fetch(API+'/questions/answered');
+    const d=await r.json();
+    const el=document.getElementById('pubAns');
+    if(!d.questions||!d.questions.length)return;
+    el.innerHTML=d.questions.slice().reverse().map(q=>
+      '<div class="qai">'+
+      '<div class="qq">Q: '+esc(q.question)+'</div>'+
+      '<div style="color:#7A6A9A;font-size:.72rem;margin-bottom:7px;">Asked by '+esc(q.name)+'</div>'+
+      '<div class="qa">💬 '+esc(q.answer)+'</div></div>'
+    ).join('');
+  }catch(e){}
+}
+
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function sc(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'});}
+function setLang(l){}
+function setLb(btn,l){
+  document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
+ENDOFFILE
+echo "File size: $(wc -l < /mnt/user-data/outputs/index.html) lines"
