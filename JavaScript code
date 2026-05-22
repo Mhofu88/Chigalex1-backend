@@ -1,0 +1,54 @@
+const express = require('express');
+const cors = require('cors');
+const { Redis } = require('@upstash/redis');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const PORT = process.env.PORT || 3000;
+
+// Connect to Upstash Redis using env vars
+const redis = Redis.fromEnv();
+
+// Test route
+app.get('/', (req, res) => {
+  res.send('Chigalex1 Backend Online');
+});
+
+// Mark a user as paid
+app.post('/set-paid', async (req, res) => {
+  try {
+    const { userId } = req.body;
+    if (!userId) return res.status(400).json({ error: 'userId required' });
+
+    await redis.set(`user:${userId}:status`, 'paid');
+    res.json({ success: true, userId, status: 'paid' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Check if user is paid
+app.get('/check-paid/:userId', async (req, res) => {
+  try {
+    const status = await redis.get(`user:${req.params.userId}:status`);
+    res.json({ userId: req.params.userId, status: status || 'free' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Remove paid status
+app.delete('/remove-paid/:userId', async (req, res) => {
+  try {
+    await redis.del(`user:${req.params.userId}:status`);
+    res.json({ success: true, userId: req.params.userId, status: 'free' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
