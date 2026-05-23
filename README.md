@@ -1,3 +1,3 @@
 # Chigalex1-backend
 
-SADC Pi Network Pioneer Education Hub
+AFRICA 🌍 Pi Network Pioneer Education Hub
