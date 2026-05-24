@@ -1,3 +1,3 @@
 # Chigalex1-backend
 
-AFRICA 🌍 Pi Network Pioneer Education Hub
+Africa Pi Network Education Hub
