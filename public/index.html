@@ -14,7 +14,7 @@ body{font-family:'Sora',Arial,sans-serif;background:#0D0A1A;color:#F0EBF8;min-he
 body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 20% 30%,rgba(26,13,46,0.9) 0%,transparent 60%),radial-gradient(ellipse at 80% 70%,rgba(13,26,46,0.9) 0%,transparent 60%);}
 #gate{position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;background:rgba(13,10,26,0.97);display:flex;align-items:center;justify-content:center;padding:20px;}
 .gbox{background:#211A3A;border:1.5px solid rgba(123,45,139,0.6);border-radius:24px;padding:36px 30px;max-width:460px;width:100%;text-align:center;position:relative;z-index:1;}
-.glogo{width:76px;height:76px;background:linear-gradient(135deg,#7B2D8B,#F5C518);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.3rem;font-weight:900;color:#fff;margin:0 auto 6px;box-shadow:0 0 32px rgba(123,45,139,0.7);animation:pulse 2s infinite;}
+.glogo{width:90px;height:90px;border-radius:50%;display:block;margin:0 auto 14px;box-shadow:0 0 32px rgba(123,45,139,0.7);animation:pulse 2s infinite;object-fit:cover;}
 @keyframes pulse{0%,100%{box-shadow:0 0 28px rgba(123,45,139,0.6);}50%{box-shadow:0 0 48px rgba(245,197,24,0.6);}}
 .africa-badge-gate{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#E8520A;margin-bottom:14px;display:block;}
 .gbox h2{font-size:1.4rem;font-weight:800;margin-bottom:6px;color:#F0EBF8;}
@@ -138,8 +138,9 @@ footer a:hover{color:#F5C518;}
 <!-- ══ GATE ══ -->
 <div id="gate">
   <div class="gbox">
-    <div class="glogo">π</div>
-    <span class="africa-badge-gate" id="gate-badge-txt">🌍 Africa Pi Network Education Hub</span>
+    <img src="/logo.png" alt="Chigalex1 Logo" class="glogo" style="object-fit:cover;"/>
+
+class="africa-badge-gate" id="gate-badge-txt">🌍 Africa Pi Network Education Hub</span>
     <h2 id="gate-title">Welcome to Chigalex1</h2>
     <p class="gsub" id="gate-sub">Empowering pioneers and businesses across all 54 African nations to join the Pi enclosed ecosystem economy.</p>
 
@@ -190,9 +191,8 @@ footer a:hover{color:#F5C518;}
 <!-- ══ NAV ══ -->
 <nav>
   <div class="nlogo">
-    <div class="nsym">π</div>
-    <div>
-      <div>Chigalex1</div>
+     <img src="/logo.png" alt="Chigalex1" class="nsym" style="object-fit:cover;padding:2px;"/
+<div>Chigalex1</div>
       <div class="nsubtitle" id="nav-subtitle">🌍 Africa Pioneer Hub</div>
     </div>
   </div>
@@ -249,13 +249,13 @@ footer a:hover{color:#F5C518;}
     <div class="alliance-icon">🌍</div>
     <div>
       <div class="alliance-title">Africa Pi GCV Industry Alliance — Vice Chair</div>
-      <div class="alliance-text">Chigalex1 is the official education and onboarding platform of the Africa Pi GCV Industry Alliance. Our mission is to onboard pioneers and businesses across all 54 African nations into the Pi enclosed ecosystem economy.<br/><br/><strong style="color:#F0EBF8;">Why join NOW?</strong> Businesses and pioneers who establish their Pi presence inside the enclosed ecosystem before GCV is set gain the greatest first-mover advantage.</div>
+      <div class="alliance-text">Chigalex1 is the official education and onboarding platform of the Africa Pi GCV Industry Alliance. Our mission is to onboard pioneers and businesses across all 54 African nations into the Pi enclosed ecosystem economy.<br/><br/><strong style="color:#F0EBF8;">Why join NOW?</strong> Businesses and pioneers who establish their Pi presence inside the enclosed ecosystem before GCV is set to gain the greatest first-mover advantage.</div>
     </div>
   </div>
   <div class="cards">
     <div class="card" style="border-color:rgba(232,82,10,0.3)"><div class="ci">🏛️</div><h3>GCV Alliance</h3><p>The Africa Pi GCV Industry Alliance represents businesses and pioneers advocating for a fair Global Consensus Value that reflects Pi's real-world utility across Africa.</p></div>
     <div class="card" style="border-color:rgba(232,82,10,0.3)"><div class="ci">🔄</div><h3>Enclosed Ecosystem</h3><p>The Pi enclosed ecosystem is live now. Verified businesses can accept Pi, pioneers can spend Pi — all within the official Pi Network framework before open mainnet.</p></div>
-    <div class="card" style="border-color:rgba(232,82,10,0.3)"><div class="ci">⏰</div><h3>Why Act Now</h3><p>GCV is not yet decided — but the ecosystem is open. Businesses joining now build customer bases, brand recognition, and Pi reserves before the value is set globally.</p></div>
+    <div class="card" style="border-color:rgba(232,82,10,0.3)"><div class="ci">⏰</div><h3>Why Act Now</h3><p>GCV is not yet confirmed by the Pi Core Team — but the ecosystem is open. Businesses joining now build customer bases, brand recognition, and Pi reserves before the value is set globally.</p></div>
     <div class="card" style="border-color:rgba(245,197,24,0.3)"><div class="ci">🌱</div><h3>54 Nations</h3><p>From Cairo to Cape Town, Lagos to Nairobi — Chigalex1 trains pioneers in every African nation in their local language to register, verify, and participate in Pi.</p></div>
     <div class="card" style="border-color:rgba(245,197,24,0.3)"><div class="ci">💼</div><h3>Business First</h3><p>We prioritise business onboarding through KYB and Map of Pi registration — creating a network of Pi-accepting businesses that give pioneers real spending utility.</p></div>
     <div class="card" style="border-color:rgba(245,197,24,0.3)"><div class="ci">📡</div><h3>Community Reach</h3><p>Training in 22 African languages across 5 regions ensures no pioneer or business is left behind regardless of their mother tongue or country.</p></div>
