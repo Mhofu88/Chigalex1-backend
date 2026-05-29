@@ -728,6 +728,7 @@ app.get('*', (req, res) => {
 });
 
 // ── START ──
+require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
 app.listen(PORT, () => {
   console.log(`🚀 Chigalex1 running on port ${PORT}`);
   console.log(`   Health:     http://localhost:${PORT}/health`);
