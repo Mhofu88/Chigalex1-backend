@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chigalex1 – Africa Pi Network Education Hub</title>
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap');
+:root{--pi:#7B2D8B;--pi-l:#9B59B6;--gold:#F5C518;--bg:#0D0A1A;--surface:#211A3A;--surface2:#2A2048;--text:#F0EBF8;--text2:#B8A8D8;--text3:#7A6A9A;--accent:#00D4AA;--warn:#FF7043;--r:16px;--africa:#E8520A;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;min-height:100vh;}
+body{font-family:'Sora',Arial,sans-serif;background:#0D0A1A;color:#F0EBF8;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 20% 30%,rgba(26,13,46,0.9) 0%,transparent 60%),radial-gradient(ellipse at 80% 70%,rgba(13,26,46,0.9) 0%,transparent 60%);}
+
+/* ── GATE ── */
+#gate{position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;background:rgba(13,10,26,0.97);display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
+.gbox{background:#211A3A;border:1.5px solid rgba(123,45,139,0.6);border-radius:24px;padding:36px 30px;max-width:460px;width:100%;text-align:center;position:relative;z-index:1;}
+.glogo{width:90px;height:90px;border-radius:50%;display:block;margin:0 auto 14px;box-shadow:0 0 32px rgba(123,45,139,0.7);animation:pulse 2s infinite;object-fit:cover;}
+@keyframes pulse{0%,100%{box-shadow:0 0 28px rgba(123,45,139,0.6);}50%{box-shadow:0 0 48px rgba(245,197,24,0.6);}}
+.africa-badge-gate{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#E8520A;margin-bottom:14px;display:block;}
+.gbox h2{font-size:1.4rem;font-weight:800;margin-bottom:6px;color:#F0EBF8;}
+.gsub{color:#B8A8D8;font-size:.87rem;line-height:1.6;margin-bottom:12px;}
+.fee-box{background:#2A2048;border:1px solid rgba(245,197,24,0.4);border-radius:12px;padding:14px;margin-bottom:20px;}
+.fee-amt{font-size:1.7rem;font-weight:800;color:#F5C518;}
+.fee-desc{color:#B8A8D8;font-size:.78rem;margin-top:4px;}
+.btn{display:block;background:linear-gradient(135deg,#7B2D8B,#9B59B6);color:#fff;border:none;padding:13px 22px;border-radius:100px;font-family:'Sora',Arial,sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;width:100%;margin-top:10px;transition:opacity 0.2s,transform 0.2s;box-shadow:0 4px 20px rgba(123,45,139,0.5);text-align:center;}
+.btn:hover:not(:disabled){transform:translateY(-2px);opacity:0.9;}
+.btn:disabled{opacity:0.4;cursor:not-allowed;}
+.btn-out{background:transparent!important;border:1.5px solid rgba(245,197,24,0.5)!important;color:#F5C518!important;box-shadow:none!important;}
+.btn-sm{display:inline-block;width:auto;padding:10px 22px;font-size:.87rem;}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:sp 0.7s linear infinite;margin-right:7px;vertical-align:middle;}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gerr{color:#FF7043;font-size:.82rem;margin-top:10px;min-height:18px;}
+.gnote{font-size:.72rem;color:#7A6A9A;margin-top:12px;}
+.gsel{width:100%;margin-top:0;margin-bottom:20px;background:#2A2048;border:1px solid rgba(123,45,139,0.4);color:#F0EBF8;padding:8px 10px;border-radius:8px;font-family:'Sora',Arial,sans-serif;font-size:.82rem;}
+.owner-badge{background:linear-gradient(135deg,rgba(245,197,24,0.2),rgba(232,82,10,0.2));border:1.5px solid rgba(245,197,24,0.6);border-radius:12px;padding:12px 16px;margin-bottom:14px;display:none;}
+.owner-badge-title{color:#F5C518;font-weight:800;font-size:.85rem;margin-bottom:3px;}
+.owner-badge-sub{color:#B8A8D8;font-size:.75rem;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(13,10,26,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(123,45,139,0.35);padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:62px;}
+.nlogo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;color:#F0EBF8;}
+.nsym{width:34px;height:34px;border-radius:50%;flex-shrink:0;object-fit:cover;}
+.nsubtitle{font-size:.56rem;color:#E8520A;font-weight:800;letter-spacing:.07em;text-transform:uppercase;}
+.uchip{background:#2A2048;border:1px solid rgba(245,197,24,0.35);border-radius:100px;padding:5px 14px;font-size:.78rem;color:#F5C518;font-weight:700;display:none;}
+.lsel{background:#211A3A;border:1px solid rgba(123,45,139,0.35);color:#F0EBF8;padding:6px 10px;border-radius:8px;font-family:'Sora',Arial,sans-serif;font-size:.78rem;}
+
+/* ── BANNERS & LAYOUT ── */
+.africa-banner{position:relative;z-index:1;background:linear-gradient(135deg,rgba(232,82,10,0.15),rgba(123,45,139,0.15));border-top:1px solid rgba(232,82,10,0.3);border-bottom:1px solid rgba(232,82,10,0.3);padding:10px 20px;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+.africa-banner span{font-size:.78rem;font-weight:700;color:#E8520A;letter-spacing:.04em;}
+.africa-banner small{font-size:.72rem;color:#B8A8D8;}
+.region-pill{display:inline-block;background:rgba(232,82,10,0.15);border:1px solid rgba(232,82,10,0.3);color:#E8520A;border-radius:100px;padding:2px 10px;font-size:.68rem;font-weight:700;margin:2px;}
+.hero{position:relative;z-index:1;text-align:center;padding:64px 20px 50px;}
+.hbadge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,82,10,0.13);border:1px solid rgba(232,82,10,0.45);color:#E8520A;border-radius:100px;padding:5px 16px;font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:20px;}
+.hero h1{font-size:clamp(1.9rem,5.5vw,3.5rem);font-weight:800;line-height:1.1;background:linear-gradient(135deg,#ffffff 0%,#F5C518 40%,#E8520A 70%,#9B59B6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;}
+.hero p{color:#B8A8D8;font-size:.95rem;line-height:1.7;max-width:600px;margin:0 auto 28px;}
+.hcta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.ref-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.35);color:#00D4AA;border-radius:100px;padding:6px 18px;font-size:.82rem;font-weight:700;margin-top:14px;}
+.gcv-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,82,10,0.1);border:1px solid rgba(232,82,10,0.4);color:#E8520A;border-radius:100px;padding:6px 18px;font-size:.78rem;font-weight:700;margin-top:8px;margin-left:8px;}
+section{position:relative;z-index:1;padding:52px 20px;max-width:1080px;margin:0 auto;}
+.slbl{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00D4AA;margin-bottom:8px;}
+.stit{font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:800;margin-bottom:10px;color:#F0EBF8;}
+.ssub{color:#B8A8D8;font-size:.9rem;line-height:1.7;max-width:560px;margin-bottom:30px;}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(123,45,139,0.45),transparent);margin:0 20px;position:relative;z-index:1;}
+.africa-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(232,82,10,0.45),transparent);margin:0 20px;position:relative;z-index:1;}
+
+/* ── CARDS ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:16px;}
+.card{background:#211A3A;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;}
+.card:hover{transform:translateY(-4px);border-color:rgba(245,197,24,0.35);box-shadow:0 12px 40px rgba(123,45,139,0.25);}
+.ci{font-size:1.8rem;margin-bottom:12px;}
+.card h3{font-size:.95rem;font-weight:700;margin-bottom:7px;color:#F0EBF8;}
+.card p{color:#B8A8D8;font-size:.84rem;line-height:1.6;}
+.sec-warn{border-color:rgba(255,112,67,0.35)!important;}
+.sec-ok{border-color:rgba(0,212,170,0.35)!important;}
+
+/* ── TABS ── */
+.tabs{display:inline-flex;gap:5px;flex-wrap:wrap;background:#211A3A;border-radius:100px;padding:5px;margin-bottom:30px;}
+.tab{padding:9px 18px;border-radius:100px;border:none;background:transparent;color:#B8A8D8;font-family:'Sora',Arial,sans-serif;font-size:.84rem;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.tab.on{background:linear-gradient(135deg,#7B2D8B,#9B59B6);color:#fff;}
+.tab:hover:not(.on){color:#F0EBF8;background:rgba(255,255,255,0.06);}
+.tc{display:none;}.tc.on{display:block;animation:fi 0.3s ease;}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column;gap:13px;}
+.step{display:flex;gap:16px;align-items:flex-start;background:#211A3A;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:20px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;}
+.step:hover{border-color:rgba(123,45,139,0.55);transform:translateX(4px);}
+.step.on{border-color:#7B2D8B;}
+.sn{width:40px;height:40px;flex-shrink:0;background:linear-gradient(135deg,#7B2D8B,#F5C518);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;color:#fff;box-shadow:0 4px 14px rgba(123,45,139,0.4);}
+.sb{flex:1;}.st{font-size:.96rem;font-weight:700;margin-bottom:4px;color:#F0EBF8;}
+.sd{color:#B8A8D8;font-size:.85rem;line-height:1.6;}
+.sdt{display:none;margin-top:13px;padding-top:13px;border-top:1px solid rgba(255,255,255,0.09);color:#B8A8D8;font-size:.84rem;line-height:1.72;}
+.step.on .sdt{display:block;}
+.sa{margin-left:auto;color:#7A6A9A;font-size:.9rem;transition:transform 0.3s;flex-shrink:0;padding-top:2px;}
+.step.on .sa{transform:rotate(180deg);color:#F5C518;}
+
+/* ── TIPS ── */
+.tip{display:flex;gap:9px;align-items:flex-start;background:rgba(0,212,170,0.09);border:1px solid rgba(0,212,170,0.28);border-radius:10px;padding:11px 14px;margin-top:10px;}
+.tip p{color:#00D4AA;font-size:.81rem;line-height:1.55;}
+.wtip{background:rgba(255,112,67,0.09);border-color:rgba(255,112,67,0.3);}.wtip p{color:#FF7043;}
+.atip{background:rgba(232,82,10,0.09);border-color:rgba(232,82,10,0.3);}.atip p{color:#E8520A;}
+.gtip{background:rgba(245,197,24,0.09);border-color:rgba(245,197,24,0.3);}.gtip p{color:#F5C518;}
+
+/* ── MAP OF PI STEPS ── */
+.mstep{display:flex;gap:14px;align-items:flex-start;background:#211A3A;border:1px solid rgba(0,212,170,0.22);border-radius:16px;padding:18px;margin-bottom:12px;}
+.mn{width:36px;height:36px;flex-shrink:0;background:linear-gradient(135deg,#00D4AA,#006d56);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:#fff;}
+.mt{font-weight:700;font-size:.92rem;margin-bottom:4px;color:#F0EBF8;}
+.md{color:#B8A8D8;font-size:.84rem;line-height:1.62;}
+
+/* ── GCV ROADMAP ── */
+.gcv-roadmap{display:flex;flex-direction:column;gap:0;}
+.gcv-phase{display:flex;gap:0;position:relative;}
+.gcv-phase::before{content:'';position:absolute;left:28px;top:56px;bottom:-1px;width:2px;background:linear-gradient(180deg,rgba(245,197,24,0.4),rgba(123,45,139,0.2));z-index:0;}
+.gcv-phase:last-child::before{display:none;}
+.gcv-dot{width:56px;height:56px;flex-shrink:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;color:#fff;z-index:1;margin-right:18px;margin-bottom:24px;}
+.gcv-body{flex:1;background:#211A3A;border-radius:16px;padding:18px;margin-bottom:24px;border:1px solid rgba(255,255,255,0.07);}
+.gcv-pct{font-size:1.4rem;font-weight:900;margin-bottom:4px;}
+.gcv-title{font-size:.9rem;font-weight:700;color:#F0EBF8;margin-bottom:6px;}
+.gcv-desc{color:#B8A8D8;font-size:.83rem;line-height:1.65;}
+.gcv-example{background:#2A2048;border-radius:8px;padding:10px 12px;margin-top:10px;font-size:.8rem;color:#00D4AA;}
+.gcv-bar{height:6px;border-radius:100px;margin-top:10px;background:rgba(255,255,255,0.08);}
+.gcv-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#F5C518,#E8520A);}
+
+/* ── MERCHANT DIRECTORY ── */
+.merchant-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.mfil{padding:7px 16px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.12);background:transparent;color:#B8A8D8;font-family:'Sora',Arial,sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.mfil.on{background:rgba(0,212,170,0.15);border-color:#00D4AA;color:#00D4AA;}
+.merchant-search{width:100%;background:#2A2048;border:1.5px solid rgba(255,255,255,0.11);border-radius:12px;padding:11px 16px;color:#F0EBF8;font-family:'Sora',Arial,sans-serif;font-size:.9rem;margin-bottom:16px;}
+.merchant-search:focus{outline:none;border-color:#7B2D8B;}
+.merchant-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+.merchant-card{background:#211A3A;border:1px solid rgba(0,212,170,0.2);border-radius:16px;padding:18px;transition:transform 0.2s,box-shadow 0.2s;}
+.merchant-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,212,170,0.12);}
+.mc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.mc-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#00D4AA,#006d56);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.mc-name{font-weight:700;font-size:.92rem;color:#F0EBF8;}
+.mc-cat{font-size:.72rem;color:#00D4AA;font-weight:600;}
+.mc-country{font-size:.75rem;color:#7A6A9A;margin-bottom:8px;}
+.mc-desc{font-size:.82rem;color:#B8A8D8;line-height:1.5;margin-bottom:12px;}
+.mc-badge{display:inline-block;background:rgba(0,212,170,0.15);border:1px solid rgba(0,212,170,0.3);color:#00D4AA;border-radius:100px;padding:3px 10px;font-size:.68rem;font-weight:700;margin-right:5px;}
+.mc-badge.gold{background:rgba(245,197,24,0.15);border-color:rgba(245,197,24,0.3);color:#F5C518;}
+.add-merchant-btn{background:linear-gradient(135deg,#00D4AA,#006d56);color:#fff;border:none;padding:13px 22px;border-radius:100px;font-family:'Sora',Arial,sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;width:100%;margin-top:16px;transition:opacity 0.2s;}
+.add-merchant-btn:hover{opacity:0.85;}
+.merchant-form{background:#211A3A;border:1px solid rgba(0,212,170,0.25);border-radius:16px;padding:24px;margin-top:20px;display:none;}
+.merchant-form.show{display:block;}
+.fg{margin-bottom:13px;}
+.fg label{display:block;font-size:.75rem;font-weight:600;color:#B8A8D8;margin-bottom:5px;}
+.fg input,.fg textarea,.fg select{width:100%;background:#2A2048;border:1.5px solid rgba(255,255,255,0.11);border-radius:10px;padding:10px 13px;color:#F0EBF8;font-family:'Sora',Arial,sans-serif;font-size:.87rem;}
+.fg select option{background:#2A2048;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:#00D4AA;}
+
+/* ── AI CHATBOT ── */
+#chatbot-fab{position:fixed;bottom:24px;right:24px;z-index:150;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#7B2D8B,#F5C518);border:none;cursor:pointer;box-shadow:0 4px 20px rgba(123,45,139,0.6);display:flex;align-items:center;justify-content:center;font-size:1.6rem;transition:transform 0.2s;display:none;}
+#chatbot-fab:hover{transform:scale(1.1);}
+#chatbot-window{position:fixed;bottom:96px;right:24px;z-index:150;width:340px;max-width:calc(100vw - 48px);height:480px;background:#211A3A;border:1.5px solid rgba(123,45,139,0.5);border-radius:20px;display:none;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+#chatbot-window.open{display:flex;}
+.cb-head{background:linear-gradient(135deg,#7B2D8B,#9B59B6);border-radius:18px 18px 0 0;padding:14px 18px;display:flex;align-items:center;gap:10px;}
+.cb-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.cb-title{font-weight:700;font-size:.9rem;color:#fff;}
+.cb-sub{font-size:.7rem;color:rgba(255,255,255,0.7);}
+.cb-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.7);font-size:1.2rem;cursor:pointer;padding:4px;}
+.cb-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
+.cb-msg{max-width:85%;padding:10px 13px;border-radius:14px;font-size:.83rem;line-height:1.55;}
+.cb-msg.bot{background:#2A2048;color:#F0EBF8;border-radius:4px 14px 14px 14px;align-self:flex-start;}
+.cb-msg.user{background:linear-gradient(135deg,#7B2D8B,#9B59B6);color:#fff;border-radius:14px 4px 14px 14px;align-self:flex-end;}
+.cb-msg.typing{color:#7A6A9A;font-style:italic;}
+.cb-suggestions{padding:8px 14px;display:flex;gap:6px;flex-wrap:wrap;}
+.cb-sug{background:#2A2048;border:1px solid rgba(123,45,139,0.4);border-radius:100px;padding:5px 12px;font-size:.72rem;color:#B8A8D8;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.cb-sug:hover{border-color:#9B59B6;color:#F0EBF8;}
+.cb-input-row{padding:12px 14px;border-top:1px solid rgba(255,255,255,0.08);display:flex;gap:8px;}
+.cb-input{flex:1;background:#2A2048;border:1.5px solid rgba(255,255,255,0.11);border-radius:100px;padding:9px 14px;color:#F0EBF8;font-family:'Sora',Arial,sans-serif;font-size:.83rem;}
+.cb-input:focus{outline:none;border-color:#7B2D8B;}
+.cb-send{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7B2D8B,#9B59B6);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+
+/* ── FAQ ── */
+.fi{border-bottom:1px solid rgba(255,255,255,0.09);padding:15px 0;cursor:pointer;}
+.fi:last-child{border-bottom:none;}
+.fq{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:.9rem;gap:12px;color:#F0EBF8;}
+.fa{display:none;color:#B8A8D8;font-size:.85rem;line-height:1.72;margin-top:10px;}
+.fi.on .fa{display:block;}
+.farr{color:#7A6A9A;transition:transform 0.3s;flex-shrink:0;}
+.fi.on .farr{transform:rotate(180deg);color:#F5C518;}
+.ntag{font-size:.66rem;background:rgba(0,212,170,0.22);color:#00D4AA;border-radius:5px;padding:2px 7px;margin-left:7px;font-weight:700;}
+
+/* ── ASK ── */
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.aform{background:#211A3A;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;}
+.aform h3{font-weight:700;margin-bottom:6px;color:#F0EBF8;}
+.asub{color:#B8A8D8;font-size:.83rem;margin-bottom:18px;line-height:1.55;}
+.qai{background:#2A2048;border-radius:10px;padding:16px;margin-bottom:11px;}
+.qq{font-weight:600;font-size:.87rem;margin-bottom:6px;color:#F0EBF8;}
+.qa{background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.22);border-radius:8px;padding:10px;color:#00D4AA;font-size:.84rem;line-height:1.6;}
+.okbox{background:rgba(0,212,170,0.11);border:1px solid rgba(0,212,170,0.32);color:#00D4AA;border-radius:10px;padding:10px 14px;font-size:.83rem;margin-top:11px;display:none;}
+
+/* ── ALLIANCE ── */
+.alliance-box{background:linear-gradient(135deg,rgba(232,82,10,0.12),rgba(123,45,139,0.12));border:1.5px solid rgba(232,82,10,0.4);border-radius:16px;padding:24px;margin-bottom:28px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;}
+.alliance-icon{font-size:2.2rem;flex-shrink:0;}
+.alliance-title{font-weight:800;font-size:1rem;color:#E8520A;margin-bottom:5px;}
+.alliance-text{color:#B8A8D8;font-size:.85rem;line-height:1.65;}
+.disc{background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.28);border-radius:16px;padding:24px;}
+.disc p{color:#B8A8D8;font-size:.86rem;line-height:1.78;}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:9px;}
+.lbtn{background:#211A3A;border:1.5px solid rgba(255,255,255,0.09);border-radius:10px;padding:11px 13px;color:#B8A8D8;font-family:'Sora',Arial,sans-serif;font-size:.84rem;font-weight:600;cursor:pointer;text-align:left;transition:all 0.2s;display:flex;align-items:center;gap:8px;}
+.lbtn:hover,.lbtn.on{border-color:#7B2D8B;color:#F0EBF8;background:rgba(123,45,139,0.18);}
+.lang-region{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#E8520A;margin:16px 0 8px;padding-left:2px;}
+.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-top:14px;}
+.country-item{background:#2A2048;border:1px solid rgba(255,255,255,0.07);border-radius:9px;padding:8px 12px;font-size:.78rem;color:#B8A8D8;display:flex;align-items:center;gap:7px;}
+.country-item strong{color:#F0EBF8;font-size:.8rem;}
+.region-header{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#E8520A;margin:16px 0 8px;padding-left:4px;}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,0.08);padding:32px 20px;text-align:center;color:#7A6A9A;font-size:.81rem;}
+footer a{color:#9B59B6;text-decoration:none;}
+footer a:hover{color:#F5C518;}
+
+@media(max-width:660px){.agrid{grid-template-columns:1fr;}.hero{padding:52px 15px 36px;}section{padding:36px 15px;}nav{padding:0 14px;}.tabs{border-radius:14px;}.gbox{padding:28px 20px;}#chatbot-window{width:calc(100vw - 32px);right:16px;bottom:88px;}#chatbot-fab{right:16px;bottom:16px;}}
+@media(max-width:420px){.hero h1{font-size:1.75rem;}.hcta{flex-direction:column;align-items:center;}.btn-sm{width:100%;}}
+</style>
+</head>
+<body>
+
+<!-- ══ GATE ══ -->
+<div id="gate">
+  <div class="gbox">
+    <img src="/logo.png" alt="Chigalex1 Logo" class="glogo" style="object-fit:cover;"/>
+    <span class="africa-badge-gate" id="gate-badge-txt">🌍 Africa Pi Network Education Hub</span>
+    <h2 id="gate-title">Welcome to Chigalex1</h2>
+    <p class="gsub" id="gate-sub">Empowering pioneers and businesses across all 54 African nations to join the Pi enclosed ecosystem economy.</p>
+    <select class="gsel" onchange="setLang(this.value)">
+      <optgroup label="── Southern Africa ──">
+        <option value="en">🇿🇼 English</option><option value="sn">🇿🇼 Shona</option>
+        <option value="nd">🇿🇼 Ndebele</option><option value="zu">🇿🇦 isiZulu</option>
+        <option value="xh">🇿🇦 isiXhosa</option><option value="af">🇿🇦 Afrikaans</option>
+        <option value="st">🇿🇦 Sesotho</option><option value="tn">🇧🇼 Setswana</option>
+        <option value="ny">🇲🇼 Chichewa</option><option value="pt">🇲🇿 Português</option>
+      </optgroup>
+      <optgroup label="── East Africa ──">
+        <option value="sw">🇹🇿 Kiswahili</option><option value="am">🇪🇹 Amharic</option>
+        <option value="rw">🇷🇼 Kinyarwanda</option><option value="lg">🇺🇬 Luganda</option>
+        <option value="so">🇸🇴 Somali</option>
+      </optgroup>
+      <optgroup label="── West Africa ──">
+        <option value="ha">🇳🇬 Hausa</option><option value="yo">🇳🇬 Yoruba</option>
+        <option value="ig">🇳🇬 Igbo</option><option value="tw">🇬🇭 Twi</option>
+        <option value="wo">🇸🇳 Wolof</option><option value="fr">🇨🇮 Français</option>
+      </optgroup>
+      <optgroup label="── North Africa ──">
+        <option value="ar">🇪🇬 Arabic</option><option value="ber">🇲🇦 Tamazight</option>
+      </optgroup>
+      <optgroup label="── Central Africa ──">
+        <option value="ln">🇨🇩 Lingala</option><option value="kg">🇨🇬 Kikongo</option>
+      </optgroup>
+    </select>
+    <div class="owner-badge" id="ownerBadge">
+      <div class="owner-badge-title">👑 Owner / Admin Access</div>
+      <div class="owner-badge-sub">Unrestricted access granted — no payment required.</div>
+    </div>
+    <div class="fee-box" id="feeBox">
+      <div class="fee-amt">1 π</div>
+      <div class="fee-desc" id="fee-desc-txt">One-time membership · Lifetime access to all training</div>
+    </div>
+    <button class="btn" id="loginBtn" onclick="piLogin()">🔐 Login with Pi Network</button>
+    <div id="uinfo" style="display:none;margin-top:13px;padding:10px;background:#2A2048;border-radius:10px;font-size:.84rem;color:#F0EBF8;"></div>
+    <button class="btn" id="payBtn" style="display:none;" onclick="piPay()">💳 Pay 1π &amp; Enter Training</button>
+    <button class="btn btn-out" id="enterBtn" style="display:none;" onclick="openApp()">✅ Enter Training Hub</button>
+    <div class="gerr" id="gerr"></div>
+    <p class="gnote" id="gnote-txt">⚠️ Must be opened inside the Pi Browser app</p>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nlogo">
+    <img src="/logo.png" alt="Chigalex1" class="nsym" style="object-fit:cover;padding:2px;"/>
+    <div>
+      <div>Chigalex1</div>
+      <div class="nsubtitle" id="nav-subtitle">🌍 Africa Pioneer Hub</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="uchip" id="navUser"></div>
+    <select class="lsel" onchange="setLang(this.value)">
+      <option value="en">EN</option><option value="sn">SN</option><option value="nd">ND</option>
+      <option value="zu">ZU</option><option value="xh">XH</option><option value="af">AF</option>
+      <option value="st">ST</option><option value="tn">TN</option><option value="ny">NY</option>
+      <option value="pt">PT</option><option value="sw">SW</option><option value="am">AM</option>
+      <option value="rw">RW</option><option value="lg">LG</option><option value="so">SO</option>
+      <option value="ha">HA</option><option value="yo">YO</option><option value="ig">IG</option>
+      <option value="tw">TW</option><option value="wo">WO</option><option value="fr">FR</option>
+      <option value="ar">AR</option><option value="ber">BER</option>
+      <option value="ln">LN</option><option value="kg">KG</option>
+    </select>
+  </div>
+</nav>
+
+<!-- ══ AFRICA BANNER ══ -->
+<div class="africa-banner">
+  <span>🌍 AFRICA Pi Network Education Hub</span><small>·</small>
+  <small>
+    <span class="region-pill">North Africa</span><span class="region-pill">West Africa</span>
+    <span class="region-pill">East Africa</span><span class="region-pill">Central Africa</span>
+    <span class="region-pill">Southern Africa</span>
+  </small>
+  <small>· 54 Countries · 22 Languages</small>
+</div>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hbadge" id="hero-badge">🌍 Africa Pi Network Education Hub</div>
+  <h1 id="hero-h1">Onboarding All of Africa<br/>to Pi Network</h1>
+  <p id="hero-p">The official training hub of the <strong style="color:#E8520A;">Africa Pi GCV Industry Alliance</strong> — empowering pioneers and businesses across all 54 African nations to join the Pi enclosed ecosystem economy.</p>
+  <div class="hcta">
+    <button class="btn btn-sm" id="btn-start" onclick="sc('learn')">🚀 Start Learning</button>
+    <button class="btn btn-sm btn-out" id="btn-mapofpi" onclick="sc('mapofpi')">🗺️ Map of Pi</button>
+    <button class="btn btn-sm" id="btn-alliance" style="background:linear-gradient(135deg,#E8520A,#F5C518);" onclick="sc('alliance')">🤝 About the Alliance</button>
+    <button class="btn btn-sm" style="background:linear-gradient(135deg,#00D4AA,#006d56);" onclick="sc('merchants')">🏪 Merchant Directory</button>
+    <button class="btn btn-sm" style="background:linear-gradient(135deg,#F5C518,#E8520A);" onclick="sc('gcv')">📈 GCV Roadmap</button>
+  </div>
+  <div>
+    <div class="ref-badge">📲 Referral code: <strong style="margin-left:4px;letter-spacing:.05em;">chigalex1</strong></div>
+    <div class="gcv-badge">🏛️ Africa Pi GCV Industry Alliance</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ ALLIANCE ══ -->
+<section id="alliance">
+  <div class="slbl">🤝 Africa Pi GCV Industry Alliance</div>
+  <div class="stit">Who We Are</div>
+  <div class="alliance-box">
+    <div class="alliance-icon">🌍</div>
+    <div>
+      <div class="alliance-title">Africa Pi GCV Industry Alliance — Vice Chair</div>
+      <div class="alliance-text">Chigalex1 is the official education and onboarding platform of the Africa Pi GCV Industry Alliance. Our mission is to onboard pioneers and businesses across all 54 African nations into the Pi enclosed ecosystem economy.<br/><br/><strong style="color:#F0EBF8;">Why join NOW?</strong> Businesses and pioneers who establish their Pi presence inside the enclosed ecosystem before GCV is set gain the greatest first-mover advantage.</div>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="card" style="border-color:rgba(232,82,10,0.3)"><div class="ci">🏛️</div><h3>GCV Alliance</h3><p>Advocating for a fair Global Consensus Value that reflects Pi's real-world utility across Africa.</p></div>
+    <div class="card" style="border-color:rgba(232,82,10,0.3)"><div class="ci">🔄</div><h3>Enclosed Ecosystem</h3><p>The Pi enclosed ecosystem is live now. Verified businesses can accept Pi, pioneers can spend Pi — before open mainnet.</p></div>
+    <div class="card" style="border-color:rgba(232,82,10,0.3)"><div class="ci">⏰</div><h3>Why Act Now</h3><p>GCV is not yet decided — but the ecosystem is open. Businesses joining now build customer bases and Pi reserves before the value is set globally.</p></div>
+    <div class="card" style="border-color:rgba(245,197,24,0.3)"><div class="ci">🌱</div><h3>54 Nations</h3><p>From Cairo to Cape Town, Lagos to Nairobi — training in every African nation in local languages.</p></div>
+    <div class="card" style="border-color:rgba(245,197,24,0.3)"><div class="ci">💼</div><h3>Business First</h3><p>We prioritise KYB and Map of Pi registration — creating a network of Pi-accepting businesses across Africa.</p></div>
+    <div class="card" style="border-color:rgba(245,197,24,0.3)"><div class="ci">📡</div><h3>Community Reach</h3><p>Training in 22 African languages across 5 regions ensures no pioneer or business is left behind.</p></div>
+  </div>
+</section>
+
+<div class="africa-divider"></div>
+
+<!-- ══ GCV ROADMAP ══ -->
+<section id="gcv">
+  <div class="slbl">📈 GCV Strategy</div>
+  <div class="stit">The 10% → 100% GCV Roadmap</div>
+  <p class="ssub">Africa's most important Pi opportunity — why starting at 10% GCV today is the smartest business move on the continent.</p>
+
+  <div class="tip gtip" style="margin-bottom:28px;">
+    <div>💡</div>
+    <p><strong>What is GCV?</strong> Global Consensus Value is the agreed value of 1π established through community consensus. It has not yet been officially decided — which means African businesses who adopt Pi NOW are positioning themselves as first movers when GCV is set.</p>
+  </div>
+
+  <div class="gcv-roadmap">
+
+    <div class="gcv-phase">
+      <div class="gcv-dot" style="background:linear-gradient(135deg,#E8520A,#F5C518);">🌱</div>
+      <div class="gcv-body">
+        <div class="gcv-pct" style="color:#E8520A;">Phase 1 — 10% GCV</div>
+        <div class="gcv-title">Start Small. Build Habit. TODAY.</div>
+        <div class="gcv-desc">Accept Pi for 10% of your goods or services. Price everything in both fiat and Pi. This builds Pi reserves, customer habit, and positions your business as a pioneer before competitors even know Pi exists.</div>
+        <div class="gcv-example">🛒 Example: A haircut costs $10 OR 10π. You accept Pi for 1 in every 10 customers. Your Pi wallet grows quietly while fiat covers costs.</div>
+        <div class="gcv-bar"><div class="gcv-fill" style="width:10%;"></div></div>
+      </div>
+    </div>
+
+    <div class="gcv-phase">
+      <div class="gcv-dot" style="background:linear-gradient(135deg,#7B2D8B,#9B59B6);">📈</div>
+      <div class="gcv-body">
+        <div class="gcv-pct" style="color:#9B59B6;">Phase 2 — 25% GCV</div>
+        <div class="gcv-title">Growing Confidence. Growing Reserves.</div>
+        <div class="gcv-desc">As more pioneers join your city and more businesses accept Pi, increase Pi acceptance to 25%. Pay suppliers partially in Pi. The ecosystem becomes denser and more valuable.</div>
+        <div class="gcv-example">🏪 Example: A grocery store prices staples in Pi. 1 in 4 transactions is Pi-based. The store's Pi wallet is now significant — and growing in value as GCV rises.</div>
+        <div class="gcv-bar"><div class="gcv-fill" style="width:25%;"></div></div>
+      </div>
+    </div>
+
+    <div class="gcv-phase">
+      <div class="gcv-dot" style="background:linear-gradient(135deg,#00D4AA,#006d56);">⚡</div>
+      <div class="gcv-body">
+        <div class="gcv-pct" style="color:#00D4AA;">Phase 3 — 50% GCV</div>
+        <div class="gcv-title">Half the Economy Runs on Pi.</div>
+        <div class="gcv-desc">Half of all transactions in the community are Pi-based. Businesses can pay rent, wages, and suppliers partially in Pi. The local Pi economy becomes self-sustaining. Pioneers who joined at 10% are now sitting on valuable Pi reserves.</div>
+        <div class="gcv-example">🏙️ Example: A market in Harare, Lagos, or Nairobi operates 50% on Pi. Buyers and sellers transact without needing USD or local currency for half their daily needs.</div>
+        <div class="gcv-bar"><div class="gcv-fill" style="width:50%;"></div></div>
+      </div>
+    </div>
+
+    <div class="gcv-phase">
+      <div class="gcv-dot" style="background:linear-gradient(135deg,#F5C518,#E8520A);">🌍</div>
+      <div class="gcv-body">
+        <div class="gcv-pct" style="color:#F5C518;">Phase 4 — 75% GCV</div>
+        <div class="gcv-title">Pi Becomes the Dominant Currency.</div>
+        <div class="gcv-desc">Pi is now the primary medium of exchange in Pi communities across Africa. Businesses that started at 10% are now industry leaders. Africa's 1.4 billion people represent the world's largest potential Pi economy — and those who started early own the most Pi.</div>
+        <div class="gcv-example">🌐 Example: Cross-border trade between Zimbabwe and South Africa using Pi — no exchange fees, no bank delays, instant settlement.</div>
+        <div class="gcv-bar"><div class="gcv-fill" style="width:75%;"></div></div>
+      </div>
+    </div>
+
+    <div class="gcv-phase">
+      <div class="gcv-dot" style="background:linear-gradient(135deg,#F5C518,#00D4AA);">🏆</div>
+      <div class="gcv-body">
+        <div class="gcv-pct" style="color:#F5C518;">Phase 5 — 100% GCV</div>
+        <div class="gcv-title">Full Pi Economy. Africa Leads the World.</div>
+        <div class="gcv-desc">GCV is fully established. Pi has real, recognized global value. African businesses, employees, and suppliers all transact in Pi. Those who started at Phase 1 are the wealthiest pioneers in the ecosystem — their 10% Pi reserves are now worth 10x, 100x what they started with.</div>
+        <div class="gcv-example">🏆 The pioneers who said YES at 10% are the ones who win at 100%. Africa's young, mobile-first population can adopt Pi faster than any Western market. The window is open NOW.</div>
+        <div class="gcv-bar"><div class="gcv-fill" style="width:100%;"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tip atip" style="margin-top:28px;">
+    <div>🌍</div>
+    <p><strong>Africa's Advantage:</strong> 1.4 billion people. Young population. Mobile-first. Underserved by traditional banking. Africa is the perfect soil for Pi Network to grow — and Chigalex1 is the platform that will make it happen, one pioneer at a time, in 22 languages across 54 nations.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ LEARN ══ -->
+<section id="learn">
+  <div class="slbl" id="lbl-learn">Step-by-Step</div>
+  <div class="stit">Pi Network Training</div>
+  <div class="tabs">
+    <button class="tab on" id="tab-reg" onclick="swTab('reg',this)">📱 Registration</button>
+    <button class="tab" id="tab-kyc" onclick="swTab('kyc',this)">🪪 KYC</button>
+    <button class="tab" id="tab-kyb" onclick="swTab('kyb',this)">🏢 KYB</button>
+    <button class="tab" id="tab-sec" onclick="swTab('sec',this)">🔐 Security</button>
+  </div>
+  <div class="tc on" id="tc-reg">
+    <div class="steps">
+      <div class="step" onclick="tog(this)"><div class="sn">1</div><div class="sb"><div class="st">Download the Pi Network App</div><div class="sd">Get the official app from Google Play Store or Apple App Store.</div><div class="sdt">Search <strong>"Pi Network"</strong> — look for the purple π icon by <strong>SocialChain Inc.</strong> Only download from official app stores. Available in all 54 African countries. Requires Android 5.0+ or iOS 12+.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">2</div><div class="sb"><div class="st">Sign Up with Phone or Facebook</div><div class="sd">Use a real phone number you own — it links to your KYC later.</div><div class="sdt">Tap <strong>Sign Up</strong>. Choose mobile number (recommended) or Facebook. Enter the OTP sent to your phone. Pick a unique username — this is your permanent Pi identity.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">3</div><div class="sb"><div class="st">Enter Referral Code: <span style="color:#F5C518;">chigalex1</span></div><div class="sd">Pi Network is invite-only. Type exactly: chigalex1</div><div class="sdt"><p>When prompted enter: <strong style="color:#F5C518;font-size:1.1rem;">chigalex1</strong></p><div class="tip"><div>💡</div><p>This connects you to a security circle, boosts your mining rate, and links you to the Africa Pi GCV Industry Alliance education network.</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">4</div><div class="sb"><div class="st">Save Your 24-Word Passphrase</div><div class="sd">Write it on paper. Store offline. Never share it — ever.</div><div class="sdt"><p>During wallet setup Pi shows a 24-word seed phrase. Write on paper and store safely offline.</p><div class="tip wtip"><div>⚠️</div><p>Pi Network staff will NEVER ask for your passphrase. Anyone who does is a scammer.</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">5</div><div class="sb"><div class="st">Mine Pi Daily</div><div class="sd">Tap the lightning bolt every 24 hours to earn Pi tokens.</div><div class="sdt">Tap ⚡ once every 24 hours. Build your Security Circle (3–5 trusted contacts) to boost your mining rate.</div></div><div class="sa">▾</div></div>
+    </div>
+  </div>
+  <div class="tc" id="tc-kyc">
+    <div class="tip" style="margin-bottom:20px;"><div>ℹ️</div><p>KYC verifies you are a real unique human. Required before using Pi on the open mainnet. Now available across all African countries.</p></div>
+    <div class="steps">
+      <div class="step" onclick="tog(this)"><div class="sn">1</div><div class="sb"><div class="st">Check Your KYC Invitation</div><div class="sd">Profile → KYC in the Pi app.</div><div class="sdt">Open Pi app → Profile → KYC. If your slot is ready you'll see "Start KYC".</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">2</div><div class="sb"><div class="st">Prepare Your ID Document</div><div class="sd">Valid government-issued ID — all 54 African countries accepted.</div><div class="sdt"><strong>Accepted:</strong> National ID · Passport · Driver's License · Residence Permit. Must be valid, readable, same name as Pi account.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">3</div><div class="sb"><div class="st">Liveness Check</div><div class="sd">Look at camera as the app instructs.</div><div class="sdt">Good even lighting, face camera directly. Proves you are a real live person.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">4</div><div class="sb"><div class="st">Scan Your Document</div><div class="sd">Photograph front and back clearly — no glare or shadows.</div><div class="sdt">Place ID on a flat dark surface in bright light. Review extracted data before submitting.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">5</div><div class="sb"><div class="st">Wait for Approval &amp; Unlock Wallet</div><div class="sd">Instant or up to several days.</div><div class="sdt"><p>Common rejections: blurry photo, glare, expired ID, name mismatch.<br/><br/>Once approved: Pi Wallet → Import wallet → enter passphrase.</p><div class="tip wtip"><div>⚠️</div><p>Only enter your passphrase in the official Pi app.</p></div></div></div><div class="sa">▾</div></div>
+    </div>
+  </div>
+  <div class="tc" id="tc-kyb">
+    <div class="tip" style="margin-bottom:20px;"><div>🏢</div><p>KYB lets verified African businesses accept Pi. Complete personal KYC first.</p></div>
+    <div class="steps">
+      <div class="step" onclick="tog(this)"><div class="sn">1</div><div class="sb"><div class="st">Complete Personal KYC First</div><div class="sd">Business owner must be KYC-approved before applying for KYB.</div><div class="sdt">Complete all 5 KYC steps as an individual first.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">2</div><div class="sb"><div class="st">Access Pi Developer Portal</div><div class="sd">Pi Browser → pi://develop.pi, or minepi.com/developers.</div><div class="sdt">Navigate to <strong>pi://develop.pi</strong> in Pi Browser or visit <strong>minepi.com/developers</strong> → log in → Business Registration.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">3</div><div class="sb"><div class="st">Prepare Business Documents</div><div class="sd">Registration certificate, tax number, address proof.</div><div class="sdt">📄 Certificate of Incorporation<br/>📄 Tax Registration Certificate<br/>📄 Proof of address (max 3 months)<br/>📄 Director's personal KYC documents</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">4</div><div class="sb"><div class="st">Fill Business Profile &amp; Submit</div><div class="sd">Legal name, type, category, country, description.</div><div class="sdt">Complete all fields. Set preferred payment currency to Pi. Upload all documents and submit.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">5</div><div class="sb"><div class="st">Await Approval (1–4 Weeks)</div><div class="sd">Pi team reviews manually.</div><div class="sdt">You'll receive a confirmation email. The Pi team may request additional documents.</div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">6</div><div class="sb"><div class="st">Accept Pi Payments</div><div class="sd">Generate QR code, integrate SDK, list on Map of Pi.</div><div class="sdt"><p>🔗 In-store: Pi Wallet → generate QR code<br/>🔗 Online: Pi SDK from minepi.com/developers<br/>🔗 Map of Pi: Register at mapofpi.com</p><div class="tip atip"><div>🌍</div><p>Businesses joining the Pi enclosed ecosystem NOW are Africa's digital currency pioneers.</p></div></div></div><div class="sa">▾</div></div>
+    </div>
+  </div>
+  <div class="tc" id="tc-sec">
+    <div class="cards">
+      <div class="card sec-warn"><div class="ci">🚫</div><h3>Never Share Your Passphrase</h3><p>Your 24-word passphrase is your wallet's master key. No Pi staff will ever ask for it. Scams are widespread across Africa.</p></div>
+      <div class="card sec-warn"><div class="ci">🔗</div><h3>Official Links Only</h3><p><strong>minepi.com</strong> · <strong>Pi Browser</strong> · <strong>minepi.com/developers</strong> · <strong>mapofpi.com</strong><br/><br/>Any other site asking for Pi login is a scam.</p></div>
+      <div class="card sec-warn"><div class="ci">💸</div><h3>Fake Pi Exchange Scams</h3><p>Anyone offering to sell/buy Pi outside the official ecosystem is unauthorized. Report to support@minepi.com.</p></div>
+      <div class="card sec-ok"><div class="ci">✅</div><h3>Verify KYC Sources</h3><p>KYC only happens inside the official Pi app. Never complete KYC via WhatsApp, Telegram bots, or external websites.</p></div>
+      <div class="card sec-ok"><div class="ci">👥</div><h3>Trusted Security Circle Only</h3><p>Only add people you personally know and trust to your security circle.</p></div>
+      <div class="card sec-ok"><div class="ci">📲</div><h3>Keep App Updated</h3><p>Always use the latest Pi Network and Pi Browser apps from official app stores.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ MAP OF PI LIVE TUTORIAL ══ -->
+<section id="mapofpi">
+  <div class="slbl">🗺️ Live Tutorial</div>
+  <div class="stit">Map of Pi — Step by Step</div>
+  <p class="ssub">After KYB approval, your business goes live on the map that 50M+ pioneers use to find where to spend Pi. Follow every step below exactly.</p>
+
+  <div class="tip" style="margin-bottom:22px;"><div>🌍</div><p><strong>Map of Pi</strong> is the official Pi business directory on a live map. African pioneers actively use it to find Pi-accepting businesses nearby. Listing is <strong>FREE</strong> after KYB approval.</p></div>
+
+  <div class="tabs" style="margin-bottom:20px;">
+    <button class="tab on" onclick="swMTab('mbasic',this)">📍 Get Listed</button>
+    <button class="tab" onclick="swMTab('moptimize',this)">⚡ Optimize</button>
+    <button class="tab" onclick="swMTab('mpay',this)">💳 Accept Pi</button>
+    <button class="tab" onclick="swMTab('mgrow',this)">📈 Grow</button>
+  </div>
+
+  <div class="tc on" id="mbasic">
+    <div class="mstep"><div class="mn">1</div><div><div class="mt">Confirm KYB is Approved</div><div class="md">Log into <strong>pi://develop.pi</strong> in Pi Browser. Your business status must show <strong style="color:#00D4AA;">"Approved"</strong>. If still pending, complete the KYB steps in the training section above.</div></div></div>
+    <div class="mstep"><div class="mn">2</div><div><div class="mt">Open Map of Pi in Pi Browser</div><div class="md">Open Pi Browser → type <strong>mapofpi.com</strong> in address bar → tap <strong>"Sign in with Pi"</strong> → authenticate with your Pi account. Do NOT use a regular web browser — must be Pi Browser.</div></div></div>
+    <div class="mstep"><div class="mn">3</div><div><div class="mt">Tap "Add My Business"</div><div class="md">After signing in you'll see the map. Tap the <strong>+ Add Business</strong> button (usually bottom right). You'll be taken to the business creation form.</div></div></div>
+    <div class="mstep"><div class="mn">4</div><div><div class="mt">Fill Your Business Details</div><div class="md">Enter exactly: <strong>Business Name</strong> (legal or trading name) · <strong>Category</strong> (food, retail, services, etc.) · <strong>Address</strong> (your physical location) · <strong>Description</strong> (what you sell, in 2–3 sentences) · <strong>Phone/WhatsApp</strong> · <strong>Operating Hours</strong>.</div></div></div>
+    <div class="mstep"><div class="mn">5</div><div><div class="mt">Upload Your Logo or Photo</div><div class="md">Add a clear photo of your business, products, or logo. Businesses with photos get <strong>3x more clicks</strong> than those without. Use good lighting, landscape orientation.</div></div></div>
+    <div class="mstep"><div class="mn">6</div><div><div class="mt">Submit &amp; Wait for Approval</div><div class="md">Review all details carefully → tap <strong>Submit</strong>. Your business pin appears on the Map of Pi within <strong>24–48 hours</strong> after moderation. You'll receive a Pi app notification when approved.</div></div></div>
+  </div>
+
+  <div class="tc" id="moptimize">
+    <div class="mstep"><div class="mn">⭐</div><div><div class="mt">Write a Compelling Description</div><div class="md">Don't just say "we sell food." Say: <em>"Fresh homemade Zimbabwean cuisine — sadza, nyama, matemba. Order via WhatsApp. We accept Pi payments for all meals. Open 7am–8pm daily."</em> Keywords help pioneers find you.</div></div></div>
+    <div class="mstep"><div class="mn">📸</div><div><div class="mt">Add Multiple Photos</div><div class="md">Upload photos of your products, your team, and your premises. Update photos monthly. Fresh content signals an active business and ranks higher in Map of Pi search results.</div></div></div>
+    <div class="mstep"><div class="mn">🏷️</div><div><div class="mt">Choose the Right Category</div><div class="md">Select ALL relevant categories your business fits. A restaurant might also qualify as Takeaway and Catering. More categories = more discovery by pioneers searching different terms.</div></div></div>
+    <div class="mstep"><div class="mn">🌍</div><div><div class="mt">Add Your Language</div><div class="md">Write your description in your local language AND English. This helps pioneers who speak Shona, Zulu, Hausa, Swahili, French, or Arabic find your business in their own language.</div></div></div>
+  </div>
+
+  <div class="tc" id="mpay">
+    <div class="mstep"><div class="mn">1</div><div><div class="mt">Set Your Pi Wallet Address</div><div class="md">In your Map of Pi business profile, add your <strong>Pi username</strong> as your payment address. This is where customers send Pi payments directly to your wallet.</div></div></div>
+    <div class="mstep"><div class="mn">2</div><div><div class="mt">Enable "Accept Pi Payments"</div><div class="md">Toggle on the <strong>"Accept Pi Payments"</strong> switch in your business profile. This shows a Pi payment badge on your listing — a major trust signal for pioneers.</div></div></div>
+    <div class="mstep"><div class="mn">3</div><div><div class="mt">Generate Your QR Code</div><div class="md">Open Pi Wallet → tap <strong>Receive</strong> → your QR code appears. Save this image. Print it and display at your counter. Customers scan it to pay directly from their Pi wallet — instant, no fees.</div></div></div>
+    <div class="mstep"><div class="mn">4</div><div><div class="mt">Set Your Pi Prices</div><div class="md">Display prices in BOTH fiat and Pi. Example: Haircut — $5 or 5π. Start at 10% Pi acceptance (GCV Phase 1). As confidence grows, increase to 25%, 50%, and beyond. Start the GCV journey today.</div></div></div>
+    <div class="mstep"><div class="mn">5</div><div><div class="mt">Confirm Every Payment</div><div class="md">When a customer pays Pi, you'll receive a notification in your Pi Wallet. Always confirm the payment appears in your wallet before releasing goods or services. Pi transactions are final — no chargebacks.</div></div></div>
+  </div>
+
+  <div class="tc" id="mgrow">
+    <div class="mstep"><div class="mn">📣</div><div><div class="mt">Share Your Map of Pi Listing</div><div class="md">Copy your Map of Pi business URL and share it on WhatsApp, Facebook, and community groups. Tell every customer: "Find us on Map of Pi — pay with Pi and get a loyalty discount."</div></div></div>
+    <div class="mstep"><div class="mn">🤝</div><div><div class="mt">List on the Chigalex1 Merchant Directory</div><div class="md">Once listed on Map of Pi, add your business to the Chigalex1 Merchant Directory below. Double your visibility — reach pioneers from across all 54 African nations through this platform.</div></div></div>
+    <div class="mstep"><div class="mn">⭐</div><div><div class="mt">Encourage Pioneer Reviews</div><div class="md">Ask satisfied customers to leave a review on your Map of Pi listing. Businesses with 5+ reviews rank significantly higher in search results. Reviews build trust with new pioneers discovering your business.</div></div></div>
+    <div class="mstep"><div class="mn">📊</div><div><div class="mt">Track Your Pi Revenue</div><div class="md">Keep a simple record: date, product, Pi amount, customer Pi username. This becomes your business's Pi transaction history — proof of GCV adoption that positions you as a leader when open mainnet launches.</div></div></div>
+  </div>
+
+  <div class="tip atip" style="margin-top:18px;"><div>🌍</div><p>African businesses on Map of Pi are among the first on the continent. Early listing in your city creates a first-mover community of Pi-accepting businesses that pioneers will return to again and again.</p></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ MERCHANT DIRECTORY ══ -->
+<section id="merchants">
+  <div class="slbl">🏪 Pi-Accepting Businesses</div>
+  <div class="stit">Africa Merchant Directory</div>
+  <p class="ssub">Find Pi-accepting businesses across all 54 African nations. Are you a merchant? List your business and reach pioneers continent-wide.</p>
+
+  <input class="merchant-search" id="merchantSearch" placeholder="🔍 Search businesses by name, country, or category..." oninput="filterMerchants()"/>
+
+  <div class="merchant-filters">
+    <button class="mfil on" onclick="filterCat('all',this)">🌍 All</button>
+    <button class="mfil" onclick="filterCat('food',this)">🍽️ Food</button>
+    <button class="mfil" onclick="filterCat('retail',this)">🛍️ Retail</button>
+    <button class="mfil" onclick="filterCat('services',this)">💼 Services</button>
+    <button class="mfil" onclick="filterCat('tech',this)">💻 Tech</button>
+    <button class="mfil" onclick="filterCat('health',this)">🏥 Health</button>
+    <button class="mfil" onclick="filterCat('transport',this)">🚗 Transport</button>
+    <button class="mfil" onclick="filterCat('education',this)">📚 Education</button>
+  </div>
+
+  <div class="merchant-grid" id="merchantGrid">
+    <!-- Populated by JS — sample merchants -->
+  </div>
+
+  <button class="add-merchant-btn" onclick="toggleMerchantForm()">🏪 List Your Business — 1π One-Time Fee</button>
+
+  <div class="merchant-form" id="merchantForm">
+    <h3 style="color:#00D4AA;font-weight:800;margin-bottom:6px;">🏪 Add Your Business</h3>
+    <p style="color:#B8A8D8;font-size:.83rem;margin-bottom:18px;">List your Pi-accepting business in the Chigalex1 Africa Merchant Directory. Visible to pioneers across all 54 nations.</p>
+    <div class="fg"><label>Business Name</label><input id="mf-name" placeholder="e.g. Amara's Kitchen"/></div>
+    <div class="fg"><label>Category</label>
+      <select id="mf-cat">
+        <option value="food">🍽️ Food & Restaurant</option>
+        <option value="retail">🛍️ Retail & Shop</option>
+        <option value="services">💼 Services</option>
+        <option value="tech">💻 Tech & Digital</option>
+        <option value="health">🏥 Health & Wellness</option>
+        <option value="transport">🚗 Transport</option>
+        <option value="education">📚 Education & Training</option>
+      </select>
+    </div>
+    <div class="fg"><label>Country</label><input id="mf-country" placeholder="e.g. Zimbabwe, Nigeria, Kenya..."/></div>
+    <div class="fg"><label>City</label><input id="mf-city" placeholder="e.g. Harare, Lagos, Nairobi..."/></div>
+    <div class="fg"><label>Description (what you sell)</label><textarea id="mf-desc" rows="3" placeholder="Describe your products or services and that you accept Pi..."></textarea></div>
+    <div class="fg"><label>WhatsApp / Contact</label><input id="mf-contact" placeholder="+263..."/></div>
+    <div class="fg"><label>Pi Username (your wallet)</label><input id="mf-pi" placeholder="your Pi username"/></div>
+    <div class="fg"><label>Map of Pi URL (optional)</label><input id="mf-map" placeholder="https://mapofpi.com/..."/></div>
+    <div class="tip gtip" style="margin-bottom:14px;"><div>💡</div><p>Listing costs <strong>1π</strong> — a one-time fee that supports the Chigalex1 Africa community platform and gives you permanent visibility to pioneers continent-wide.</p></div>
+    <button class="btn" style="background:linear-gradient(135deg,#00D4AA,#006d56);" onclick="submitMerchant()">💳 Pay 1π &amp; List My Business</button>
+    <div id="mf-ok" class="okbox">✅ Submitted! Your listing will appear after payment confirmation.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <div class="slbl">FAQ</div>
+  <div class="stit" id="lbl-faq">Frequently Asked Questions</div>
+  <p class="ssub">Admin-added FAQs appear at the top tagged NEW.</p>
+  <div id="dynFaq"></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>Is Pi Network free to join?</span><span class="farr">▾</span></div><div class="fa">Yes — joining Pi Network is completely free across Africa. You only need a smartphone and a referral code (use chigalex1). The Chigalex1 membership fee (1π) is an independent community app access fee, not a charge by Pi Network or SocialChain Inc.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>Do I need to keep the app open to mine Pi?</span><span class="farr">▾</span></div><div class="fa">No. You just need to tap the lightning button once every 24 hours. Works on any smartphone.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>My KYC document was rejected. What do I do?</span><span class="farr">▾</span></div><div class="fa">Common issues: blurry photo, glare on document, expired ID, name mismatch. Use good lighting, a flat dark surface, and ensure your ID name matches your Pi account name exactly.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>What is GCV and why does it matter?</span><span class="farr">▾</span></div><div class="fa">GCV (Global Consensus Value) is the agreed value of 1 Pi. It has not yet been officially decided. African businesses joining the enclosed ecosystem NOW are positioned as first movers — see our full GCV 10%→100% Roadmap above.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>What is the Pi enclosed ecosystem economy?</span><span class="farr">▾</span></div><div class="fa">An active economy where KYB-verified businesses accept Pi from KYC-verified pioneers. It operates now — before the Open Mainnet.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>What is Map of Pi?</span><span class="farr">▾</span></div><div class="fa">mapofpi.com is the official Pi business directory on a live map. Listing is free after KYB approval and gives your business visibility to 50M+ pioneers worldwide.</div></div>
+  <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>How do I report a Pi scam?</span><span class="farr">▾</span></div><div class="fa">Report via the Pi app's support section or email support@minepi.com. Pi scams are particularly active in Nigeria, Kenya, South Africa, and Ghana.</div></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ASK ══ -->
+<section>
+  <div class="slbl">💬 Community Support</div>
+  <div class="stit" id="lbl-ask">Ask the Administrator</div>
+  <p class="ssub">Question not covered in the FAQ? Submit it and the administrator will publish an answer for the whole Africa Pi community.</p>
+  <div class="agrid">
+    <div class="aform">
+      <h3>✉️ Submit Your Question</h3>
+      <p class="asub">All questions reviewed by the Africa Pi GCV Industry Alliance Vice Chair.</p>
+      <div class="fg"><label>Your Name &amp; Country</label><input type="text" id="aname" placeholder="e.g. Amara from Lagos, Nigeria"/></div>
+      <div class="fg"><label>Email (optional)</label><input type="email" id="aemail" placeholder="For follow-up if needed"/></div>
+      <div class="fg"><label>Your Question</label><textarea id="aq" placeholder="Type your Pi Network question here — registration, KYC, KYB, Map of Pi, GCV, enclosed ecosystem..."></textarea></div>
+      <button class="btn" id="submit-q-btn" onclick="submitQ()">📨 Submit Question</button>
+      <div class="okbox" id="qok">✅ Submitted! The administrator will publish an answer soon.</div>
+    </div>
+    <div>
+      <h3 style="font-weight:700;margin-bottom:16px;color:#F0EBF8;">📢 Published Answers</h3>
+      <div id="pubAns"><p style="color:#7A6A9A;font-size:.86rem;">No answers yet — be the first to ask!</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ DISCLAIMER ══ -->
+<section>
+  <div class="slbl">⚖️ Disclaimer</div>
+  <div class="stit">Independent Contribution</div>
+  <div class="disc"><p><strong style="color:#F5C518;">DISCLAIMER</strong><br/><br/>The training materials on <strong>Chigalex1</strong> are <strong>independent contributions</strong> made by community members. Chigalex1 and the Africa Pi GCV Industry Alliance are <strong style="color:#FF7043;">not affiliated with</strong> Pi Network or SocialChain Inc. in any capacity.<br/><br/>For official Pi Network information visit <strong style="color:#00D4AA;">minepi.com</strong>. For Map of Pi visit <strong style="color:#00D4AA;">mapofpi.com</strong>.</p></div>
+</section>
+
+<!-- ══ LANGUAGES ══ -->
+<section>
+  <div class="slbl">🌍 22 African Languages</div>
+  <div class="stit">Choose Your Language</div>
+  <div class="lang-region">🌍 Southern Africa</div>
+  <div class="lgrid" style="margin-bottom:16px;">
+    <button class="lbtn on" onclick="setLb(this,'en')" data-lang="en">🇿🇼 English</button>
+    <button class="lbtn" onclick="setLb(this,'sn')" data-lang="sn">🇿🇼 Shona</button>
+    <button class="lbtn" onclick="setLb(this,'nd')" data-lang="nd">🇿🇼 Ndebele</button>
+    <button class="lbtn" onclick="setLb(this,'zu')" data-lang="zu">🇿🇦 isiZulu</button>
+    <button class="lbtn" onclick="setLb(this,'xh')" data-lang="xh">🇿🇦 isiXhosa</button>
+    <button class="lbtn" onclick="setLb(this,'af')" data-lang="af">🇿🇦 Afrikaans</button>
+    <button class="lbtn" onclick="setLb(this,'st')" data-lang="st">🇿🇦 Sesotho</button>
+    <button class="lbtn" onclick="setLb(this,'tn')" data-lang="tn">🇧🇼 Setswana</button>
+    <button class="lbtn" onclick="setLb(this,'ny')" data-lang="ny">🇲🇼 Chichewa</button>
+    <button class="lbtn" onclick="setLb(this,'pt')" data-lang="pt">🇲🇿 Português</button>
+  </div>
+  <div class="lang-region">🌍 East Africa</div>
+  <div class="lgrid" style="margin-bottom:16px;">
+    <button class="lbtn" onclick="setLb(this,'sw')" data-lang="sw">🇹🇿 Kiswahili</button>
+    <button class="lbtn" onclick="setLb(this,'am')" data-lang="am">🇪🇹 Amharic</button>
+    <button class="lbtn" onclick="setLb(this,'rw')" data-lang="rw">🇷🇼 Kinyarwanda</button>
+    <button class="lbtn" onclick="setLb(this,'lg')" data-lang="lg">🇺🇬 Luganda</button>
+    <button class="lbtn" onclick="setLb(this,'so')" data-lang="so">🇸🇴 Somali</button>
+  </div>
+  <div class="lang-region">🌍 West Africa</div>
+  <div class="lgrid" style="margin-bottom:16px;">
+    <button class="lbtn" onclick="setLb(this,'ha')" data-lang="ha">🇳🇬 Hausa</button>
+    <button class="lbtn" onclick="setLb(this,'yo')" data-lang="yo">🇳🇬 Yoruba</button>
+    <button class="lbtn" onclick="setLb(this,'ig')" data-lang="ig">🇳🇬 Igbo</button>
+    <button class="lbtn" onclick="setLb(this,'tw')" data-lang="tw">🇬🇭 Twi</button>
+    <button class="lbtn" onclick="setLb(this,'wo')" data-lang="wo">🇸🇳 Wolof</button>
+    <button class="lbtn" onclick="setLb(this,'fr')" data-lang="fr">🇨🇮 Français</button>
+  </div>
+  <div class="lang-region">🌍 North &amp; Central Africa</div>
+  <div class="lgrid">
+    <button class="lbtn" onclick="setLb(this,'ar')" data-lang="ar">🇪🇬 Arabic</button>
+    <button class="lbtn" onclick="setLb(this,'ber')" data-lang="ber">🇲🇦 Tamazight</button>
+    <button class="lbtn" onclick="setLb(this,'ln')" data-lang="ln">🇨🇩 Lingala</button>
+    <button class="lbtn" onclick="setLb(this,'kg')" data-lang="kg">🇨🇬 Kikongo</button>
+  </div>
+</section>
+
+<footer>
+  <div style="font-size:1.5rem;margin-bottom:8px;">π</div>
+  <div style="font-weight:800;color:#F5C518;margin-bottom:5px;">Chigalex1</div>
+  <div style="color:#E8520A;font-size:.8rem;font-weight:700;margin-bottom:8px;">🌍 Africa Pi Network Education Hub</div>
+  <p>Africa Pi GCV Industry Alliance · Independent Education Resource · <span id="footer-ref">Referral: chigalex1</span></p>
+  <p style="margin-top:6px;font-size:.75rem;">
+    <a href="https://minepi.com" target="_blank">minepi.com</a> ·
+    <a href="https://mapofpi.com" target="_blank">mapofpi.com</a> ·
+    <a href="/privacy">Privacy Policy</a> ·
+    <a href="/terms">Terms of Service</a> ·
+    54 Countries · 22 Languages · Not affiliated with Pi Network or SocialChain Inc.
+  </p>
+</footer>
+
+<!-- ══ AI CHATBOT ══ -->
+<button id="chatbot-fab" onclick="toggleChat()" title="Ask Chigalex1 AI">🤖</button>
+<div id="chatbot-window">
+  <div class="cb-head">
+    <div class="cb-avatar">🤖</div>
+    <div>
+      <div class="cb-title">Chigalex1 AI Assistant</div>
+      <div class="cb-sub">Ask me anything about Pi Network</div>
+    </div>
+    <button class="cb-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="cb-messages" id="cbMessages">
+    <div class="cb-msg bot">👋 Hello! I'm the Chigalex1 AI — your Pi Network guide for Africa. Ask me about KYC, KYB, Map of Pi, GCV, security, or anything Pi-related!</div>
+  </div>
+  <div class="cb-suggestions" id="cbSugs">
+    <span class="cb-sug" onclick="cbAsk('How do I complete KYC?')">KYC help</span>
+    <span class="cb-sug" onclick="cbAsk('What is GCV and the 10% strategy?')">GCV strategy</span>
+    <span class="cb-sug" onclick="cbAsk('How do I list on Map of Pi?')">Map of Pi</span>
+    <span class="cb-sug" onclick="cbAsk('How do I apply for KYB?')">KYB guide</span>
+    <span class="cb-sug" onclick="cbAsk('How do I protect my Pi passphrase?')">Security tips</span>
+  </div>
+  <div class="cb-input-row">
+    <input class="cb-input" id="cbInput" placeholder="Ask about Pi Network..." onkeydown="if(event.key==='Enter')cbSend()"/>
+    <button class="cb-send" onclick="cbSend()">➤</button>
+  </div>
+</div>
+
+<!-- ══ TRANSLATIONS ══ -->
+<script src="/translations.js"></script>
+
+<script>
+const API = window.location.origin;
+let piUser = null;
+const OWNER_ACCOUNTS = ['chigalex1', 'admin2'];
+
+// ── SAMPLE MERCHANTS (replace with Redis-backed API later) ──
+const SAMPLE_MERCHANTS = [
+  { name:"Amara's Kitchen", cat:"food", country:"Nigeria", city:"Lagos", desc:"Authentic Nigerian cuisine. Jollof rice, pepper soup, suya. We proudly accept Pi payments!", contact:"+234...", pi:"amaraskitchen", verified:true, icon:"🍲" },
+  { name:"Zim Tech Solutions", cat:"tech", country:"Zimbabwe", city:"Harare", desc:"Laptop repairs, phone fixes, software installation. Pi accepted for all services.", contact:"+263...", pi:"zimtech", verified:true, icon:"💻" },
+  { name:"Nairobi Fresh Produce", cat:"food", country:"Kenya", city:"Nairobi", desc:"Fresh fruits and vegetables delivered to your door. Pay with Pi, get 10% discount!", contact:"+254...", pi:"nairobifresh", verified:false, icon:"🥦" },
+  { name:"Cape Town Crafts", cat:"retail", country:"South Africa", city:"Cape Town", desc:"Handmade African jewelry, beadwork, and clothing. Ships across Africa. Pi accepted.", contact:"+27...", pi:"ctcrafts", verified:true, icon:"💎" },
+  { name:"Accra Rides", cat:"transport", country:"Ghana", city:"Accra", desc:"Reliable transport across Accra. Book via WhatsApp, pay in Pi or cash.", contact:"+233...", pi:"accrarides", verified:false, icon:"🚗" },
+  { name:"Cairo Language School", cat:"education", country:"Egypt", city:"Cairo", desc:"Arabic, English, and French lessons online and in-person. Pi payments accepted.", contact:"+20...", pi:"cairolang", verified:true, icon:"📚" },
+];
+
+let currentCat = 'all';
+let chatOpen = false;
+let cbHistory = [];
+
+try { Pi.init({ version:"2.0", sandbox:false }); }
+catch(e){ console.warn('Pi SDK: open in Pi Browser'); }
+
+// ── AUTH ──
+async function piLogin(){
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span>Connecting to Pi...';
+  setErr('');
+  try {
+    const auth = await Pi.authenticate(['username','payments'], handleIncomplete);
+    piUser = auth.user;
+    document.getElementById('uinfo').style.display = 'block';
+    document.getElementById('uinfo').innerHTML = '✅ Logged in as <strong style="color:#F5C518;">@' + piUser.username + '</strong>';
+    btn.style.display = 'none';
+    if (OWNER_ACCOUNTS.includes(piUser.username.toLowerCase())) {
+      document.getElementById('ownerBadge').style.display = 'block';
+      document.getElementById('feeBox').style.display = 'none';
+      document.getElementById('enterBtn').style.display = 'block';
+      return;
+    }
+    try {
+      const r = await fetch(API + '/check-membership?username=' + encodeURIComponent(piUser.username));
+      const d = await r.json();
+      document.getElementById(d.paid ? 'enterBtn' : 'payBtn').style.display = 'block';
+    } catch(e) { document.getElementById('payBtn').style.display = 'block'; }
+  } catch(e) {
+    setErr('Login failed. Make sure you are in the Pi Browser app.');
+    btn.disabled = false;
+    btn.innerHTML = '🔐 Login with Pi Network';
+  }
+}
+
+async function piPay(){
+  const btn = document.getElementById('payBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span>Opening Pi payment...';
+  setErr('');
+  try {
+    await Pi.createPayment({
+      amount:1, memo:'Chigalex1 Africa Pi Hub Membership',
+      metadata:{ username: piUser.username, app:'chigalex1' }
+    },{
+      onReadyForServerApproval: async(paymentId) => {
+        try { await fetch(API+'/approve-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({paymentId})}); } catch(e){}
+      },
+      onReadyForServerCompletion: async(paymentId,txid) => {
+        try {
+          const r = await fetch(API+'/complete-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({paymentId,txid,username:piUser.username})});
+          if(!r.ok){ setErr('Payment verification failed. Contact support.'); resetPayBtn(); return; }
+          const d = await r.json();
+          if(d.success||d.paid||d.status==='paid') openApp();
+          else { setErr('Payment verification failed. Contact support.'); resetPayBtn(); }
+        } catch(e){ openApp(); }
+      },
+      onCancel:()=>{ setErr('Payment cancelled.'); resetPayBtn(); },
+      onError:(e)=>{ setErr('Payment error: '+(e.message||e)); resetPayBtn(); }
+    });
+  } catch(e){ setErr('Payment failed: '+(e.message||e)); resetPayBtn(); }
+}
+
+function resetPayBtn(){ const b=document.getElementById('payBtn'); b.disabled=false; b.innerHTML='💳 Pay 1π &amp; Enter Training'; }
+function handleIncomplete(p){ console.log('Incomplete:',p); }
+
+function openApp(){
+  document.getElementById('gate').style.display='none';
+  if(piUser){
+    const nc=document.getElementById('navUser');
+    nc.style.display='block';
+    nc.textContent=(OWNER_ACCOUNTS.includes(piUser.username.toLowerCase())?'👑 ':'')+' @'+piUser.username;
+  }
+  document.getElementById('chatbot-fab').style.display='flex';
+  loadFaqs(); loadAnswers(); renderMerchants();
+}
+
+function setErr(m){ document.getElementById('gerr').textContent=m; }
+
+// ── TABS ──
+function swTab(n,el){ document.querySelectorAll('.tc').forEach(t=>t.classList.remove('on')); document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on')); document.getElementById('tc-'+n).classList.add('on'); el.classList.add('on'); }
+function swMTab(n,el){ document.querySelectorAll('#mapofpi .tc').forEach(t=>t.classList.remove('on')); document.querySelectorAll('#mapofpi .tab').forEach(t=>t.classList.remove('on')); document.getElementById(n).classList.add('on'); el.classList.add('on'); }
+function tog(el){ const was=el.classList.contains('on'); el.closest('.steps').querySelectorAll('.step').forEach(s=>s.classList.remove('on')); if(!was) el.classList.add('on'); }
+
+function sc(id){
+  document.getElementById('gate').style.display='none';
+  loadFaqs(); loadAnswers(); renderMerchants();
+  setTimeout(()=>{ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); },150);
+}
+
+// ── MERCHANT DIRECTORY ──
+function renderMerchants(search=''){
+  const grid=document.getElementById('merchantGrid');
+  const filtered=SAMPLE_MERCHANTS.filter(m=>{
+    const matchCat=currentCat==='all'||m.cat===currentCat;
+    const q=search.toLowerCase();
+    const matchSearch=!q||m.name.toLowerCase().includes(q)||m.country.toLowerCase().includes(q)||m.city.toLowerCase().includes(q)||m.desc.toLowerCase().includes(q);
+    return matchCat&&matchSearch;
+  });
+  if(!filtered.length){ grid.innerHTML='<p style="color:#7A6A9A;font-size:.86rem;grid-column:1/-1;">No businesses found. Be the first to list in this category!</p>'; return; }
+  grid.innerHTML=filtered.map(m=>`
+    <div class="merchant-card">
+      <div class="mc-top">
+        <div class="mc-icon">${m.icon}</div>
+        <div><div class="mc-name">${esc(m.name)}</div><div class="mc-cat">${m.cat.charAt(0).toUpperCase()+m.cat.slice(1)}</div></div>
+      </div>
+      <div class="mc-country">📍 ${esc(m.city)}, ${esc(m.country)}</div>
+      <div class="mc-desc">${esc(m.desc)}</div>
+      <div>
+        <span class="mc-badge">π Accepts Pi</span>
+        ${m.verified?'<span class="mc-badge gold">✅ Verified</span>':''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterCat(cat,btn){ currentCat=cat; document.querySelectorAll('.mfil').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); filterMerchants(); }
+function filterMerchants(){ renderMerchants(document.getElementById('merchantSearch').value); }
+function toggleMerchantForm(){ const f=document.getElementById('merchantForm'); f.classList.toggle('show'); if(f.classList.contains('show')) f.scrollIntoView({behavior:'smooth'}); }
+
+async function submitMerchant(){
+  const name=document.getElementById('mf-name').value.trim();
+  const country=document.getElementById('mf-country').value.trim();
+  const desc=document.getElementById('mf-desc').value.trim();
+  if(!name||!country||!desc){ alert('Please fill in Business Name, Country, and Description.'); return; }
+  // In production this would initiate a 1π payment then POST to /admin/merchants
+  document.getElementById('mf-ok').style.display='block';
+  setTimeout(()=>document.getElementById('mf-ok').style.display='none',5000);
+}
+
+// ── AI CHATBOT ──
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chatbot-window').classList.toggle('open',chatOpen);
+  if(chatOpen) document.getElementById('cbInput').focus();
+}
+
+function cbAsk(q){ document.getElementById('cbInput').value=q; cbSend(); }
+
+async function cbSend(){
+  const input=document.getElementById('cbInput');
+  const q=input.value.trim();
+  if(!q) return;
+  input.value='';
+  document.getElementById('cbSugs').style.display='none';
+
+  addCbMsg(q,'user');
+  const typingEl=addCbMsg('Thinking...','bot typing');
+
+  cbHistory.push({role:'user',content:q});
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:`You are the Chigalex1 AI Assistant — an expert on Pi Network for Africa. You help pioneers and businesses across all 54 African nations with:
+- Pi Network registration and mining
+- KYC (Know Your Customer) verification
+- KYB (Know Your Business) verification
+- Map of Pi business listings
+- GCV (Global Consensus Value) strategy — especially the 10% to 100% adoption roadmap
+- Pi security and passphrase protection
+- The Africa Pi GCV Industry Alliance
+- Chigalex1 platform features
+
+Keep answers concise (under 150 words), practical, and encouraging. Use emoji sparingly. Always remind users that Chigalex1 is an independent platform not affiliated with Pi Network or SocialChain Inc. Referral code: chigalex1. Never ask for passphrases or passwords.`,
+        messages:cbHistory
+      })
+    });
+    const data=await response.json();
+    const reply=data.content?.map(c=>c.text||'').join('')||'I had trouble answering that. Please try again or submit a question to our administrator.';
+    typingEl.textContent=reply;
+    typingEl.classList.remove('typing');
+    cbHistory.push({role:'assistant',content:reply});
+    if(cbHistory.length>20) cbHistory=cbHistory.slice(-20);
+  } catch(e){
+    typingEl.textContent='Sorry, I\'m having trouble connecting right now. Please try again in a moment, or submit your question to the administrator below.';
+    typingEl.classList.remove('typing');
+  }
+
+  document.getElementById('cbMessages').scrollTop=999999;
+}
+
+function addCbMsg(text,type){
+  const msgs=document.getElementById('cbMessages');
+  const el=document.createElement('div');
+  el.className='cb-msg '+type;
+  el.textContent=text;
+  msgs.appendChild(el);
+  msgs.scrollTop=999999;
+  return el;
+}
+
+// ── FAQ & Q&A ──
+async function loadFaqs(){
+  try{
+    const r=await fetch(API+'/faqs');
+    const d=await r.json();
+    const el=document.getElementById('dynFaq');
+    if(!d.faqs||!d.faqs.length) return;
+    el.innerHTML=d.faqs.slice().reverse().map(f=>`<div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>${esc(f.question)}<span class="ntag">NEW</span></span><span class="farr">▾</span></div><div class="fa">${esc(f.answer)}</div></div>`).join('');
+  }catch(e){}
+}
+
+async function submitQ(){
+  const name=document.getElementById('aname').value.trim();
+  const email=document.getElementById('aemail').value.trim();
+  const q=document.getElementById('aq').value.trim();
+  if(!name||!q) return;
+  try{
+    await fetch(API+'/questions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,question:q})});
+    document.getElementById('aname').value='';
+    document.getElementById('aemail').value='';
+    document.getElementById('aq').value='';
+    const ok=document.getElementById('qok');
+    ok.style.display='block';
+    setTimeout(()=>ok.style.display='none',4000);
+  }catch(e){ alert('Could not submit. Please try again.'); }
+}
+
+async function loadAnswers(){
+  try{
+    const r=await fetch(API+'/questions/answered');
+    const d=await r.json();
+    const el=document.getElementById('pubAns');
+    if(!d.questions||!d.questions.length) return;
+    el.innerHTML=d.questions.slice().reverse().map(q=>`<div class="qai"><div class="qq">Q: ${esc(q.question)}</div><div style="color:#7A6A9A;font-size:.72rem;margin-bottom:7px;">Asked by ${esc(q.name)}</div><div class="qa">💬 ${esc(q.answer)}</div></div>`).join('');
+  }catch(e){}
+}
+
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function setLb(btn,l){ document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); setLang(l); }
+</script>
+</body>
+</html>
