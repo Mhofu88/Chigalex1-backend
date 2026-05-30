@@ -729,6 +729,24 @@ app.get('*', (req, res) => {
 
 // ── START ──
 require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
+app.post('/adverts/apply', rateLimit(3, 60_000), async (req, res) => {
+  if (!redis) return res.json({ success: true });
+  const title = sanitizeString(req.body.title || '', 100);
+  const desc = sanitizeString(req.body.desc || '', 200);
+  const pi = sanitizeString(req.body.pi || '', 64);
+  if (!title || !desc || !pi) return res.status(400).json({ error: 'title, desc and pi required' });
+  const id = Date.now();
+  await redis.hset(`advert:${id}`, { id: String(id), title, desc, pi,
+    country: sanitizeString(req.body.country||'',64),
+    contact: sanitizeString(req.body.contact||'',100),
+    link: sanitizeString(req.body.link||'',200),
+    icon: sanitizeString(req.body.icon||'📣',10),
+    status: 'pending', submittedAt: new Date().toISOString()
+  });
+  await redis.zadd('advert:index:pending', { score: id, member: String(id) });
+  res.json({ success: true });
+});
+require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
 app.listen(PORT, () => {
   console.log(`🚀 Chigalex1 running on port ${PORT}`);
   console.log(`   Health:     http://localhost:${PORT}/health`);
