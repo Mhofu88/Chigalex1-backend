@@ -748,7 +748,8 @@ app.post('/adverts/apply', rateLimit(3, 60_000), async (req, res) => {
 });
 
 // ── MERCHANT DIRECTORY ──
-require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
+
+// require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
 
 // ── START ──
 app.listen(PORT, () => {
