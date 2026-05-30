@@ -1,7 +1,0 @@
-const authPromise = Pi.authenticate(scopes, onIncompletePaymentFound);
-
-const timeoutPromise = new Promise((_, reject) =>
-    setTimeout(() => reject(new Error("Authentication timeout")), 10000)
-);
-
-const auth = await Promise.race([authPromise, timeoutPromise]);
