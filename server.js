@@ -721,14 +721,14 @@ app.post('/admin/set-membership', async (req, res) => {
 });
 
 // ════════════════════════════════════════════
+// ════════════════════════════════════════════
 // ── CATCH-ALL: serve index.html ──
 // ════════════════════════════════════════════
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// ── START ──
-require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
+// ── ADVERT ROUTE ──
 app.post('/adverts/apply', rateLimit(3, 60_000), async (req, res) => {
   if (!redis) return res.json({ success: true });
   const title = sanitizeString(req.body.title || '', 100);
@@ -746,7 +746,11 @@ app.post('/adverts/apply', rateLimit(3, 60_000), async (req, res) => {
   await redis.zadd('advert:index:pending', { score: id, member: String(id) });
   res.json({ success: true });
 });
+
+// ── MERCHANT DIRECTORY ──
 require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
+
+// ── START ──
 app.listen(PORT, () => {
   console.log(`🚀 Chigalex1 running on port ${PORT}`);
   console.log(`   Health:     http://localhost:${PORT}/health`);
