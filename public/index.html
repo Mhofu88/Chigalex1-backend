@@ -1360,8 +1360,7 @@ function toggleChat(){
   document.getElementById('chatbot-window').classList.toggle('open',chatOpen);
   if(chatOpen)document.getElementById('cbInput').focus();
 }
-
-function cbAsk(q){document.getElementById('cbInput').value=q;cbSend();)
+function cbAsk(q){document.getElementById('cbInput').value=q;cbSend();}  
 async function cbSend(){
   const input=document.getElementById('cbInput');
   const q=input.value.trim();
@@ -1392,7 +1391,7 @@ async function cbSend(){
     typingEl.textContent='Sorry, trouble connecting right now. Please try again in a moment.';
     typingEl.classList.remove('typing');
   }
-  document.getElementById('cbMessages').scrollTop=999999;
+document.getElementById('cbMessages').scrollTop=999999;
 }
 function addCbMsg(text,type){
   const msgs=document.getElementById('cbMessages');
