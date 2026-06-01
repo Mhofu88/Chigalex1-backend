@@ -1361,8 +1361,7 @@ function toggleChat(){
   if(chatOpen)document.getElementById('cbInput').focus();
 }
 
-function cbAsk(q){document.getElementById('cbInput').value=q;cbSend();}
-
+function cbAsk(q){document.getElementById('cbInput').value=q;cbSend();)
 async function cbSend(){
   const input=document.getElementById('cbInput');
   const q=input.value.trim();
@@ -1379,7 +1378,7 @@ async function cbSend(){
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
-        system:`You are the Chigalex1 AI Assistant — an expert on Pi Network for Africa. Help pioneers across all 54 African nations with: Pi Network registration and mining, KYC verification, KYB business verification, Map of Pi listings, GCV strategy (especially the 10%→100% adoption roadmap), Pi security and passphrase protection, and the Africa Pi GCV Industry Alliance. Keep answers concise (under 150 words), practical, and encouraging. Referral code: chigalex1. Visit minepi.com/chigalex1 to join free. Chigalex1 is an independent platform not affiliated with Pi Network or SocialChain Inc. Never ask for passphrases.`,
+        system:`You are the Chigalex1 AI Assistant...`,
         messages:cbHistory
       })
     });
@@ -1395,7 +1394,6 @@ async function cbSend(){
   }
   document.getElementById('cbMessages').scrollTop=999999;
 }
-
 function addCbMsg(text,type){
   const msgs=document.getElementById('cbMessages');
   const el=document.createElement('div');
