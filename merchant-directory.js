@@ -223,3 +223,4 @@ module.exports = function(app, redis, rateLimit, sanitizeString, isValidUsername
 
   console.log('✅ Merchant directory routes loaded');
 };
+
