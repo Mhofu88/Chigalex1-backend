@@ -722,12 +722,6 @@ app.post('/admin/set-membership', async (req, res) => {
 
 // ════════════════════════════════════════════
 // ════════════════════════════════════════════
-// ── CATCH-ALL: serve index.html ──
-// ════════════════════════════════════════════
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
 // ── ADVERT ROUTE ──
 app.post('/adverts/apply', rateLimit(3, 60_000), async (req, res) => {
   if (!redis) return res.json({ success: true });
@@ -747,12 +741,6 @@ app.post('/adverts/apply', rateLimit(3, 60_000), async (req, res) => {
   res.json({ success: true });
 });
 
-// ── MERCHANT DIRECTORY ──
-
-// require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
-
-// ── START ──
-require('./referral-system')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
 // ── AI CHATBOT PROXY ──
 app.post('/ai/chat', rateLimit(20, 60_000), async (req, res) => {
   const message = sanitizeString(req.body.message || '', 500);
@@ -781,6 +769,19 @@ app.post('/ai/chat', rateLimit(20, 60_000), async (req, res) => {
     res.json({ reply });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
+
+// ── MERCHANT DIRECTORY ──
+require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
+
+// ── REFERRAL SYSTEM ──
+require('./referral-system')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
+
+// ── CATCH-ALL — MUST BE LAST BEFORE app.listen ──
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// ── START ──
 app.listen(PORT, () => {
   console.log(`🚀 Chigalex1 running on port ${PORT}`);
   console.log(`   Health:     http://localhost:${PORT}/health`);
@@ -788,3 +789,6 @@ app.listen(PORT, () => {
   console.log(`   Privacy:    http://localhost:${PORT}/privacy`);
   console.log(`   Terms:      http://localhost:${PORT}/terms`);
 });
+
+
+
