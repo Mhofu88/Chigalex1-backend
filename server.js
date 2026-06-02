@@ -769,14 +769,11 @@ app.post('/ai/chat', rateLimit(20, 60_000), async (req, res) => {
     res.json({ reply });
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
-
 // ── MERCHANT DIRECTORY ──
 require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
-
 // ── REFERRAL SYSTEM ──
 require('./referral-system')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
 
-// ── CATCH-ALL — MUST BE LAST BEFORE app.listen ──
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
