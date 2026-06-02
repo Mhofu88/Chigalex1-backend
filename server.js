@@ -722,7 +722,73 @@ app.post('/admin/set-membership', async (req, res) => {
 
 // ════════════════════════════════════════════
 // ════════════════════════════════════════════
+// ── ADVERT ROUTE ──
+app.post('/adverts/apply', rateLimit(3, 60_000), async (req, res) => {
+  if (!redis) return res.json({ success: true });
+  const title = sanitizeString(req.body.title || '', 100);
+  const desc = sanitizeString(req.body.desc || '', 200);
+  const pi = sanitizeString(req.body.pi || '', 64);
+  if (!title || !desc || !pi) return res.status(400).json({ error: 'title, desc and pi required' });
+  const id = Date.now();
+  await redis.hset(`advert:${id}`, { id: String(id), title, desc, pi,
+    country: sanitizeString(req.body.country||'',64),
+    contact: sanitizeString(req.body.contact||'',100),
+    link: sanitizeString(req.body.link||'',200),
+    icon: sanitizeString(req.body.icon||'📣',10),
+    status: 'pending', submittedAt: new Date().toISOString()
+  });
+  await redis.zadd('advert:index:pending', { score: id, member: String(id) });
+  res.json({ success: true });
+});
 
+// ── AI CHATBOT PROXY ──
+app.post('/ai/chat', rateLimit(20, 60_000), async (req, res) => {
+  const message = sanitizeString(req.body.message || '', 500);
+  const history = (req.body.history || []).slice(-10).map(m => ({
+    role: m.role === 'user' ? 'user' : 'assistant',
+    content: sanitizeString(m.content || '', 500)
+  }));
+  if (!message) return res.status(400).json({ error: 'message required' });
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY || '',
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 300,
+        system: `You are the Chigalex1 AI Assistant — expert on Pi Network for Africa. Help pioneers across all 54 African nations with: Pi registration, KYC, KYB, Map of Pi, GCV strategy ($314,159 per 1π already coded in blockchain), Pi security, and the Africa Pi GCV Industry Alliance. Keep answers under 120 words, practical and encouraging. Referral code: chigalex1. Visit minepi.com/chigalex1 to join free. Never ask for passphrases.`,
+        messages: [...history, { role: 'user', content: message }]
+      })
+    });
+    const data = await response.json();
+    const reply = data.content?.[0]?.text || 'Please try again.';
+    res.json({ reply });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── MERCHANT DIRECTORY ──
+require('./merchant-directory')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
+
+// ── REFERRAL SYSTEM ──
+require('./referral-system')(app, redis, rateLimit, sanitizeString, isValidUsername, validateAdminKey, trackEvent);
+
+// ── CATCH-ALL — MUST BE LAST BEFORE app.listen ──
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// ── START ──
+app.listen(PORT, () => {
+  console.log(`🚀 Chigalex1 running on port ${PORT}`);
+  console.log(`   Health:     http://localhost:${PORT}/health`);
+  console.log(`   Validation: http://localhost:${PORT}/validation-key.txt`);
+  console.log(`   Privacy:    http://localhost:${PORT}/privacy`);
+  console.log(`   Terms:      http://localhost:${PORT}/terms`);
+});
 
 
 
