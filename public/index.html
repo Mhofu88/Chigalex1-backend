@@ -1372,28 +1372,14 @@ async function cbSend(){
   const typingEl=addCbMsg('Thinking...','bot typing');
   cbHistory.push({role:'user',content:q});
   try{
-    const response=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1000,
-        system:`You are the Chigalex1 AI Assistant...`,
-        messages:cbHistory
-      })
-    });
-    const data=await response.json();
-    const reply=data.content?.map(c=>c.text||'').join('')||'I had trouble answering. Please try again or ask the administrator.';
-    typingEl.textContent=reply;
-    typingEl.classList.remove('typing');
-    cbHistory.push({role:'assistant',content:reply});
-    if(cbHistory.length>20)cbHistory=cbHistory.slice(-20);
-  }catch(e){
-    typingEl.textContent='Sorry, trouble connecting right now. Please try again in a moment.';
-    typingEl.classList.remove('typing');
-  }
-document.getElementById('cbMessages').scrollTop=999999;
-}
+    const response = await fetch(API + '/ai/chat', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ message: q, history: cbHistory.slice(-10) })
+});
+const data = await response.json();
+const reply = data.reply || 'Please try again.';
+
 function addCbMsg(text,type){
   const msgs=document.getElementById('cbMessages');
   const el=document.createElement('div');
