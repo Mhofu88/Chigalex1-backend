@@ -1379,7 +1379,6 @@ async function cbSend(){
 });
 const data = await response.json();
 const reply = data.reply || 'Please try again.';
-
 function addCbMsg(text,type){
   const msgs=document.getElementById('cbMessages');
   const el=document.createElement('div');
