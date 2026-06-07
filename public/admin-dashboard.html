@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chigalex1 Admin Dashboard</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Sora',sans-serif;background:#0D0A1A;color:#F0EBF8;min-height:100vh;}
+.topbar{background:#211A3A;border-bottom:1px solid rgba(123,45,139,0.4);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.topbar-left{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1rem;}
+.topbar-badge{background:rgba(255,112,67,0.15);border:1px solid rgba(255,112,67,0.4);color:#FF7043;border-radius:100px;padding:3px 12px;font-size:.7rem;font-weight:700;}
+.key-row{display:flex;gap:8px;align-items:center;}
+.key-input{background:#2A2048;border:1px solid rgba(123,45,139,0.4);color:#F0EBF8;padding:7px 12px;border-radius:8px;font-family:'Sora',sans-serif;font-size:.82rem;width:200px;}
+.key-btn{background:linear-gradient(135deg,#7B2D8B,#9B59B6);color:#fff;border:none;padding:8px 18px;border-radius:8px;font-family:'Sora',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:0;background:#211A3A;border-bottom:1px solid rgba(255,255,255,0.08);padding:0 16px;overflow-x:auto;}
+.tab{padding:14px 20px;border:none;background:transparent;color:#7A6A9A;font-family:'Sora',sans-serif;font-size:.84rem;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.2s;}
+.tab.on{color:#F5C518;border-bottom-color:#F5C518;}
+.tab:hover:not(.on){color:#B8A8D8;}
+.panel{display:none;padding:20px;max-width:1000px;margin:0 auto;}.panel.on{display:block;}
+
+/* ── STAT CARDS ── */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px;}
+.stat-card{background:#211A3A;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px;text-align:center;}
+.stat-num{font-size:2rem;font-weight:900;margin-bottom:4px;}
+.stat-label{font-size:.72rem;color:#7A6A9A;font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
+
+/* ── TABLES ── */
+.section-title{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00D4AA;margin-bottom:10px;margin-top:24px;}
+.table-wrap{background:#211A3A;border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+table{width:100%;border-collapse:collapse;}
+th{background:#2A2048;padding:10px 14px;text-align:left;font-size:.72rem;font-weight:700;color:#7A6A9A;letter-spacing:.06em;text-transform:uppercase;}
+td{padding:11px 14px;font-size:.82rem;border-top:1px solid rgba(255,255,255,0.05);}
+tr:hover td{background:rgba(255,255,255,0.02);}
+.badge{display:inline-block;border-radius:100px;padding:2px 10px;font-size:.68rem;font-weight:700;}
+.badge-paid{background:rgba(0,212,170,0.15);color:#00D4AA;border:1px solid rgba(0,212,170,0.3);}
+.badge-free{background:rgba(122,106,154,0.15);color:#7A6A9A;border:1px solid rgba(122,106,154,0.3);}
+.badge-pending{background:rgba(245,197,24,0.15);color:#F5C518;border:1px solid rgba(245,197,24,0.3);}
+.badge-approved{background:rgba(0,212,170,0.15);color:#00D4AA;border:1px solid rgba(0,212,170,0.3);}
+
+/* ── FORMS ── */
+.form-card{background:#211A3A;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:20px;margin-bottom:16px;}
+.form-card h3{font-size:.9rem;font-weight:700;margin-bottom:14px;color:#F5C518;}
+.fg{margin-bottom:12px;}
+.fg label{display:block;font-size:.72rem;font-weight:600;color:#7A6A9A;margin-bottom:5px;}
+.fg input,.fg textarea,.fg select{width:100%;background:#2A2048;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 12px;color:#F0EBF8;font-family:'Sora',sans-serif;font-size:.84rem;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.action-btn{background:linear-gradient(135deg,#7B2D8B,#9B59B6);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-family:'Sora',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer;margin-right:8px;}
+.action-btn.teal{background:linear-gradient(135deg,#00D4AA,#006d56);}
+.action-btn.warn{background:linear-gradient(135deg,#FF7043,#c0392b);}
+.action-btn.gold{background:linear-gradient(135deg,#F5C518,#E8520A);}
+
+/* ── AMBASSADOR CARD ── */
+.amb-card{background:#211A3A;border:1px solid rgba(123,45,139,0.25);border-radius:12px;padding:14px;margin-bottom:10px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.amb-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#7B2D8B,#F5C518);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.amb-info{flex:1;}
+.amb-name{font-weight:700;font-size:.9rem;color:#F0EBF8;margin-bottom:2px;}
+.amb-meta{font-size:.75rem;color:#7A6A9A;}
+.amb-stats{display:flex;gap:16px;}
+.amb-stat{text-align:center;}
+.amb-stat-num{font-size:1.1rem;font-weight:800;color:#F5C518;display:block;}
+.amb-stat-label{font-size:.65rem;color:#7A6A9A;text-transform:uppercase;}
+.copy-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#B8A8D8;padding:6px 14px;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;}
+.copy-btn:hover{border-color:#9B59B6;color:#F0EBF8;}
+
+/* ── MESSAGES ── */
+.msg{padding:10px 14px;border-radius:8px;font-size:.82rem;margin-bottom:12px;display:none;}
+.msg.ok{background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.3);color:#00D4AA;}
+.msg.err{background:rgba(255,112,67,0.1);border:1px solid rgba(255,112,67,0.3);color:#FF7043;}
+
+/* ── LOADING ── */
+.loading{color:#7A6A9A;font-size:.84rem;padding:20px;text-align:center;}
+
+@media(max-width:600px){.fg-row{grid-template-columns:1fr;}.amb-stats{flex-wrap:wrap;}.topbar{flex-direction:column;gap:10px;align-items:flex-start;}.key-input{width:160px;}}
+
+/* ── LEADERBOARD ── */
+.lb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
+.lb-title{font-size:1.1rem;font-weight:800;color:#F5C518;}
+.lb-subtitle{font-size:.75rem;color:#7A6A9A;margin-top:3px;}
+.lb-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:20px;}
+.lb-stat{background:#2A2048;border-radius:12px;padding:14px;text-align:center;}
+.lb-stat-num{font-size:1.6rem;font-weight:900;margin-bottom:3px;}
+.lb-stat-label{font-size:.65rem;color:#7A6A9A;font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
+.lb-podium{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.podium-card{background:#211A3A;border-radius:16px;padding:16px;text-align:center;position:relative;border:1px solid rgba(255,255,255,0.08);}
+.podium-card.first{border-color:rgba(245,197,24,0.5);background:linear-gradient(135deg,rgba(245,197,24,0.08),rgba(232,82,10,0.08));}
+.podium-card.second{border-color:rgba(192,192,192,0.4);}
+.podium-card.third{border-color:rgba(205,127,50,0.4);}
+.podium-rank{font-size:1.8rem;margin-bottom:6px;}
+.podium-name{font-weight:800;font-size:.88rem;color:#F0EBF8;margin-bottom:3px;}
+.podium-country{font-size:.7rem;color:#7A6A9A;margin-bottom:8px;}
+.podium-recruits{font-size:1.8rem;font-weight:900;color:#00D4AA;}
+.podium-label{font-size:.65rem;color:#7A6A9A;margin-top:2px;}
+.podium-reward{display:inline-block;background:rgba(245,197,24,0.15);border:1px solid rgba(245,197,24,0.3);color:#F5C518;border-radius:100px;padding:3px 10px;font-size:.65rem;font-weight:700;margin-top:8px;}
+.lb-table-wrap{background:#211A3A;border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.lb-row{display:grid;grid-template-columns:40px 1fr 80px 80px 80px 100px;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.05);gap:8px;}
+.lb-row:last-child{border-bottom:none;}
+.lb-row:hover{background:rgba(255,255,255,0.02);}
+.lb-row-head{background:#2A2048;font-size:.65rem;font-weight:700;color:#7A6A9A;letter-spacing:.06em;text-transform:uppercase;}
+.lb-pos{font-weight:900;font-size:.9rem;text-align:center;}
+.lb-ambassador{display:flex;flex-direction:column;gap:2px;}
+.lb-amb-name{font-weight:700;font-size:.85rem;color:#F0EBF8;}
+.lb-amb-meta{font-size:.7rem;color:#7A6A9A;}
+.lb-num{font-weight:800;font-size:.9rem;text-align:center;}
+.lb-reward-btn{background:linear-gradient(135deg,#F5C518,#E8520A);color:#fff;border:none;padding:5px 10px;border-radius:8px;font-size:.7rem;font-weight:700;cursor:pointer;width:100%;}
+.lb-reward-btn:disabled{opacity:0.4;cursor:not-allowed;}
+.reward-form{background:#211A3A;border:1.5px solid rgba(245,197,24,0.3);border-radius:14px;padding:20px;margin-bottom:16px;display:none;}
+.reward-form.show{display:block;}
+.lb-period{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.lb-period-btn{background:#2A2048;border:1.5px solid rgba(255,255,255,0.1);color:#B8A8D8;border-radius:100px;padding:5px 14px;font-size:.75rem;font-weight:600;cursor:pointer;}
+.lb-period-btn.on{background:rgba(0,212,170,0.15);border-color:#00D4AA;color:#00D4AA;}
+.amb-card{background:#211A3A;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px;margin-bottom:10px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.amb-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#7B2D8B,#F5C518);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.amb-info{flex:1;min-width:140px;}
+.amb-name{font-weight:700;font-size:.9rem;margin-bottom:3px;}
+.amb-meta{font-size:.72rem;color:#7A6A9A;}
+.amb-stats{display:flex;gap:16px;}
+.amb-stat{text-align:center;}
+.amb-stat-num{font-size:1.3rem;font-weight:900;display:block;}
+.amb-stat-label{font-size:.65rem;color:#7A6A9A;}
+.copy-btn{background:#2A2048;border:1px solid rgba(123,45,139,0.4);color:#9B59B6;border-radius:8px;padding:7px 12px;font-size:.75rem;font-weight:700;cursor:pointer;}
+.msg-reward{background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.3);color:#00D4AA;border-radius:8px;padding:10px 14px;font-size:.82rem;margin-top:10px;display:none;}
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span style="font-size:1.3rem;">π</span>
+    Chigalex1 Admin
+    <span class="topbar-badge">🔒 Secure</span>
+  </div>
+  <div class="key-row">
+    <input class="key-input" id="adminKey" type="password" placeholder="Enter admin key..." onkeydown="if(event.key==='Enter')loadAll()"/>
+    <button class="key-btn" onclick="loadAll()">🔓 Login</button>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab on" onclick="swPanel('analytics',this)">📊 Analytics</button>
+  <button class="tab" onclick="swPanel('members',this)">👥 Members</button>
+  <button class="tab" onclick="swPanel('ambassadors',this)">🎯 Ambassadors</button>
+  <button class="tab" onclick="swPanel('adverts',this)">📣 Adverts</button>
+  <button class="tab" onclick="swPanel('merchants',this)">🏪 Merchants</button>
+  <button class="tab" onclick="swPanel('faqs',this)">💬 FAQs & Q&A</button>
+  <button class="tab" onclick="swPanel('notify',this)">🔔 Notify</button>
+</div>
+
+<!-- ══ ANALYTICS ══ -->
+<div class="panel on" id="panel-analytics">
+  <div id="analytics-content"><div class="loading">🔐 Enter your admin key above to load dashboard</div></div>
+</div>
+
+<!-- ══ MEMBERS ══ -->
+<div class="panel" id="panel-members">
+  <div id="members-content"><div class="loading">Loading...</div></div>
+</div>
+
+<!-- ══ AMBASSADORS ══ -->
+<div class="panel" id="panel-ambassadors">
+
+  <!-- ══ LEADERBOARD ══ -->
+  <div class="form-card" style="border-color:rgba(245,197,24,0.3);">
+    <div class="lb-header">
+      <div>
+        <div class="lb-title">🏆 Ambassador Leaderboard</div>
+        <div class="lb-subtitle">Real-time rankings across all 54 African nations</div>
+      </div>
+      <button class="action-btn" style="width:auto;padding:8px 18px;font-size:.8rem;" onclick="loadAmbassadors()">🔄 Refresh</button>
+    </div>
+
+    <!-- Period filter -->
+    <div class="lb-period">
+      <button class="lb-period-btn on" onclick="setLbPeriod('all',this)">🌍 All Time</button>
+      <button class="lb-period-btn" onclick="setLbPeriod('month',this)">📅 This Month</button>
+      <button class="lb-period-btn" onclick="setLbPeriod('week',this)">📆 This Week</button>
+    </div>
+
+    <!-- Top 3 Podium -->
+    <div id="lb-podium" style="display:none;">
+      <div class="section-title">🥇 Top 3 Ambassadors</div>
+      <div class="lb-podium" id="podium-cards"></div>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="lb-stats" id="lb-stats-row" style="display:none;"></div>
+
+    <!-- Full Leaderboard Table -->
+    <div class="section-title" style="margin-top:8px;">📋 Full Rankings</div>
+    <div class="lb-table-wrap">
+      <div class="lb-row lb-row-head">
+        <div style="text-align:center;">#</div>
+        <div>Ambassador</div>
+        <div style="text-align:center;">Members</div>
+        <div style="text-align:center;">Clicks</div>
+        <div style="text-align:center;">Rate</div>
+        <div style="text-align:center;">Reward</div>
+      </div>
+      <div id="lb-table-body"><div class="loading" style="padding:20px;">Loading leaderboard...</div></div>
+    </div>
+  </div>
+
+  <!-- ══ REWARD PANEL ══ -->
+  <div class="reward-form" id="reward-form">
+    <h3 style="color:#F5C518;margin-bottom:14px;">🎁 Send Reward to Ambassador</h3>
+    <div style="background:#2A2048;border-radius:10px;padding:14px;margin-bottom:14px;">
+      <div style="font-weight:700;color:#F0EBF8;margin-bottom:4px;" id="reward-amb-name">—</div>
+      <div style="font-size:.75rem;color:#7A6A9A;" id="reward-amb-meta">—</div>
+    </div>
+    <div class="fg-row">
+      <div class="fg">
+        <label>π Amount to Reward</label>
+        <input id="reward-amount" type="number" value="1" min="0.1" step="0.1" placeholder="e.g. 1"/>
+      </div>
+      <div class="fg">
+        <label>Reward Reason</label>
+        <input id="reward-reason" placeholder="e.g. 10 members recruited this month"/>
+      </div>
+    </div>
+    <div class="fg">
+      <label>Personal Message (sent with Pi notification)</label>
+      <textarea id="reward-message" rows="2" placeholder="Congratulations! You recruited 10 new pioneers this month..."></textarea>
+    </div>
+    <div style="background:rgba(245,197,24,0.08);border:1px solid rgba(245,197,24,0.2);border-radius:10px;padding:12px;margin-bottom:14px;font-size:.8rem;color:#B8A8D8;">
+      ⚠️ <strong style="color:#F5C518;">Manual process:</strong> After confirming below, send the π reward manually from your Pi wallet to the ambassador's Pi username shown above. This records the reward in the system.
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="action-btn" style="width:auto;" onclick="recordReward()">✅ Record Reward Sent</button>
+      <button class="action-btn" style="width:auto;background:#2A2048;border:1px solid rgba(255,255,255,0.1);" onclick="closeRewardForm()">✕ Cancel</button>
+    </div>
+    <div class="msg-reward" id="reward-ok">✅ Reward recorded! Don't forget to send the π manually from your wallet.</div>
+  </div>
+
+  <!-- ══ REGISTER NEW AMBASSADOR ══ -->
+  <div class="form-card">
+    <h3>➕ Register New Ambassador</h3>
+    <div class="fg-row">
+      <div class="fg"><label>Full Name</label><input id="amb-name" placeholder="e.g. Tendai Moyo"/></div>
+      <div class="fg"><label>Referral Code (lowercase, no spaces)</label><input id="amb-code" placeholder="e.g. tendai_zw"/></div>
+    </div>
+    <div class="fg-row">
+      <div class="fg"><label>Country</label><input id="amb-country" placeholder="e.g. Zimbabwe"/></div>
+      <div class="fg"><label>Pi Username</label><input id="amb-pi" placeholder="Pi username"/></div>
+    </div>
+    <button class="action-btn" onclick="registerAmbassador()">✅ Register Ambassador</button>
+    <div class="msg ok" id="amb-ok"></div>
+    <div class="msg err" id="amb-err"></div>
+  </div>
+
+  <div class="section-title">All Ambassadors</div>
+  <div id="ambassadors-content"><div class="loading">Loading...</div></div>
+</div>
+
+<!-- ══ ADVERTS ══ -->
+<div class="panel" id="panel-adverts">
+  <div id="adverts-content"><div class="loading">Loading...</div></div>
+</div>
+
+<!-- ══ MERCHANTS ══ -->
+<div class="panel" id="panel-merchants">
+  <div id="merchants-content"><div class="loading">Loading...</div></div>
+</div>
+
+<!-- ══ FAQs & Q&A ══ -->
+<div class="panel" id="panel-faqs">
+  <div class="form-card">
+    <h3>➕ Add New FAQ</h3>
+    <div class="fg"><label>Question</label><input id="faq-q" placeholder="Frequently asked question..."/></div>
+    <div class="fg"><label>Answer</label><textarea id="faq-a" rows="3" placeholder="Clear, helpful answer..."></textarea></div>
+    <div class="fg-row">
+      <div class="fg"><label>Language</label>
+        <select id="faq-lang">
+          <option value="en">English</option><option value="sn">Shona</option>
+          <option value="zu">isiZulu</option><option value="sw">Kiswahili</option>
+          <option value="ha">Hausa</option><option value="yo">Yoruba</option>
+          <option value="fr">Français</option><option value="ar">Arabic</option>
+          <option value="all">All Languages</option>
+        </select>
+      </div>
+    </div>
+    <button class="action-btn teal" onclick="addFaq()">✅ Publish FAQ</button>
+    <div class="msg ok" id="faq-ok"></div>
+  </div>
+  <div class="section-title">Pending Questions</div>
+  <div id="questions-content"><div class="loading">Loading...</div></div>
+</div>
+
+<!-- ══ NOTIFY ══ -->
+<div class="panel" id="panel-notify">
+  <div class="form-card">
+    <h3>📨 Send Pi Notification to a Pioneer</h3>
+    <div class="fg-row">
+      <div class="fg"><label>Pi Username</label><input id="notif-user" placeholder="Pioneer's Pi username"/></div>
+    </div>
+    <div class="fg"><label>Message (max 200 chars)</label><textarea id="notif-msg" rows="3" maxlength="200" placeholder="Your notification message..."></textarea></div>
+    <button class="action-btn gold" onclick="sendNotification()">🔔 Send Pi Notification</button>
+    <div class="msg ok" id="notif-ok"></div>
+    <div class="msg err" id="notif-err"></div>
+  </div>
+  <div class="form-card">
+    <h3>🎯 Quick Notifications</h3>
+    <button class="action-btn" style="margin-bottom:8px;" onclick="quickNotify('welcome')">🎉 Welcome Message</button>
+    <button class="action-btn teal" style="margin-bottom:8px;" onclick="quickNotify('gcv')">📈 GCV Update</button>
+    <button class="action-btn gold" onclick="quickNotify('advert')">📣 Advert Live</button>
+  </div>
+</div>
+
+<script>
+const API = window.location.origin;
+let ADMIN_KEY = '';
+
+function getKey(){ return document.getElementById('adminKey').value.trim(); }
+function swPanel(name, el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('panel-'+name).classList.add('on');
+  el.classList.add('on');
+  loadPanel(name);
+}
+
+async function loadAll(){
+  ADMIN_KEY = getKey();
+  if(!ADMIN_KEY){ alert('Please enter your admin key'); return; }
+  loadPanel('analytics');
+}
+
+async function loadPanel(name){
+  ADMIN_KEY = getKey();
+  if(!ADMIN_KEY) return;
+  if(name==='analytics') loadAnalytics();
+  if(name==='members') loadMembers();
+  if(name==='ambassadors') loadAmbassadors();
+  if(name==='adverts') loadAdverts();
+  if(name==='merchants') loadMerchantsAdmin();
+  if(name==='faqs') loadQA();
+}
+
+function headers(){ return { 'Content-Type':'application/json', 'x-admin-key': ADMIN_KEY }; }
+
+// ── ANALYTICS ──
+async function loadAnalytics(){
+  const el = document.getElementById('analytics-content');
+  el.innerHTML = '<div class="loading">Loading analytics...</div>';
+  try{
+    const [analR, membR, refR] = await Promise.all([
+      fetch(API+'/admin/analytics', { headers: headers() }),
+      fetch(API+'/admin/members?limit=5', { headers: headers() }),
+      fetch(API+'/admin/referrals', { headers: headers() }),
+    ]);
+    const anal = await analR.json();
+    const memb = await membR.json();
+    const refs = await refR.json();
+
+    el.innerHTML = `
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num" style="color:#00D4AA;">${memb.count||0}</div><div class="stat-label">Total Members</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:#F5C518;">${anal.totals?.new_member||0}</div><div class="stat-label">All-Time Joins</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:#9B59B6;">${anal.totals?.question_submitted||0}</div><div class="stat-label">Questions Asked</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:#E8520A;">${refs.totals?.conversions||0}</div><div class="stat-label">Referral Converts</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:#F5C518;">${refs.totals?.clicks||0}</div><div class="stat-label">Referral Clicks</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:#00D4AA;">${refs.ambassadors?.length||0}</div><div class="stat-label">Ambassadors</div></div>
+      </div>
+
+      <div class="section-title">Last 7 Days Activity</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Date</th><th>New Members</th><th>Questions</th><th>Profile Views</th></tr></thead>
+          <tbody>
+            ${Object.entries(anal.daily||{}).map(([date, d])=>`
+              <tr>
+                <td>${date}</td>
+                <td><span style="color:#00D4AA;font-weight:700;">${d.new_member||0}</span></td>
+                <td>${d.question_submitted||0}</td>
+                <td>${d.profile_view||0}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-title">Top Ambassadors</div>
+      ${(refs.ambassadors||[]).slice(0,5).map(a=>`
+        <div class="amb-card">
+          <div class="amb-avatar">🌍</div>
+          <div class="amb-info">
+            <div class="amb-name">${esc(a.refCode)}</div>
+            <div class="amb-meta">Conversion rate: ${a.conversionRate}</div>
+          </div>
+          <div class="amb-stats">
+            <div class="amb-stat"><span class="amb-stat-num" style="color:#F5C518;">${a.conversions}</span><span class="amb-stat-label">Converts</span></div>
+            <div class="amb-stat"><span class="amb-stat-num">${a.clicks}</span><span class="amb-stat-label">Clicks</span></div>
+          </div>
+        </div>
+      `).join('')}
+    `;
+  }catch(e){ el.innerHTML = '<div class="loading" style="color:#FF7043;">❌ Error loading analytics. Check your admin key.</div>'; }
+}
+
+// ── MEMBERS ──
+async function loadMembers(){
+  const el = document.getElementById('members-content');
+  el.innerHTML = '<div class="loading">Loading members...</div>';
+  try{
+    const r = await fetch(API+'/admin/members?limit=50', { headers: headers() });
+    const d = await r.json();
+    el.innerHTML = `
+      <div class="section-title">${d.count||0} Total Members</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Username</th><th>Status</th><th>Country</th><th>Joined</th><th>Action</th></tr></thead>
+          <tbody>
+            ${(d.members||[]).map(m=>`
+              <tr>
+                <td style="font-weight:700;">@${esc(m.username)}</td>
+                <td><span class="badge badge-${m.status==='paid'?'paid':'free'}">${m.status||'free'}</span></td>
+                <td>${esc(m.country||'—')}</td>
+                <td style="color:#7A6A9A;font-size:.75rem;">${m.paidAt?m.paidAt.slice(0,10):'—'}</td>
+                <td>
+                  <button class="copy-btn" onclick="setMembership('${m.username}','${m.status==='paid'?'free':'paid'}')">
+                    ${m.status==='paid'?'Revoke':'Grant'}
+                  </button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  }catch(e){ el.innerHTML='<div class="loading" style="color:#FF7043;">❌ Error loading members.</div>'; }
+}
+
+async function setMembership(username, status){
+  if(!confirm(`Set @${username} to "${status}"?`)) return;
+  try{
+    await fetch(API+'/admin/set-membership',{method:'POST',headers:headers(),body:JSON.stringify({username,status})});
+    loadMembers();
+  }catch(e){ alert('Error: '+e.message); }
+}
+
+// ── AMBASSADORS ──
+let lbPeriod = 'all';
+let currentRewardAmb = null;
+
+function setLbPeriod(period, btn){
+  lbPeriod = period;
+  document.querySelectorAll('.lb-period-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  loadAmbassadors();
+}
+
+function medalColor(pos){ return pos===1?'#F5C518':pos===2?'#C0C0C0':'#CD7F32'; }
+function medal(pos){ return pos===1?'🥇':pos===2?'🥈':'🥉'; }
+function rewardTier(recruits){
+  if(recruits>=50) return { label:'⭐ Diamond', color:'#00D4AA', pi:'5π' };
+  if(recruits>=20) return { label:'🏅 Gold', color:'#F5C518', pi:'3π' };
+  if(recruits>=10) return { label:'🥈 Silver', color:'#C0C0C0', pi:'2π' };
+  if(recruits>=5)  return { label:'🥉 Bronze', color:'#CD7F32', pi:'1π' };
+  return { label:'🌱 Starter', color:'#7A6A9A', pi:'—' };
+}
+function convRate(clicks, conversions){
+  if(!clicks) return '0%';
+  return Math.round((conversions/clicks)*100)+'%';
+}
+
+async function loadAmbassadors(){
+  const el = document.getElementById('ambassadors-content');
+  el.innerHTML = '<div class="loading">Loading ambassadors...</div>';
+  const tbody = document.getElementById('lb-table-body');
+  tbody.innerHTML = '<div class="loading" style="padding:20px;">Loading leaderboard...</div>';
+
+  try{
+    const r = await fetch(API+'/admin/ambassadors', { headers: headers() });
+    const d = await r.json();
+    const ambs = (d.ambassadors||[]).sort((a,b)=>(b.conversions||0)-(a.conversions||0));
+
+    if(!ambs.length){
+      el.innerHTML='<div class="loading">No ambassadors yet. Register one below!</div>';
+      tbody.innerHTML='<div class="loading" style="padding:20px;color:#7A6A9A;">No ambassadors registered yet.</div>';
+      document.getElementById('lb-podium').style.display='none';
+      document.getElementById('lb-stats-row').style.display='none';
+      return;
+    }
+
+    // ── Summary Stats ──
+    const totalMembers = ambs.reduce((s,a)=>s+(a.conversions||0),0);
+    const totalClicks  = ambs.reduce((s,a)=>s+(a.clicks||0),0);
+    const topAmb = ambs[0];
+    const countries = [...new Set(ambs.map(a=>a.country).filter(Boolean))].length;
+    document.getElementById('lb-stats-row').style.display='grid';
+    document.getElementById('lb-stats-row').innerHTML=`
+      <div class="lb-stat"><div class="lb-stat-num" style="color:#00D4AA;">${ambs.length}</div><div class="lb-stat-label">Ambassadors</div></div>
+      <div class="lb-stat"><div class="lb-stat-num" style="color:#F5C518;">${totalMembers}</div><div class="lb-stat-label">Total Recruits</div></div>
+      <div class="lb-stat"><div class="lb-stat-num" style="color:#9B59B6;">${totalClicks}</div><div class="lb-stat-label">Total Clicks</div></div>
+      <div class="lb-stat"><div class="lb-stat-num" style="color:#E8520A;">${countries}</div><div class="lb-stat-label">Countries</div></div>
+      <div class="lb-stat"><div class="lb-stat-num" style="color:#F5C518;">${topAmb?esc(topAmb.name||topAmb.refCode):'-'}</div><div class="lb-stat-label">🏆 Top Recruiter</div></div>
+    `;
+
+    // ── Podium (Top 3) ──
+    if(ambs.length>=1){
+      document.getElementById('lb-podium').style.display='block';
+      const top3 = ambs.slice(0,3);
+      // Reorder for display: 2nd, 1st, 3rd
+      const display = top3.length===1?[null,top3[0],null]:top3.length===2?[null,top3[0],top3[1]]:[top3[1],top3[0],top3[2]];
+      const ranks = top3.length===1?[null,1,null]:top3.length===2?[null,1,2]:[2,1,3];
+      document.getElementById('podium-cards').innerHTML = display.map((a,i)=>{
+        if(!a) return '<div></div>';
+        const pos=ranks[i];
+        const tier=rewardTier(a.conversions||0);
+        return `<div class="podium-card ${pos===1?'first':pos===2?'second':'third'}">
+          <div class="podium-rank">${medal(pos)}</div>
+          <div class="podium-name">${esc(a.name||a.refCode)}</div>
+          <div class="podium-country">🌍 ${esc(a.country||'Africa')} · @${esc(a.piUser||a.refCode)}</div>
+          <div class="podium-recruits">${a.conversions||0}</div>
+          <div class="podium-label">Pioneers Recruited</div>
+          <div class="podium-reward" style="color:${tier.color};border-color:${tier.color}40;background:${tier.color}18;">${tier.label} · ${tier.pi}</div>
+          <div style="margin-top:8px;">
+            <button class="lb-reward-btn" onclick="openRewardForm('${esc(a.refCode)}','${esc(a.name||a.refCode)}','${esc(a.country||'')}','${esc(a.piUser||a.refCode)}',${a.conversions||0})">🎁 Reward</button>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    // ── Full Table ──
+    tbody.innerHTML = ambs.map((a,i)=>{
+      const pos=i+1;
+      const tier=rewardTier(a.conversions||0);
+      const rate=convRate(a.clicks||0,a.conversions||0);
+      return `<div class="lb-row">
+        <div class="lb-pos" style="color:${pos<=3?medalColor(pos):'#7A6A9A'};">${pos<=3?medal(pos):pos}</div>
+        <div class="lb-ambassador">
+          <div class="lb-amb-name">${esc(a.name||a.refCode)}</div>
+          <div class="lb-amb-meta">🌍 ${esc(a.country||'Africa')} · @${esc(a.piUser||a.refCode)} · <span style="color:${tier.color}">${tier.label}</span></div>
+        </div>
+        <div class="lb-num" style="color:#00D4AA;">${a.conversions||0}</div>
+        <div class="lb-num" style="color:#9B59B6;">${a.clicks||0}</div>
+        <div class="lb-num" style="color:#F5C518;">${rate}</div>
+        <div><button class="lb-reward-btn" onclick="openRewardForm('${esc(a.refCode)}','${esc(a.name||a.refCode)}','${esc(a.country||'')}','${esc(a.piUser||a.refCode)}',${a.conversions||0})" ${(a.conversions||0)<1?'disabled':''}>🎁 Reward</button></div>
+      </div>`;
+    }).join('');
+
+    // ── Cards list ──
+    el.innerHTML = ambs.map(a=>{
+      const tier=rewardTier(a.conversions||0);
+      return `<div class="amb-card">
+        <div class="amb-avatar">${a.conversions>=10?'🌟':'🌍'}</div>
+        <div class="amb-info">
+          <div class="amb-name">${esc(a.name||a.refCode)} <span style="font-size:.7rem;color:${tier.color};font-weight:700;">${tier.label}</span></div>
+          <div class="amb-meta">🌍 ${esc(a.country||'')} · @${esc(a.piUser||a.refCode)} · Code: <strong style="color:#F5C518;">${esc(a.refCode)}</strong></div>
+        </div>
+        <div class="amb-stats">
+          <div class="amb-stat"><span class="amb-stat-num" style="color:#00D4AA;">${a.conversions||0}</span><span class="amb-stat-label">Recruits</span></div>
+          <div class="amb-stat"><span class="amb-stat-num" style="color:#9B59B6;">${a.clicks||0}</span><span class="amb-stat-label">Clicks</span></div>
+          <div class="amb-stat"><span class="amb-stat-num" style="color:#F5C518;">${tier.pi}</span><span class="amb-stat-label">Reward</span></div>
+        </div>
+        <button class="copy-btn" onclick="copyLink('${esc(a.shareLink||'')}')">📋 Copy Link</button>
+      </div>`;
+    }).join('');
+
+  }catch(e){
+    el.innerHTML='<div class="loading" style="color:#FF7043;">❌ Error loading. Check admin key.</div>';
+    tbody.innerHTML='<div class="loading" style="padding:20px;color:#FF7043;">❌ Error loading leaderboard.</div>';
+  }
+}
+
+function openRewardForm(refCode, name, country, piUser, recruits){
+  currentRewardAmb = { refCode, name, country, piUser, recruits };
+  const tier = rewardTier(recruits);
+  document.getElementById('reward-amb-name').textContent = name + ' — ' + recruits + ' recruits · ' + tier.label;
+  document.getElementById('reward-amb-meta').textContent = '🌍 ' + country + ' · Pi: @' + piUser + ' · Suggested reward: ' + tier.pi;
+  document.getElementById('reward-amount').value = tier.pi.replace('π','') === '—' ? '0.5' : tier.pi.replace('π','');
+  document.getElementById('reward-reason').value = recruits + ' pioneers successfully recruited';
+  document.getElementById('reward-message').value = 'Congratulations ' + name + '! You have recruited ' + recruits + ' pioneers to Chigalex1. Thank you for spreading Pi across Africa! 🌍';
+  const rf = document.getElementById('reward-form');
+  rf.classList.add('show');
+  rf.scrollIntoView({ behavior:'smooth' });
+}
+
+function closeRewardForm(){
+  document.getElementById('reward-form').classList.remove('show');
+  document.getElementById('reward-ok').style.display='none';
+  currentRewardAmb = null;
+}
+
+async function recordReward(){
+  if(!currentRewardAmb) return;
+  const amount = document.getElementById('reward-amount').value;
+  const reason = document.getElementById('reward-reason').value;
+  const message = document.getElementById('reward-message').value;
+  if(!amount||!reason){ alert('Please fill in amount and reason.'); return; }
+  try{
+    await fetch(API+'/admin/referrals/reward',{
+      method:'POST',
+      headers: headers(),
+      body: JSON.stringify({
+        refCode: currentRewardAmb.refCode,
+        piUser: currentRewardAmb.piUser,
+        amount: parseFloat(amount),
+        reason,
+        message,
+        rewardedAt: new Date().toISOString()
+      })
+    });
+  }catch(e){}
+  const ok = document.getElementById('reward-ok');
+  ok.style.display = 'block';
+  ok.textContent = '✅ Reward recorded! Now send ' + amount + 'π manually from your Pi wallet to @' + currentRewardAmb.piUser;
+  setTimeout(()=>{
+    ok.style.display='none';
+    closeRewardForm();
+    loadAmbassadors();
+  }, 6000);
+}
+
+async function registerAmbassador(){
+  const name=document.getElementById('amb-name').value.trim();
+  const code=document.getElementById('amb-code').value.trim().toLowerCase().replace(/\s+/g,'_');
+  const country=document.getElementById('amb-country').value.trim();
+  const pi=document.getElementById('amb-pi').value.trim();
+  if(!name||!code){showMsg('amb-err','Name and referral code are required.');return;}
+  try{
+    const r=await fetch(API+'/admin/referrals/register',{method:'POST',headers:headers(),body:JSON.stringify({name,refCode:code,country,piUser:pi})});
+    const d=await r.json();
+    if(d.success){
+      showMsg('amb-ok',`✅ Ambassador registered! Share link: ${d.shareLink}`);
+      document.getElementById('amb-name').value='';
+      document.getElementById('amb-code').value='';
+      document.getElementById('amb-country').value='';
+      document.getElementById('amb-pi').value='';
+      loadAmbassadors();
+    }
+  }catch(e){showMsg('amb-err','Error: '+e.message);}
+}
+
+// ── ADVERTS ──
+async function loadAdverts(){
+  const el = document.getElementById('adverts-content');
+  el.innerHTML = '<div class="loading">Loading adverts...</div>';
+  try{
+    const r = await fetch(API+'/admin/adverts/pending', { headers: headers() });
+    if(!r.ok){ el.innerHTML='<div class="loading" style="color:#7A6A9A;">No pending adverts.</div>'; return; }
+    const d = await r.json();
+    if(!d.adverts||!d.adverts.length){ el.innerHTML='<div class="loading">No pending adverts. Check back after submissions.</div>'; return; }
+    el.innerHTML = `
+      <div class="section-title">${d.adverts.length} Pending Adverts</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Title</th><th>Desc</th><th>Pi User</th><th>Country</th><th>Submitted</th><th>Actions</th></tr></thead>
+          <tbody>
+            ${d.adverts.map(a=>`
+              <tr>
+                <td style="font-weight:700;">${esc(a.icon||'📣')} ${esc(a.title)}</td>
+                <td style="color:#B8A8D8;font-size:.78rem;">${esc(a.desc)}</td>
+                <td>@${esc(a.pi)}</td>
+                <td>${esc(a.country||'—')}</td>
+                <td style="color:#7A6A9A;font-size:.72rem;">${(a.submittedAt||'').slice(0,10)}</td>
+                <td>
+                  <button class="action-btn teal" style="padding:6px 12px;font-size:.72rem;" onclick="approveAdvert('${a.id}')">✅ Approve</button>
+                  <button class="action-btn warn" style="padding:6px 12px;font-size:.72rem;" onclick="rejectAdvert('${a.id}')">❌ Reject</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  }catch(e){ el.innerHTML='<div class="loading" style="color:#7A6A9A;">Advert admin route not yet active. Add /admin/adverts/pending to server.js</div>'; }
+}
+
+async function approveAdvert(id){
+  try{
+    await fetch(API+'/admin/adverts/approve',{method:'POST',headers:headers(),body:JSON.stringify({id})});
+    loadAdverts();
+  }catch(e){alert('Error: '+e.message);}
+}
+
+async function rejectAdvert(id){
+  if(!confirm('Reject and delete this advert?')) return;
+  try{
+    await fetch(API+'/admin/adverts/'+id,{method:'DELETE',headers:headers()});
+    loadAdverts();
+  }catch(e){alert('Error: '+e.message);}
+}
+
+// ── MERCHANTS ──
+async function loadMerchantsAdmin(){
+  const el = document.getElementById('merchants-content');
+  el.innerHTML = '<div class="loading">Loading merchants...</div>';
+  try{
+    const r = await fetch(API+'/admin/merchants/pending', { headers: headers() });
+    const d = await r.json();
+    if(!d.merchants||!d.merchants.length){ el.innerHTML='<div class="loading">No pending merchant applications.</div>'; return; }
+    el.innerHTML = `
+      <div class="section-title">${d.count||0} Pending Applications</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Business</th><th>Category</th><th>Country</th><th>Pi User</th><th>Actions</th></tr></thead>
+          <tbody>
+            ${d.merchants.map(m=>`
+              <tr>
+                <td style="font-weight:700;">${esc(m.name)}</td>
+                <td>${esc(m.cat)}</td>
+                <td>${esc(m.country)}, ${esc(m.city||'')}</td>
+                <td>@${esc(m.pi)}</td>
+                <td>
+                  <button class="action-btn teal" style="padding:6px 12px;font-size:.72rem;" onclick="approveMerchant('${m.id}',true)">✅ Verify</button>
+                  <button class="action-btn" style="padding:6px 12px;font-size:.72rem;" onclick="approveMerchant('${m.id}',false)">👍 Approve</button>
+                  <button class="action-btn warn" style="padding:6px 12px;font-size:.72rem;" onclick="rejectMerchant('${m.id}')">❌</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  }catch(e){ el.innerHTML='<div class="loading" style="color:#7A6A9A;">'+e.message+'</div>'; }
+}
+
+async function approveMerchant(id,verified){
+  try{
+    await fetch(API+'/admin/merchants/approve',{method:'POST',headers:headers(),body:JSON.stringify({id,verified})});
+    loadMerchantsAdmin();
+  }catch(e){alert('Error: '+e.message);}
+}
+
+async function rejectMerchant(id){
+  if(!confirm('Reject and delete this merchant application?')) return;
+  try{
+    await fetch(API+'/admin/merchants/'+id,{method:'DELETE',headers:headers()});
+    loadMerchantsAdmin();
+  }catch(e){alert('Error: '+e.message);}
+}
+
+// ── Q&A ──
+async function loadQA(){
+  const el = document.getElementById('questions-content');
+  el.innerHTML = '<div class="loading">Loading questions...</div>';
+  try{
+    const r = await fetch(API+'/admin/questions?filter=pending', { headers: headers() });
+    const d = await r.json();
+    if(!d.questions||!d.questions.length){ el.innerHTML='<div class="loading">No pending questions.</div>'; return; }
+    el.innerHTML = d.questions.map(q=>`
+      <div class="form-card" style="margin-bottom:12px;">
+        <div style="font-weight:700;margin-bottom:6px;">${esc(q.question)}</div>
+        <div style="color:#7A6A9A;font-size:.75rem;margin-bottom:10px;">Asked by ${esc(q.name)} · ${(q.askedAt||'').slice(0,10)}</div>
+        <textarea id="ans-${q.id}" rows="2" style="width:100%;background:#2A2048;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;color:#F0EBF8;font-family:'Sora',sans-serif;font-size:.82rem;margin-bottom:8px;" placeholder="Type your answer..."></textarea>
+        <button class="action-btn teal" onclick="answerQ('${q.id}')">📨 Publish Answer</button>
+      </div>
+    `).join('');
+  }catch(e){ el.innerHTML='<div class="loading" style="color:#FF7043;">❌ '+e.message+'</div>'; }
+}
+
+async function addFaq(){
+  const q=document.getElementById('faq-q').value.trim();
+  const a=document.getElementById('faq-a').value.trim();
+  const lang=document.getElementById('faq-lang').value;
+  if(!q||!a){alert('Question and answer required.');return;}
+  try{
+    await fetch(API+'/admin/faqs',{method:'POST',headers:headers(),body:JSON.stringify({question:q,answer:a,lang})});
+    document.getElementById('faq-q').value='';
+    document.getElementById('faq-a').value='';
+    showMsg('faq-ok','✅ FAQ published!');
+  }catch(e){alert('Error: '+e.message);}
+}
+
+async function answerQ(id){
+  const answer=document.getElementById('ans-'+id).value.trim();
+  if(!answer){alert('Please type an answer.');return;}
+  try{
+    await fetch(API+'/admin/questions/answer',{method:'POST',headers:headers(),body:JSON.stringify({id,answer})});
+    loadQA();
+  }catch(e){alert('Error: '+e.message);}
+}
+
+// ── NOTIFICATIONS ──
+async function sendNotification(){
+  const username=document.getElementById('notif-user').value.trim();
+  const message=document.getElementById('notif-msg').value.trim();
+  if(!username||!message){showMsg('notif-err','Username and message required.');return;}
+  try{
+    const r=await fetch(API+'/admin/notify',{method:'POST',headers:headers(),body:JSON.stringify({username,message})});
+    const d=await r.json();
+    if(d.success) showMsg('notif-ok','✅ Notification sent to @'+username);
+    else showMsg('notif-err','Error: '+JSON.stringify(d));
+  }catch(e){showMsg('notif-err','Error: '+e.message);}
+}
+
+function quickNotify(type){
+  const msgs={
+    welcome:'🎉 Welcome to Chigalex1! Your Pi Network training hub for Africa. Start learning now — KYC, KYB, Map of Pi, GCV strategy and more await you!',
+    gcv:'📈 GCV Update from Chigalex1: The GCV window is still open. Start accepting Pi at 10% today and position your business as a first mover across Africa!',
+    advert:'📣 New advert live on Chigalex1! Check out the latest Pi-accepting businesses across Africa. Visit Chigalex1 now.'
+  };
+  document.getElementById('notif-msg').value=msgs[type]||'';
+}
+
+// ── HELPERS ──
+function showMsg(id,text){
+  const el=document.getElementById(id);
+  el.textContent=text;
+  el.style.display='block';
+  setTimeout(()=>el.style.display='none',5000);
+}
+
+function copyLink(link){
+  navigator.clipboard.writeText(link).then(()=>alert('✅ Link copied!\n'+link)).catch(()=>alert('Link: '+link));
+}
+
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+</script>
+</body>
+</html>
