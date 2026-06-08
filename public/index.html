@@ -243,7 +243,7 @@ footer a:hover{color:#F5C518;}
       <div class="owner-badge-sub">Unrestricted access granted — no payment required.</div>
     </div>
     <div class="fee-box" id="feeBox">
-      <div class="fee-amt">0.001 π</div>
+      <div class="fee-amt">0.01 π</div>
       <div class="fee-desc">One-time membership · Lifetime access to all training</div>
     </div>
     <button class="btn" id="loginBtn" onclick="piLogin()">🔐 Login with Pi Network</button>
@@ -859,7 +859,7 @@ async function piPay(){
   setErr('');
   try{
     await Pi.createPayment({
-      amount:0.001,
+      amount:0.01,
       memo:'Chigalex1 Africa Pi Hub Membership',
       metadata:{username:piUser.username,app:'chigalex1'}
     },{
