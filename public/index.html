@@ -210,9 +210,9 @@ footer a:hover{color:#F5C518;}
 <div id="gate">
   <div class="gbox">
     <img src="/logo.png" alt="Chigalex1 Logo" class="glogo"/>
-    <span class="africa-badge-gate">🌍 Africa Pi Network Education Hub</span>
-    <h2>Welcome to Chigalex1</h2>
-    <p class="gsub">Empowering pioneers and businesses across all 54 African nations to join the Pi enclosed ecosystem economy.</p>
+      <span class="africa-badge-gate" id="gate-badge-txt">🌍 Africa Pi Network Education Hub</span>
+  <h2 id="gate-title">Welcome to Chigalex1</h2> 
+  <p class="gsub" id="gate-sub">Empowering pioneers and businesses across all 54 African nations to join the Pi enclosed ecosystem economy.</p>
     <select class="gsel" onchange="setLang(this.value)">
       <optgroup label="── Southern Africa ──">
         <option value="en">🇿🇼 English</option><option value="sn">🇿🇼 Shona</option>
@@ -244,7 +244,8 @@ footer a:hover{color:#F5C518;}
     </div>
     <div class="fee-box" id="feeBox">
       <div class="fee-amt">0.01 π</div>
-      <div class="fee-desc">One-time membership · Lifetime access to all training</div>
+      
+<div class="fee-desc" id="fee-desc-txt">One-time membership · Lifetime access to all training</div>
     </div>
     <button class="btn" id="loginBtn" onclick="piLogin()">🔐 Login with Pi Network</button>
     <div id="uinfo" style="display:none;margin-top:13px;padding:10px;background:#2A2048;border-radius:10px;font-size:.84rem;color:#F0EBF8;"></div>
@@ -252,10 +253,9 @@ footer a:hover{color:#F5C518;}
     <button class="btn btn-out" id="enterBtn" style="display:none;" onclick="openApp()">✅ Enter Training Hub</button>
     <button class="btn" style="display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);" id="browseBtn" onclick="browseFreely()">👀 Browse Free Content First</button>
     <div class="gerr" id="gerr"></div>
-    <p class="gnote">⚠️ Must be opened inside the Pi Browser app</p>
+   <p class="gnote" id="gnote-txt">⚠️ Must be opened inside the Pi Browser app</p>
   </div>
 </div>
-
 <nav>
   <div class="nlogo">
     <img src="/logo.png" alt="Chigalex1" class="nsym" style="padding:2px;"/>
