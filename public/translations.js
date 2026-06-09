@@ -1,0 +1,242 @@
+// translations.js — Chigalex1 All 22 African Languages — v2
+// Expanded to cover section titles, steps, FAQ, Alliance, GCV
+
+const T = {
+
+  // ── GATE ──
+  gate_badge:  { en:"🌍 Africa Pi Network Education Hub", sn:"🌍 Africa Pi Network Chikoro cheHudzidzo", nd:"🌍 Africa Pi Network Isikole Semfundo", zu:"🌍 Africa Pi Network Iziko Lemfundo", xh:"🌍 Africa Pi Network Iziko Lemfundo", af:"🌍 Afrika Pi Netwerk Opvoedingsentrum", st:"🌍 Africa Pi Network Setsi sa Thuto", tn:"🌍 Africa Pi Network Lefelo la Thuto", ny:"🌍 Africa Pi Network Malo a Maphunziro", pt:"🌍 Centro de Educação Pi Network África", sw:"🌍 Kituo cha Elimu cha Africa Pi Network", am:"🌍 የአፍሪካ ፒ ኔትወርክ ትምህርት ማዕከል", rw:"🌍 Ikigo cy'Uburezi cya Africa Pi Network", lg:"🌍 Kitalo ky'Okusoma kya Africa Pi Network", so:"🌍 Xarunta Waxbarashada ee Africa Pi Network", ha:"🌍 Cibiyar Ilimi ta Africa Pi Network", yo:"🌍 Ile-iwe Eko Nipa Africa Pi Network", ig:"🌍 Ebe Nkuzi nke Africa Pi Network", tw:"🌍 Africa Pi Network Ahosuo Fie", wo:"🌍 Dëkk bu Jàng Pi Network Afrik", fr:"🌍 Centre d'Éducation Pi Network Afrique", ar:"🌍 مركز التعليم لشبكة Pi في أفريقيا", ber:"🌍 Agraw n Ulmad Pi Network Afriqa", ln:"🌍 Esika ya Koyekola ya Africa Pi Network", kg:"🌍 Nzo ya Kuyindula ya Africa Pi Network" },
+
+  gate_title:  { en:"Welcome to Chigalex1", sn:"Mauya kuChigalex1", nd:"Wamukelekile kuChigalex1", zu:"Siyakwamukela kuChigalex1", xh:"Wamkelekile kuChigalex1", af:"Welkom by Chigalex1", st:"Rea u amohela ho Chigalex1", tn:"Re a go amogela go Chigalex1", ny:"Takulandirani ku Chigalex1", pt:"Bem-vindo ao Chigalex1", sw:"Karibu Chigalex1", am:"እንኳን ደህና መጡ ወደ Chigalex1", rw:"Murakaza neza kuri Chigalex1", lg:"Tukuwanikidde ku Chigalex1", so:"Ku soo dhawoow Chigalex1", ha:"Barka da zuwa Chigalex1", yo:"Ẹ ku abọ si Chigalex1", ig:"Nnọọ na Chigalex1", tw:"Akwaaba Chigalex1", wo:"Dalal ak jàmm ci Chigalex1", fr:"Bienvenue sur Chigalex1", ar:"مرحباً بك في Chigalex1", ber:"Ansuf d yis ɣer Chigalex1", ln:"Boyei malamu na Chigalex1", kg:"Yala mbote na Chigalex1" },
+
+  gate_sub:    { en:"Empowering pioneers and businesses across all 54 African nations to join the Pi enclosed ecosystem economy.", sn:"Kusimbisa mapiyona nemabhizinisi munyika dzese 54 dzeAfrica kupinda muPi ecosystem.", nd:"Unika amandla abatholi namabhizimusi kumazwe onke angama-54 e-Afrika ukungena kwi-Pi ecosystem.", zu:"Unika amandla abahloli namabhizinisi kumazwe wonke angama-54 ase-Afrika ukujoyina uhlelo lwe-Pi.", xh:"Unika amandla abaphongorozi namashishini kumazwe onke angama-54 ase-Afrika.", af:"Bemagtig baanbrekers en besighede in alle 54 Afrika-nasies om aan die Pi-ekostelsel te deel.", st:"E matlafatsa baetapele le dikgwebo ho dinaha tsohle tse 54 tsa Afrika ho kenela Pi ecosystem.", tn:"E thusa batlhotlhomisi le dikgwebo mo dinageng tsotlhe tse 54 tsa Afrika.", ny:"Kulimbikitsa ophunzira ndi mabizinesi m'maiko onse 54 a Africa kulowa mu Pi ecosystem.", pt:"Capacitando pioneiros e empresas em todas as 54 nações africanas para entrar na economia Pi.", sw:"Kuwawezesha waanzilishi na biashara katika nchi zote 54 za Afrika kujiunga na mfumo wa Pi.", am:"ፊነርናቸውን እና ሥራቸውን በሁሉም 54 የአፍሪካ ሀገሮች ለ Pi ስነ-ምህዳር ኢኮኖሚ እንዲቀላቀሉ ማብቃት።", rw:"Guha ingufu abatangizi n'amasosiyete mu bihugu byose 54 by'Afurika kwinjira muri Pi ecosystem.", lg:"Okuwagira abatambula n'ebizinensi mu bitenga byonna 54 by'Afurika okweyingira mu Pi ecosystem.", so:"Awooda sahamiyeyaasha iyo ganacsiyada dhammaan 54 da qaranimada Afrika.", ha:"Ƙarfafa majagaba da kasuwanci a duk ƙasashe 54 na Afirka don shiga cikin tsarin tattalin arzikin Pi.", yo:"Fifun agbara awọn aṣáájú ọnà ati awọn oniṣowo ni gbogbo orilẹ-ède 54 ti Afirika.", ig:"Inyeike ndị ọsọ ọsọ na azụmaahịa n'ọchịchị nile 54 nke Africa ịsonye na akụnụba Pi.", tw:"De ahoɔden ma nnipakuo ne adwumakuw wɔ aman 54 nyinaa wɔ Africa.", wo:"Yëgël ak doole pinier yi ak liggéeykër yi ci réew yépp 54 yu Afrik.", fr:"Permettre aux pionniers et aux entreprises de toutes les 54 nations africaines de rejoindre l'écosystème Pi.", ar:"تمكين الرواد والشركات في جميع الدول الأفريقية الـ54 من الانضمام إلى اقتصاد النظام البيئي Pi.", ber:"Asegzan n yimedyazen d tsdawit deg tmura meqqren 54 n Afriqa.", ln:"Ko pesa nguya bazali mpe biznisi na bisi nyonso 54 ya Afrique kokota na Pi ecosystem.", kg:"Kubakisa batambisi ye biznisi mu mazinga yonso 54 ya Afrika kuya mu Pi ecosystem." },
+
+  fee_desc:    { en:"One-time membership · Lifetime access to all training", sn:"Nhengo imwe chete · Kuwana dzidzo yese nguva yose", nd:"Ubulungu obukhokhelwa kanye · Ukufinyelela ukuqeqeshwa kwakho konke", zu:"Ubunga obukhokhwa kanye · Ukufinyelela ukuqeqeshwa konke", xh:"Ubulungu obukhokhwa kanye · Ukufikelela ukuqeqeshwa konke", af:"Eenmalige lidmaatskap · Lewenslange toegang tot alle opleiding", st:"Boleloko ba nako e le nngwe · Phihlello ya bophelo botse ho tlhahiso", tn:"Botlhokwa jwa nako e le nngwe · Phitlhelelo ya bophelo jotlhe", ny:"Kulipira kamodzi · Maphunziro onse moyo wonse", pt:"Associação única · Acesso vitalício a todo o treinamento", sw:"Usajili wa mara moja · Ufikiaji wa maisha yote kwa mafunzo yote", am:"አንድ ጊዜ አባልነት · ለሁሉም ስልጠና ዕድሜ ልክ መዳረሻ", rw:"Ubwinjiye bumwe · Uburenganzira bw'ubuzima bwose ku mahugurwa yose", lg:"Obwannabyabe obw'omulundi gumu · Okufuna ebyokusoma byonna", so:"Xubinnimada hal mar · Gelitaanka nolosha oo dhan ee tababarka", ha:"Zama memba sau ɗaya · Samun damar koyo duk rayuwa", yo:"Ìdásílẹ̀ ọmọ ẹgbẹ́ ẹẹkan · Ìráàbọ̀ gbogbo ìdánilẹ́kọ̀ọ́", ig:"Ọnọdụ otu oge · Ịnweta ikike nkuzi niile ndụ", tw:"Agyapade mu baakofo · Nkitaho ho akwan", wo:"Boole dëkk bu yëgël bu benn · Xam ci jàng bu dëkk bi", fr:"Adhésion unique · Accès à vie à toute la formation", ar:"عضوية لمرة واحدة · وصول مدى الحياة إلى جميع التدريبات", ber:"Tanagt n tikkelt n yiwen · Tuqqna n tudert s ulmad akk", ln:"Boyokani moko · Emonani na mateya nyonso na bomoi nyonso", kg:"Luzingu lwa mbandu mosi · Ndambu ya kuyindula ya moyo yonso" },
+
+  login_btn:   { en:"🔐 Login with Pi Network", sn:"🔐 Pinda nePi Network", nd:"🔐 Ngena nge-Pi Network", zu:"🔐 Ngena nge-Pi Network", xh:"🔐 Ngena nge-Pi Network", af:"🔐 Meld aan met Pi Netwerk", st:"🔐 Kena ka Pi Network", tn:"🔐 Tsena ka Pi Network", ny:"🔐 Lowani ndi Pi Network", pt:"🔐 Entrar com Pi Network", sw:"🔐 Ingia na Pi Network", am:"🔐 በ Pi Network ይግቡ", rw:"🔐 Injira na Pi Network", lg:"🔐 Yingira na Pi Network", so:"🔐 Ku soo gal Pi Network", ha:"🔐 Shiga tare da Pi Network", yo:"🔐 Wọlé pẹlú Pi Network", ig:"🔐 Bata na Pi Network", tw:"🔐 Wo kɔ Pi Network mu", wo:"🔐 Dugg ak Pi Network", fr:"🔐 Se connecter avec Pi Network", ar:"🔐 تسجيل الدخول باستخدام Pi Network", ber:"🔐 Kcem s Pi Network", ln:"🔐 Kota na Pi Network", kg:"🔐 Kota na Pi Network" },
+
+  pay_btn:     { en:"💳 Pay 1π & Unlock Full Training", sn:"💳 Bhadhara 1π Uende Kudzidza", nd:"💳 Khokha i-1π Ungene Ekuqeqeshweni", zu:"💳 Khokha i-1π Ungene Ekuqeqeshweni", xh:"💳 Hlawula i-1π Ungene Ekuqeqeshweni", af:"💳 Betaal 1π en Begin Opleiding", st:"💳 Lefa 1π o Kene Tlhahisong", tn:"💳 Duela 1π o Tsene Tlhahisong", ny:"💳 Lipira 1π Yowela Phunziro", pt:"💳 Pagar 1π e Entrar no Treinamento", sw:"💳 Lipa 1π na Ingia Mafunzoni", am:"💳 1π ይክፈሉ እና ወደ ስልጠና ይግቡ", rw:"💳 Tanga 1π Injira Amahugurwa", lg:"💳 Saba 1π Oyingire Okusomesa", so:"💳 Bixii 1π Galee Tababarka", ha:"💳 Biya 1π Ka Shiga Horo", yo:"💳 Sanwó 1π Wọ Ìdánilẹ́kọ̀ọ́", ig:"💳 Kwụọ 1π Bata Nkuzi", tw:"💳 Tua 1π Na Kɔ Nsɛm Nyinaa Mu", wo:"💳 Fay 1π Dem ci Jàng bi", fr:"💳 Payer 1π et Accéder à la Formation", ar:"💳 ادفع 1π وادخل التدريب", ber:"💳 Efk 1π Kcem s Ulmad", ln:"💳 Tiya 1π Kota na Kotelemisama", kg:"💳 Sala 1π Kota na Kuyindula" },
+
+  enter_btn:   { en:"✅ Enter Training Hub", sn:"✅ Pinda muNzvimbo yeKudzidza", nd:"✅ Ngena eNdaweni Yokuqeqeshwa", zu:"✅ Ngena eNdaweni Yokuqeqeshwa", xh:"✅ Ngena kwiZiko Lokuqeqeshwa", af:"✅ Betree Opleidingsentrum", st:"✅ Kena ho Setsi sa Tlhahiso", tn:"✅ Tsena mo Lefelong la Tlhahiso", ny:"✅ Lowani ku Malo a Maphunziro", pt:"✅ Entrar no Centro de Treinamento", sw:"✅ Ingia Kituo cha Mafunzo", am:"✅ ወደ የስልጠና ማዕከል ይግቡ", rw:"✅ Injira Icyicaro cy'Amahugurwa", lg:"✅ Yingira mu Kitalo ky'Okusomesa", so:"✅ Galee Xarunta Tababarka", ha:"✅ Shiga Cibiyar Horo", yo:"✅ Wọ Ile-iṣẹ Ìdánilẹ́kọ̀ọ́", ig:"✅ Bata na Ebe Nkuzi", tw:"✅ Kɔ Nsɛm Nyinaa Mu", wo:"✅ Dugg ci Dëkk bu Jàng bi", fr:"✅ Accéder au Centre de Formation", ar:"✅ ادخل مركز التدريب", ber:"✅ Kcem ɣer Agraw n Ulmad", ln:"✅ Kota na Esika ya Kotelemisama", kg:"✅ Kota na Nzo ya Kuyindula" },
+
+  gnote:       { en:"⚠️ Must be opened inside the Pi Browser app", sn:"⚠️ Inofanirwa kuvhurwa mukati mePi Browser", nd:"⚠️ Kufanele kuvulwe ngaphakathi kwe-Pi Browser", zu:"⚠️ Kufanele kuvulwe ngaphakathi kwe-Pi Browser", xh:"⚠️ Kufanele kuvulwe ngaphakathi kwe-Pi Browser", af:"⚠️ Moet binne die Pi-blaaierprogram geopen word", st:"⚠️ E tlameha ho buleha ka hare ho Pi Browser", tn:"⚠️ E tshwanetse go bulegiwa ka fa gare ga Pi Browser", ny:"⚠️ Iyenera kuvulika mkati mwa Pi Browser", pt:"⚠️ Deve ser aberto dentro do aplicativo Pi Browser", sw:"⚠️ Lazima ifunguliwe ndani ya programu ya Pi Browser", am:"⚠️ በ Pi Browser መተግበሪያ ውስጥ መከፈት አለበት", rw:"⚠️ Bigomba gufunguliwa mu gikoresho cya Pi Browser", lg:"⚠️ Kitalo kino kikwagalwa okugguliwa mu Pi Browser", so:"⚠️ Waa in laga furtaa barnaamijka Pi Browser", ha:"⚠️ Dole a buɗe shi a cikin manhajar Pi Browser", yo:"⚠️ Gbọdọ ṣi inu ètò Pi Browser", ig:"⚠️ Ọ dị mkpa imeghe ya n'ime ngwa Pi Browser", tw:"⚠️ Ɛsɛ sɛ wobue mu Pi Browser mu", wo:"⚠️ Dafa soxor ak Pi Browser bi", fr:"⚠️ Doit être ouvert dans l'application Pi Browser", ar:"⚠️ يجب فتحه داخل تطبيق Pi Browser", ber:"⚠️ Ilaq ad yeftu deg usnas Pi Browser", ln:"⚠️ Esengeli kofungolama na kati ya Pi Browser", kg:"⚠️ Esengami kufungulwa mu nkatikati ya Pi Browser" },
+
+  // ── NAV ──
+  nav_subtitle: { en:"🌍 Africa Pioneer Hub", sn:"🌍 Nzvimbo yeMajekiseni eAfrica", nd:"🌍 I-Africa Pioneer Hub", zu:"🌍 I-Afrika Pioneer Hub", xh:"🌍 I-Afrika Pioneer Hub", af:"🌍 Afrika Baanbreker-sentrum", st:"🌍 Setsi sa Baetapele ba Afrika", tn:"🌍 Lefelo la Baetapele ba Afrika", ny:"🌍 Malo a Ophunzira a Africa", pt:"🌍 Centro Pioneiro da África", sw:"🌍 Kituo cha Waanzilishi wa Afrika", am:"🌍 የአፍሪካ አቅድ ማዕከል", rw:"🌍 Ikigo cy'Abatangizi b'Afurika", lg:"🌍 Kitalo ky'Abatambula ab'Afrika", so:"🌍 Xarunta Sahamiyeyaasha Afrika", ha:"🌍 Cibiyar Majagaba ta Afirka", yo:"🌍 Ile-iṣẹ Aṣáájú Ọnà ti Afirika", ig:"🌍 Ebe Ndị Ọsọ Ọsọ nke Africa", tw:"🌍 Afrika Nnipakuo Fie", wo:"🌍 Dëkk bu Pinier yi Afrik", fr:"🌍 Centre des Pionniers d'Afrique", ar:"🌍 مركز رواد أفريقيا", ber:"🌍 Agraw n Yimedyazen n Afriqa", ln:"🌍 Esika ya Bazali ya Afrique", kg:"🌍 Nzo ya Batambisi ya Afrika" },
+
+  // ── HERO ──
+  hero_badge:  { en:"🌍 Africa Pi Network Education Hub", sn:"🌍 Africa Pi Network Chikoro cheHudzidzo", nd:"🌍 I-Africa Pi Network Isikole Semfundo", zu:"🌍 I-Afrika Pi Network Iziko Lemfundo", xh:"🌍 I-Afrika Pi Network Iziko Lemfundo", af:"🌍 Afrika Pi Netwerk Opvoedingsentrum", st:"🌍 Africa Pi Network Setsi sa Thuto", tn:"🌍 Africa Pi Network Lefelo la Thuto", ny:"🌍 Africa Pi Network Malo a Maphunziro", pt:"🌍 Centro de Educação Pi Network África", sw:"🌍 Kituo cha Elimu cha Africa Pi Network", am:"🌍 የአፍሪካ ፒ ኔትወርክ ትምህርት ማዕከል", rw:"🌍 Ikigo cy'Uburezi cya Africa Pi Network", lg:"🌍 Kitalo ky'Okusoma kya Africa Pi Network", so:"🌍 Xarunta Waxbarashada ee Africa Pi Network", ha:"🌍 Cibiyar Ilimi ta Africa Pi Network", yo:"🌍 Ile-iwe Eko Nipa Africa Pi Network", ig:"🌍 Ebe Nkuzi nke Africa Pi Network", tw:"🌍 Africa Pi Network Ahosuo Fie", wo:"🌍 Dëkk bu Jàng Pi Network Afrik", fr:"🌍 Centre d'Éducation Pi Network Afrique", ar:"🌍 مركز تعليم Pi Network في أفريقيا", ber:"🌍 Agraw n Ulmad Pi Network Afriqa", ln:"🌍 Esika ya Koyekola ya Africa Pi Network", kg:"🌍 Nzo ya Kuyindula ya Africa Pi Network" },
+
+  hero_h1:     { en:"Onboarding All of Africa<br/>to Pi Network", sn:"Kuisa Africa yose<br/>kuPi Network", nd:"Ukufaka i-Afrika yonke<br/>ku-Pi Network", zu:"Ukwethula i-Afrika yonke<br/>ku-Pi Network", xh:"Ukwazisa i-Afrika yonke<br/>ku-Pi Network", af:"Om die hele Afrika aan boord te bring<br/>van Pi Network", st:"Ho kenyelletsa Afrika yohle<br/>ho Pi Network", tn:"Go tsenya Afrika yotlhe<br/>mo Pi Network", ny:"Kulowetsa Africa yonse<br/>ku Pi Network", pt:"Integrando toda a África<br/>ao Pi Network", sw:"Kuingiza Afrika Yote<br/>kwenye Pi Network", am:"መላው አፍሪካን<br/>ወደ Pi Network ማስተዋወቅ", rw:"Kwinjiza Afurika Yose<br/>muri Pi Network", lg:"Okuyingiza Afrika Yonna<br/>mu Pi Network", so:"Dhammaan Afrika<br/>ugu soo dhigida Pi Network", ha:"Shigar da dukan Afirka<br/>zuwa Pi Network", yo:"Fífi Gbogbo Afirika Sí<br/>Pi Network", ig:"Ibubata Africa Niile<br/>na Pi Network", tw:"De Afrika nyinaa<br/>ba Pi Network mu", wo:"Yóbbu Afrik yépp<br/>ci Pi Network", fr:"Intégrer toute l'Afrique<br/>à Pi Network", ar:"إدخال كل أفريقيا<br/>إلى شبكة Pi", ber:"Aqqen Afriqa yemgaraden<br/>ɣer Pi Network", ln:"Kotisa Afrique Mobimba<br/>na Pi Network", kg:"Kunanisa Afrika Yonso<br/>na Pi Network" },
+
+  hero_p:      { en:"The official training hub of the <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — empowering pioneers and businesses across all 54 African nations.", sn:"Nzvimbo yepamutemo yedzidziso ye<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — kusimbisa mapiyona nemabhizinisi munyika dzese 54.", nd:"Indawo esemthethweni yokufundisa ye<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — unika amandla kumazwe onke angama-54.", zu:"Iziko lemfundo elisemthethweni le<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — unika amandla kumazwe wonke angama-54.", xh:"Iziko lemfundo elisemthethweni le<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — kumazwe onke angama-54.", af:"Die amptelike opleidingsentrum van die <strong style='color:#E8520A;'>Afrika Pi GCV-bedryfsalliansie</strong> — bemagtig alle 54 Afrika-nasies.", st:"Setsi se semmuso sa tlhahiso sa <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — e matlafatsa baetapele le dikgwebo.", tn:"Lefelo le le tlwaelegileng la tlhahiso la <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — e thusa batlhotlhomisi.", ny:"Malo apamdera a maphunziro a <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — kulimbikitsa ophunzira ndi mabizinesi.", pt:"O centro oficial de treinamento da <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — capacitando todas as 54 nações africanas.", sw:"Kituo rasmi cha mafunzo cha <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — kuwawezesha nchi zote 54 za Afrika.", am:"የ<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> ይፋዊ ትምህርት ማዕከል — ሁሉንም 54 አፍሪካ ሀገሮች ማብቃት።", rw:"Ikigo cy'amahugurwa cy'irangwa cya <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — guha ingufu bihugu byose 54.", lg:"Ekitalo ky'okusomesa eky'obuyinza ky'<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — okuwagira bitenga byonna 54.", so:"Xarunta rasmiga ee tababarka ee <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — awooda dhammaan 54 qaranimada.", ha:"Cibiyar horo ta hukuma ta <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — ƙarfafa duk ƙasashe 54.", yo:"Ile-iṣẹ ìdánilẹ́kọ̀ọ́ àṣà ti <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — fifun agbara gbogbo orilẹ-ède 54.", ig:"Ebe nkuzi nke ọchịchị nke <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — inyeike mba nile 54.", tw:"Fie a wɔkaa ho wɔ <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> mu — de ahoɔden ma aman 54 nyinaa.", wo:"Dëkk bu jàng bu jëkëbël bi bu <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — yëgël réew yépp 54.", fr:"Le centre de formation officiel de la <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — permettre aux 54 nations africaines.", ar:"المركز التدريبي الرسمي لـ<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — تمكين جميع الدول الأفريقية الـ54.", ber:"Agraw uffir n ulmad n <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — asegzan n tmura 54 n Afriqa.", ln:"Esika ya kotelemisama ya solo ya <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — bisi nyonso 54 ya Afrique.", kg:"Nzo ya kuyindula ya ntete ya <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> — mazinga yonso 54 ya Afrika." },
+
+  // ── HERO BUTTONS ──
+  btn_start:    { en:"🚀 Start Learning", sn:"🚀 Tanga Kudzidza", nd:"🚀 Qala Ukufunda", zu:"🚀 Qala Ukufunda", xh:"🚀 Qala Ukufunda", af:"🚀 Begin Leer", st:"🚀 Qala Ho Ithuta", tn:"🚀 Simolola Go Ithuta", ny:"🚀 Yambani Kuphunzira", pt:"🚀 Começar a Aprender", sw:"🚀 Anza Kujifunza", am:"🚀 መማር ይጀምሩ", rw:"🚀 Tangira Kwiga", lg:"🚀 Tandika Okusoma", so:"🚀 Bilow Barasho", ha:"🚀 Fara Koyo", yo:"🚀 Bẹ̀rẹ̀ Kíkọ́", ig:"🚀 Bido Ịmụta", tw:"🚀 Hyɛ Ahoma So", wo:"🚀 Tàkku ci Jàng bi", fr:"🚀 Commencer à Apprendre", ar:"🚀 ابدأ التعلم", ber:"🚀 Bdu Ulmad", ln:"🚀 Banda Koyekola", kg:"🚀 Tanda Kuyindula" },
+
+  btn_alliance: { en:"🤝 About the Alliance", sn:"🤝 Nezve Alliance", nd:"🤝 Mayelana ne-Alliance", zu:"🤝 Mayelana ne-Alliance", xh:"🤝 Malunga ne-Alliance", af:"🤝 Oor die Alliansie", st:"🤝 Mabapi le Alliance", tn:"🤝 Ka ga Alliance", ny:"🤝 Zokhudza Alliance", pt:"🤝 Sobre a Aliança", sw:"🤝 Kuhusu Muungano", am:"🤝 ስለ ህብረቱ", rw:"🤝 Ibyerekeye Alliance", lg:"🤝 Ebikuusa ku Alliance", so:"🤝 Ku saabsan Xulafada", ha:"🤝 Game da Kawance", yo:"🤝 Nípa Alliance", ig:"🤝 Maka Alliance", tw:"🤝 Alliance Ho", wo:"🤝 Alliance bi", fr:"🤝 À propos de l'Alliance", ar:"🤝 حول التحالف", ber:"🤝 ɣef Alliance", ln:"🤝 Na Alliance", kg:"🤝 Ntama ya Alliance" },
+
+  // ── SECTION TITLES ──
+  sec_aboutpi_title: { en:"What is Pi Network?", sn:"Chii iPi Network?", nd:"Yini i-Pi Network?", zu:"Yini i-Pi Network?", xh:"Yintoni i-Pi Network?", af:"Wat is Pi Netwerk?", st:"Pi Network ke eng?", tn:"Pi Network ke eng?", ny:"Pi Network ndi chiyani?", pt:"O que é Pi Network?", sw:"Pi Network ni nini?", am:"Pi Network ምንድን ነው?", rw:"Pi Network ni iki?", lg:"Pi Network kiki?", so:"Maxay tahay Pi Network?", ha:"Pi Network mene ne?", yo:"Kí ni Pi Network?", ig:"Gịnị bụ Pi Network?", tw:"Pi Network dɛn ne?", wo:"Ana Pi Network?", fr:"Qu'est-ce que Pi Network?", ar:"ما هي شبكة Pi؟", ber:"D acu t Pi Network?", ln:"Pi Network ezali nini?", kg:"Pi Network ezali nini?" },
+
+  sec_alliance_title: { en:"Africa Pi GCV Industry Alliance", sn:"Africa Pi GCV Industry Alliance", nd:"I-Africa Pi GCV Industry Alliance", zu:"I-Afrika Pi GCV Industry Alliance", xh:"I-Afrika Pi GCV Industry Alliance", af:"Afrika Pi GCV-bedryfsalliansie", st:"Africa Pi GCV Industry Alliance", tn:"Africa Pi GCV Industry Alliance", ny:"Africa Pi GCV Industry Alliance", pt:"Aliança da Indústria Pi GCV da África", sw:"Muungano wa Tasnia ya Pi GCV Afrika", am:"የ Africa Pi GCV Industry Alliance", rw:"Ishyirahamwe ry'Inganda rya Africa Pi GCV", lg:"Ekibiina ky'Inganda ky'Africa Pi GCV", so:"Xulafada Warshadaha Pi GCV ee Afrika", ha:"Kawancen Masana'antu Pi GCV na Afirka", yo:"Ẹgbẹ́ Iṣẹ́ Pi GCV Afirika", ig:"Otu Ọrụ Pi GCV nke Africa", tw:"Africa Pi GCV Industry Alliance", wo:"Alliance bi yu Industri Pi GCV Afrik", fr:"Alliance Industrielle Pi GCV d'Afrique", ar:"تحالف صناعة Pi GCV في أفريقيا", ber:"Agraw n Tamsaḍt Pi GCV n Afriqa", ln:"Alliance ya Ntalo ya Pi GCV ya Afrique", kg:"Alliance ya Biznisi ya Pi GCV ya Afrika" },
+
+  sec_gcv_title: { en:"The GCV Adoption Roadmap", sn:"Nzira yeKutora GCV", nd:"Uhlelo Lokwemukelwa kwe-GCV", zu:"Uhlelo Lokwamukela i-GCV", xh:"Uhlelo Lokwamkela i-GCV", af:"Die GCV-aanvaardingspadkaart", st:"Mapa wa ho Amohela GCV", tn:"Mapa wa go Amogela GCV", ny:"Njira ya Kulandira GCV", pt:"Roteiro de Adoção do GCV", sw:"Ramani ya Kupitisha GCV", am:"የ GCV መቀበያ ካርታ", rw:"Urugendo rwo Kwakira GCV", lg:"Olunyiriri lw'Okwakira GCV", so:"Khariidadda Qaadashada GCV", ha:"Taswira ta Karɓar GCV", yo:"Àpẹẹrẹ Ìmúdásílẹ̀ GCV", ig:"Map nke Anabata GCV", tw:"GCV Akwankyerɛ", wo:"Kaart bu GCV bi", fr:"Feuille de Route d'Adoption du GCV", ar:"خارطة طريق اعتماد GCV", ber:"Takarḍa n Uqbel n GCV", ln:"Ndelo ya Kozwa GCV", kg:"Nzila ya Kozwa GCV" },
+
+  sec_training_title: { en:"Pi Network Training Hub", sn:"Nzvimbo yeKudzidza Pi Network", nd:"Indawo Yokufundisa ye-Pi Network", zu:"Iziko Lokuqeqeshwa le-Pi Network", xh:"Iziko Lokuqeqeshwa le-Pi Network", af:"Pi Netwerk Opleidingsentrum", st:"Setsi sa Tlhahiso ya Pi Network", tn:"Lefelo la Tlhahiso ya Pi Network", ny:"Malo a Maphunziro a Pi Network", pt:"Centro de Treinamento Pi Network", sw:"Kituo cha Mafunzo ya Pi Network", am:"የ Pi Network ሥልጠና ማዕከል", rw:"Icyicaro cy'Amahugurwa ya Pi Network", lg:"Kitalo ky'Okusomesa ky'ePi Network", so:"Xarunta Tababarka ee Pi Network", ha:"Cibiyar Horo ta Pi Network", yo:"Ile-iṣẹ Ìdánilẹ́kọ̀ọ́ Pi Network", ig:"Ebe Nkuzi nke Pi Network", tw:"Pi Network Nhyehyɛe Fie", wo:"Dëkk bu Jàng Pi Network", fr:"Centre de Formation Pi Network", ar:"مركز تدريب شبكة Pi", ber:"Agraw n Ulmad n Pi Network", ln:"Esika ya Kotelemisama ya Pi Network", kg:"Nzo ya Kuyindula ya Pi Network" },
+
+  sec_mapofpi_title: { en:"Map of Pi — Live Tutorial", sn:"Mepu yePi — Dzidziso Yepamoyo", nd:"Imephu ye-Pi — Isifundo Esiphilayo", zu:"Imephu ye-Pi — Isifundo Esiphilayo", xh:"Imephu ye-Pi — Isifundo Esiphilayo", af:"Kaart van Pi — Regstreekse Tutoriaal", st:"Mmapa wa Pi — Thuto ya Phelang", tn:"Mmapa wa Pi — Thuto ya Molapo", ny:"Mapu ya Pi — Maphunziro Amoyo", pt:"Mapa do Pi — Tutorial ao Vivo", sw:"Ramani ya Pi — Mafunzo ya Moja kwa Moja", am:"Map of Pi — ቀጥታ ትምህርት", rw:"Ikarita ya Pi — Kwigisha kw'Igihe", lg:"Mapu ya Pi — Okusomesa kw'Obuzimu", so:"Khariidadda Pi — Casharrada Tooska", ha:"Taswira na Pi — Darasi na Rai", yo:"Maapu Pi — Ìdánilẹ́kọ̀ọ́ Gbangba", ig:"Maapụ Pi — Nkuzi Ndụ", tw:"Pi Map — Nnwuma Tete", wo:"Kaart Pi — Jàng bu Yëgël", fr:"Carte de Pi — Tutoriel en Direct", ar:"خريطة Pi — درس مباشر", ber:"Takarḍa n Pi — Ulmad Aẓayar", ln:"Carte ya Pi — Kotelemisama ya Bomoi", kg:"Kaarte ya Pi — Kuyindula kwa Moyo" },
+
+  sec_merchants_title: { en:"Africa Merchant Directory", sn:"Rejista yeMaTengesi eAfrica", nd:"Uhla Lwabathengisi be-Afrika", zu:"Uhla Lwabathengisi be-Afrika", xh:"Uluhlu Lwabathengisi be-Afrika", af:"Afrika Handelaarsgids", st:"Lethathamo la Barekisi ba Afrika", tn:"Lethathamo la Barekisi ba Afrika", ny:"Mndandanda wa Amalonda a Africa", pt:"Diretório de Comerciantes da África", sw:"Orodha ya Wafanyabiashara wa Afrika", am:"የ Africa ነጋዴዎች ማውጫ", rw:"Inyandiko y'Abacuruzi b'Afurika", lg:"Oluteeteebi lw'Abatunda ab'Afrika", so:"Xogta Ganacsatada Afrika", ha:"Jerin Masu Kasuwanci na Afirka", yo:"Àkójọ Àwọn Ọjà Afirika", ig:"Ndepụta Ndị Ahịa nke Africa", tw:"Afrika Adwumakuw Nhyehyɛe", wo:"Lëst yu Liggéeykër yi Afrik", fr:"Répertoire des Marchands d'Afrique", ar:"دليل تجار أفريقيا", ber:"Tasɣunt n Inegmaren n Afriqa", ln:"Liyandiko ya Balandeli ya Afrique", kg:"Lisi ya Baneki ya Afrika" },
+
+  sec_advertise_title: { en:"Reach All of Africa — 1π Per Advert", sn:"Svika Africa yose — 1π paMusengwa", nd:"Fika e-Afrika yonke — 1π Ngesilaziso", zu:"Fika e-Afrika yonke — 1π Ngesifisimusi", xh:"Fikelela i-Afrika yonke — 1π nge-Advert", af:"Bereik die hele Afrika — 1π per Advertensie", st:"Fihlela Afrika yohle — 1π ka Papatso", tn:"Goroga Afrika yotlhe — 1π ka Papatso", ny:"Fika Africa yonse — 1π pa Chovilikitsidwa", pt:"Alcançar toda a África — 1π por Anúncio", sw:"Fikia Afrika Yote — 1π kwa Tangazo", am:"መላው አፍሪካ ይድረሱ — 1π በ አዋጅ", rw:"Gera Afurika Yose — 1π kuri buri Itangazo", lg:"Tuuka Afrika Yonna — 1π ku Tangazo", so:"Gaar Afrika Oo Dhan — 1π Xayeysiinta", ha:"Isa Dukan Afirka — 1π Kowane Talla", yo:"De Gbogbo Afirika — 1π Fún Gbogbo Ìpolongo", ig:"Ruo Africa Niile — 1π n'Nkwupu", tw:"Du Afrika nyinaa — 1π kwa Advert Biara", wo:"Jiitu Afrik yépp — 1π ci Reklam kenn", fr:"Atteindre toute l'Afrique — 1π par Annonce", ar:"الوصول إلى كل أفريقيا — 1π لكل إعلان", ber:"Aɣ Afriqa yemgaraden — 1π s usikel", ln:"Koma Afrique Mobimba — 1π mpo na Tango", kg:"Komana Afrika Yonso — 1π ya Nsango" },
+
+  sec_faq_title: { en:"Frequently Asked Questions", sn:"Mibvunzo Inobvunzwa Kakawanda", nd:"Imibuzo Ebuzwa Njalo", zu:"Imibuzo Ebuzwa Kaningi", xh:"Imibuzo Ebuzwa Rhoqo", af:"Gereeld Gestelde Vrae", st:"Dipotso tse Botswang Gantsi", tn:"Dipotso tse di Botshiwang Gantsi", ny:"Mafunso Omwe Amafunsidwa Kawirikawiri", pt:"Perguntas Frequentes", sw:"Maswali Yanayoulizwa Mara Kwa Mara", am:"ተደጋጋሚ የሚጠየቁ ጥያቄዎች", rw:"Ibibazo Bikunze Kubazwa", lg:"Ebibuuzo Ebibuuzibwa Ennaku Zonna", so:"Su'aalaha Badanaa La Is Weydiiyo", ha:"Tambayoyin da Ake Yawan Yin Su", yo:"Àwọn Ìbéèrè tí A Máa Ń Béèrè", ig:"Ajụjụ Ndị A Na-ajụ Mgbe Niile", tw:"Nsemmisa a Wɔde Bisa Bere Biara", wo:"Laaj yi ñuy laajante lool", fr:"Questions Fréquemment Posées", ar:"الأسئلة المتكررة", ber:"Isteqsiyen Imunaqqben", ln:"Mituna etangisamaki", kg:"Mituna ya bulanda" },
+
+  sec_disclaimer_title: { en:"Independent Contribution", sn:"Mupiro Wakanangana", nd:"Umnikelo Ozimele", zu:"Umnikelo Ozimele", xh:"Umnikelo Ozimeleyo", af:"Onafhanklike Bydrae", st:"Mpho e Ikemetseng", tn:"Mpho e e Ikemetseng", ny:"Mphatso Yodziyimira", pt:"Contribuição Independente", sw:"Mchango Huru", am:"ነጻ አስተዋፅኦ", rw:"Umusanzu w'Ubwigenge", lg:"Ekitabo ky'Obwigenge", so:"Tabarucaad Madaxbanaan", ha:"Gudummawar Kai Tsaye", yo:"Ìlọsiwajú Ominira", ig:"Onyinye Onweya", tw:"Kra a Ɛba Nkyerɛ", wo:"Liggéey bu Dëkk", fr:"Contribution Indépendante", ar:"مساهمة مستقلة", ber:"Tanakt Tusrat", ln:"Lisungi ly'Ubwigenge", kg:"Litaba lya Bwigenge" },
+
+  // ── TABS ──
+  tab_reg:  { en:"📱 Registration", sn:"📱 Kunyoresa", nd:"📱 Ukubhalisa", zu:"📱 Ukubhalisa", xh:"📱 Ukubhalisa", af:"📱 Registrasie", st:"📱 Ngodiso", tn:"📱 Ngodiso", ny:"📱 Kulembetsa", pt:"📱 Registro", sw:"📱 Usajili", am:"📱 ምዝገባ", rw:"📱 Kwiyandikisha", lg:"📱 Okwandikisa", so:"📱 Diiwaangelinta", ha:"📱 Rajista", yo:"📱 Iforúkọsílẹ̀", ig:"📱 Ndebanye Aha", tw:"📱 Ndandaso", wo:"📱 Liggéeyu", fr:"📱 Inscription", ar:"📱 التسجيل", ber:"📱 Asexdem", ln:"📱 Kozwa nkombo", kg:"📱 Kwandika Nkombo" },
+  tab_kyc:  { en:"🪪 KYC", sn:"🪪 KYC", nd:"🪪 i-KYC", zu:"🪪 i-KYC", xh:"🪪 i-KYC", af:"🪪 KYC", st:"🪪 KYC", tn:"🪪 KYC", ny:"🪪 KYC", pt:"🪪 KYC", sw:"🪪 KYC", am:"🪪 KYC", rw:"🪪 KYC", lg:"🪪 KYC", so:"🪪 KYC", ha:"🪪 KYC", yo:"🪪 KYC", ig:"🪪 KYC", tw:"🪪 KYC", wo:"🪪 KYC", fr:"🪪 KYC", ar:"🪪 التحقق من الهوية", ber:"🪪 KYC", ln:"🪪 KYC", kg:"🪪 KYC" },
+  tab_kyb:  { en:"🏢 KYB", sn:"🏢 KYB", nd:"🏢 i-KYB", zu:"🏢 i-KYB", xh:"🏢 i-KYB", af:"🏢 KYB", st:"🏢 KYB", tn:"🏢 KYB", ny:"🏢 KYB", pt:"🏢 KYB", sw:"🏢 KYB", am:"🏢 KYB", rw:"🏢 KYB", lg:"🏢 KYB", so:"🏢 KYB", ha:"🏢 KYB", yo:"🏢 KYB", ig:"🏢 KYB", tw:"🏢 KYB", wo:"🏢 KYB", fr:"🏢 KYB", ar:"🏢 التحقق من الأعمال", ber:"🏢 KYB", ln:"🏢 KYB", kg:"🏢 KYB" },
+  tab_sec:  { en:"🔐 Security", sn:"🔐 Kuchengetedzwa", nd:"🔐 Ukuphepha", zu:"🔐 Ukuphepha", xh:"🔐 Ukhuseleko", af:"🔐 Sekuriteit", st:"🔐 Tshireletso", tn:"🔐 Tshireletso", ny:"🔐 Chitetezo", pt:"🔐 Segurança", sw:"🔐 Usalama", am:"🔐 ደህንነት", rw:"🔐 Umutekano", lg:"🔐 Obukuumi", so:"🔐 Ammaanida", ha:"🔐 Tsaro", yo:"🔐 Àbójútó", ig:"🔐 Nchekwa", tw:"🔐 Banbɔ", wo:"🔐 Dëkkante", fr:"🔐 Sécurité", ar:"🔐 الأمان", ber:"🔐 Taɣellist", ln:"🔐 Bolengani", kg:"🔐 Bosangani" },
+
+  // ── SECTION LABELS ──
+  lbl_learn: { en:"Step-by-Step Training", sn:"Dzidziso yeNhanho neNhanho", nd:"Ukuqeqeshwa Isinyathelo ngesinyathelo", zu:"Ukuqeqeshwa Isinyathelo ngesinyathelo", xh:"Ukuqeqeshwa Umgca nomgca", af:"Stap-vir-stap Opleiding", st:"Tlhahiso Mohato ka Mohato", tn:"Tlhahiso Ga ke o go ga ke o", ny:"Maphunziro Chulidwe ndi Chulidwe", pt:"Treinamento Passo a Passo", sw:"Mafunzo Hatua kwa Hatua", am:"ደረጃ በደረጃ ሥልጠና", rw:"Amahugurwa Intambwe ku ntambwe", lg:"Okusomesa Ntambula ku ntambula", so:"Tababar Tallaabo tallaabo", ha:"Horo Mataki zuwa mataki", yo:"Ìdánilẹ́kọ̀ọ́ Ìgbésẹ̀ sí ìgbésẹ̀", ig:"Nkuzi Nzọụkwụ n'ise nzọụkwụ", tw:"Nhyehyɛe Nkyen nkyen", wo:"Jàng Tuuti tuuti", fr:"Formation Étape par Étape", ar:"التدريب خطوة بخطوة", ber:"Ulmad Taqit ɣef taqit", ln:"Kotelemisama Etape na etape", kg:"Kuyindula Ntandu na ntandu" },
+
+  lbl_faq:   { en:"Frequently Asked Questions", sn:"Mibvunzo Inobvunzwa Kakawanda", nd:"Imibuzo Ebuzwa Njalo", zu:"Imibuzo Ebuzwa Kaningi", xh:"Imibuzo Ebuzwa Rhoqo", af:"Gereeld Gestelde Vrae", st:"Dipotso tse Botswang Gantsi", tn:"Dipotso tse di Botshiwang Gantsi", ny:"Mafunso Omwe Amafunsidwa Kawirikawiri", pt:"Perguntas Frequentes", sw:"Maswali Yanayoulizwa Mara Kwa Mara", am:"ተደጋጋሚ የሚጠየቁ ጥያቄዎች", rw:"Ibibazo Bikunze Kubazwa", lg:"Ebibuuzo Ebibuuzibwa Ennaku Zonna", so:"Su'aalaha Badanaa La Is Weydiiyo", ha:"Tambayoyin da Ake Yawan Yin Su", yo:"Àwọn Ìbéèrè tí A Máa Ń Béèrè", ig:"Ajụjụ Ndị A Na-ajụ Mgbe Niile", tw:"Nsemmisa a Wɔde Bisa Bere Biara", wo:"Laaj yi ñuy laajante lool", fr:"Questions Fréquemment Posées", ar:"الأسئلة المتكررة", ber:"Isteqsiyen Imunaqqben", ln:"Mituna etangisamaki", kg:"Mituna ya bulanda" },
+
+  // ── FOOTER ──
+  footer_ref: { en:"Referral: chigalex1", sn:"Referral: chigalex1", nd:"i-Referral: chigalex1", zu:"i-Referral: chigalex1", xh:"i-Referral: chigalex1", af:"Verwysing: chigalex1", st:"Referral: chigalex1", tn:"Referral: chigalex1", ny:"Referral: chigalex1", pt:"Referência: chigalex1", sw:"Rufaa: chigalex1", am:"ማጣቀሻ: chigalex1", rw:"Referral: chigalex1", lg:"Referral: chigalex1", so:"Tixraac: chigalex1", ha:"Referral: chigalex1", yo:"Itọkasi: chigalex1", ig:"Ntụaka: chigalex1", tw:"Referral: chigalex1", wo:"Referral: chigalex1", fr:"Parrainage: chigalex1", ar:"الإحالة: chigalex1", ber:"Aɣbalu: chigalex1", ln:"Référence: chigalex1", kg:"Référence: chigalex1" },
+
+  // ── WHAT'S INSIDE SECTION ──
+  whats_inside_title: { en:"What You Unlock for 1π", sn:"Zvaunovhura ne1π", nd:"Lokhu okukhiyelayo nge-1π", zu:"Lokhu okukhiyelayo nge-1π", xh:"Yinto oyivulayo nge-1π", af:"Dit wat jy ontsluit vir 1π", st:"Se o se bulang ka 1π", tn:"Se o se bulang ka 1π", ny:"Zimene Mumatsegula pa 1π", pt:"O que você desbloqueia por 1π", sw:"Unachofungua kwa 1π", am:"በ 1π የሚከፍቱት ነገሮች", rw:"Icyo ugufungura kuri 1π", lg:"Kye okuggulikirako ne 1π", so:"Waxa aad furtaa 1π", ha:"Abin da kuke buɗewa da 1π", yo:"Ohun tí o yọ pẹ̀lú 1π", ig:"Ihe I Na-emeghe maka 1π", tw:"Dɛn a wobue wɔ 1π mu", wo:"Loolu la dafa defar ak 1π", fr:"Ce que vous débloquez pour 1π", ar:"ما تفتحه مقابل 1π", ber:"Ayen tettuɣ s 1π", ln:"Eloko ozali kofungola na 1π", kg:"Elingi ofungola na 1π" },
+
+  whats_inside_sub: { en:"A one-time payment of 1π gives you lifetime access to everything below — never pay again.", sn:"Kubhadhara kamwe 1π kukupa mukana wese nguva yose — usabhadhare zvakare.", nd:"Inkokhelo eyodwa ye-1π ikunika ukufinyelela kwaphakade — ungakhokhi futhi.", zu:"Inkokhelo eyodwa ye-1π ikunika ukufinyelela kwaphakade — ungazikhokhi futhi.", xh:"Ixabiso lokuhlawula kanye le-1π likunika ukufikelela kwaphakade.", af:"'n Eenmalige betaling van 1π gee jou lewenslange toegang tot alles — betaal nooit weer nie.", st:"Tefo e le nngwe ya 1π e o fa phihlello ya bophelo botse ho tsohle.", tn:"Tefelo e le nngwe ya 1π e go fa phitlhelelo ya bophelo jotlhe.", ny:"Kulipira kamodzi 1π kukupatseni maphunziro onse moyo wonse.", pt:"Um pagamento único de 1π dá acesso vitalício a tudo — nunca mais pague.", sw:"Malipo ya mara moja ya 1π yakupa ufikiaji wa maisha yote.", am:"አንድ ጊዜ የ 1π ክፍያ ለሁሉም ዘላለማዊ መዳረሻ ይሰጥዎታል።", rw:"Kwishyura inshuro imwe 1π biguhaye uburenganzira bw'ubuzima bwose.", fr:"Un paiement unique de 1π vous donne un accès à vie à tout — ne payez plus jamais.", ar:"دفعة واحدة من 1π تمنحك وصولاً مدى الحياة لكل شيء — لا تدفع أبدًا مرة أخرى.", sw:"Malipo ya mara moja ya 1π yakupa ufikiaji wa maisha yote." },
+
+  // ── GCV SECTION ──
+  gcv_sub: { en:"$314,159 per 1π is already encoded in the Pi blockchain. The Pi Core Team has not yet formally adopted it. YOUR adoption — starting at just 10% — is what makes it real.", sn:"$314,159 pa 1π yakodwa muPi blockchain. Pi Core Team haisati yaigamuchira. Kutambirwa kwenyu — kutanga pa 10% — ndiko kunoiita ichokwadi.", nd:"$314,159 nge-1π iselotshiwe ku-Pi blockchain. I-Pi Core Team ayikakwamukela ngokusemthethweni. Ukwamukelwa kwenu — ukuqala ku-10% — yikho okwenza kube kuyiqiniso.", zu:"$314,159 nge-1π selibhaliwe ku-Pi blockchain. I-Pi Core Team ayikakwamukeli ngokusemthethweni. Ukwamukelwa kwenu — ukuqala ku-10% — kuyikho okwenza kube iqiniso.", af:"$314,159 per 1π is reeds in die Pi-blokketting gekodeer. Die Pi Kernspan het dit nog nie formeel aanvaar nie. Jou aanvaarding — begin by net 10% — is wat dit werklikheid maak.", st:"$314,159 ho 1π e se e ngodilwe ho Pi blockchain. Pi Core Team ha e ya e amohela ka botlalo. Ho amohela ha hao — ho qalela ho 10% feela — ke sona se se etsang hore e be nnete.", pt:"$314,159 por 1π já está codificado na blockchain Pi. A equipe principal do Pi ainda não o adotou formalmente. SUA adoção — começando com apenas 10% — é o que o torna real.", sw:"$314,159 kwa 1π tayari imesimbulishwa kwenye blockchain ya Pi. Timu Kuu ya Pi bado haijaikubali rasmi. Kukubali KWAKO — kuanzia asilimia 10 tu — ndio kinachofanya iwe kweli.", fr:"$314 159 par 1π est déjà encodé dans la blockchain Pi. L'équipe principale de Pi ne l'a pas encore formellement adoptée. VOTRE adoption — à partir de 10% — est ce qui la rend réelle.", ar:"$314,159 لكل 1π مشفر بالفعل في بلوكشين Pi. لم يتبنَّ فريق Pi الأساسي ذلك رسميًا بعد. اعتمادك — بدءًا من 10% فقط — هو ما يجعله حقيقة.", ha:"$314,159 a kowane 1π an riga an sanya shi a cikin Pi blockchain. Pi Core Team ba ta karɓe shi a hukumance ba tukuna. Karɓar ku — farawa da 10% kawai — shi ne abin da ke sa shi gaskiya." },
+
+  // ── ABOUT PI FACTS ──
+  pi_fact_pioneers: { en:"Active Pioneers Worldwide", sn:"Mapiyona Ari Mudariro Pasi Rose", nd:"Abatholi Abasebenzayo Emhlabeni Wonke", zu:"Abahloli Abasebenzayo Emhlabeni Wonke", xh:"Abaphongorozi Abasebenzayo Emhlabeni Wonke", af:"Aktiewe Baanbrekers Wêreldwyd", st:"Baetapele ba Mosebetsi Lefatšeng Lohle", tn:"Baetapele ba go Dira Lefatsheng Lotlhe", ny:"Ophunzira Ogwira Ntchito Padziko Lonse", pt:"Pioneiros Ativos no Mundo Todo", sw:"Waanzilishi Wanaofanya Kazi Ulimwenguni", am:"በዓለም ዙሪያ ንቁ አቅኚዎች", rw:"Abatangizi Bakora Isi Yose", fr:"Pionniers Actifs dans le Monde Entier", ar:"الرواد النشطون في جميع أنحاء العالم" },
+
+  pi_fact_nations:  { en:"African Nations Covered", sn:"Nyika dzeAfrica Dzakavharwa", nd:"Amazwe ase-Afrika Amahlanganyiwe", zu:"Amazwe ase-Afrika Amahlanganyiwe", xh:"Amazwe ase-Afrika Ahlanganisiweyo", af:"Afrika-nasies Gedek", st:"Dinaha tsa Afrika tse Amoheloang", tn:"Dinaga tsa Afrika tse di Tserweng", ny:"Maiko a Africa Omwe Akuphatikizidwa", pt:"Nações Africanas Cobertas", sw:"Mataifa ya Afrika Yanayofunikwa", am:"የ Africa ሀገሮች ተሸፍነዋል", rw:"Ibihugu by'Afurika Bigerweho", fr:"Nations Africaines Couvertes", ar:"الدول الأفريقية المشمولة" },
+
+  pi_fact_free:     { en:"To Join & Mine Daily", sn:"Kupinda neKuchera Zuva Nezuva", nd:"Ukujoyina no Ukumba Nsuku zonke", zu:"Ukujoyina nokuGibela Nsuku Zonke", xh:"Ukujoyina nokuMba Imihla Yonke", af:"Om aan te sluit en daagliks te myn", st:"Ho Kenella le ho Lemola Letsatsi le Letsatsi", tn:"Go Tsena le go Epa Letsatsi le Letsatsi", ny:"Kulowa ndi Kuchimba Tsiku Ndi Tsiku", pt:"Para Entrar e Minerar Diariamente", sw:"Kujiunga na Kuchimba Kila Siku", am:"ለመቀላቀል እና ለዕለታዊ ማቆፈር", rw:"Kwinjira no Gucukura Buri Munsi", fr:"Pour Rejoindre et Miner Quotidiennement", ar:"للانضمام والتعدين يومياً" },
+
+  pi_fact_kyc:      { en:"Required to Unlock Wallet", sn:"Inodikanwa Kuvhura Chikwama", nd:"Idingekile Ukuvula Isikhwama", zu:"Idingekile Ukuvula Isikhwama", xh:"Ifunekile Ukuvula Ikhweliti", af:"Vereis om Beursie te Ontsluit", st:"Ho Hlokeha ho Bula Sephuthelwana", tn:"Go Hlokegelwa go Bula Seloba", ny:"Cholinga Kutsegula Chikwama", pt:"Necessário para Desbloquear Carteira", sw:"Inahitajika Kufungua Mkoba", am:"ቦርሳ ለመክፈት ያስፈልጋል", rw:"Bisabwa Gufungura Ubutorere", fr:"Requis pour Débloquer le Portefeuille", ar:"مطلوب لفتح المحفظة" },
+
+  pi_fact_kyb:      { en:"For Business Pi Acceptance", sn:"Yekutambirwa kwePi kweMaBhizinisi", nd:"Yokwamukelwa kwe-Pi Kwamabhizinisi", zu:"Yokwamukelwa kwe-Pi Yamabhizinisi", xh:"Yokwamkelwa kwe-Pi Yamashishini", af:"Vir Besigheidsaanvaarding van Pi", st:"Bakeng sa Phano ya Pi ya Kgwebo", tn:"Go Amogelwa ga Pi ya Kgwebo", ny:"Kwa Kuvomera Pi ya Bizinesi", pt:"Para Aceitação Pi de Negócios", sw:"Kwa Kukubali Pi ya Biashara", am:"ለ Pi ንግድ ተቀባይነት", rw:"Kwemera Pi mu Bikorwa", fr:"Pour l'Acceptation Pi des Entreprises", ar:"لقبول Pi من قبل الشركات" },
+
+  pi_fact_map:      { en:"of Pi — Business Directory", sn:"yePi — Rejista yeMaBhizinisi", nd:"ye-Pi — Uhla Lwamabhizimusi", zu:"ye-Pi — Uhla Lwamabhizinisi", xh:"ye-Pi — Uluhlu lwamashishini", af:"van Pi — Besigheidsgids", st:"wa Pi — Lethathamo la Dikgwebo", tn:"wa Pi — Lethathamo la Dikgwebo", ny:"ya Pi — Mndandanda wa Mabizinesi", pt:"do Pi — Diretório de Negócios", sw:"ya Pi — Orodha ya Biashara", am:"የ Pi — የ ንግድ ማውጫ", rw:"ya Pi — Inyandiko y'Ibikorwa", fr:"de Pi — Répertoire des Entreprises", ar:"لـ Pi — دليل الأعمال" },
+};
+
+// ════════════════════════════════════════════
+// ── RUNTIME ──
+// ════════════════════════════════════════════
+let currentLang = 'en';
+
+function t(key) {
+  return (T[key] && (T[key][currentLang] || T[key]['en'])) || '';
+}
+
+function setLang(lang) {
+  currentLang = lang;
+
+  // Sync selectors and language buttons
+  document.querySelectorAll('.gsel, .lsel').forEach(sel => sel.value = lang);
+  document.querySelectorAll('.lbtn').forEach(btn => {
+    btn.classList.toggle('on', btn.getAttribute('data-lang') === lang);
+  });
+
+  // ── Gate ──
+  safeHTML('gate-badge-txt',  t('gate_badge'));
+  safeHTML('gate-title',      t('gate_title'));
+  safeHTML('gate-sub',        t('gate_sub'));
+  safeHTML('fee-desc-txt',    t('fee_desc'));
+  safeAttr('loginBtn',  'innerHTML', t('login_btn'));
+  safeAttr('payBtn',    'innerHTML', t('pay_btn'));
+  safeAttr('enterBtn',  'innerHTML', t('enter_btn'));
+  safeHTML('gnote-txt',       t('gnote'));
+
+  // ── Nav ──
+  safeHTML('nav-subtitle', t('nav_subtitle'));
+
+  // ── Hero ──
+  safeHTML('hero-badge', t('hero_badge'));
+  safeHTML('hero-h1',    t('hero_h1'));
+  safeHTML('hero-p',     t('hero_p'));
+  safeAttr('btn-start',    'innerHTML', t('btn_start'));
+  safeAttr('btn-alliance', 'innerHTML', t('btn_alliance'));
+
+  // ── Section Titles ──
+  safeHTML('sec-aboutpi-title',    t('sec_aboutpi_title'));
+  safeHTML('sec-alliance-title',   t('sec_alliance_title'));
+  safeHTML('sec-gcv-title',        t('sec_gcv_title'));
+  safeHTML('sec-gcv-sub',          t('sec_gcv_sub'));
+  safeHTML('sec-training-title',   t('sec_training_title'));
+  safeHTML('sec-mapofpi-title',    t('sec_mapofpi_title'));
+  safeHTML('sec-merchants-title',  t('sec_merchants_title'));
+  safeHTML('sec-advertise-title',  t('sec_advertise_title'));
+  safeHTML('sec-faq-title',        t('sec_faq_title'));
+  safeHTML('sec-disclaimer-title', t('sec_disclaimer_title'));
+  safeHTML('whats-inside-title',   t('whats_inside_title'));
+  safeHTML('whats-inside-sub',     t('whats_inside_sub'));
+
+  // ── About Pi Facts ──
+  safeHTML('pi-fact-pioneers', t('pi_fact_pioneers'));
+  safeHTML('pi-fact-nations',  t('pi_fact_nations'));
+  safeHTML('pi-fact-free',     t('pi_fact_free'));
+  safeHTML('pi-fact-kyc',      t('pi_fact_kyc'));
+  safeHTML('pi-fact-kyb',      t('pi_fact_kyb'));
+  safeHTML('pi-fact-map',      t('pi_fact_map'));
+
+  // ── Training Tabs ──
+  safeAttr('tab-reg', 'innerHTML', t('tab_reg'));
+  safeAttr('tab-kyc', 'innerHTML', t('tab_kyc'));
+  safeAttr('tab-kyb', 'innerHTML', t('tab_kyb'));
+  safeAttr('tab-sec', 'innerHTML', t('tab_sec'));
+
+  // ── Section Labels ──
+  safeHTML('lbl-learn', t('lbl_learn'));
+  safeHTML('lbl-faq',   t('lbl_faq'));
+
+  // ── Registration Steps ──
+  safeHTML('reg-s1-title', t('reg_step1_title'));
+  safeHTML('reg-s1-desc',  t('reg_step1_desc'));
+  safeHTML('reg-s2-title', t('reg_step2_title'));
+  safeHTML('reg-s2-desc',  t('reg_step2_desc'));
+  safeHTML('reg-s3-title', t('reg_step3_title'));
+  safeHTML('reg-s3-desc',  t('reg_step3_desc'));
+  safeHTML('reg-s4-title', t('reg_step4_title'));
+  safeHTML('reg-s4-desc',  t('reg_step4_desc'));
+  safeHTML('reg-s5-title', t('reg_step5_title'));
+  safeHTML('reg-s5-desc',  t('reg_step5_desc'));
+
+  // ── KYC Steps ──
+  safeHTML('kyc-s1-title', t('kyc_step1_title'));
+  safeHTML('kyc-s2-title', t('kyc_step2_title'));
+  safeHTML('kyc-s3-title', t('kyc_step3_title'));
+  safeHTML('kyc-s4-title', t('kyc_step4_title'));
+  safeHTML('kyc-s5-title', t('kyc_step5_title'));
+
+  // ── Security Cards ──
+  safeHTML('sec-c1-title', t('sec_card1_title'));
+  safeHTML('sec-c1-desc',  t('sec_card1_desc'));
+  safeHTML('sec-c2-title', t('sec_card2_title'));
+  safeHTML('sec-c3-title', t('sec_card3_title'));
+
+  // ── GCV Phases ──
+  safeHTML('gcv-p1-title', t('gcv_phase1_title'));
+  safeHTML('gcv-p1-name',  t('gcv_phase1_name'));
+  safeHTML('gcv-p2-title', t('gcv_phase2_title'));
+  safeHTML('gcv-p3-title', t('gcv_phase3_title'));
+  safeHTML('gcv-p4-title', t('gcv_phase4_title'));
+  safeHTML('gcv-p5-title', t('gcv_phase5_title'));
+
+  // ── Alliance Cards ──
+  safeHTML('alliance-c1-title', t('alliance_card1_title'));
+  safeHTML('alliance-c1-desc',  t('alliance_card1_desc'));
+  safeHTML('alliance-c2-title', t('alliance_card2_title'));
+  safeHTML('alliance-c3-title', t('alliance_card3_title'));
+  safeHTML('alliance-c4-title', t('alliance_card4_title'));
+
+  // ── FAQ Questions ──
+  safeHTML('faq-q1', t('faq_q1'));
+  safeHTML('faq-q2', t('faq_q2'));
+  safeHTML('faq-q3', t('faq_q3'));
+  safeHTML('faq-q4', t('faq_q4'));
+  safeHTML('faq-q5', t('faq_q5'));
+  safeHTML('faq-q6', t('faq_q6'));
+
+  // ── Advert Cards ──
+  safeHTML('advert-c1-title', t('advert_card1_title'));
+  safeHTML('advert-c2-title', t('advert_card2_title'));
+  safeHTML('advert-c3-title', t('advert_card3_title'));
+  safeHTML('advert-c4-title', t('advert_card4_title'));
+
+  // ── Map of Pi Tabs ──
+  safeAttr('maptab-listed',   'innerHTML', t('maptab_listed'));
+  safeAttr('maptab-optimize', 'innerHTML', t('maptab_optimize'));
+  safeAttr('maptab-pay',      'innerHTML', t('maptab_pay'));
+  safeAttr('maptab-grow',     'innerHTML', t('maptab_grow'));
+
+  // ── Merchant Directory ──
+  safeAttr('merchantSearch', 'placeholder', t('merchant_search_ph'));
+  safeHTML('list-biz-btn', t('list_your_biz'));
+
+  // ── Footer ──
+  safeHTML('footer-ref', t('footer_ref'));
+
+  // ── RTL for Arabic ──
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+}
+
+function safeHTML(id, val) {
+  const el = document.getElementById(id);
+  if (el && val) el.innerHTML = val;
+}
+
+function safeAttr(id, attr, val) {
+  const el = document.getElementById(id);
+  if (el && val) el[attr] = val;
+}
