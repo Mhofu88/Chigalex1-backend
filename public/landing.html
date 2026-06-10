@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Join Africa's Pi Network revolution. Become a Country Ambassador for Chigalex1 and earn Pi rewards while onboarding businesses across Africa."/>
+<title>Chigalex1 — Africa Pi Network Revolution</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&display=swap');
+:root{
+  --pi:#7B2D8B;--pi-l:#9B59B6;--gold:#F5C518;--africa:#E8520A;
+  --bg:#0D0A1A;--s1:#181230;--s2:#211A3A;--s3:#2A2048;
+  --text:#F0EBF8;--text2:#B8A8D8;--text3:#7A6A9A;
+  --teal:#00D4AA;--warn:#FF7043;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(123,45,139,.18) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 50% at 85% 80%,rgba(232,82,10,.12) 0%,transparent 60%),
+  radial-gradient(ellipse 40% 40% at 50% 50%,rgba(0,212,170,.05) 0%,transparent 70%);}
+
+/* STARS */
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d,3s) var(--dl,0s) infinite;}
+@keyframes twinkle{0%,100%{opacity:.1;transform:scale(1);}50%{opacity:var(--op,.5);transform:scale(1.5);}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(13,10,26,.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(123,45,139,.3);
+  padding:0 20px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.nlogo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1rem;flex-shrink:0;}
+.npi{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--pi),var(--gold));
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:#fff;
+  box-shadow:0 0 18px rgba(123,45,139,.5);}
+.nsub{font-size:.55rem;color:var(--africa);font-weight:700;letter-spacing:.07em;text-transform:uppercase;}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.lang-sel{background:var(--s2);border:1px solid rgba(123,45,139,.4);color:var(--text);
+  padding:5px 8px;border-radius:8px;font-family:'Sora',sans-serif;font-size:.72rem;cursor:pointer;}
+.nav-btn{background:linear-gradient(135deg,var(--pi),var(--pi-l));color:#fff;border:none;
+  padding:8px 16px;border-radius:100px;font-family:'Sora',sans-serif;font-size:.78rem;font-weight:700;
+  cursor:pointer;box-shadow:0 4px 14px rgba(123,45,139,.45);transition:transform .2s,opacity .2s;white-space:nowrap;}
+.nav-btn:hover{transform:translateY(-2px);opacity:.9;}
+
+/* HERO */
+.hero{position:relative;z-index:1;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:90px 20px 60px;}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;
+  background:rgba(232,82,10,.12);border:1px solid rgba(232,82,10,.4);color:var(--africa);
+  border-radius:100px;padding:6px 18px;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:26px;animation:fup .8s ease both;}
+.hero-h1{font-size:clamp(2rem,7vw,4.4rem);font-weight:900;line-height:1.05;margin-bottom:18px;animation:fup .8s .1s ease both;}
+.grad-text{background:linear-gradient(135deg,#fff 0%,var(--gold) 35%,var(--africa) 65%,var(--pi-l) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{color:var(--text2);font-size:.96rem;line-height:1.8;max-width:660px;margin:0 auto 20px;animation:fup .8s .2s ease both;}
+.target-chip{display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.35);color:var(--teal);
+  border-radius:100px;padding:7px 20px;font-size:.84rem;font-weight:700;
+  margin-bottom:32px;animation:fup .8s .3s ease both;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:44px;animation:fup .8s .4s ease both;}
+.btn{display:inline-flex;align-items:center;gap:7px;border:none;padding:14px 28px;border-radius:100px;
+  font-family:'Sora',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:transform .2s,opacity .2s;}
+.btn:hover{transform:translateY(-3px);opacity:.9;}
+.btn-pi{background:linear-gradient(135deg,var(--pi),var(--pi-l));color:#fff;box-shadow:0 6px 24px rgba(123,45,139,.5);}
+.btn-out{background:transparent;border:2px solid rgba(245,197,24,.5);color:var(--gold);}
+.btn-out:hover{background:rgba(245,197,24,.08);}
+.btn-teal{background:linear-gradient(135deg,var(--teal),#006d56);color:#fff;box-shadow:0 6px 22px rgba(0,212,170,.35);}
+.btn-africa{background:linear-gradient(135deg,var(--africa),var(--gold));color:#fff;box-shadow:0 6px 22px rgba(232,82,10,.4);}
+.btn-sm{padding:10px 20px;font-size:.82rem;}
+
+.hstats{display:flex;gap:36px;justify-content:center;flex-wrap:wrap;animation:fup .8s .5s ease both;}
+.hstat{text-align:center;}
+.hstat-n{font-size:2rem;font-weight:900;color:var(--gold);}
+.hstat-l{font-size:.68rem;color:var(--text3);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:2px;}
+.hdivider{width:1px;background:rgba(255,255,255,.1);align-self:stretch;}
+
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:5px;color:var(--text3);font-size:.68rem;
+  animation:bounce 2.5s infinite;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(10px);}}
+.scroll-arr{width:22px;height:22px;border-right:2px solid var(--text3);border-bottom:2px solid var(--text3);transform:rotate(45deg);}
+
+/* DIVIDERS */
+.div{height:1px;background:linear-gradient(90deg,transparent,rgba(123,45,139,.4),transparent);position:relative;z-index:1;margin:0 20px;}
+.adiv{height:1px;background:linear-gradient(90deg,transparent,rgba(232,82,10,.4),transparent);position:relative;z-index:1;margin:0 20px;}
+
+/* STRIP */
+.strip{position:relative;z-index:1;
+  background:linear-gradient(135deg,rgba(232,82,10,.14),rgba(123,45,139,.14));
+  border-top:1px solid rgba(232,82,10,.28);border-bottom:1px solid rgba(232,82,10,.28);
+  padding:30px 20px;text-align:center;}
+.strip h2{font-size:clamp(1rem,3vw,1.5rem);font-weight:800;
+  background:linear-gradient(135deg,var(--gold),var(--africa));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;}
+.strip p{color:var(--text2);font-size:.88rem;line-height:1.75;max-width:720px;margin:0 auto;}
+
+/* SECTIONS */
+.sec{position:relative;z-index:1;padding:72px 20px;max-width:1100px;margin:0 auto;}
+.slbl{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:9px;}
+.stit{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;margin-bottom:10px;}
+.ssub{color:var(--text2);font-size:.92rem;line-height:1.75;max-width:600px;margin-bottom:40px;}
+
+/* FEATURES */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:18px;}
+.fcard{background:var(--s2);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:26px;
+  transition:transform .25s,border-color .25s,box-shadow .25s;position:relative;overflow:hidden;}
+.fcard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s;}
+.fcard:hover{transform:translateY(-6px);border-color:rgba(245,197,24,.28);box-shadow:0 16px 44px rgba(0,0,0,.3);}
+.fcard:hover::after{opacity:1;}
+.fci{font-size:2.2rem;margin-bottom:13px;}
+.fct{font-size:.96rem;font-weight:700;margin-bottom:7px;}
+.fcd{color:var(--text2);font-size:.85rem;line-height:1.65;}
+.live-badge{display:inline-block;margin-top:11px;
+  background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.3);
+  color:var(--teal);border-radius:100px;padding:3px 12px;font-size:.67rem;font-weight:700;}
+
+/* AMBASSADOR */
+.amb-hero{background:linear-gradient(135deg,rgba(123,45,139,.2),rgba(232,82,10,.14));
+  border:1.5px solid rgba(123,45,139,.4);border-radius:22px;padding:36px;margin-bottom:36px;
+  display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;}
+.amb-icon{font-size:2.8rem;flex-shrink:0;}
+.amb-title{font-size:1.2rem;font-weight:800;color:var(--africa);margin-bottom:8px;}
+.amb-body{color:var(--text2);font-size:.88rem;line-height:1.78;}
+
+/* PERKS */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-bottom:36px;}
+.pcard{background:var(--s2);border:1px solid rgba(0,212,170,.2);border-radius:16px;padding:20px;
+  display:flex;gap:13px;align-items:flex-start;}
+.picon{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--teal),#006d56);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.25rem;}
+.ptit{font-weight:700;font-size:.9rem;margin-bottom:4px;}
+.pdesc{color:var(--text2);font-size:.81rem;line-height:1.6;}
+
+/* TIERS */
+.tiers-head{text-align:center;font-size:1.05rem;font-weight:800;color:var(--gold);margin-bottom:22px;}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:13px;margin-bottom:36px;}
+.tier{background:var(--s2);border-radius:18px;padding:22px 14px;text-align:center;
+  border:1.5px solid rgba(255,255,255,.08);transition:transform .25s,box-shadow .25s;
+  position:relative;overflow:hidden;}
+.tier:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(0,0,0,.3);}
+.tier-em{font-size:2.3rem;display:block;margin-bottom:9px;}
+.tier-name{font-size:.84rem;font-weight:800;margin-bottom:5px;}
+.tier-range{font-size:.73rem;color:var(--text2);margin-bottom:10px;}
+.tier-rew{background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.3);
+  border-radius:8px;padding:5px 10px;font-size:.7rem;font-weight:700;color:var(--gold);}
+.t-starter{border-color:rgba(0,212,170,.3);}.t-starter .tier-name{color:var(--teal);}
+.t-bronze{border-color:rgba(205,127,50,.4);}.t-bronze .tier-name{color:#CD7F32;}
+.t-silver{border-color:rgba(192,192,192,.4);}.t-silver .tier-name{color:#C0C0C0;}
+.t-gold{border-color:rgba(245,197,24,.5);}.t-gold .tier-name{color:var(--gold);}
+.t-diamond{border-color:rgba(155,89,182,.5);}.t-diamond .tier-name{color:var(--pi-l);}
+.t-diamond::before{content:'🔥 TOP';position:absolute;top:9px;right:9px;
+  background:linear-gradient(135deg,var(--pi),var(--gold));color:#fff;
+  font-size:.58rem;font-weight:800;border-radius:100px;padding:2px 7px;}
+
+/* HOW IT WORKS */
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;gap:18px;align-items:flex-start;padding:22px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);}
+.step:last-child{border-bottom:none;}
+.snum{width:46px;height:46px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--pi),var(--gold));
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:900;color:#fff;
+  box-shadow:0 4px 14px rgba(123,45,139,.4);}
+.stit2{font-weight:700;font-size:.94rem;margin-bottom:5px;}
+.sdesc{color:var(--text2);font-size:.86rem;line-height:1.65;}
+
+/* REGIONS */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:13px;}
+.rcard{background:var(--s2);border:1px solid rgba(232,82,10,.2);border-radius:14px;padding:18px;text-align:center;
+  transition:transform .2s,border-color .2s;}
+.rcard:hover{transform:translateY(-4px);border-color:rgba(232,82,10,.5);}
+.rflag{font-size:1.9rem;margin-bottom:7px;}
+.rname{font-weight:700;font-size:.88rem;color:var(--africa);margin-bottom:3px;}
+.rlangs{font-size:.72rem;color:var(--text3);margin-bottom:4px;}
+.rcountries{font-size:.7rem;color:var(--text2);}
+
+/* APPLICATION FORM */
+.form-box{background:var(--s2);border:1.5px solid rgba(123,45,139,.4);border-radius:22px;padding:36px;max-width:680px;margin:0 auto;}
+.form-title{font-size:1.15rem;font-weight:800;color:var(--gold);margin-bottom:6px;}
+.form-sub{color:var(--text2);font-size:.85rem;line-height:1.65;margin-bottom:26px;}
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-size:.74rem;font-weight:700;color:var(--text2);margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase;}
+.fg input,.fg textarea,.fg select{
+  width:100%;background:var(--s3);border:1.5px solid rgba(255,255,255,.1);
+  border-radius:11px;padding:11px 14px;color:var(--text);
+  font-family:'Sora',sans-serif;font-size:.88rem;transition:border-color .2s;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:var(--pi);}
+.fg select option{background:var(--s3);}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-tip{display:flex;gap:10px;align-items:flex-start;
+  background:rgba(245,197,24,.08);border:1px solid rgba(245,197,24,.25);
+  border-radius:12px;padding:13px 16px;margin-bottom:20px;}
+.form-tip p{color:var(--gold);font-size:.82rem;line-height:1.6;}
+.form-ok{background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.32);
+  color:var(--teal);border-radius:11px;padding:13px 16px;font-size:.85rem;
+  margin-top:14px;display:none;text-align:center;}
+
+/* SHARE SECTION */
+.share-box{background:linear-gradient(135deg,rgba(0,212,170,.1),rgba(123,45,139,.1));
+  border:1.5px solid rgba(0,212,170,.3);border-radius:20px;padding:28px;margin-top:32px;text-align:center;}
+.share-title{font-weight:800;font-size:1rem;color:var(--teal);margin-bottom:8px;}
+.share-sub{color:var(--text2);font-size:.84rem;margin-bottom:20px;line-height:1.6;}
+.share-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.sbtn{display:inline-flex;align-items:center;gap:7px;padding:11px 20px;border-radius:100px;
+  border:none;font-family:'Sora',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;
+  transition:transform .2s,opacity .2s;}
+.sbtn:hover{transform:translateY(-2px);opacity:.9;}
+.sbtn-wa{background:#25D366;color:#fff;}
+.sbtn-tg{background:#0088cc;color:#fff;}
+.sbtn-copy{background:var(--s3);border:1.5px solid rgba(255,255,255,.15);color:var(--text);}
+.sbtn-fb{background:#1877F2;color:#fff;}
+
+/* CTA BANNER */
+.cta-banner{position:relative;z-index:1;
+  background:linear-gradient(135deg,rgba(123,45,139,.22),rgba(232,82,10,.18));
+  border:1.5px solid rgba(245,197,24,.32);border-radius:28px;
+  margin:0 20px 80px;padding:60px 24px;text-align:center;overflow:hidden;}
+.cta-banner::before{content:'🌍';position:absolute;font-size:18rem;opacity:.04;
+  top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.cta-h{font-size:clamp(1.4rem,4vw,2.4rem);font-weight:900;margin-bottom:14px;}
+.cta-sub{color:var(--text2);font-size:.92rem;line-height:1.78;max-width:560px;margin:0 auto 28px;}
+.contact-box{display:inline-flex;align-items:center;gap:14px;
+  background:var(--s3);border:1.5px solid rgba(245,197,24,.38);
+  border-radius:14px;padding:14px 24px;margin-bottom:22px;}
+.cb-label{font-size:.74rem;color:var(--text3);font-weight:600;}
+.cb-val{font-size:1.1rem;font-weight:800;color:var(--gold);}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
+.chip{display:inline-flex;align-items:center;gap:5px;border-radius:100px;
+  padding:4px 14px;font-size:.7rem;font-weight:700;}
+.cp{background:rgba(123,45,139,.2);border:1px solid rgba(123,45,139,.4);color:var(--pi-l);}
+.ca{background:rgba(232,82,10,.14);border:1px solid rgba(232,82,10,.35);color:var(--africa);}
+.ct{background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.3);color:var(--teal);}
+.cg{background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.3);color:var(--gold);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.07);
+  padding:38px 20px;text-align:center;}
+.flogo{font-size:1.9rem;font-weight:900;color:var(--gold);margin-bottom:5px;}
+.ftagline{font-size:.76rem;color:var(--africa);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;}
+.flinks{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
+.flinks a{color:var(--text3);font-size:.78rem;text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--gold);}
+.fdisc{color:var(--text3);font-size:.7rem;line-height:1.7;max-width:540px;margin:0 auto;}
+
+@keyframes fup{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+/* PROMO CARD MODAL */
+.modal-bg{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);
+  display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-bg.open{display:flex;}
+.modal{background:var(--s2);border:1.5px solid rgba(123,45,139,.5);border-radius:22px;
+  padding:28px;max-width:440px;width:100%;text-align:center;}
+.modal-title{font-weight:800;font-size:1.05rem;color:var(--gold);margin-bottom:6px;}
+.modal-sub{color:var(--text2);font-size:.83rem;margin-bottom:20px;}
+#promoCard{width:100%;border-radius:14px;margin-bottom:18px;}
+.modal-close{background:transparent;border:1.5px solid rgba(255,255,255,.15);color:var(--text);
+  padding:9px 22px;border-radius:100px;font-family:'Sora',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;}
+
+@media(max-width:640px){
+  .hero{padding:82px 14px 50px;}
+  .sec{padding:52px 14px;}
+  .fg-row{grid-template-columns:1fr;}
+  .form-box{padding:22px 16px;}
+  .cta-banner{margin:0 12px 60px;padding:40px 16px;}
+  .hstats{gap:20px;}
+  .hdivider{display:none;}
+  .nav-btn{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nlogo">
+    <div class="npi">π</div>
+    <div><div>Chigalex1</div><div class="nsub">🌍 Africa Pi Hub</div></div>
+  </div>
+  <div class="nav-right">
+    <select class="lang-sel" onchange="setLang(this.value)" id="navLangSel">
+      <optgroup label="Southern Africa">
+        <option value="en">🇿🇼 English</option><option value="sn">🇿🇼 Shona</option>
+        <option value="nd">🇿🇼 Ndebele</option><option value="zu">🇿🇦 isiZulu</option>
+        <option value="af">🇿🇦 Afrikaans</option><option value="pt">🇲🇿 Português</option>
+        <option value="ny">🇲🇼 Chichewa</option>
+      </optgroup>
+      <optgroup label="East Africa">
+        <option value="sw">🇹🇿 Kiswahili</option><option value="am">🇪🇹 Amharic</option>
+        <option value="so">🇸🇴 Somali</option>
+      </optgroup>
+      <optgroup label="West Africa">
+        <option value="ha">🇳🇬 Hausa</option><option value="yo">🇳🇬 Yoruba</option>
+        <option value="ig">🇳🇬 Igbo</option><option value="fr">🇨🇮 Français</option>
+      </optgroup>
+      <optgroup label="North Africa">
+        <option value="ar">🇪🇬 Arabic</option>
+      </optgroup>
+      <optgroup label="Central Africa">
+        <option value="ln">🇨🇩 Lingala</option>
+      </optgroup>
+    </select>
+    <button class="nav-btn" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})" id="nav-apply-btn">
+      🤝 Become Ambassador
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="eyebrow" id="hero-eyebrow">🔥 A Pi Revolution is Happening in Africa</div>
+  <h1 class="hero-h1">
+    <span class="grad-text" id="hero-h1a">Africa's Pi Network</span><br/>
+    <span id="hero-h1b">Education Revolution</span>
+  </h1>
+  <p class="hero-sub" id="hero-sub">
+    The <strong style="color:#E8520A;">Africa Pi GCV Industry Alliance</strong> has set a target of onboarding
+    <strong style="color:#F5C518;">1,000,000+ businesses and merchants</strong> across all 54 African nations
+    into the Pi enclosed ecosystem — in local languages of every region.
+  </p>
+  <div class="target-chip">
+    🎯 <span id="hero-target">Target: 1 Million+ African Businesses on Pi</span>
+  </div>
+  <div class="hero-btns">
+    <button class="btn btn-pi" onclick="document.getElementById('ambassador').scrollIntoView({behavior:'smooth'})" id="btn-hero-amb">
+      🚀 Become a Country Ambassador
+    </button>
+    <button class="btn btn-out" onclick="document.getElementById('app-sec').scrollIntoView({behavior:'smooth'})" id="btn-hero-app">
+      📱 Explore the App
+    </button>
+  </div>
+  <div class="hstats">
+    <div class="hstat"><div class="hstat-n">54</div><div class="hstat-l" id="stat-nations">African Nations</div></div>
+    <div class="hdivider"></div>
+    <div class="hstat"><div class="hstat-n">22</div><div class="hstat-l" id="stat-langs">Local Languages</div></div>
+    <div class="hdivider"></div>
+    <div class="hstat"><div class="hstat-n">5</div><div class="hstat-l" id="stat-regions">Regional Communities</div></div>
+    <div class="hdivider"></div>
+    <div class="hstat"><div class="hstat-n">1M+</div><div class="hstat-l" id="stat-target">Business Target</div></div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-arr"></div></div>
+</section>
+
+<div class="div"></div>
+
+<!-- STRIP -->
+<div class="strip">
+  <h2 id="strip-h">⚡ Things Are Getting Serious — Africa Is Ready</h2>
+  <p id="strip-p">The Chigalex1 DApp is live on Pi Browser Testnet right now — training pioneers and businesses in <strong style="color:#F5C518;">22 African languages</strong> across the 5 Regional Economic Communities. The system is fully designed and ready for Mainnet launch. <strong style="color:#E8520A;">The window of opportunity is open RIGHT NOW.</strong></p>
+</div>
+
+<div class="div"></div>
+
+<!-- APP FEATURES -->
+<section class="sec" id="app-sec">
+  <div class="slbl" id="lbl-app">📱 The Platform</div>
+  <div class="stit" id="tit-app">What Chigalex1 Offers</div>
+  <p class="ssub" id="sub-app">A comprehensive Pi Network education DApp accessible through Pi Browser — training everyone from first-time pioneers to established businesses across Africa.</p>
+  <div class="fgrid">
+    <div class="fcard"><div class="fci">🤖</div><div class="fct" id="fc1t">AI Chatbot — 24/7</div><div class="fcd" id="fc1d">Expert Pi guide answering questions in 22 African languages. KYC, KYB, Map of Pi, GCV strategy and security — instantly.</div><span class="live-badge">✅ Live Now</span></div>
+    <div class="fcard"><div class="fci">📚</div><div class="fct" id="fc2t">Step-by-Step Training</div><div class="fcd" id="fc2d">Full guides for Registration, KYC, KYB and Security — tailored for all 54 African nations and their specific ID documents.</div><span class="live-badge">✅ Live Now</span></div>
+    <div class="fcard"><div class="fci">🗺️</div><div class="fct" id="fc3t">Map of Pi Tutorial</div><div class="fcd" id="fc3d">4-tab business walkthrough — Get Listed, Optimize, Accept Pi Payments, and Grow your customer base across Africa.</div><span class="live-badge">✅ Live Now</span></div>
+    <div class="fcard"><div class="fci">🏪</div><div class="fct" id="fc4t">Merchant Directory</div><div class="fcd" id="fc4d">Africa-wide directory of Pi-accepting businesses. Find Pi partners, suppliers and customers in all 54 nations.</div><span class="live-badge">✅ Live Now</span></div>
+    <div class="fcard"><div class="fci">📈</div><div class="fct" id="fc5t">GCV Adoption Roadmap</div><div class="fcd" id="fc5d">The $314,159 per 1π path — from 10% Pi adoption today to 100% community-driven GCV recognition on Mainnet.</div><span class="live-badge">✅ Live Now</span></div>
+    <div class="fcard"><div class="fci">🌍</div><div class="fct" id="fc6t">22 African Languages</div><div class="fcd" id="fc6d">Shona · Ndebele · Zulu · Swahili · Hausa · Yoruba · Igbo · Arabic · French · Portuguese · Lingala and 11 more.</div><span class="live-badge">✅ Full Coverage</span></div>
+  </div>
+  <div style="margin-top:28px;background:rgba(245,197,24,.08);border:1px solid rgba(245,197,24,.25);border-radius:14px;padding:16px 18px;display:flex;gap:12px;align-items:center;">
+    <div style="font-size:1.4rem;">🔗</div>
+    <p id="dapp-link-txt" style="color:var(--gold);font-size:.86rem;line-height:1.6;">Access via Pi Browser · Referral code: <strong style="color:#fff;">chigalex1</strong> · <a href="https://minepi.com/chigalex1" target="_blank" style="color:#F5C518;">minepi.com/chigalex1</a></p>
+  </div>
+</section>
+
+<div class="adiv"></div>
+
+<!-- AMBASSADOR -->
+<section class="sec" id="ambassador">
+  <div class="slbl" id="lbl-amb">🤝 Join the Revolution</div>
+  <div class="stit" id="tit-amb">Become a Country Ambassador</div>
+  <p class="ssub" id="sub-amb">We need serious, financially motivated Pi pioneers as country representatives — to empower Africa down to the remotest places in local languages.</p>
+
+  <div class="amb-hero">
+    <div class="amb-icon">🌍</div>
+    <div>
+      <div class="amb-title" id="amb-box-title">Country Ambassador Representatives Wanted</div>
+      <div class="amb-body" id="amb-box-body">We are looking for <strong>dedicated Pi pioneers</strong> committed to financial freedom and ready to drive Pi ecosystem adoption in their country. As an ambassador, you will be the face of Chigalex1 in your nation — onboarding businesses, merchants and individuals into the Pi enclosed ecosystem.<br/><br/><strong>The system is fully designed and ready for Mainnet launch.</strong> Ambassadors who build their networks NOW will be best positioned when Pi goes fully live.</div>
+    </div>
+  </div>
+
+  <!-- PERKS -->
+  <div class="pgrid">
+    <div class="pcard"><div class="picon">🆓</div><div><div class="ptit" id="p1t">Free Lifetime Access</div><div class="pdesc" id="p1d">Approved ambassadors receive free lifetime access to the full Chigalex1 DApp — all training, AI Chatbot, Merchant Directory and Map of Pi.</div></div></div>
+    <div class="pcard"><div class="picon">💰</div><div><div class="ptit" id="p2t">Rewarded in Pi</div><div class="pdesc" id="p2d">Earn Pi rewards for every business or merchant you successfully register — automatically tiered by your performance level.</div></div></div>
+    <div class="pcard"><div class="picon">🏆</div><div><div class="ptit" id="p3t">Automatic Tier Upgrades</div><div class="pdesc" id="p3d">Your reward tier upgrades automatically as your recruit count grows — from Starter all the way to Diamond.</div></div></div>
+    <div class="pcard"><div class="picon">📡</div><div><div class="ptit" id="p4t">Pan-African Visibility</div><div class="pdesc" id="p4d">Your ambassador profile listed across the Chigalex1 network — visible to pioneers in all 54 African nations.</div></div></div>
+  </div>
+
+  <!-- TIERS -->
+  <div class="tiers-head" id="tiers-head">🎖️ Automatic Reward Tiers</div>
+  <div class="tgrid">
+    <div class="tier t-starter"><span class="tier-em">🌱</span><div class="tier-name" id="tier1n">Starter</div><div class="tier-range" id="tier1r">1 – 4 Recruits</div><div class="tier-rew" id="tier1w">Entry Reward</div></div>
+    <div class="tier t-bronze"><span class="tier-em">🥉</span><div class="tier-name" id="tier2n">Bronze</div><div class="tier-range" id="tier2r">5 – 9 Recruits</div><div class="tier-rew" id="tier2w">Bronze Pi Reward</div></div>
+    <div class="tier t-silver"><span class="tier-em">🥈</span><div class="tier-name" id="tier3n">Silver</div><div class="tier-range" id="tier3r">10 – 19 Recruits</div><div class="tier-rew" id="tier3w">Silver Pi Reward</div></div>
+    <div class="tier t-gold"><span class="tier-em">🏅</span><div class="tier-name" id="tier4n">Gold</div><div class="tier-range" id="tier4r">20 – 49 Recruits</div><div class="tier-rew" id="tier4w">Gold Pi Reward</div></div>
+    <div class="tier t-diamond"><span class="tier-em">⭐</span><div class="tier-name" id="tier5n">Diamond</div><div class="tier-range" id="tier5r">50+ Recruits</div><div class="tier-rew" id="tier5w">Diamond Pi Reward</div></div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="slbl" style="margin-top:8px;" id="lbl-how">📋 How It Works</div>
+  <div style="background:var(--s2);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px;">
+    <div class="steps">
+      <div class="step"><div class="snum">1</div><div><div class="stit2" id="step1t">Apply via Pi Network</div><div class="sdesc" id="step1d">Send a message to <strong style="color:#F5C518;">@chigalex1</strong> on Pi Network with your name, country and why you want to be an ambassador.</div></div></div>
+      <div class="step"><div class="snum">2</div><div><div class="stit2" id="step2t">Get Approved</div><div class="sdesc" id="step2d">Applications are reviewed by the Chigalex1 team. Serious, motivated, financially-driven pioneers are prioritised.</div></div></div>
+      <div class="step"><div class="snum">3</div><div><div class="stit2" id="step3t">Receive Free Lifetime Access</div><div class="sdesc" id="step3d">Once approved, your account is upgraded — all training, AI Chatbot, Merchant Directory and Map of Pi tutorial included at no cost.</div></div></div>
+      <div class="step"><div class="snum">4</div><div><div class="stit2" id="step4t">Onboard Businesses in Your Country</div><div class="sdesc" id="step4d">Use the Chigalex1 DApp to train businesses and merchants in your country. Every recruit is tracked and counted toward your tier.</div></div></div>
+      <div class="step"><div class="snum">5</div><div><div class="stit2" id="step5t">Earn Pi Rewards Automatically</div><div class="sdesc" id="step5d">Rewards accumulate based on your tier. Upgrades happen automatically as your recruit count grows — no manual process needed.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- REGIONS -->
+<section class="sec" id="regions">
+  <div class="slbl" id="lbl-regions">🌍 Coverage</div>
+  <div class="stit" id="tit-regions">All 5 African Regional Communities</div>
+  <p class="ssub" id="sub-regions">Ambassadors needed in every region. Training available in the major local languages of each economic community.</p>
+  <div class="rgrid">
+    <div class="rcard"><div class="rflag">🏔️</div><div class="rname">North Africa</div><div class="rlangs">Arabic · Tamazight</div><div class="rcountries">Egypt · Morocco · Algeria · Tunisia · Libya · Sudan</div></div>
+    <div class="rcard"><div class="rflag">🌴</div><div class="rname">West Africa</div><div class="rlangs">Hausa · Yoruba · Igbo · Twi · Wolof · French</div><div class="rcountries">Nigeria · Ghana · Senegal · Côte d'Ivoire + 11 more</div></div>
+    <div class="rcard"><div class="rflag">🦒</div><div class="rname">East Africa</div><div class="rlangs">Kiswahili · Amharic · Kinyarwanda · Luganda · Somali</div><div class="rcountries">Kenya · Tanzania · Ethiopia · Uganda · Rwanda + more</div></div>
+    <div class="rcard"><div class="rflag">🌿</div><div class="rname">Central Africa</div><div class="rlangs">Lingala · Kikongo · French</div><div class="rcountries">DRC · Congo · Cameroon · Gabon + more</div></div>
+    <div class="rcard"><div class="rflag">🦁</div><div class="rname">Southern Africa</div><div class="rlangs">Shona · Ndebele · Zulu · Xhosa · Sesotho · Portuguese</div><div class="rcountries">Zimbabwe · South Africa · Mozambique · Botswana + more</div></div>
+  </div>
+</section>
+
+<div class="adiv"></div>
+
+<!-- APPLICATION FORM + SHARE -->
+<section class="sec" id="apply">
+  <div class="slbl" id="lbl-apply">📝 Apply Now</div>
+  <div class="stit" id="tit-apply">Ambassador Application</div>
+  <p class="ssub" id="sub-apply">Complete the form below. Applications are reviewed within 48 hours. Approved ambassadors are notified via Pi Network message.</p>
+
+  <div class="form-box">
+    <div class="form-title" id="form-title">🤝 Apply to be a Country Ambassador</div>
+    <p class="form-sub" id="form-sub">All fields are required. Be honest and specific — we want partners who are truly serious about Africa's Pi revolution.</p>
+    <div class="form-tip"><div>💡</div><p id="form-tip-txt">After submitting, also send a message to <strong style="color:#fff;">@chigalex1</strong> on Pi Network to confirm your application.</p></div>
+
+    <div class="fg-row">
+      <div class="fg"><label id="lbl-fname">Full Name</label><input id="f-name" placeholder="Your full name"/></div>
+      <div class="fg"><label id="lbl-country">Country</label><input id="f-country" placeholder="e.g. Zimbabwe, Nigeria..."/></div>
+    </div>
+    <div class="fg"><label id="lbl-pi">Pi Username</label><input id="f-pi" placeholder="your Pi username"/></div>
+    <div class="fg"><label id="lbl-phone">WhatsApp Number</label><input id="f-phone" placeholder="+263... / +234..."/></div>
+    <div class="fg">
+      <label id="lbl-lang">Primary Language You Speak</label>
+      <select id="f-lang">
+        <option value="">-- Select your language --</option>
+        <option>English</option><option>Shona</option><option>Ndebele</option>
+        <option>isiZulu</option><option>isiXhosa</option><option>Afrikaans</option>
+        <option>Sesotho</option><option>Setswana</option><option>Chichewa</option>
+        <option>Português</option><option>Kiswahili</option><option>Amharic</option>
+        <option>Kinyarwanda</option><option>Luganda</option><option>Somali</option>
+        <option>Hausa</option><option>Yoruba</option><option>Igbo</option>
+        <option>Twi</option><option>Wolof</option><option>Français</option>
+        <option>Arabic</option><option>Tamazight</option><option>Lingala</option><option>Kikongo</option>
+      </select>
+    </div>
+    <div class="fg"><label id="lbl-why">Why do you want to be an Ambassador?</label><textarea id="f-why" rows="4" placeholder="Tell us about your motivation, Pi knowledge, and how you plan to onboard businesses in your country..."></textarea></div>
+    <div class="fg"><label id="lbl-biz">How many businesses can you realistically onboard in 3 months?</label><input id="f-biz" placeholder="e.g. 10, 20, 50+"/></div>
+    <button class="btn btn-africa" style="width:100%;justify-content:center;margin-top:4px;" onclick="submitApp()" id="btn-submit-app">
+      🚀 Submit Application
+    </button>
+    <div class="form-ok" id="form-ok">
+      ✅ Application received! We will review and contact you via Pi Network within 48 hours. Also message <strong>@chigalex1</strong> on Pi to confirm.
+    </div>
+  </div>
+
+  <!-- SHARE BOX -->
+  <div class="share-box">
+    <div class="share-title" id="share-title">📣 Spread the Word</div>
+    <p class="share-sub" id="share-sub">Know a serious Pi pioneer who should be an ambassador? Share this page with them. The more ambassadors we have across Africa, the faster we hit 1 million businesses.</p>
+    <div class="share-btns">
+      <button class="sbtn sbtn-wa" onclick="shareWA()" id="btn-share-wa">📱 WhatsApp</button>
+      <button class="sbtn sbtn-tg" onclick="shareTG()" id="btn-share-tg">✈️ Telegram</button>
+      <button class="sbtn sbtn-fb" onclick="shareFB()" id="btn-share-fb">👥 Facebook</button>
+      <button class="sbtn sbtn-copy" onclick="copyLink()" id="btn-share-copy">🔗 Copy Link</button>
+      <button class="sbtn" style="background:linear-gradient(135deg,var(--pi),var(--gold));color:#fff;" onclick="generatePromo()" id="btn-promo">🖼️ Promo Card</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" id="cta">
+  <div class="slbl" style="display:flex;justify-content:center;margin-bottom:14px;">🔥 Ready?</div>
+  <div class="cta-h grad-text" id="cta-h">Be Part of Africa's Pi Revolution</div>
+  <p class="cta-sub" id="cta-sub">This is not just an app. This is a <strong style="color:#F5C518;">financial freedom movement.</strong> Africa has 1.4 billion people — and the power to drive GCV through community adoption. Your country needs a champion. <strong style="color:#E8520A;">Be that champion.</strong></p>
+  <div style="display:flex;justify-content:center;margin-bottom:20px;">
+    <div class="contact-box">
+      <div><div class="cb-label" id="contact-label">Message on Pi Network</div><div class="cb-val">@chigalex1</div></div>
+    </div>
+  </div>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <button class="btn btn-pi" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})" id="cta-btn1">📝 Apply Now</button>
+    <button class="btn btn-teal" onclick="shareWA()" id="cta-btn2">📱 Share on WhatsApp</button>
+  </div>
+  <div class="chips">
+    <span class="chip ca">🌍 54 Nations</span>
+    <span class="chip ct">22 Languages</span>
+    <span class="chip cg">💰 Pi Rewards</span>
+    <span class="chip cp">🏛️ GCV Alliance</span>
+    <span class="chip ca">⚡ Mainnet Ready</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="flogo">Chigalex1</div>
+  <div class="ftagline">🌍 Africa Pi Network Education Hub</div>
+  <div class="flinks">
+    <a href="https://minepi.com/chigalex1" target="_blank">minepi.com/chigalex1</a>
+    <a href="https://mapofpi.com" target="_blank">mapofpi.com</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Service</a>
+    <a href="/">Main DApp</a>
+  </div>
+  <div class="fdisc" id="footer-disc">Chigalex1 is an independent community education resource. Not affiliated with Pi Network or SocialChain Inc. Official Pi: minepi.com · Africa Pi GCV Industry Alliance · Referral: chigalex1</div>
+</footer>
+
+<!-- PROMO CARD MODAL -->
+<div class="modal-bg" id="promoModal">
+  <div class="modal">
+    <div class="modal-title">🖼️ Share This Promo Card</div>
+    <p class="modal-sub">Screenshot and share on WhatsApp, Facebook, Telegram or any social platform.</p>
+    <canvas id="promoCard" width="400" height="400"></canvas>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button class="sbtn sbtn-wa" onclick="sharePromoWA()">📱 Share on WhatsApp</button>
+      <button class="modal-close" onclick="closeModal()">✕ Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── STARS ──
+const starsEl=document.getElementById('stars');
+for(let i=0;i<90;i++){
+  const s=document.createElement('div');s.className='star';
+  const sz=Math.random()*2.4+.4;
+  s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*4}s;--dl:${Math.random()*5}s;--op:${.25+Math.random()*.5};`;
+  starsEl.appendChild(s);
+}
+
+// ── SCROLL ANIMATIONS ──
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+},{threshold:.08});
+document.querySelectorAll('.fcard,.tier,.pcard,.rcard,.step,.amb-hero').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(22px)';
+  el.style.transition='opacity .5s ease, transform .5s ease';
+  obs.observe(el);
+});
+
+// ── TRANSLATIONS ──
+const T={
+  en:{
+    "hero-eyebrow":"🔥 A Pi Revolution is Happening in Africa",
+    "hero-h1a":"Africa's Pi Network","hero-h1b":"Education Revolution",
+    "hero-sub":"The <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> has set a target of onboarding <strong style='color:#F5C518;'>1,000,000+ businesses and merchants</strong> across all 54 African nations into the Pi enclosed ecosystem — in local languages of every region.",
+    "hero-target":"Target: 1 Million+ African Businesses on Pi",
+    "btn-hero-amb":"🚀 Become a Country Ambassador","btn-hero-app":"📱 Explore the App",
+    "stat-nations":"African Nations","stat-langs":"Local Languages","stat-regions":"Regional Communities","stat-target":"Business Target",
+    "strip-h":"⚡ Things Are Getting Serious — Africa Is Ready",
+    "strip-p":"The Chigalex1 DApp is live on Pi Browser Testnet right now — training pioneers and businesses in <strong style='color:#F5C518;'>22 African languages</strong> across the 5 Regional Economic Communities. The system is fully designed and ready for Mainnet launch. <strong style='color:#E8520A;'>The window of opportunity is open RIGHT NOW.</strong>",
+    "tit-app":"What Chigalex1 Offers","sub-app":"A comprehensive Pi Network education DApp accessible through Pi Browser — training everyone from first-time pioneers to established businesses across Africa.",
+    "fc1t":"AI Chatbot — 24/7","fc1d":"Expert Pi guide answering questions in 22 African languages. KYC, KYB, Map of Pi, GCV strategy and security — instantly.",
+    "fc2t":"Step-by-Step Training","fc2d":"Full guides for Registration, KYC, KYB and Security — tailored for all 54 African nations and their specific ID documents.",
+    "fc3t":"Map of Pi Tutorial","fc3d":"4-tab business walkthrough — Get Listed, Optimize, Accept Pi Payments, and Grow your customer base across Africa.",
+    "fc4t":"Merchant Directory","fc4d":"Africa-wide directory of Pi-accepting businesses. Find Pi partners, suppliers and customers in all 54 nations.",
+    "fc5t":"GCV Adoption Roadmap","fc5d":"The $314,159 per 1π path — from 10% Pi adoption today to 100% community-driven GCV recognition on Mainnet.",
+    "fc6t":"22 African Languages","fc6d":"Shona · Ndebele · Zulu · Swahili · Hausa · Yoruba · Igbo · Arabic · French · Portuguese · Lingala and 11 more.",
+    "tit-amb":"Become a Country Ambassador","sub-amb":"We need serious, financially motivated Pi pioneers as country representatives — to empower Africa down to the remotest places in local languages.",
+    "amb-box-title":"Country Ambassador Representatives Wanted",
+    "amb-box-body":"We are looking for <strong>dedicated Pi pioneers</strong> committed to financial freedom and ready to drive Pi ecosystem adoption in their country. As an ambassador, you will be the face of Chigalex1 in your nation — onboarding businesses, merchants and individuals into the Pi enclosed ecosystem.<br/><br/><strong>The system is fully designed and ready for Mainnet launch.</strong> Ambassadors who build their networks NOW will be best positioned when Pi goes fully live.",
+    "p1t":"Free Lifetime Access","p1d":"Approved ambassadors receive free lifetime access to the full Chigalex1 DApp — all training, AI Chatbot, Merchant Directory and Map of Pi.",
+    "p2t":"Rewarded in Pi","p2d":"Earn Pi rewards for every business or merchant you successfully register — automatically tiered by your performance level.",
+    "p3t":"Automatic Tier Upgrades","p3d":"Your reward tier upgrades automatically as your recruit count grows — from Starter all the way to Diamond.",
+    "p4t":"Pan-African Visibility","p4d":"Your ambassador profile listed across the Chigalex1 network — visible to pioneers in all 54 African nations.",
+    "tiers-head":"🎖️ Automatic Reward Tiers",
+    "tier1n":"Starter","tier1r":"1 – 4 Recruits","tier1w":"Entry Reward",
+    "tier2n":"Bronze","tier2r":"5 – 9 Recruits","tier2w":"Bronze Pi Reward",
+    "tier3n":"Silver","tier3r":"10 – 19 Recruits","tier3w":"Silver Pi Reward",
+    "tier4n":"Gold","tier4r":"20 – 49 Recruits","tier4w":"Gold Pi Reward",
+    "tier5n":"Diamond","tier5r":"50+ Recruits","tier5w":"Diamond Pi Reward",
+    "step1t":"Apply via Pi Network","step1d":"Send a message to @chigalex1 on Pi Network with your name, country and why you want to be an ambassador.",
+    "step2t":"Get Approved","step2d":"Applications are reviewed by the Chigalex1 team. Serious, motivated, financially-driven pioneers are prioritised.",
+    "step3t":"Receive Free Lifetime Access","step3d":"Once approved, your account is upgraded — all training, AI Chatbot, Merchant Directory and Map of Pi included at no cost.",
+    "step4t":"Onboard Businesses in Your Country","step4d":"Use the Chigalex1 DApp to train businesses and merchants. Every recruit is tracked and counted toward your tier.",
+    "step5t":"Earn Pi Rewards Automatically","step5d":"Rewards accumulate based on your tier. Upgrades happen automatically — no manual process needed.",
+    "tit-regions":"All 5 African Regional Communities","sub-regions":"Ambassadors needed in every region. Training in major local languages of each economic community.",
+    "form-title":"🤝 Apply to be a Country Ambassador",
+    "form-sub":"All fields required. Be honest and specific — we want partners who are truly serious about Africa's Pi revolution.",
+    "form-tip-txt":"After submitting, also message <strong style='color:#fff;'>@chigalex1</strong> on Pi Network to confirm your application.",
+    "lbl-fname":"Full Name","lbl-country":"Country","lbl-pi":"Pi Username","lbl-phone":"WhatsApp Number",
+    "lbl-lang":"Primary Language","lbl-why":"Why do you want to be an Ambassador?",
+    "lbl-biz":"How many businesses can you onboard in 3 months?",
+    "btn-submit-app":"🚀 Submit Application",
+    "share-title":"📣 Spread the Word",
+    "share-sub":"Know a serious Pi pioneer who should be an ambassador? Share this page. The more ambassadors across Africa, the faster we reach 1 million businesses.",
+    "btn-share-wa":"📱 WhatsApp","btn-share-tg":"✈️ Telegram","btn-share-fb":"👥 Facebook","btn-share-copy":"🔗 Copy Link","btn-promo":"🖼️ Promo Card",
+    "cta-h":"Be Part of Africa's Pi Revolution",
+    "cta-sub":"This is not just an app. This is a <strong style='color:#F5C518;'>financial freedom movement.</strong> Africa has 1.4 billion people — and the power to drive GCV through community adoption. Your country needs a champion. <strong style='color:#E8520A;'>Be that champion.</strong>",
+    "contact-label":"Message on Pi Network",
+    "cta-btn1":"📝 Apply Now","cta-btn2":"📱 Share on WhatsApp",
+    "nav-apply-btn":"🤝 Become Ambassador",
+    "footer-disc":"Chigalex1 is an independent community education resource. Not affiliated with Pi Network or SocialChain Inc. Official Pi: minepi.com · Africa Pi GCV Industry Alliance · Referral: chigalex1",
+    "wa-msg":"🌍 *AFRICA Pi NETWORK REVOLUTION!* 🔥\n\nChigalex1 is looking for serious Country Ambassadors to help onboard 1 MILLION+ businesses across Africa onto Pi Network!\n\n✅ FREE lifetime access to the full DApp\n💰 Earn Pi rewards for every business you register\n🎖️ Automatic tier upgrades from Starter to Diamond\n🌍 22 African languages · 54 nations · Mainnet ready!\n\nApply now 👇\nhttps://chigalex1-backend.onrender.com/landing.html\n\nMessage @chigalex1 on Pi Network for details.\nReferral code: *chigalex1*"
+  },
+  sn:{
+    "hero-eyebrow":"🔥 Shanduko yePi iri kuitika muAfrica",
+    "hero-h1a":"Zvekudzidziswa kwe Pi Network","hero-h1b":"muAfrica",
+    "hero-sub":"<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> yagadzira chinangwa chekupinza zvikwata <strong style='color:#F5C518;'>1,000,000+</strong> munyika dzose 54 dzeAfrica muPi enclosed ecosystem.",
+    "hero-target":"Chinangwa: Zvikwata 1 Miriyoni+ muPi",
+    "btn-hero-amb":"🚀 Ita Mumiririri weNyika","btn-hero-app":"📱 Ona App",
+    "stat-nations":"Nyika dzeAfrica","stat-langs":"Mitauro yeMuno","stat-regions":"Mapoka eNzvimbo","stat-target":"Chinangwa cheZvikwata",
+    "strip-h":"⚡ Zvinhu Zviri Kupisa — Africa Yagadzirira",
+    "strip-p":"Chigalex1 DApp iri kushanda paPi Browser Testnet izvozvi — ichidzidzisa vanamaiguru nezvikwata mumitauro <strong style='color:#F5C518;'>22 yeAfrica</strong>. Iyo system yagadzirwa uye yakagadzirira Mainnet launch. <strong style='color:#E8520A;'>Hwindo riri pachena ZVINO.</strong>",
+    "tit-app":"Chigalex1 Inopa Chii","sub-app":"DApp yakakwana yekudzidziswa kuPi Network inobatwa kuburikidza nePi Browser — ichidzidzisa kubva kumutambi wekutanga kusvika kuzvikwata zvakamira.",
+    "fc1t":"AI Chatbot — 24/7","fc1d":"Munyanzvi wePi anopindura mibvunzo mumitauro 22 yeAfrica. KYC, KYB, Mapa yePi, GCV uye security — nekukurumidza.",
+    "fc2t":"Kudzidziswa Nhanho Nehnanho","fc2d":"Zvitungamiro zvose zvekunyoresa, KYC, KYB uye Security — zvakagadzirirwa nyika dzose 54 dzeAfrica.",
+    "fc3t":"Chidzidzo cheMapa yePi","fc3d":"Kufamba kwematipi 4 kwemakomiti — Nyoresa, Simbisa, Gamuchira Mubhadharo wePi, uye Kukura.",
+    "fc4t":"Dhairekitori yeVatengesi","fc4d":"Dhairekitori yeAfrica yose yezvikwata zvinogamuchira Pi. Tsvaka shamwari, vatengi uye vashandisi munyika dzose 54.",
+    "fc5t":"Nzira yeGCV Yekupinda","fc5d":"Nzira ye$314,159 pa1π — kubva pakupinda kwe10% nhasi kusvika pa100% kucherechedzwa kweGCV neCommunity kuMainnet.",
+    "fc6t":"Mitauro 22 yeAfrica","fc6d":"Shona · Ndebele · Zulu · Kiswahili · Hausa · Yoruba · Igbo · Arabic · French · Português · Lingala ne11 dzimwe.",
+    "tit-amb":"Ita Mumiririri weNyika","sub-amb":"Tinoda vanamaiguru vakanyatsomirira nefinancial freedom kunge vamiririri venyika — kusimbisa Africa kusvika munzvimbo dzakure nemitauro yenzvimbo.",
+    "amb-box-title":"Vamiririri veMumiririri weNyika Vanodikanwa",
+    "amb-box-body":"Tiri kutsvaga <strong>vanamaiguru vakatsiga</strong> vakabatikana nefinancial freedom uye vakagadzirira kufambisa kupinda kwePi ecosystem munyika yavo. Semumiririri, uchamiririra Chigalex1 munyika yako.<br/><br/><strong>Iyo system yagadzirwa uye yakagadzirira Mainnet launch.</strong> Vamiririri vanovaka network ZVINO vachawana mikana mikuru Pi painovhurwa zvakakwana.",
+    "p1t":"Kushandisa Kwemahara Kwenguva Yose","p1d":"Vamiririri vakabvumwa vanogamuchira kushandisa kwemahara kwenguva yose kuChigalex1 DApp yose.",
+    "p2t":"Kupiwa Pi","p2d":"Pindura Pi rewards pakubhisana kwekunyoresa bhizinesi kana mutengesi — automatically tiered nepamoyo wako.",
+    "p3t":"Kusimuka kweKirasi Kwakaita","p3d":"Kirasi yako yereward inokwira zvakaita semukirikiti wako unokura — kubva Starter kusvika Diamond.",
+    "p4t":"Kuonekwa muAfrica Yose","p4d":"Profile yako yemumiririri inonyorwa paChigalex1 network — inoonekedza vanamaiguru munyika dzose 54 dzeAfrica.",
+    "tiers-head":"🎖️ Makirasi eReward Akaita Pamwechete",
+    "tier1n":"Mutangiri","tier1r":"1 – 4 Vakanyoreswa","tier1w":"Reward yeKutanga",
+    "tier2n":"Bronze","tier2r":"5 – 9 Vakanyoreswa","tier2w":"Reward yeBronze Pi",
+    "tier3n":"Silver","tier3r":"10 – 19 Vakanyoreswa","tier3w":"Reward yeSilver Pi",
+    "tier4n":"Gold","tier4r":"20 – 49 Vakanyoreswa","tier4w":"Reward yeGold Pi",
+    "tier5n":"Diamond","tier5r":"50+ Vakanyoreswa","tier5w":"Reward yeDiamond Pi",
+    "step1t":"Nyoresa kuburikidza nePi Network","step1d":"Tumira meseji ku@chigalex1 paPi Network nezita rako, nyika uye nei uchida kuva mumiririri.",
+    "step2t":"Wana Kubvumwa","step2d":"Zvikumbiro zvinosvorotwa nechikepe cheChigalex1. Vanamaiguru vakamirira, vakanyatsoona uye vakatarisira financial freedom ndivo vanopihwa kutanga.",
+    "step3t":"Gamuchira Kushandisa Kwemahara Kwenguva Yose","step3d":"Mushure mekubvumwa, account yako inokwidzwa — kudzidziswa kwose, AI Chatbot, Dhairekitori yeVatengesi uye Mapa yePi zvakabatanidzwa pasina muripo.",
+    "step4t":"Nyoresa Zvikwata muNyika Yako","step4d":"Shandisa Chigalex1 DApp kudzidzisa zvikwata nevatengesi. Mukirikiti wose unocherechedzwa uye unoverengwa kukirasi yako.",
+    "step5t":"Pindura Pi Rewards Zvakaita Pamwechete","step5d":"Rewards inoungana zvichienderana nekirasi yako. Kusimuka kunoitika zvakaita — pasina maitiro emunhu.",
+    "tit-regions":"Mapoka ese 5 eNzvimbo dzeAfrica","sub-regions":"Vamiririri vanodikanwa munzvimbo dzose. Kudzidziswa mumitauro mikuru yenzvimbo imwe neimwe yemuchinda.",
+    "form-title":"🤝 Nyoresa kuva Mumiririri weNyika",
+    "form-sub":"Minda yose inodikanwa. Iva wechokwadi uye wakasiyana — tinoda shamwari dzakanyatsoona nezverevo yePi yeAfrica.",
+    "form-tip-txt":"Mushure mekutumira, tumira meseji ku<strong style='color:#fff;'>@chigalex1</strong> paPi Network kusimbisa chikumbiro chako.",
+    "lbl-fname":"Zita Rizere","lbl-country":"Nyika","lbl-pi":"Pi Username","lbl-phone":"WhatsApp Nhamba",
+    "lbl-lang":"Mutauro Waunokurumidza Kutaura","lbl-why":"Nei uchida kuva Mumiririri?",
+    "lbl-biz":"Zvikwata zvingani unogona kunyoresa mumwedzi 3?",
+    "btn-submit-app":"🚀 Tumira Chikumbiro",
+    "share-title":"📣 Sabhatidzai Mashoko","share-sub":"Unoziva mupiiniya wePi akanyatsomirira anofanira kuva mumiririri? Govera peji iri. Vamiririri vawanda muAfrica, ndiyo tinokurumidza kusvika kumiriyoni imwe yezvikwata.",
+    "btn-share-wa":"📱 WhatsApp","btn-share-tg":"✈️ Telegram","btn-share-fb":"👥 Facebook","btn-share-copy":"🔗 Copia Link","btn-promo":"🖼️ Kadhi yeKushambadza",
+    "cta-h":"Iva Chikamu Cheshanduko yePi yeAfrica",
+    "cta-sub":"Haisi app chete. Ndi<strong style='color:#F5C518;'>revo yehurumende yemari.</strong> Africa ine vanhu bhiriyoni 1.4 — uye simba rekugadzira GCV kuburikidza nekupinda kwecommunity. Nyika yako inoda mutungamiri. <strong style='color:#E8520A;'>Iva mutungamiri uyo.</strong>",
+    "contact-label":"Tumira Meseji paPi Network",
+    "cta-btn1":"📝 Nyoresa Izvozvi","cta-btn2":"📱 Govera paWhatsApp",
+    "nav-apply-btn":"🤝 Ita Mumiririri",
+    "footer-disc":"Chigalex1 inzvimbo yedzidziso yevanhu yezvisikwa zvakazvimirira. Haibatanidzwi nePi Network kana SocialChain Inc. Pi yakabudiswa: minepi.com · Africa Pi GCV Industry Alliance · Referral: chigalex1",
+    "wa-msg":"🌍 *SHANDUKO yePi muAFRICA!* 🔥\n\nChigalex1 iri kutsvaga Vamiririri veNyika vakanyatsomirira kubatsira pakupinza MIRIYONI 1+ yezvikwata muAfrica paPi Network!\n\n✅ Kushandisa KWEMAHARA kwenguva yose kuDApp yose\n💰 Pindura Pi rewards pakubhisana kwekunyoresa bhizinesi\n🎖️ Kusimuka kwekirasi kunoitika pakusimuka — kubva Starter kusvika Diamond\n🌍 Mitauro 22 yeAfrica · Nyika 54 · Yakagadzirira Mainnet!\n\nNyoresa izvozvi 👇\nhttps://chigalex1-backend.onrender.com/landing.html\n\nTumira meseji ku@chigalex1 paPi Network kuda ruzivo rwakawanda.\nReferral code: *chigalex1*"
+  },
+  pt:{
+    "hero-eyebrow":"🔥 Uma Revolução Pi Está a Acontecer em África",
+    "hero-h1a":"A Revolução de Educação","hero-h1b":"Pi Network de África",
+    "hero-sub":"A <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> estabeleceu o objectivo de integrar <strong style='color:#F5C518;'>1.000.000+ empresas e comerciantes</strong> em todas as 54 nações africanas no ecossistema Pi — em línguas locais de cada região.",
+    "hero-target":"Objectivo: 1 Milhão+ de Empresas Africanas no Pi",
+    "btn-hero-amb":"🚀 Tornar-se Embaixador do País","btn-hero-app":"📱 Explorar a App",
+    "stat-nations":"Nações Africanas","stat-langs":"Línguas Locais","stat-regions":"Comunidades Regionais","stat-target":"Objectivo de Empresas",
+    "strip-h":"⚡ As Coisas Estão a Ficar Sérias — África Está Pronta",
+    "strip-p":"A DApp Chigalex1 está activa no Pi Browser Testnet agora — a formar pioneiros e empresas em <strong style='color:#F5C518;'>22 línguas africanas</strong>. O sistema está completamente concebido e pronto para o lançamento da Mainnet. <strong style='color:#E8520A;'>A janela de oportunidade está aberta AGORA MESMO.</strong>",
+    "tit-app":"O Que o Chigalex1 Oferece","sub-app":"Uma DApp abrangente de educação Pi Network acessível através do Pi Browser — a formar desde os primeiros pioneiros até empresas estabelecidas.",
+    "fc1t":"Chatbot AI — 24/7","fc1d":"Guia Pi especialista a responder em 22 línguas africanas. KYC, KYB, Mapa do Pi, estratégia GCV e segurança — instantaneamente.",
+    "fc2t":"Formação Passo a Passo","fc2d":"Guias completos para Registo, KYC, KYB e Segurança — adaptados para todas as 54 nações africanas.",
+    "fc3t":"Tutorial Mapa do Pi","fc3d":"Guia de 4 separadores para empresas — Registar, Optimizar, Aceitar Pagamentos Pi e Crescer.",
+    "fc4t":"Directório de Comerciantes","fc4d":"Directório pan-africano de empresas que aceitam Pi. Encontre parceiros Pi em todas as 54 nações.",
+    "fc5t":"Roteiro de Adopção GCV","fc5d":"O caminho de $314.159 por 1π — de 10% de adopção Pi hoje a 100% de reconhecimento GCV na Mainnet.",
+    "fc6t":"22 Línguas Africanas","fc6d":"Shona · Ndebele · Zulu · Swahili · Hausa · Yoruba · Igbo · Árabe · Francês · Português · Lingala e 11 mais.",
+    "tit-amb":"Tornar-se Embaixador do País","sub-amb":"Precisamos de pioneiros Pi sérios e motivados financeiramente como representantes de países — para capacitar África até aos lugares mais remotos em línguas locais.",
+    "amb-box-title":"Representantes Embaixadores do País Procurados",
+    "amb-box-body":"Procuramos <strong>pioneiros Pi dedicados</strong> comprometidos com a liberdade financeira e prontos para impulsionar a adopção do ecossistema Pi no seu país.<br/><br/><strong>O sistema está completamente concebido e pronto para o lançamento da Mainnet.</strong> Os embaixadores que construírem as suas redes AGORA estarão melhor posicionados quando o Pi entrar em pleno funcionamento.",
+    "p1t":"Acesso Gratuito Vitalício","p1d":"Embaixadores aprovados recebem acesso gratuito vitalício à DApp completa do Chigalex1.",
+    "p2t":"Recompensado em Pi","p2d":"Ganhe recompensas Pi por cada empresa ou comerciante que registar com sucesso — automaticamente por nível.",
+    "p3t":"Actualizações Automáticas de Nível","p3d":"O seu nível de recompensa actualiza automaticamente à medida que o número de recrutados cresce — de Iniciante a Diamante.",
+    "p4t":"Visibilidade Pan-Africana","p4d":"O seu perfil de embaixador listado na rede Chigalex1 — visível para pioneiros em todas as 54 nações africanas.",
+    "tiers-head":"🎖️ Níveis de Recompensa Automáticos",
+    "tier1n":"Iniciante","tier1r":"1 – 4 Recrutados","tier1w":"Recompensa de Entrada",
+    "tier2n":"Bronze","tier2r":"5 – 9 Recrutados","tier2w":"Recompensa Pi Bronze",
+    "tier3n":"Prata","tier3r":"10 – 19 Recrutados","tier3w":"Recompensa Pi Prata",
+    "tier4n":"Ouro","tier4r":"20 – 49 Recrutados","tier4w":"Recompensa Pi Ouro",
+    "tier5n":"Diamante","tier5r":"50+ Recrutados","tier5w":"Recompensa Pi Diamante",
+    "step1t":"Candidatar-se via Pi Network","step1d":"Envie uma mensagem para @chigalex1 na Pi Network com o seu nome, país e porquê quer ser embaixador.",
+    "step2t":"Ser Aprovado","step2d":"As candidaturas são analisadas pela equipa Chigalex1. Pioneiros sérios e motivados financeiramente são prioritários.",
+    "step3t":"Receber Acesso Gratuito Vitalício","step3d":"Após aprovação, a sua conta é actualizada — toda a formação, Chatbot AI, Directório de Comerciantes e tutorial Mapa do Pi incluídos sem custo.",
+    "step4t":"Integrar Empresas no Seu País","step4d":"Use a DApp Chigalex1 para formar empresas e comerciantes. Cada recrutado é rastreado e contado para o seu nível.",
+    "step5t":"Ganhar Recompensas Pi Automaticamente","step5d":"As recompensas acumulam-se com base no seu nível. As actualizações acontecem automaticamente — sem processo manual.",
+    "tit-regions":"Todas as 5 Comunidades Regionais Africanas","sub-regions":"Embaixadores necessários em cada região. Formação nas principais línguas locais de cada comunidade económica.",
+    "form-title":"🤝 Candidatar-se a Embaixador do País",
+    "form-sub":"Todos os campos são obrigatórios. Seja honesto e específico — queremos parceiros verdadeiramente sérios sobre a revolução Pi de África.",
+    "form-tip-txt":"Após submeter, envie também uma mensagem para <strong style='color:#fff;'>@chigalex1</strong> na Pi Network para confirmar a sua candidatura.",
+    "lbl-fname":"Nome Completo","lbl-country":"País","lbl-pi":"Nome de Utilizador Pi","lbl-phone":"Número WhatsApp",
+    "lbl-lang":"Língua Principal","lbl-why":"Porque quer ser Embaixador?",
+    "lbl-biz":"Quantas empresas pode integrar em 3 meses?",
+    "btn-submit-app":"🚀 Submeter Candidatura",
+    "share-title":"📣 Espalhe a Palavra","share-sub":"Conhece um pioneiro Pi sério que deveria ser embaixador? Partilhe esta página. Quanto mais embaixadores em África, mais depressa chegamos a 1 milhão de empresas.",
+    "btn-share-wa":"📱 WhatsApp","btn-share-tg":"✈️ Telegram","btn-share-fb":"👥 Facebook","btn-share-copy":"🔗 Copiar Link","btn-promo":"🖼️ Cartão Promo",
+    "cta-h":"Faça Parte da Revolução Pi de África",
+    "cta-sub":"Isto não é apenas uma app. É um <strong style='color:#F5C518;'>movimento de liberdade financeira.</strong> África tem 1,4 mil milhões de pessoas — e o poder de impulsionar o GCV através da adopção comunitária. O seu país precisa de um campeão. <strong style='color:#E8520A;'>Seja esse campeão.</strong>",
+    "contact-label":"Mensagem na Pi Network",
+    "cta-btn1":"📝 Candidatar Agora","cta-btn2":"📱 Partilhar no WhatsApp",
+    "nav-apply-btn":"🤝 Tornar-se Embaixador",
+    "footer-disc":"Chigalex1 é um recurso educacional comunitário independente. Não afiliado à Pi Network ou SocialChain Inc. Pi Oficial: minepi.com · Africa Pi GCV Industry Alliance · Referência: chigalex1",
+    "wa-msg":"🌍 *REVOLUÇÃO Pi de ÁFRICA!* 🔥\n\nO Chigalex1 procura Embaixadores de País sérios para ajudar a integrar 1 MILHÃO+ de empresas em toda a África na Pi Network!\n\n✅ Acesso GRATUITO vitalício à DApp completa\n💰 Ganhe recompensas Pi por cada empresa que registar\n🎖️ Actualizações automáticas de nível de Iniciante a Diamante\n🌍 22 línguas africanas · 54 nações · Pronto para Mainnet!\n\nCandidature agora 👇\nhttps://chigalex1-backend.onrender.com/landing.html\n\nEnvie mensagem para @chigalex1 na Pi Network para detalhes.\nCódigo de referência: *chigalex1*"
+  },
+  sw:{
+    "hero-eyebrow":"🔥 Mapinduzi ya Pi Yanafanyika Afrika",
+    "hero-h1a":"Mapinduzi ya Elimu ya","hero-h1b":"Pi Network Afrika",
+    "hero-sub":"<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> imeweka lengo la kuingiza <strong style='color:#F5C518;'>biashara 1,000,000+</strong> katika mataifa yote 54 ya Afrika kwenye mfumo wa Pi — kwa lugha za mahali pa kila mkoa.",
+    "hero-target":"Lengo: Biashara 1 Milioni+ za Afrika kwenye Pi",
+    "btn-hero-amb":"🚀 Kuwa Balozi wa Nchi","btn-hero-app":"📱 Chunguza App",
+    "stat-nations":"Mataifa ya Afrika","stat-langs":"Lugha za Mahali","stat-regions":"Jumuiya za Kikanda","stat-target":"Lengo la Biashara",
+    "strip-h":"⚡ Mambo Yanakuwa Mazito — Afrika Iko Tayari",
+    "strip-p":"Chigalex1 DApp iko hai kwenye Pi Browser Testnet sasa hivi — ikifunza waanzilishi na biashara kwa <strong style='color:#F5C518;'>lugha 22 za Afrika</strong>. Mfumo umekamilika na uko tayari kwa uzinduzi wa Mainnet. <strong style='color:#E8520A;'>Dirisha la fursa lipo wazi SASA HIVI.</strong>",
+    "tit-app":"Chigalex1 Inatoa Nini","sub-app":"DApp kamili ya elimu ya Pi Network inayofikiwa kupitia Pi Browser — ikifunza kila mtu kuanzia waanzilishi wa kwanza hadi biashara zilizosimama.",
+    "fc1t":"Chatbot AI — 24/7","fc1d":"Mwongozo mtaalamu wa Pi anayejibu maswali kwa lugha 22 za Afrika. KYC, KYB, Ramani ya Pi, mkakati wa GCV na usalama — mara moja.",
+    "fc2t":"Mafunzo ya Hatua kwa Hatua","fc2d":"Miongozo kamili ya Usajili, KYC, KYB na Usalama — iliyoundwa kwa mataifa yote 54 ya Afrika.",
+    "fc3t":"Mafunzo ya Ramani ya Pi","fc3d":"Mwongozo wa vipengele 4 kwa biashara — Sajili, Boresha, Kubali Malipo ya Pi, na Kukua.",
+    "fc4t":"Orodha ya Wafanyabiashara","fc4d":"Orodha ya Afrika nzima ya biashara zinazokubali Pi. Pata washirika wa Pi katika mataifa yote 54.",
+    "fc5t":"Ramani ya Kukubali GCV","fc5d":"Njia ya $314,159 kwa 1π — kutoka 10% ya kukubali Pi leo hadi 100% ya utambuzi wa GCV unaolazimishwa na jamii kwenye Mainnet.",
+    "fc6t":"Lugha 22 za Afrika","fc6d":"Shona · Ndebele · Zulu · Kiswahili · Hausa · Yoruba · Igbo · Kiarabu · Kifaransa · Kireno · Lingala na 11 zaidi.",
+    "tit-amb":"Kuwa Balozi wa Nchi","sub-amb":"Tunahitaji waanzilishi wa Pi wazito, wenye motisha ya fedha kama wawakilishi wa nchi — kuwezesha Afrika hadi sehemu za mbali zaidi kwa lugha za mahali.",
+    "amb-box-title":"Wawakilishi wa Balozi wa Nchi Wanatafutwa",
+    "amb-box-body":"Tunatafuta <strong>waanzilishi wa Pi waliojitolea</strong> waliodhamiria uhuru wa fedha na wako tayari kuendesha kukubali mfumo wa Pi nchini mwao.<br/><br/><strong>Mfumo umekamilika na uko tayari kwa uzinduzi wa Mainnet.</strong> Mabalozi wanaojenga mitandao yao SASA watakuwa katika nafasi nzuri zaidi Pi itakapofanya kazi kikamilifu.",
+    "p1t":"Ufikiaji wa Bure wa Maisha Yote","p1d":"Mabalozi walioidhinishwa hupokea ufikiaji wa bure wa maisha yote kwa DApp kamili ya Chigalex1.",
+    "p2t":"Tuzo kwa Pi","p2d":"Pata tuzo za Pi kwa kila biashara au mfanyabiashara unayesajili kwa mafanikio — otomatiki kwa ngazi yako.",
+    "p3t":"Masasisho ya Kiotomatiki ya Ngazi","p3d":"Ngazi yako ya tuzo inasasishwa kiotomatiki rekruti zako zinavyoongezeka — kutoka Mwanzo hadi Almasi.",
+    "p4t":"Mwonekano wa Pan-Afrika","p4d":"Wasifu wako wa balozi umeorodheshwa kwenye mtandao wa Chigalex1 — unaoonekana kwa waanzilishi katika mataifa yote 54.",
+    "tiers-head":"🎖️ Ngazi za Tuzo za Kiotomatiki",
+    "tier1n":"Mwanzo","tier1r":"Rekruti 1 – 4","tier1w":"Tuzo ya Kuanza",
+    "tier2n":"Shaba","tier2r":"Rekruti 5 – 9","tier2w":"Tuzo ya Shaba Pi",
+    "tier3n":"Fedha","tier3r":"Rekruti 10 – 19","tier3w":"Tuzo ya Fedha Pi",
+    "tier4n":"Dhahabu","tier4r":"Rekruti 20 – 49","tier4w":"Tuzo ya Dhahabu Pi",
+    "tier5n":"Almasi","tier5r":"Rekruti 50+","tier5w":"Tuzo ya Almasi Pi",
+    "step1t":"Omba kupitia Pi Network","step1d":"Tuma ujumbe kwa @chigalex1 kwenye Pi Network na jina lako, nchi na kwa nini unataka kuwa balozi.",
+    "step2t":"Idhinishwa","step2d":"Maombi yanakaguliwa na timu ya Chigalex1. Waanzilishi wazito, wenye motisha ya fedha wanapewa kipaumbele.",
+    "step3t":"Pokea Ufikiaji wa Bure wa Maisha Yote","step3d":"Baada ya kuidhinishwa, akaunti yako inasasishwa — mafunzo yote, Chatbot AI, Orodha ya Wafanyabiashara na mafunzo ya Ramani ya Pi yamejumuishwa bila gharama.",
+    "step4t":"Sajili Biashara Nchini Mwako","step4d":"Tumia Chigalex1 DApp kufunza biashara na wafanyabiashara. Kila rekruti inafuatiliwa na kuhesabiwa kuelekea ngazi yako.",
+    "step5t":"Pata Tuzo za Pi Kiotomatiki","step5d":"Tuzo zinakusanyika kulingana na ngazi yako. Masasisho hutokea kiotomatiki — hakuna mchakato wa mkono unaohitajika.",
+    "tit-regions":"Jumuiya Zote 5 za Kikanda za Afrika","sub-regions":"Mabalozi wanahitajika kila mkoa. Mafunzo kwa lugha kuu za mahali pa kila jumuiya ya kiuchumi.",
+    "form-title":"🤝 Omba Kuwa Balozi wa Nchi",
+    "form-sub":"Sehemu zote zinahitajika. Kuwa mkweli na maalum — tunataka washirika ambao wana nia ya kweli kuhusu mapinduzi ya Pi ya Afrika.",
+    "form-tip-txt":"Baada ya kuwasilisha, pia tuma ujumbe kwa <strong style='color:#fff;'>@chigalex1</strong> kwenye Pi Network kuthibitisha ombi lako.",
+    "lbl-fname":"Jina Kamili","lbl-country":"Nchi","lbl-pi":"Jina la Mtumiaji wa Pi","lbl-phone":"Nambari ya WhatsApp",
+    "lbl-lang":"Lugha ya Kwanza Unayozungumza","lbl-why":"Kwa nini unataka kuwa Balozi?",
+    "lbl-biz":"Biashara ngapi unaweza kusajili katika miezi 3?",
+    "btn-submit-app":"🚀 Wasilisha Ombi",
+    "share-title":"📣 Sambaza Habari","share-sub":"Unajua manzilishi wa Pi mzito ambaye anapaswa kuwa balozi? Shiriki ukurasa huu. Mabalozi wengi zaidi Afrika, ndivyo tunavyofika haraka biashara milioni moja.",
+    "btn-share-wa":"📱 WhatsApp","btn-share-tg":"✈️ Telegram","btn-share-fb":"👥 Facebook","btn-share-copy":"🔗 Nakili Kiungo","btn-promo":"🖼️ Kadi ya Promo",
+    "cta-h":"Kuwa Sehemu ya Mapinduzi ya Pi ya Afrika",
+    "cta-sub":"Hii si app tu. Ni <strong style='color:#F5C518;'>harakati ya uhuru wa fedha.</strong> Afrika ina watu bilioni 1.4 — na nguvu ya kuendesha GCV kupitia kukubali kwa jamii. Nchi yako inahitaji shujaa. <strong style='color:#E8520A;'>Kuwa shujaa huyo.</strong>",
+    "contact-label":"Ujumbe kwenye Pi Network",
+    "cta-btn1":"📝 Omba Sasa","cta-btn2":"📱 Shiriki kwenye WhatsApp",
+    "nav-apply-btn":"🤝 Kuwa Balozi",
+    "footer-disc":"Chigalex1 ni rasilimali ya kielimu ya jamii huru. Haina uhusiano na Pi Network au SocialChain Inc. Pi Rasmi: minepi.com · Africa Pi GCV Industry Alliance · Rufaa: chigalex1",
+    "wa-msg":"🌍 *MAPINDUZI ya Pi AFRIKA!* 🔥\n\nChigalex1 inatafuta Mabalozi wa Nchi wazito kusaidia kuingiza BIASHARA MILIONI 1+ barani Afrika kwenye Pi Network!\n\n✅ Ufikiaji wa BURE wa maisha yote kwa DApp kamili\n💰 Pata tuzo za Pi kwa kila biashara unayosajili\n🎖️ Masasisho ya kiotomatiki ya ngazi kutoka Mwanzo hadi Almasi\n🌍 Lugha 22 za Afrika · Mataifa 54 · Tayari kwa Mainnet!\n\nOmba sasa 👇\nhttps://chigalex1-backend.onrender.com/landing.html\n\nTuma ujumbe kwa @chigalex1 kwenye Pi Network kwa maelezo zaidi.\nNambari ya rufaa: *chigalex1*"
+  },
+  fr:{
+    "hero-eyebrow":"🔥 Une Révolution Pi se Déroule en Afrique",
+    "hero-h1a":"La Révolution de l'Éducation","hero-h1b":"Pi Network en Afrique",
+    "hero-sub":"<strong style='color:#E8520A;'>L'Africa Pi GCV Industry Alliance</strong> s'est fixé pour objectif d'intégrer <strong style='color:#F5C518;'>1.000.000+ d'entreprises et de commerçants</strong> dans les 54 nations africaines dans l'écosystème Pi.",
+    "hero-target":"Objectif: 1 Million+ d'Entreprises Africaines sur Pi",
+    "btn-hero-amb":"🚀 Devenir Ambassadeur du Pays","btn-hero-app":"📱 Explorer l'Application",
+    "stat-nations":"Nations Africaines","stat-langs":"Langues Locales","stat-regions":"Communautés Régionales","stat-target":"Objectif d'Entreprises",
+    "strip-h":"⚡ Les Choses Deviennent Sérieuses — L'Afrique est Prête",
+    "strip-p":"La DApp Chigalex1 est en direct sur Pi Browser Testnet maintenant — formant des pionniers et des entreprises en <strong style='color:#F5C518;'>22 langues africaines</strong>. Le système est entièrement conçu et prêt pour le lancement Mainnet. <strong style='color:#E8520A;'>La fenêtre d'opportunité est ouverte MAINTENANT.</strong>",
+    "tit-app":"Ce que Chigalex1 Offre","sub-app":"Une DApp complète d'éducation Pi Network accessible via Pi Browser — formant tout le monde des premiers pionniers aux entreprises établies.",
+    "fc1t":"Chatbot IA — 24/7","fc1d":"Guide Pi expert répondant en 22 langues africaines. KYC, KYB, Carte Pi, stratégie GCV et sécurité — instantanément.",
+    "fc2t":"Formation Étape par Étape","fc2d":"Guides complets pour l'Inscription, KYC, KYB et Sécurité — adaptés aux 54 nations africaines.",
+    "fc3t":"Tutoriel Carte Pi","fc3d":"Guide à 4 onglets pour les entreprises — S'inscrire, Optimiser, Accepter les Paiements Pi, et Croître.",
+    "fc4t":"Répertoire des Marchands","fc4d":"Répertoire pan-africain des entreprises acceptant Pi. Trouvez des partenaires Pi dans les 54 nations.",
+    "fc5t":"Feuille de Route GCV","fc5d":"Le chemin de $314.159 par 1π — de 10% d'adoption Pi aujourd'hui à 100% sur Mainnet.",
+    "fc6t":"22 Langues Africaines","fc6d":"Shona · Ndebele · Zulu · Swahili · Hausa · Yoruba · Igbo · Arabe · Français · Portugais · Lingala et 11 autres.",
+    "tit-amb":"Devenir Ambassadeur du Pays","sub-amb":"Nous avons besoin de pionniers Pi sérieux et motivés financièrement comme représentants de pays — pour autonomiser l'Afrique jusqu'aux endroits les plus reculés.",
+    "amb-box-title":"Représentants Ambassadeurs de Pays Recherchés",
+    "amb-box-body":"Nous cherchons des <strong>pionniers Pi dévoués</strong> engagés pour la liberté financière et prêts à conduire l'adoption de l'écosystème Pi dans leur pays.<br/><br/><strong>Le système est entièrement conçu et prêt pour le lancement Mainnet.</strong> Les ambassadeurs qui construisent leurs réseaux MAINTENANT seront les mieux positionnés.",
+    "p1t":"Accès Gratuit à Vie","p1d":"Les ambassadeurs approuvés reçoivent un accès gratuit à vie à la DApp complète Chigalex1.",
+    "p2t":"Récompensé en Pi","p2d":"Gagnez des récompenses Pi pour chaque entreprise ou commerçant que vous inscrivez avec succès.",
+    "p3t":"Mises à Niveau Automatiques","p3d":"Votre niveau de récompense se met à jour automatiquement à mesure que votre nombre de recrues augmente.",
+    "p4t":"Visibilité Pan-Africaine","p4d":"Votre profil d'ambassadeur répertorié sur le réseau Chigalex1 — visible pour les pionniers dans les 54 nations.",
+    "tiers-head":"🎖️ Niveaux de Récompense Automatiques",
+    "tier1n":"Débutant","tier1r":"1 – 4 Recrues","tier1w":"Récompense d'Entrée",
+    "tier2n":"Bronze","tier2r":"5 – 9 Recrues","tier2w":"Récompense Pi Bronze",
+    "tier3n":"Argent","tier3r":"10 – 19 Recrues","tier3w":"Récompense Pi Argent",
+    "tier4n":"Or","tier4r":"20 – 49 Recrues","tier4w":"Récompense Pi Or",
+    "tier5n":"Diamant","tier5r":"50+ Recrues","tier5w":"Récompense Pi Diamant",
+    "step1t":"Postuler via Pi Network","step1d":"Envoyez un message à @chigalex1 sur Pi Network avec votre nom, pays et pourquoi vous voulez être ambassadeur.",
+    "step2t":"Être Approuvé","step2d":"Les candidatures sont examinées par l'équipe Chigalex1. Les pionniers sérieux et motivés financièrement sont prioritaires.",
+    "step3t":"Recevoir l'Accès Gratuit à Vie","step3d":"Une fois approuvé, votre compte est mis à niveau — toute la formation, Chatbot IA, Répertoire inclus sans frais.",
+    "step4t":"Intégrer des Entreprises dans Votre Pays","step4d":"Utilisez la DApp Chigalex1 pour former des entreprises. Chaque recrue est suivie et comptée vers votre niveau.",
+    "step5t":"Gagner des Récompenses Pi Automatiquement","step5d":"Les récompenses s'accumulent selon votre niveau. Les mises à niveau se font automatiquement.",
+    "tit-regions":"Les 5 Communautés Régionales Africaines","sub-regions":"Des ambassadeurs nécessaires dans chaque région. Formation dans les langues locales de chaque communauté économique.",
+    "form-title":"🤝 Postuler comme Ambassadeur du Pays",
+    "form-sub":"Tous les champs sont obligatoires. Soyez honnête et précis — nous voulons des partenaires vraiment sérieux.",
+    "form-tip-txt":"Après avoir soumis, envoyez également un message à <strong style='color:#fff;'>@chigalex1</strong> sur Pi Network pour confirmer votre candidature.",
+    "lbl-fname":"Nom Complet","lbl-country":"Pays","lbl-pi":"Nom d'Utilisateur Pi","lbl-phone":"Numéro WhatsApp",
+    "lbl-lang":"Langue Principale","lbl-why":"Pourquoi voulez-vous être Ambassadeur?",
+    "lbl-biz":"Combien d'entreprises pouvez-vous intégrer en 3 mois?",
+    "btn-submit-app":"🚀 Soumettre la Candidature",
+    "share-title":"📣 Faites Passer le Message","share-sub":"Vous connaissez un pionnier Pi sérieux qui devrait être ambassadeur? Partagez cette page. Plus d'ambassadeurs en Afrique, plus vite nous atteignons 1 million d'entreprises.",
+    "btn-share-wa":"📱 WhatsApp","btn-share-tg":"✈️ Telegram","btn-share-fb":"👥 Facebook","btn-share-copy":"🔗 Copier Lien","btn-promo":"🖼️ Carte Promo",
+    "cta-h":"Faites Partie de la Révolution Pi d'Afrique",
+    "cta-sub":"Ce n'est pas qu'une application. C'est un <strong style='color:#F5C518;'>mouvement de liberté financière.</strong> L'Afrique a 1,4 milliard de personnes — et le pouvoir de conduire le GCV. Votre pays a besoin d'un champion. <strong style='color:#E8520A;'>Soyez ce champion.</strong>",
+    "contact-label":"Message sur Pi Network",
+    "cta-btn1":"📝 Postuler Maintenant","cta-btn2":"📱 Partager sur WhatsApp",
+    "nav-apply-btn":"🤝 Devenir Ambassadeur",
+    "footer-disc":"Chigalex1 est une ressource éducative communautaire indépendante. Non affiliée à Pi Network ou SocialChain Inc. Pi Officiel: minepi.com · Africa Pi GCV Industry Alliance · Référence: chigalex1",
+    "wa-msg":"🌍 *RÉVOLUTION Pi en AFRIQUE!* 🔥\n\nChigalex1 recherche des Ambassadeurs de Pays sérieux pour aider à intégrer 1 MILLION+ d'entreprises en Afrique sur Pi Network!\n\n✅ Accès GRATUIT à vie à la DApp complète\n💰 Gagnez des récompenses Pi pour chaque entreprise inscrite\n🎖️ Mises à niveau automatiques de Débutant à Diamant\n🌍 22 langues africaines · 54 nations · Prêt pour Mainnet!\n\nPostulez maintenant 👇\nhttps://chigalex1-backend.onrender.com/landing.html\n\nEnvoyez un message à @chigalex1 sur Pi Network pour les détails.\nCode de référence: *chigalex1*"
+  },
+  ha:{
+    "hero-eyebrow":"🔥 Juyin Juya Halin Pi yana faruwa a Afirka",
+    "hero-h1a":"Juyin Juya Halin Ilimi na","hero-h1b":"Pi Network a Afirka",
+    "hero-sub":"<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> ta sanya manufar shigar da <strong style='color:#F5C518;'>kasuwancin 1,000,000+</strong> a ƙasashe 54 na Afirka cikin tsarin Pi.",
+    "hero-target":"Manufa: Kasuwancin Afirka 1 Miliyan+ a Pi",
+    "btn-hero-amb":"🚀 Zama Jakadan Ƙasa","btn-hero-app":"📱 Bincika App",
+    "stat-nations":"Ƙasashen Afirka","stat-langs":"Harsuna na Gida","stat-regions":"Ƙungiyoyin Yanki","stat-target":"Manufar Kasuwanci",
+    "strip-h":"⚡ Abubuwa Suna Zama Mafi Muhimmanci — Afirka Tana Shirye",
+    "strip-p":"Chigalex1 DApp tana aiki a Pi Browser Testnet yanzu — tana horar da masu fara aiki da kasuwanci a <strong style='color:#F5C518;'>haruna 22 na Afirka</strong>. Tsarin ya cikakke kuma yana shirye don ƙaddamar da Mainnet. <strong style='color:#E8520A;'>Taga na dama tana buɗe YANZU.</strong>",
+    "tit-amb":"Zama Jakadan Ƙasa","sub-amb":"Muna buƙatar masu fara aiki na Pi masu tsanani, masu son freedom na kudi a matsayin wakilai na ƙasa.",
+    "amb-box-title":"Ana Neman Wakilai na Jakadan Ƙasa",
+    "amb-box-body":"Muna neman <strong>masu fara aiki na Pi masu sadaukarwa</strong> waɗanda suka sadaukar da kai don freedom na kudi.<br/><br/><strong>Tsarin ya cikakke kuma yana shirye don ƙaddamar da Mainnet.</strong>",
+    "p1t":"Damar Rayuwa ta Kyauta","p1d":"Jakadun da aka amince da su suna karɓar damar rayuwa ta kyauta zuwa Chigalex1 DApp cikakke.",
+    "p2t":"An Biya a Pi","p2d":"Sami ladan Pi don kowace kasuwanci ko ɗan kasuwa da ka yi rajista da nasara.",
+    "p3t":"Haɓaka Kai na Kaya Kai-tsaye","p3d":"Matakin ladanka yana haɓaka kai-tsaye yayin da adadin waɗanda aka ɗauka yana haɓaka.",
+    "p4t":"Bayyanuwa a Duk Afirka","p4d":"Bayanan bayananka na jakada an lissafa shi a cikin cibiyar Chigalex1.",
+    "tiers-head":"🎖️ Matakan Lada Kai-tsaye",
+    "tier1n":"Farawa","tier1r":"Aka ɗauka 1 – 4","tier1w":"Ladan Farawa",
+    "tier2n":"Bronze","tier2r":"Aka ɗauka 5 – 9","tier2w":"Ladan Bronze Pi",
+    "tier3n":"Silver","tier3r":"Aka ɗauka 10 – 19","tier3w":"Ladan Silver Pi",
+    "tier4n":"Gold","tier4r":"Aka ɗauka 20 – 49","tier4w":"Ladan Gold Pi",
+    "tier5n":"Diamond","tier5r":"Aka ɗauka 50+","tier5w":"Ladan Diamond Pi",
+    "form-title":"🤝 Nemi Zama Jakadan Ƙasa",
+    "form-sub":"Ana buƙatar duk filayen. Kasance mai gaskiya da takamaiman — muna son abokan tarayya masu tsanani.",
+    "form-tip-txt":"Bayan aikawa, kuma aika sako zuwa <strong style='color:#fff;'>@chigalex1</strong> a Pi Network don tabbatar da neman ka.",
+    "lbl-fname":"Cikakken Suna","lbl-country":"Ƙasa","lbl-pi":"Sunan Mai Amfani na Pi","lbl-phone":"Lambar WhatsApp",
+    "lbl-lang":"Yare na Farko","lbl-why":"Me ya sa kake son Zama Jakada?",
+    "lbl-biz":"Nawa kasuwancin zaka iya ɗauka a cikin watanni 3?",
+    "btn-submit-app":"🚀 Aika Nema",
+    "share-title":"📣 Yada Labarai","share-sub":"Ka san wani mai fara aiki na Pi wanda ya kamata ya zama jakada? Raba wannan shafi.",
+    "btn-share-wa":"📱 WhatsApp","btn-share-tg":"✈️ Telegram","btn-share-fb":"👥 Facebook","btn-share-copy":"🔗 Kwafi Hanyar","btn-promo":"🖼️ Katunan Talla",
+    "cta-h":"Zama Wani ɓangare na Juyin Juya Halin Pi na Afirka",
+    "cta-sub":"Wannan ba app kawai ba ne. Ita ce <strong style='color:#F5C518;'>juyin juya halin freedom na kudi.</strong> Afirka tana da mutane biliyan 1.4. Ƙasarka tana buƙatar jarumi. <strong style='color:#E8520A;'>Zama jarumi.</strong>",
+    "contact-label":"Aika Sako a Pi Network",
+    "cta-btn1":"📝 Nemi Yanzu","cta-btn2":"📱 Raba a WhatsApp",
+    "nav-apply-btn":"🤝 Zama Jakada",
+    "footer-disc":"Chigalex1 ma'adanar ilimi ce ta al'umma mai zaman kanta. Ba ta da alaƙa da Pi Network ko SocialChain Inc. Pi na Hukuma: minepi.com · Africa Pi GCV Industry Alliance · Rujukan: chigalex1",
+    "wa-msg":"🌍 *JUYIN JUYA HALIN Pi na AFIRKA!* 🔥\n\nChigalex1 tana neman Jakadun Ƙasa masu tsanani don taimakawa shigar da KASUWANCIN MILIYAN 1+ a Afirka a Pi Network!\n\n✅ Damar KYAUTA ta rayuwa zuwa DApp cikakke\n💰 Sami ladawan Pi don kowace kasuwanci da ka yi rajista\n🎖️ Haɓaka matakin kai-tsaye daga Farawa zuwa Diamond\n🌍 Yaruka 22 na Afirka · Ƙasashe 54 · Yana shirye don Mainnet!\n\nNemi yanzu 👇\nhttps://chigalex1-backend.onrender.com/landing.html\n\nAika sako zuwa @chigalex1 a Pi Network don ƙarin bayani.\nLambar rujukan: *chigalex1*"
+  },
+  ar:{
+    "hero-eyebrow":"🔥 ثورة Pi تحدث في أفريقيا",
+    "hero-h1a":"ثورة تعليم Pi Network","hero-h1b":"في أفريقيا",
+    "hero-sub":"حددت <strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> هدف استيعاب <strong style='color:#F5C518;'>أكثر من 1,000,000 شركة وتاجر</strong> في جميع الدول الأفريقية الـ54 في النظام البيئي المغلق لـPi.",
+    "hero-target":"الهدف: أكثر من مليون شركة أفريقية على Pi",
+    "btn-hero-amb":"🚀 كن سفيراً للبلد","btn-hero-app":"📱 استكشف التطبيق",
+    "stat-nations":"الدول الأفريقية","stat-langs":"اللغات المحلية","stat-regions":"المجتمعات الإقليمية","stat-target":"هدف الأعمال",
+    "strip-h":"⚡ الأمور تصبح جدية — أفريقيا جاهزة",
+    "strip-p":"تطبيق Chigalex1 DApp نشط الآن على Pi Browser Testnet — يدرّب الرواد والشركات بـ<strong style='color:#F5C518;'>22 لغة أفريقية</strong>. النظام مصمم بالكامل وجاهز لإطلاق Mainnet. <strong style='color:#E8520A;'>نافذة الفرصة مفتوحة الآن.</strong>",
+    "tit-amb":"كن سفيراً للبلد","sub-amb":"نحتاج إلى رواد Pi جادين ومحفوزين مالياً كممثلين للبلدان — لتمكين أفريقيا حتى الأماكن الأكثر نائية.",
+    "amb-box-title":"مطلوب ممثلو السفراء في البلدان",
+    "amb-box-body":"نبحث عن <strong>رواد Pi مخلصين</strong> ملتزمين بالحرية المالية ومستعدين لقيادة اعتماد النظام البيئي لـPi في بلدانهم.<br/><br/><strong>النظام مصمم بالكامل وجاهز لإطلاق Mainnet.</strong>",
+    "p1t":"وصول مجاني مدى الحياة","p1d":"يحصل السفراء المعتمدون على وصول مجاني مدى الحياة إلى تطبيق Chigalex1 الكامل.",
+    "p2t":"مكافأة بـPi","p2d":"اكسب مكافآت Pi لكل شركة أو تاجر تسجله بنجاح — بشكل تلقائي وفق مستواك.",
+    "p3t":"ترقيات تلقائية للمستوى","p3d":"يرتقي مستوى مكافآتك تلقائياً مع نمو عدد المجندين.",
+    "p4t":"رؤية شاملة في أفريقيا","p4d":"ملفك الشخصي كسفير مدرج في شبكة Chigalex1 — مرئي للرواد في الدول الـ54.",
+    "tiers-head":"🎖️ مستويات المكافآت التلقائية",
+    "tier1n":"مبتدئ","tier1r":"1 – 4 مجندين","tier1w":"مكافأة البداية",
+    "tier2n":"برونز","tier2r":"5 – 9 مجندين","tier2w":"مكافأة Pi البرونز",
+    "tier3n":"فضة","tier3r":"10 – 19 مجندين","tier3w":"مكافأة Pi الفضة",
+    "tier4n":"ذهب","tier4r":"20 – 49 مجندين","tier4w":"مكافأة Pi الذهب",
+    "tier5n":"ألماس","tier5r":"50+ مجندين","tier5w":"مكافأة Pi الألماس",
+    "form-title":"🤝 التقدم لتكون سفيراً للبلد",
+    "form-sub":"جميع الحقول مطلوبة. كن صادقاً ومحدداً — نريد شركاء جادين حقاً.",
+    "form-tip-txt":"بعد التقديم، أرسل أيضاً رسالة إلى <strong style='color:#fff;'>@chigalex1</strong> على Pi Network لتأكيد طلبك.",
+    "lbl-fname":"الاسم الكامل","lbl-country":"البلد","lbl-pi":"اسم المستخدم في Pi","lbl-phone":"رقم WhatsApp",
+    "lbl-lang":"اللغة الرئيسية","lbl-why":"لماذا تريد أن تكون سفيراً؟",
+    "lbl-biz":"كم شركة يمكنك استيعابها في 3 أشهر؟",
+    "btn-submit-app":"🚀 تقديم الطلب",
+    "share-title":"📣 انشر الكلمة","share-sub":"هل تعرف رائداً جاداً في Pi يجب أن يكون سفيراً؟ شارك هذه الصفحة.",
+    "btn-share-wa":"📱 واتساب","btn-share-tg":"✈️ تيليغرام","btn-share-fb":"👥 فيسبوك","btn-share-copy":"🔗 نسخ الرابط","btn-promo":"🖼️ بطاقة ترويجية",
+    "cta-h":"كن جزءاً من ثورة Pi في أفريقيا",
+    "cta-sub":"هذا ليس مجرد تطبيق. إنه <strong style='color:#F5C518;'>حركة حرية مالية.</strong> أفريقيا لديها 1.4 مليار شخص — وقوة دفع GCV. بلدك يحتاج إلى بطل. <strong style='color:#E8520A;'>كن ذلك البطل.</strong>",
+    "contact-label":"رسالة على Pi Network",
+    "cta-btn1":"📝 تقدم الآن","cta-btn2":"📱 مشاركة على واتساب",
+    "nav-apply-btn":"🤝 كن سفيراً",
+    "footer-disc":"Chigalex1 مورد تعليمي مجتمعي مستقل. غير منتسب إلى Pi Network أو SocialChain Inc. Pi الرسمي: minepi.com · Africa Pi GCV Industry Alliance · الإحالة: chigalex1",
+    "wa-msg":"🌍 *ثورة Pi في أفريقيا!* 🔥\n\nتبحث Chigalex1 عن سفراء جادين للمساعدة في استيعاب أكثر من مليون شركة عبر أفريقيا على Pi Network!\n\n✅ وصول مجاني مدى الحياة للتطبيق الكامل\n💰 اكسب مكافآت Pi لكل شركة تسجلها\n🎖️ ترقيات تلقائية من مبتدئ إلى ألماس\n🌍 22 لغة أفريقية · 54 دولة · جاهز للـMainnet!\n\nتقدم الآن 👇\nhttps://chigalex1-backend.onrender.com/landing.html\n\nأرسل رسالة إلى @chigalex1 على Pi Network للتفاصيل.\nرمز الإحالة: *chigalex1*"
+  },
+  ln:{
+    "hero-eyebrow":"🔥 Boyebeli ya Pi ezali kosalema na Afrique",
+    "hero-h1a":"Boyebeli ya Koyekola ya","hero-h1b":"Pi Network na Afrique",
+    "hero-sub":"<strong style='color:#E8520A;'>Africa Pi GCV Industry Alliance</strong> esimbi mokano ya kotia <strong style='color:#F5C518;'>biznisi 1,000,000+</strong> na mibeko nyonso 54 ya Afrique na systeme ya Pi.",
+    "hero-target":"Mokano: Biznisi 1 Miliyoni+ ya Afrique na Pi",
+    "btn-hero-amb":"🚀 Kozala Ambasaderi ya Ekolo","btn-hero-app":"📱 Tala App",
+    "stat-nations":"Mibeko ya Afrique","stat-langs":"Minoko ya Esika","stat-regions":"Bongangani ya Etuka","stat-target":"Mokano ya Biznisi",
+    "strip-h":"⚡ Biloko Ezali Kokoma Makasi — Afrique Ezali Peto",
+    "strip-p":"Chigalex1 DApp ezali na molayi na Pi Browser Testnet sikoyo — koteya balobeli mpe biznisi na <strong style='color:#F5C518;'>minoko 22 ya Afrique</strong>. Systeme ekabolami mpenza mpe ezali peto mpo na kolongola Mainnet. <strong style='color:#E8520A;'>Feneti ya libela ezali ya mbuka SIKOYO.</strong>",
+    "tit-amb":"Kozala Ambasaderi ya Ekolo","sub-amb":"Tosengeli balobeli ya Pi ya makasi, bazo komibongisa mpo na bozwi ya mbongo lokola bawakili ya mibeko.",
+    "amb-box-title":"Bawakili ya Ambasaderi ya Ekolo Bafutamaka",
+    "amb-box-body":"Tozali koluka <strong>balobeli ya Pi ya komikaba</strong> bazo komikatisa mpo na bozwi ya mbongo mpe bazali peto kotambwisa bokabwi ya Pi na ekolo na bango.<br/><br/><strong>Systeme ekabolami mpenza mpe ezali peto mpo na kolongola Mainnet.</strong>",
+    "p1t":"Nzela ya Bure ya Bomoi Nyonso","p1d":"Baambasaderi bazo kabiwama bazwaka nzela ya bure ya bomoi nyonso na Chigalex1 DApp mobimba.",
+    "p2t":"Babondelami na Pi","p2d":"Zwaka mabondelami ya Pi mpo na biznisi nyonso to movendeur oyo ozali kosalela registration na bonga.",
+    "p3t":"Makonzi ya Otomatiki ya Etape","p3d":"Etape ya mabondelami na yo emakwaka na otomatiki ntango motango ya bazo kokanga ekoli.",
+    "p4t":"Kolekama na Afrique Mobimba","p4d":"Profile na yo ya ambasaderi elongolami na réseau ya Chigalex1.",
+    "tiers-head":"🎖️ Etape ya Mabondelami ya Otomatiki",
+    "tier1n":"Ebandeli","tier1r":"Bakangwami 1 – 4","tier1w":"Mabondelami ya Ebandeli",
+    "tier2n":"Bronze","tier2r":"Bakangwami 5 – 9","tier2w":"Mabondelami ya Bronze Pi",
+    "tier3n":"Siliva","tier3r":"Bakangwami 10 – 19","tier3w":"Mabondelami ya Siliva Pi",
+    "tier4n":"Wolo","tier4r":"Bakangwami 20 – 49","tier4w":"Mabondelami ya Wolo Pi",
+    "tier5n":"Diamɛ","tier5r":"Bakangwami 50+","tier5w":"Mabondelami ya Diamɛ Pi",
+    "form-title":"🤝 Demande ya Kozala Ambasaderi ya Ekolo",
+    "form-sub":"Biteni nyonso esengeli. Kozala ya solo mpe ya momeseno.",
+    "form-tip-txt":"Sima ya kotinda, tindaka lisusu sango na <strong style='color:#fff;'>@chigalex1</strong> na Pi Network mpo na kotiya demande na yo na mokano.",
+    "lbl-fname":"Nkombo ya Mobimba","lbl-country":"Ekolo","lbl-pi":"Nkombo ya Mosalisi ya Pi","lbl-phone":"Nomero ya WhatsApp",
+    "lbl-lang":"Monoko ya Liboso","lbl-why":"Mpo na nini ozali koluka kozala Ambasaderi?",
+    "lbl-biz":"Biznisi boni okoki kokanga na sanza 3?",
+    "btn-submit-app":"🚀 Tinda Demande",
+    "share-title":"📣 Sanza Nsango","share-sub":"Oya molobeli ya Pi ya makasi oyo asengeli kozala ambasaderi? Kabola lokasa oyo.",
+    "btn-share-wa":"📱 WhatsApp","btn-share-tg":"✈️ Telegram","btn-share-fb":"👥 Facebook","btn-share-copy":"🔗 Kopiela Nzela","btn-promo":"🖼️ Karite ya Ntango",
+    "cta-h":"Kozala Ntina ya Boyebeli ya Pi ya Afrique",
+    "cta-sub":"Oyo ezali kaka app te. Ezali <strong style='color:#F5C518;'>mouvement ya bozwi ya mbongo.</strong> Afrique ezali na bato miliyari 1.4. Ekolo na yo esengeli mokonzi. <strong style='color:#E8520A;'>Kozala mokonzi wana.</strong>",
+    "contact-label":"Tinda Sango na Pi Network",
+    "cta-btn1":"📝 Bɔndɔ Sikoyo","cta-btn2":"📱 Kabola na WhatsApp",
+    "nav-apply-btn":"🤝 Kozala Ambasaderi",
+    "footer-disc":"Chigalex1 ezali esika ya koteya ya bato ya bozwi bwa yango moko. Ezali te na boyokani na Pi Network to SocialChain Inc. Pi ya Ofisye: minepi.com · Africa Pi GCV Industry Alliance · Référence: chigalex1",
+    "wa-msg":"🌍 *BOYEBELI ya Pi na AFRIQUE!* 🔥\n\nChigalex1 ezali koluka Baambasaderi ya Mibeko ya makasi mpo na kosalisa kokanga BIZNISI MILIYONI 1+ na Afrique mobimba na Pi Network!\n\n✅ Nzela ya BURE ya bomoi nyonso na DApp mobimba\n💰 Zwaka mabondelami ya Pi mpo na biznisi nyonso ozali kokanga\n🎖️ Makonzi ya otomatiki ya etape kobanda Ebandeli tii Diamɛ\n🌍 Minoko 22 ya Afrique · Mibeko 54 · Peto mpo na Mainnet!\n\nBɔndɔ sikoyo 👇\nhttps://chigalex1-backend.onrender.com/landing.html\n\nTinda sango na @chigalex1 na Pi Network mpo na makambo mingi.\nNomero ya référence: *chigalex1*"
+  }
+};
+
+// Fallback langs — copy en and override key strings
+['nd','zu','af','ny','am','so','yo','ig'].forEach(l=>{
+  T[l]={...T.en};
+});
+T.nd={...T.en,"hero-eyebrow":"🔥 Uphenduko we-Pi uyenzeka e-Afrika","hero-h1a":"Uphenduko Wemfundo","hero-h1b":"ye-Pi Network e-Afrika","btn-hero-amb":"🚀 Yiba uSithunywa Wezwe","stat-nations":"Izizwe ze-Afrika","nav-apply-btn":"🤝 Yiba uSithunywa","wa-msg":"🌍 *UPHENDUKO we-Pi e-AFRIKA!* 🔥\n\nChigalex1 idinga oSithunywa Bezwe abaqotho ukusiza ukwengenisa AMABHIZINISI ISIGIDI 1+ e-Afrika lonke ku-Pi Network!\n\n✅ Ukufinyelela KWAMAHHALA kwempilo yonke ku-DApp ephelele\n💰 Thola imiklomelo ye-Pi kwalomabhizinisi owubhalisa\n🎖️ Izinga elihlela ngokwengxenye ukusuka Ku-Starter kuya ku-Diamond\n🌍 Izilimi ze-Afrika 22 · Izizwe 54 · Ilungele i-Mainnet!\n\nFaka isicelo manje 👇\nhttps://chigalex1-backend.onrender.com/landing.html\n\nThumela umlayezo ku@chigalex1 ku-Pi Network.\nIkhodi yereferensi: *chigalex1*"};
+
+let curLang='en';
+
+function setLang(l){
+  if(!T[l])l='en';
+  curLang=l;
+  const t=T[l];
+  document.documentElement.dir=(l==='ar')?'rtl':'ltr';
+  document.documentElement.lang=l;
+  document.querySelectorAll('select.lang-sel').forEach(s=>s.value=l);
+  const htmlIds=['hero-sub','strip-p','amb-box-body','cta-sub','form-tip-txt'];
+  Object.keys(t).forEach(id=>{
+    if(id==='wa-msg')return;
+    const el=document.getElementById(id);
+    if(!el)return;
+    if(htmlIds.includes(id)){el.innerHTML=t[id];}
+    else{el.textContent=t[id];}
+  });
+}
+
+// ── FORM SUBMIT ──
+async function submitApp(){
+  const name=document.getElementById('f-name').value.trim();
+  const country=document.getElementById('f-country').value.trim();
+  const pi=document.getElementById('f-pi').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const lang=document.getElementById('f-lang').value;
+  const why=document.getElementById('f-why').value.trim();
+  const biz=document.getElementById('f-biz').value.trim();
+  if(!name||!country||!pi||!why){alert('Please fill all required fields.');return;}
+  const btn=document.getElementById('btn-submit-app');
+  btn.disabled=true;btn.textContent='Submitting...';
+  try{
+    await fetch('/ambassador/apply',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,country,pi,phone,lang,why,biz,timestamp:new Date().toISOString()})});
+  }catch(e){}
+  btn.disabled=false;btn.innerHTML='✅ Submitted!';
+  document.getElementById('form-ok').style.display='block';
+  document.getElementById('form-ok').scrollIntoView({behavior:'smooth'});
+}
+
+// ── SHARE FUNCTIONS ──
+const PAGE_URL='https://chigalex1-backend.onrender.com/landing.html';
+
+function shareWA(){
+  const msg=(T[curLang]&&T[curLang]['wa-msg'])||T.en['wa-msg'];
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+}
+function shareTG(){
+  const msg=(T[curLang]&&T[curLang]['wa-msg'])||T.en['wa-msg'];
+  window.open('https://t.me/share/url?url='+encodeURIComponent(PAGE_URL)+'&text='+encodeURIComponent(msg),'_blank');
+}
+function shareFB(){
+  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(PAGE_URL),'_blank');
+}
+function copyLink(){
+  navigator.clipboard.writeText(PAGE_URL).then(()=>{
+    const btn=document.getElementById('btn-share-copy');
+    const orig=btn.textContent;btn.textContent='✅ Copied!';
+    setTimeout(()=>{btn.textContent=orig;},2200);
+  });
+}
+
+// ── PROMO CARD GENERATOR ──
+function generatePromo(){
+  const canvas=document.getElementById('promoCard');
+  const ctx=canvas.getContext('2d');
+  const w=400,h=400;
+  canvas.width=w;canvas.height=h;
+
+  // Background
+  const grad=ctx.createLinearGradient(0,0,w,h);
+  grad.addColorStop(0,'#0D0A1A');grad.addColorStop(.5,'#211A3A');grad.addColorStop(1,'#1A0A30');
+  ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
+
+  // Border glow
+  ctx.strokeStyle='rgba(245,197,24,0.6)';ctx.lineWidth=3;ctx.strokeRect(6,6,w-12,h-12);
+  ctx.strokeStyle='rgba(123,45,139,0.4)';ctx.lineWidth=1;ctx.strokeRect(10,10,w-20,h-20);
+
+  // Africa emoji
+  ctx.font='56px serif';ctx.textAlign='center';ctx.fillText('🌍',w/2,80);
+
+  // Title
+  ctx.fillStyle='#F5C518';ctx.font='bold 22px Sora, Arial, sans-serif';
+  ctx.fillText('CHIGALEX1',w/2,120);
+  ctx.fillStyle='#E8520A';ctx.font='bold 13px Sora, Arial, sans-serif';
+  ctx.fillText('Africa Pi Network Education Hub',w/2,142);
+
+  // Divider
+  ctx.strokeStyle='rgba(245,197,24,0.4)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(40,155);ctx.lineTo(360,155);ctx.stroke();
+
+  // Main message
+  ctx.fillStyle='#F0EBF8';ctx.font='bold 17px Sora, Arial, sans-serif';
+  ctx.fillText('🤝 COUNTRY AMBASSADORS',w/2,185);
+  ctx.fillStyle='#B8A8D8';ctx.font='13px Sora, Arial, sans-serif';
+  ctx.fillText('WANTED ACROSS ALL AFRICA',w/2,205);
+
+  // Target
+  ctx.fillStyle='#00D4AA';ctx.font='bold 14px Sora, Arial, sans-serif';
+  ctx.fillText('🎯 Target: 1,000,000+ Businesses on Pi',w/2,232);
+
+  // Tiers
+  const tiers=['🌱 Starter 1-4','🥉 Bronze 5-9','🥈 Silver 10-19','🏅 Gold 20-49','⭐ Diamond 50+'];
+  ctx.font='11px Sora, Arial, sans-serif';ctx.fillStyle='#B8A8D8';
+  ctx.fillText(tiers.slice(0,3).join('  ·  '),w/2,258);
+  ctx.fillText(tiers.slice(3).join('  ·  '),w/2,276);
+
+  // Divider
+  ctx.strokeStyle='rgba(123,45,139,0.4)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(40,290);ctx.lineTo(360,290);ctx.stroke();
+
+  // Perks
+  ctx.fillStyle='#F5C518';ctx.font='bold 12px Sora, Arial, sans-serif';
+  ctx.fillText('✅ FREE Lifetime Access  💰 Pi Rewards  🌍 54 Nations',w/2,312);
+  ctx.fillStyle='#B8A8D8';ctx.font='11px Sora, Arial, sans-serif';
+  ctx.fillText('22 African Languages · Mainnet Ready · GCV Alliance',w/2,330);
+
+  // CTA
+  ctx.fillStyle='#E8520A';ctx.font='bold 13px Sora, Arial, sans-serif';
+  ctx.fillText('Message @chigalex1 on Pi Network',w/2,358);
+  ctx.fillStyle='#9B59B6';ctx.font='11px Sora, Arial, sans-serif';
+  ctx.fillText('chigalex1-backend.onrender.com/landing.html',w/2,376);
+  ctx.fillStyle='#F5C518';ctx.font='bold 11px Sora, Arial, sans-serif';
+  ctx.fillText('Referral code: chigalex1',w/2,394);
+
+  document.getElementById('promoModal').classList.add('open');
+}
+function closeModal(){document.getElementById('promoModal').classList.remove('open');}
+function sharePromoWA(){closeModal();shareWA();}
+
+// ── AUTO-DETECT LANGUAGE FROM BROWSER ──
+(function(){
+  const bl=navigator.language||'en';
+  const map={'pt':'pt','sw':'sw','fr':'fr','ha':'ha','yo':'yo','ar':'ar','lg':'lg','rw':'rw','so':'so','am':'am','sn':'sn','zu':'zu','nd':'nd','af':'af','ny':'ny','ig':'ig','ln':'ln','kg':'kg'};
+  const match=Object.keys(map).find(k=>bl.toLowerCase().startsWith(k));
+  if(match)setLang(map[match]);
+})();
+</script>
+</body>
+</html>
