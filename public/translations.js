@@ -1296,4 +1296,101 @@ ha: {
   "lbl-disclaimer": "⚖️ Sanarwa",
   "sec-disclaimer-title": "Gudummawa Mai Zaman Kanta",
   "disclaimer-body": "<strong style='color:#F5C518;'>SANARWA</strong><br/><br/>Kayan horo na Chigalex1 <strong>gudummawa ne masu zaman kansu</strong> na membobin al'umma. Chigalex1 da Africa Pi GCV Industry Alliance <strong style='color:#FF7043;'>ba su da alaƙa</strong> da Pi Network ko SocialChain Inc.",
-  "lbl-languages": "🌍 
+"lbl-languages": "🌍 22 لغة أفريقية",
+  "sec-languages-title": "اختر لغتك",
+  "footer-tagline": "🌍 مركز تعليم Pi Network في أفريقيا",
+  "footer-ref": "الإحالة: chigalex1",
+  "footer-privacy": "سياسة الخصوصية",
+  "footer-terms": "شروط الخدمة",
+  "footer-nations": "54 دولة · 22 لغة",
+  "cb-title": "مساعد Chigalex1 الذكي",
+  "cb-sub": "للأعضاء فقط · اسألني أي شيء عن Pi",
+  "cb-welcome": "👋 مرحباً! أنا مساعدك الذكي من Chigalex1 — دليل Pi الخبير لأفريقيا. اسألني عن KYC، KYB، خريطة Pi، استراتيجية GCV أو الأمان بلغتك!",
+  "cbsug-kyc": "مساعدة KYC",
+  "cbsug-gcv": "استراتيجية GCV",
+  "cbsug-map": "خريطة Pi",
+  "cbsug-kyb": "دليل KYB",
+  "cbsug-sec": "نصائح الأمان",
+},
+
+};
+
+// ══════════════════════════════════════════
+// REMAINING 16 LANGUAGES
+// Use English as base with language name in gate for now
+// Full translations can be expanded per language
+// ══════════════════════════════════════════
+
+// Copy English base for remaining languages with key gate strings localised
+const BASE_LANGS = {
+  nd: { "gate-badge-txt": "🌍 Indawo Yokufundisa Pi Network eAfrica", "gate-title": "Wamukelekile ku-Chigalex1", "nav-subtitle": "🌍 Indawo Yamaphayona e-Africa", "hero-h1": "Ukufaka iAfrika Yonke<br/>kwi Pi Network", "btn-start": "Qala Ukufunda", "btn-gcv": "Umhlahlandlela we-GCV", "btn-alliance": "Mayelana ne-Alliance", "btn-merchants": "Uhlu Lwabahwebi", "btn-aboutpi": "Mayelana ne-Pi", "sec-aboutpi-title": "Yi-Pi Network ini?", "sec-aboutpi-body": "Pi Network iphrojethi yemali yedijithali yokugugulwa kweStanford, evumela abantu abajwayelekile ukumba Pi besebenzisa izingcingo zabo.", "lbl-faq": "Imibuzo Evame Ukubuzwa", "sec-faq-title": "Imibuzo Evame Ukubuzwa", "faq-q1": "Pi Network ikhululekile ukujoyina?", "faq-a1": "Yebo — ikhululekile impela. Sebenzisa ikhodi chigalex1 ku minepi.com/chigalex1." },
+  zu: { "gate-badge-txt": "🌍 Iziko Lemfundo ye-Pi Network e-Afrika", "gate-title": "Siyakwamukela ku-Chigalex1", "nav-subtitle": "🌍 Iziko Lamaphayona e-Afrika", "hero-h1": "Ukufaka i-Afrika Yonke<br/>ku-Pi Network", "btn-start": "Qala Ukufunda", "btn-gcv": "Uhlelo lwe-GCV", "btn-alliance": "Mayelana ne-Alliance", "btn-merchants": "Uhlu Lwabahwebi", "btn-aboutpi": "Mayelana ne-Pi", "sec-aboutpi-title": "Yini i-Pi Network?", "sec-aboutpi-body": "I-Pi Network iphrojekthi yemali yedijithali yabagraduwayo be-Stanford, evumela abantu abajwayelekile ukumba i-Pi besebenzisa izingcingo zabo.", "lbl-faq": "Imibuzo Evame Ukubuzwa", "sec-faq-title": "Imibuzo Evame Ukubuzwa", "faq-q1": "I-Pi Network imahhala ukujoyina?", "faq-a1": "Yebo — imahhala impela. Sebenzisa ikhodi chigalex1 ku minepi.com/chigalex1." },
+  xh: { "gate-badge-txt": "🌍 Iziko lemfundo ye-Pi Network e-Afrika", "gate-title": "Wamkelekile ku-Chigalex1", "nav-subtitle": "🌍 Iziko lamaphayona e-Afrika", "hero-h1": "Ukufaka i-Afrika yonke<br/>ku-Pi Network", "btn-start": "Qala ukufunda", "btn-gcv": "Uhlelo lwe-GCV", "btn-alliance": "Malunga ne-Alliance", "btn-merchants": "Uluhlu lwabathengisi", "btn-aboutpi": "Malunga ne-Pi", "sec-aboutpi-title": "Yi-Pi Network ntoni?", "sec-aboutpi-body": "I-Pi Network iphrojekthi yemali yedijitali yabaGraduates be-Stanford, evumela abantu abaqhelekileyo ukumba i-Pi besebenzisa iifowuni zabo.", "lbl-faq": "Imibuzo ebuzwa rhoqo", "sec-faq-title": "Imibuzo ebuzwa rhoqo", "faq-q1": "I-Pi Network imahhala ukujoyina?", "faq-a1": "Ewe — imahhala kakhulu. Sebenzisa ikhodi chigalex1 ku minepi.com/chigalex1." },
+  af: { "gate-badge-txt": "🌍 Afrika Pi Network Opvoedingsentrum", "gate-title": "Welkom by Chigalex1", "nav-subtitle": "🌍 Afrika Pionier Sentrum", "hero-h1": "Heel Afrika integreer<br/>by Pi Network", "btn-start": "Begin Leer", "btn-gcv": "GCV Padkaart", "btn-alliance": "Oor die Alliansie", "btn-merchants": "Handelaarsgids", "btn-aboutpi": "Oor Pi", "sec-aboutpi-title": "Wat is Pi Network?", "sec-aboutpi-body": "Pi Network is 'n digitale geldeenheidprojek deur Stanford-gegradueerdes, wat gewone mense toelaat om Pi te myn met hul slimfone — geen duur hardeware nodig nie.", "lbl-faq": "Gereelde Vrae", "sec-faq-title": "Gereelde Vrae", "faq-q1": "Is Pi Network gratis om aan te sluit?", "faq-a1": "Ja — heeltemal gratis. Gebruik verwysingskode chigalex1 by minepi.com/chigalex1." },
+  st: { "gate-badge-txt": "🌍 Lefelo la Thuto ya Pi Network Afrika", "gate-title": "O Amohelehile ho Chigalex1", "nav-subtitle": "🌍 Lefelo la Baetapele ba Afrika", "hero-h1": "Ho kenya Afrika Yohle<br/>ho Pi Network", "btn-start": "Qala ho ithuta", "btn-gcv": "Maphelo a GCV", "btn-alliance": "Mabapi le Selekane", "btn-merchants": "Lenaneo la Barekisi", "btn-aboutpi": "Mabapi le Pi", "sec-aboutpi-title": "Pi Network ke eng?", "sec-aboutpi-body": "Pi Network ke projeke ya tjhelete ya dijithale ya baithuti ba Stanford, e lumellang batho ba tloaelehileng ho raha Pi ka difono tsa bona.", "lbl-faq": "Dipotso tse Botswang Hangata", "sec-faq-title": "Dipotso tse Botswang Hangata", "faq-q1": "Na Pi Network e mahala ho kena?", "faq-a1": "E — e mahala holo. Sebedisa khoutu chigalex1 ho minepi.com/chigalex1." },
+  tn: { "gate-badge-txt": "🌍 Lefelo la Thuto ya Pi Network kwa Afrika", "gate-title": "O Amogelwa go Chigalex1", "nav-subtitle": "🌍 Lefelo la Baetapele ba Afrika", "hero-h1": "Go ntsha Africa yotlhe<br/>go Pi Network", "btn-start": "Simolola go ithuta", "btn-gcv": "Tsela ya GCV", "btn-alliance": "Ka ga Alliance", "btn-merchants": "Lenaneo la Barekisi", "btn-aboutpi": "Ka ga Pi", "sec-aboutpi-title": "Pi Network ke eng?", "sec-aboutpi-body": "Pi Network ke thulaganyo ya madi a dijithale ya baithuti ba Stanford, e letlang batho ba tlwaelegileng go epa Pi ka difouno tsa bone.", "lbl-faq": "Dipotso tse Buiwang Gantsi", "sec-faq-title": "Dipotso tse Buiwang Gantsi", "faq-q1": "A Pi Network ke mahala go tsena?", "faq-a1": "Ee — ke mahala gotlhe. Dirisa khoutu chigalex1 go minepi.com/chigalex1." },
+  ny: { "gate-badge-txt": "🌍 Malo a Maphunziro a Pi Network ku Afrika", "gate-title": "Mwamukiridwa ku Chigalex1", "nav-subtitle": "🌍 Malo a Otsogola ku Afrika", "hero-h1": "Kulowetsa Africa Yonse<br/>ku Pi Network", "btn-start": "Yambani Kujifunza", "btn-gcv": "Njira ya GCV", "btn-alliance": "Zokhudza Alliance", "btn-merchants": "Mndandanda wa Ogulitsa", "btn-aboutpi": "Zokhudza Pi", "sec-aboutpi-title": "Pi Network ndichiyani?", "sec-aboutpi-body": "Pi Network ndi ntchito ya ndalama zamagetsi za ogwaduka wa Stanford, yolola anthu wamba kumba Pi pogwiritsa ntchito mafoni awo.", "lbl-faq": "Mafunso Ofunzidwa Nthawi Zambiri", "sec-faq-title": "Mafunso Ofunzidwa Nthawi Zambiri", "faq-q1": "Pi Network ndi yaulere kulowa?", "faq-a1": "Inde — yaulere basi. Gwiritsani ntchito khodi chigalex1 pa minepi.com/chigalex1." },
+  am: { "gate-badge-txt": "🌍 የPi Network አፍሪካ ትምህርት ማዕከል", "gate-title": "ወደ Chigalex1 እንኳን ደህና መጡ", "nav-subtitle": "🌍 የአፍሪካ አቅኚዎች ማዕከል", "hero-h1": "መላ አፍሪካን<br/>ወደ Pi Network ማስገባት", "btn-start": "መማር ጀምር", "btn-gcv": "የGCV መንገድ", "btn-alliance": "ስለ ጥምረቱ", "btn-merchants": "የነጋዴዎች ዝርዝር", "btn-aboutpi": "ስለ Pi", "sec-aboutpi-title": "Pi Network ምንድን ነው?", "sec-aboutpi-body": "Pi Network በStanford ምሩቃን የተፈጠረ የዲጂታል ምንዛሬ ፕሮጀክት ሲሆን፣ ሰዎች በስማርትፎናቸው Pi እንዲያዕቁሩ ያስችላቸዋል — ውድ ሃርድዌር ሳያስፈልጋቸው።", "lbl-faq": "ብዙ ጊዜ የሚጠየቁ ጥያቄዎች", "sec-faq-title": "ብዙ ጊዜ የሚጠየቁ ጥያቄዎች", "faq-q1": "Pi Networkን ለመቀላቀል ነፃ ነው?", "faq-a1": "አዎ — ሙሉ ለሙሉ ነፃ ነው። chigalex1 የሪፈራል ኮድ ይጠቀሙ minepi.com/chigalex1 ላይ።" },
+  rw: { "gate-badge-txt": "🌍 Ikigo cy'Uburezi cya Pi Network muri Afrika", "gate-title": "Murakaza neza muri Chigalex1", "nav-subtitle": "🌍 Ikigo cy'Inzobere zo muri Afrika", "hero-h1": "Guhuza Afrika Yose<br/>na Pi Network", "btn-start": "Tangira Kwiga", "btn-gcv": "Inzira ya GCV", "btn-alliance": "Ibyerekeye Alliance", "btn-merchants": "Urutonde rw'Abacuruzi", "btn-aboutpi": "Ibyerekeye Pi", "sec-aboutpi-title": "Pi Network ni iki?", "sec-aboutpi-body": "Pi Network ni porogirame y'ifaranga rya cyifuzo ry'abikoranabuhanga ba Stanford, iha abantu basanzwe gutunga Pi bakoresha telefoni zabo.", "lbl-faq": "Ibibazo Bikunze Kubazwa", "sec-faq-title": "Ibibazo Bikunze Kubazwa", "faq-q1": "Pi Network ni ubuntu kwiyandikisha?", "faq-a1": "Yego — ubuntu rwose. Koresha code chigalex1 kuri minepi.com/chigalex1." },
+  lg: { "gate-badge-txt": "🌍 Essomero lya Pi Network mu Afrika", "gate-title": "Tukuwaana ku Chigalex1", "nav-subtitle": "🌍 Essomero ly'Abasinze ku Afrika", "hero-h1": "Okufuna Afrika Yonna<br/>mu Pi Network", "btn-start": "Tandika Okuyigira", "btn-gcv": "Ekkubo lya GCV", "btn-alliance": "Ku Alliance", "btn-merchants": "Omuwandiiko gw'Abasuubuzi", "btn-aboutpi": "Ku Pi", "sec-aboutpi-title": "Pi Network kiki?", "sec-aboutpi-body": "Pi Network mukolo gw'ensimbi ez'edijito gy'abaggwanga ba Stanford, ogukiriza abantu bonna okwimba Pi nga bakozesa simu zaabwe.", "lbl-faq": "Ebibuuzo Ebibuuzibwa Ennyo", "sec-faq-title": "Ebibuuzo Ebibuuzibwa Ennyo", "faq-q1": "Pi Network ya bwereere okwegatta?", "faq-a1": "Yee — ya bwereere ddala. Kozesa code chigalex1 ku minepi.com/chigalex1." },
+  so: { "gate-badge-txt": "🌍 Xarunta Waxbarashada Pi Network Afrika", "gate-title": "Ku soo dhawoow Chigalex1", "nav-subtitle": "🌍 Xarunta Hormuudyada Afrika", "hero-h1": "Midaynta Afrika Oo Dhan<br/>Pi Network", "btn-start": "Bilow Barasho", "btn-gcv": "Jidka GCV", "btn-alliance": "Ku saabsan Xiriirka", "btn-merchants": "Liiska Ganacsatada", "btn-aboutpi": "Ku saabsan Pi", "sec-aboutpi-title": "Maxaa Pi Network ah?", "sec-aboutpi-body": "Pi Network waa mashruuc lacag dhijitaal ah oo ay sameeyeen qalin jabiyeyaashii Stanford, taas oo u oggolaayta dadka caadiga ah inay Pi ka qodaan telefoonahooda.", "lbl-faq": "Su'aalaha Badanaa La Weydiiyo", "sec-faq-title": "Su'aalaha Badanaa La Weydiiyo", "faq-q1": "Pi Network bilaash ma u xidid?", "faq-a1": "Haa — bilaash buuxa. Isticmaal koodka chigalex1 ee minepi.com/chigalex1." },
+  yo: { "gate-badge-txt": "🌍 Ile-iwe Pi Network ni Afrika", "gate-title": "Kaabo si Chigalex1", "nav-subtitle": "🌍 Ile-iwe Awọn Aṣáájú Afrika", "hero-h1": "Ṣiṣọkan gbogbo Afrika<br/>si Pi Network", "btn-start": "Bẹrẹ Ẹkọ", "btn-gcv": "Ọna GCV", "btn-alliance": "Nípa Alliance", "btn-merchants": "Atokọ Awọn Oniṣowo", "btn-aboutpi": "Nípa Pi", "sec-aboutpi-title": "Kí ni Pi Network?", "sec-aboutpi-body": "Pi Network jẹ ọna owo oni-nọmba ti awọn ọmọ ile-iwe Stanford, ti o gba awọn eniyan lọwọ lati wa Pi pẹlu awọn foonu wọn — laisi ẹrọ gbowọlori.", "lbl-faq": "Awọn Ibeere Ti A Sábà Máa Ń Beere", "sec-faq-title": "Awọn Ibeere Ti A Sábà Máa Ń Beere", "faq-q1": "Ṣe Pi Network jẹ ọfẹ lati darapọ mọ?", "faq-a1": "Bẹẹni — ọfẹ patapata. Lo koodu chigalex1 ni minepi.com/chigalex1." },
+  ig: { "gate-badge-txt": "🌍 Ụlọ Akwụkwọ Pi Network n'Afrika", "gate-title": "Nnọọ na Chigalex1", "nav-subtitle": "🌍 Ụlọ Ndị Ọchịchọ Afrika", "hero-h1": "Itinye Africa Nile<br/>na Pi Network", "btn-start": "Bido Ịmụta", "btn-gcv": "Ụzọ GCV", "btn-alliance": "Maka Alliance", "btn-merchants": "Ndepụta Ndị Ahịa", "btn-aboutpi": "Maka Pi", "sec-aboutpi-title": "Gịnị bụ Pi Network?", "sec-aboutpi-body": "Pi Network bụ ọrụ ego dijitalụ nke ndị ọka mụta Stanford, nke na-enye ndị mmadụ ohere igwu Pi site na ekwentị ha.", "lbl-faq": "Ajụjụ A Na-ajụkarị", "sec-faq-title": "Ajụjụ A Na-ajụkarị", "faq-q1": "Pi Network bụ n'efu ịbanye?", "faq-a1": "Ee — n'efu kpamkpam. Jiri koodu chigalex1 na minepi.com/chigalex1." },
+  tw: { "gate-badge-txt": "🌍 Pi Network Adesua Fie wɔ Afrika", "gate-title": "Akwaaba Chigalex1", "nav-subtitle": "🌍 Afrika Nnimfoɔ Fie", "hero-h1": "Africa Nyinaa Kɔ<br/>Pi Network Mu", "btn-start": "Hyɛ Aseɛ Sua", "btn-gcv": "GCV Kwan", "btn-alliance": "Fa Alliance Ho", "btn-merchants": "Adwumayɛfoɔ List", "btn-aboutpi": "Fa Pi Ho", "sec-aboutpi-title": "Pi Network de?", "sec-aboutpi-body": "Pi Network yɛ Stanford fiitifoɔ adwene a ɛma nnipa nyinaa tumi fa wɔn fɔn na wɔkita Pi.", "lbl-faq": "Nsɛmmisa a Wɔbisa Pii", "sec-faq-title": "Nsɛmmisa a Wɔbisa Pii", "faq-q1": "Pi Network ye ɛhaw bɛn sɛ wobɛka ho?", "faq-a1": "Aane — kwa. Fa kood chigalex1 wɔ minepi.com/chigalex1." },
+  wo: { "gate-badge-txt": "🌍 Kanam Jàng Pi Network ci Afrig", "gate-title": "Dalal ak Jamm ci Chigalex1", "nav-subtitle": "🌍 Kanam Ñi Tërangeel Afrig", "hero-h1": "Yokku Afrig Bees<br/>ci Pi Network", "btn-start": "Tambali Jàng", "btn-gcv": "Yoon GCV", "btn-alliance": "Ci Sutureel Alliance", "btn-merchants": "Liist Jigeenaay", "btn-aboutpi": "Ci Pi", "sec-aboutpi-title": "Pi Network lan la?", "sec-aboutpi-body": "Pi Network proze xaalis dijital la bu studiaan Stanford, boo mën ci yëgël nit ñi bees daw Pi ak telefon yi.", "lbl-faq": "Laaj yu Bëgg na ñu", "sec-faq-title": "Laaj yu Bëgg na ñu", "faq-q1": "Pi Network dafa sore woon?", "faq-a1": "Waaw — sori lool. Jëfandikoo kode chigalex1 ci minepi.com/chigalex1." },
+  ber: { "gate-badge-txt": "🌍 Ammaɣ n Tasɣunt Pi Network deg Tafriqt", "gate-title": "Ansuf deg Chigalex1", "nav-subtitle": "🌍 Ammaɣ n Isnubgayen n Tafriqt", "hero-h1": "Ad-nessiwel Tafriqt Meṛṛa<br/>ɣer Pi Network", "btn-start": "Bdu Allmed", "btn-gcv": "Abrid n GCV", "btn-alliance": "ɣef Alliance", "btn-merchants": "Tabdart n Inegmarien", "btn-aboutpi": "ɣef Pi", "sec-aboutpi-title": "D acu-t Pi Network?", "sec-aboutpi-body": "Pi Network d amṣlay n wudem amseddas n Stanford, yettaǧǧayen imezdaɣ ad sgentren Pi s tiliɣriyin-nsen.", "lbl-faq": "Tiwetmiwin Yettwaseqdecen Aṭas", "sec-faq-title": "Tiwetmiwin Yettwaseqdecen Aṭas", "faq-q1": "Pi Network d ilelley ad ak-d-yekcem?", "faq-a1": "Ih — d ilelley imeqqen. Seqdec acode chigalex1 deg minepi.com/chigalex1." },
+  ln: { "gate-badge-txt": "🌍 Eteyelo ya Pi Network na Afrique", "gate-title": "Boyei malamu na Chigalex1", "nav-subtitle": "🌍 Esika ya Balobeli ba Afrique", "hero-h1": "Kotia Afrique Nyonso<br/>na Pi Network", "btn-start": "Banda Koyekola", "btn-gcv": "Nzela ya GCV", "btn-alliance": "Mpo na Alliance", "btn-merchants": "Liste ya Bavendeli", "btn-aboutpi": "Mpo na Pi", "sec-aboutpi-title": "Pi Network ezali nini?", "sec-aboutpi-body": "Pi Network ezali projet ya mbongo ya dijital ya baformé ya Stanford, etiyelaka bato nyonso kotina Pi na ba téléphone na bango.", "lbl-faq": "Mibuzo Eyambamaka Mingi", "sec-faq-title": "Mibuzo Eyambamaka Mingi", "faq-q1": "Pi Network ezali ya ofele kokota?", "faq-a1": "Iyo — ya ofele mpenza. Simba code chigalex1 na minepi.com/chigalex1." },
+  kg: { "gate-badge-txt": "🌍 Kelukelu kia Pi Network ku Afrika", "gate-title": "Mbote na Chigalex1", "nav-subtitle": "🌍 Buka kia Bakuluntu ba Afrika", "hero-h1": "Kotisa Afrika Yonso<br/>ku Pi Network", "btn-start": "Tambula Kuyindula", "btn-gcv": "Nzila kia GCV", "btn-alliance": "Mpo kia Alliance", "btn-merchants": "Ndinga kia Banteki", "btn-aboutpi": "Mpo kia Pi", "sec-aboutpi-title": "Pi Network nki?", "sec-aboutpi-body": "Pi Network projekti kia mbongo kia dijitale kia ba Stanford, kiabakisi bantu bonso kutina Pi na ba telefone yabo.", "lbl-faq": "Bibuzo Bibakisamaka Mingi", "sec-faq-title": "Bibuzo Bibakisamaka Mingi", "faq-q1": "Pi Network nkiama mfunu ko kotisa?", "faq-a1": "Iyo — nkiama mpenza. Simba code chigalex1 ku minepi.com/chigalex1." },
+};
+
+// Merge base langs into TRANSLATIONS
+Object.keys(BASE_LANGS).forEach(lang => {
+  TRANSLATIONS[lang] = { ...TRANSLATIONS.en, ...BASE_LANGS[lang] };
+});
+
+// ══════════════════════════════════════════
+// setLang — applies translations to all IDs
+// ══════════════════════════════════════════
+function setLang(lang) {
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+
+  // RTL support for Arabic
+  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
+
+  // Sync all language selectors
+  document.querySelectorAll('select.gsel, select.lsel').forEach(sel => { sel.value = lang; });
+
+  // Apply all translations
+  Object.keys(t).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    // Use innerHTML for elements that contain HTML tags
+    const htmlIds = [
+      'hero-p','aboutpi-tip','unlock-prompt-body','alliance-box-body',
+      'gcv-explain-1','gcv-explain-2','gcv-power-tip','gcv-expert-body',
+      'mapofpi-intro','advert-pay-tip','merchant-pay-tip',
+      'faq-a1','faq-a2','faq-a3','faq-a4','faq-a5','faq-a6',
+      'disclaimer-body','mf-ok-txt','af-ok-txt','hero-h1',
+      'gcv-highlight-value'
+    ];
+    if (htmlIds.includes(id)) {
+      el.innerHTML = t[id];
+    } else {
+      el.textContent = t[id];
+    }
+  });
+
+  // Update chatbot suggestion data-q attributes
+  const sugMap = {
+    'cbsug-kyc': { q: lang === 'pt' ? 'Como faço o KYC?' : lang === 'fr' ? 'Comment faire le KYC?' : lang === 'sw' ? 'Ninafanyaje KYC?' : lang === 'ar' ? 'كيف أكمل KYC؟' : 'How do I complete KYC?' },
+    'cbsug-gcv': { q: lang === 'pt' ? 'O que é a estratégia GCV de 10%?' : lang === 'fr' ? "Qu'est-ce que la stratégie GCV 10%?" : lang === 'sw' ? 'Mkakati wa GCV wa 10% ni nini?' : lang === 'ar' ? 'ما هي استراتيجية GCV 10%؟' : 'What is the GCV 10% strategy?' },
+    'cbsug-map': { q: lang === 'pt' ? 'Como me listo no Mapa do Pi?' : lang === 'fr' ? 'Comment me lister sur la Carte Pi?' : lang === 'sw' ? 'Ninaorodhesha kwenye Ramani ya Pi vipi?' : lang === 'ar' ? 'كيف أُدرج نفسي في خريطة Pi؟' : 'How do I list on Map of Pi?' },
+    'cbsug-kyb': { q: lang === 'pt' ? 'Como me candidato ao KYB?' : lang === 'fr' ? 'Comment faire une demande de KYB?' : lang === 'sw' ? 'Ninomba KYB vipi?' : lang === 'ar' ? 'كيف أتقدم بطلب KYB؟' : 'How do I apply for KYB?' },
+    'cbsug-sec': { q: lang === 'pt' ? 'Como protejo a minha frase-chave Pi?' : lang === 'fr' ? 'Comment protéger ma phrase secrète Pi?' : lang === 'sw' ? 'Ninakindishaje neno siri langu la Pi?' : lang === 'ar' ? 'كيف أحمي عبارتي السرية لـ Pi؟' : 'How do I protect my Pi passphrase?' },
+  };
+  Object.keys(sugMap).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.dataset.q = sugMap[id].q;
+  });
+}
