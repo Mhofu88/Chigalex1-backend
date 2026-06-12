@@ -1,3 +1,11 @@
+
+
+// translations.js — Chigalex1 Africa Pi Network Education Hub
+// 22 Languages · All sections · Complete body text coverage
+// Generated for index.html v3 with full ID coverage
+
+const translations = {
+
 en: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Welcome to Chigalex1",
