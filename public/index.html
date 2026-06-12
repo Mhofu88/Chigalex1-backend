@@ -968,5 +968,7 @@ async function loadAnswers(){ try{ const r=await fetch(API+'/questions/answered'
 function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function setLb(btn,l){document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');setLang(l);}
 </script>
+
+<script src="/translations.js"></script>
 </body>
 </html>
