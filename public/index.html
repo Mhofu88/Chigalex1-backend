@@ -10,8 +10,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap');
 :root{--pi:#7B2D8B;--pi-l:#9B59B6;--gold:#F5C518;--bg:#0D0A1A;--surface:#211A3A;--surface2:#2A2048;--text:#F0EBF8;--text2:#B8A8D8;--text3:#7A6A9A;--accent:#00D4AA;--warn:#FF7043;--africa:#E8520A;}
 *{box-sizing:border-box;margin:0;padding:0
-
-
 html,body{width:100%;min-height:100vh;}
 body{font-family:'Sora',Arial,sans-serif;background:#0D0A1A;color:#F0EBF8;min-height:100vh;overflow-x:hidden;}
 body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 20% 30%,rgba(26,13,46,0.9) 0%,transparent 60%),radial-gradient(ellipse at 80% 70%,rgba(13,26,46,0.9) 0%,transparent 60%);}
@@ -334,7 +332,13 @@ footer a:hover{color:#F5C518;}
     <button class="btn btn-sm" style="background:linear-gradient(135deg,#E8520A,#F5C518);" onclick="sc('alliance')">🤝 <span id="btn-alliance">About the Alliance</span></button>
     <button class="btn btn-sm btn-teal" onclick="requirePaid('merchants')">🏪 <span id="btn-merchants">Merchant Directory</span></button>
     <button class="btn btn-sm btn-out" onclick="sc('aboutpi')">ℹ️ <span id="btn-aboutpi">About Pi</span></button>
-  </div>
+<button class="btn btn-sm" style="background:linear-gradient(135deg,#00D4AA,#7B2D8B);" onclick="requirePaid('pidex')">
+  🔄 <span>PiDEX Guide</span>
+       </button>
+<button class="btn btn-sm" style="background:linear-gradient(135deg,#F5C518,#7B2D8B);" onclick="requirePaid('pilaunchpad')">
+  🚀 <span>Pi Launchpad</span>
+</button>
+</div>
   <div>
     <a href="https://minepi.com/chigalex1" target="_blank" class="ref-badge">📲 minepi.com/<strong style="margin-left:2px;">chigalex1</strong> 🔗</a>
     <div class="gcv-badge" id="alliance-badge">🏛️ Africa Pi GCV Industry Alliance</div>
@@ -496,6 +500,17 @@ footer a:hover{color:#F5C518;}
     <div class="card card-locked"><div class="ci">🤖</div><h3 id="inside-c1-title">AI Chatbot — 24/7</h3><p id="inside-c1-desc">Ask any Pi question in 25 African languages. Instant expert answers on KYC, KYB, Map of Pi, GCV, and more.</p></div>
     <div class="card card-locked"><div class="ci">📱</div><h3 id="inside-c2-title">Registration Training</h3><p id="inside-c2-desc">Step-by-step guide to joining Pi Network with referral code chigalex1.</p></div>
     <div class="card card-locked"><div class="ci">🪪</div><h3 id="inside-c3-title">KYC Deep Dive</h3><p id="inside-c3-desc">Full KYC walkthrough — documents accepted across all 54 African nations, tips and rejection fixes.</p></div>
+
+<div class="card card-locked">
+  <div class="ci">🔄</div>
+  <h3>PiDEX Guide</h3>
+  <p>Learn Pi's built-in decentralized exchange — how to swap tokens, provide liquidity, and trade safely inside the Pi ecosystem.</p>
+</div>
+<div class="card card-locked">
+  <div class="ci">🚀</div>
+  <h3>Pi Launchpad Testnet</h3>
+  <p>Understand Pi's new project launchpad — how new ecosystem tokens launch, how to participate, and what it means for Africa.</p>
+</div>
     <div class="card card-locked"><div class="ci">🏢</div><h3 id="inside-c4-title">KYB Business Guide</h3><p id="inside-c4-desc">Register your business on Pi Network — documents by country, how to accept Pi in-store and online.</p></div>
     <div class="card card-locked"><div class="ci">🗺️</div><h3 id="inside-c5-title">Map of Pi Tutorial</h3><p id="inside-c5-desc">4-tab walkthrough — Get Listed, Optimize, Accept Pi Payments, and Grow.</p></div>
     <div class="card card-locked"><div class="ci">🏪</div><h3 id="inside-c6-title">Merchant Directory</h3><p id="inside-c6-desc">Find and list Pi-accepting businesses across all 54 African nations.</p></div>
@@ -666,8 +681,6 @@ footer a:hover{color:#F5C518;}
 </section>
 
 <div class="divider"></div>
-
-
 
 <!-- ══ PIDEX ══ -->
 <section id="pidex" class="locked-section">
@@ -1160,16 +1173,23 @@ function openApp(){
 }
 
 function unlockPaidContent(){
-  ['learn-lock','mapofpi-lock','merchants-lock'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.add('hidden'); });
+['learn-lock','mapofpi-lock','merchants-lock'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.add('hidden'); });
   const lp=document.getElementById('learn-preview'); const lc=document.getElementById('learn-content');
   if(lp) lp.style.display='none'; if(lc) lc.style.display='block';
   const mp=document.getElementById('mapofpi').querySelector('.lock-preview'); const mc=document.getElementById('mapofpi-content');
   if(mp) mp.style.display='none'; if(mc) mc.style.display='block';
   const mrp=document.getElementById('merchants').querySelector('.lock-preview'); const mrc=document.getElementById('merchants-content');
   if(mrp) mrp.style.display='none'; if(mrc) mrc.style.display='block';
+ const pdl = document.getElementById('pidex-lock');
+  const pdc = document.getElementById('pidex-content');
+  if(pdl) pdl.classList.add('hidden');
+  if(pdc) pdc.style.display = 'block';
+const pll = document.getElementById('pilaunchpad-lock');
+  const plc = document.getElementById('pilaunchpad-content');
+  if(pll) pll.classList.add('hidden');
+  if(plc) plc.style.display = 'block';
 }
-
-function setErr(m){document.getElementById('gerr').textContent=m;}
+lfunction setErr(m){document.getElementById('gerr').textContent=m;}
 function requirePaid(id){ if(isPaid){ sc(id); return; } showGate(); }
 function sc(id){
   document.getElementById('gate').style.display='none';
