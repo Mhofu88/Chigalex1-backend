@@ -667,6 +667,246 @@ footer a:hover{color:#F5C518;}
 
 <div class="divider"></div>
 
+
+
+<!-- ══ PIDEX ══ -->
+<section id="pidex" class="locked-section">
+  <div class="slbl">🔄 Members Only · New Feature</div>
+  <div class="stit">PiDEX — Pi's Own Exchange</div>
+  <div class="lock-overlay" id="pidex-lock">
+    <div class="lock-icon">🔄🔒</div>
+    <div class="lock-title">Members Only</div>
+    <div class="lock-sub">Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.</div>
+    <button class="btn" onclick="showGate()" style="max-width:280px;">🔓 Unlock PiDEX Guide — 0.01π</button>
+  </div>
+  <div class="lock-preview">
+    <div class="tip gtip">
+      <div>⚡</div>
+      <p><strong>PiDEX launched March 12, 2026</strong> — Pi Network's own built-in exchange. You can now swap Pi for other tokens directly inside your Pi Wallet — no banks, no middlemen.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ci">🔄</div><h3>What is PiDEX?</h3><p>A decentralized exchange built inside Pi Network. Swap Pi tokens peer-to-peer without leaving the Pi ecosystem.</p></div>
+      <div class="card"><div class="ci">🌍</div><h3>Why Africa?</h3><p>No bank account needed. No SWIFT fees. Trade Pi directly from your phone — even in the most remote areas.</p></div>
+    </div>
+  </div>
+  <div id="pidex-content" style="display:none;">
+
+    <!-- What is PiDEX — Plain Language -->
+    <div style="background:linear-gradient(135deg,rgba(0,212,170,0.12),rgba(123,45,139,0.12));border:2px solid rgba(0,212,170,0.4);border-radius:18px;padding:24px;margin-bottom:28px;">
+      <div style="font-size:1.4rem;text-align:center;margin-bottom:12px;">🔄 What is PiDEX?</div>
+      <p style="color:#F5C518;font-weight:800;font-size:1rem;text-align:center;margin-bottom:14px;">Pi Network's Own Built-In Exchange — Live Since March 12, 2026</p>
+      <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:16px;margin-bottom:14px;">
+        <p style="color:#F0EBF8;font-size:.9rem;line-height:1.75;margin-bottom:10px;">
+          <strong style="color:#00D4AA;">Think of it like this:</strong> A regular market where people buy and sell goods — except instead of tomatoes and bread, people are exchanging Pi tokens for other digital tokens, <strong>directly with each other</strong>, with no middleman taking a cut.
+        </p>
+        <p style="color:#B8A8D8;font-size:.85rem;line-height:1.75;">
+          PiDEX stands for <strong style="color:#F5C518;">Pi Decentralized Exchange</strong>. It lives inside your Pi Wallet and Pi Browser. It uses a system called an <strong style="color:#00D4AA;">Automated Market Maker (AMM)</strong> — a smart computer programme that automatically sets fair prices based on supply and demand, just like a market does naturally.
+        </p>
+      </div>
+      <div class="tip" style="margin-bottom:0;">
+        <div>💡</div>
+        <p><strong>Simple version:</strong> PiDEX = a marketplace inside Pi where you can exchange your Pi for other project tokens — safely, without leaving the Pi ecosystem.</p>
+      </div>
+    </div>
+
+    <!-- Key Concepts -->
+    <div class="slbl">📚 Key Concepts — Plain Language</div>
+    <div class="cards" style="margin-bottom:28px;">
+      <div class="card sec-ok">
+        <div class="ci">🤝</div>
+        <h3>Peer-to-Peer Trading</h3>
+        <p>You trade directly with other pioneers. No bank, no broker, no exchange company taking large fees. The Pi blockchain handles the transaction automatically and safely.</p>
+      </div>
+      <div class="card sec-ok">
+        <div class="ci">🏊</div>
+        <h3>Liquidity Pools</h3>
+        <p>Think of a pool of water. Pioneers add their Pi to a shared pool. When someone wants to swap tokens, they draw from this pool. In return, pool contributors earn a small reward — called a <strong>liquidity fee</strong>.</p>
+      </div>
+      <div class="card sec-ok">
+        <div class="ci">🤖</div>
+        <h3>Automated Market Maker</h3>
+        <p>No human sets prices on PiDEX. A smart mathematical formula automatically calculates fair prices based on how much of each token is available in the pool. More demand = higher price. More supply = lower price.</p>
+      </div>
+      <div class="card sec-ok">
+        <div class="ci">🛡️</div>
+        <h3>Token Vetting</h3>
+        <p>Not just ANY token can appear on PiDEX. Pi Network reviews and approves tokens before they're listed — protecting pioneers from scam tokens and worthless projects.</p>
+      </div>
+      <div class="card sec-ok">
+        <div class="ci">📈</div>
+        <h3>Price Discovery</h3>
+        <p>PiDEX helps establish the REAL value of Pi — based on actual trading activity, not speculation. Every swap on PiDEX is a vote for what Pi is truly worth.</p>
+      </div>
+      <div class="card sec-ok">
+        <div class="ci">⛽</div>
+        <h3>Gas Fees</h3>
+        <p>A tiny fee paid to process your transaction on the blockchain. On PiDEX, fees are kept very low — making it accessible to African pioneers with small balances.</p>
+      </div>
+    </div>
+
+    <!-- How to Access PiDEX -->
+    <div class="slbl">📱 How to Access PiDEX — Step by Step</div>
+    <div class="steps" style="margin-bottom:28px;">
+      <div class="step" onclick="tog(this)">
+        <div class="sn">1</div>
+        <div class="sb">
+          <div class="st">Open Pi Browser</div>
+          <div class="sd">Launch the Pi Browser app on your phone — NOT a regular browser.</div>
+          <div class="sdt">
+            <p>Pi Browser is the gateway to the entire Pi ecosystem. Download it from Google Play or Apple App Store if you don't have it. Make sure you're logged in with your Pi account.</p>
+            <div class="tip"><div>💡</div><p>Pi Browser looks like a normal browser but is specially built for Pi Network DApps and features.</p></div>
+          </div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+      <div class="step" onclick="tog(this)">
+        <div class="sn">2</div>
+        <div class="sb">
+          <div class="st">Open Pi Wallet</div>
+          <div class="sd">Tap the Wallet icon inside Pi Browser.</div>
+          <div class="sdt">
+            <p>Your Pi Wallet is where PiDEX lives. Navigate to it inside Pi Browser. You'll see your Pi balance and the new DEX features added since March 12, 2026.</p>
+            <div class="tip wtip"><div>⚠️</div><p>You MUST have completed KYC to access Pi Wallet and PiDEX features. Complete your KYC first if you haven't.</p></div>
+          </div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+      <div class="step" onclick="tog(this)">
+        <div class="sn">3</div>
+        <div class="sb">
+          <div class="st">Find the DEX Tab</div>
+          <div class="sd">Look for "DEX" or "Exchange" inside your Pi Wallet.</div>
+          <div class="sdt">
+            <p>Inside Pi Wallet, look for a tab or button labelled DEX, Exchange, or Swap. This is the PiDEX interface. It shows available token pairs and current prices.</p>
+            <div class="tip"><div>💡</div><p>The interface may look different as Pi Network updates it — but always look for "DEX" or "Swap" labels.</p></div>
+          </div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+      <div class="step" onclick="tog(this)">
+        <div class="sn">4</div>
+        <div class="sb">
+          <div class="st">Choose a Token Pair</div>
+          <div class="sd">Select which tokens you want to swap — e.g. Pi → [Project Token].</div>
+          <div class="sdt">
+            <p>A token pair shows two tokens — what you're giving and what you're receiving. Example: <strong style="color:#F5C518;">Pi / USDT</strong> or <strong style="color:#F5C518;">Pi / [Ecosystem Token]</strong>. Only approved, vetted tokens appear here.</p>
+            <div class="tip gtip"><div>💡</div><p>Start with small amounts while learning. There's no rush — understand each step before committing larger Pi amounts.</p></div>
+          </div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+      <div class="step" onclick="tog(this)">
+        <div class="sn">5</div>
+        <div class="sb">
+          <div class="st">Enter Amount & Review</div>
+          <div class="sd">Type how much Pi you want to swap. Review the rate and fees.</div>
+          <div class="sdt">
+            <p>Before confirming:</p>
+            <p>✅ Check the exchange rate shown<br/>✅ Note the gas fee (should be very small)<br/>✅ Check the minimum amount you'll receive<br/>✅ Check for "slippage" — how much the price can move during your swap</p>
+            <div class="tip wtip"><div>⚠️</div><p>Prices can change between when you submit and when the transaction processes. Set a slippage tolerance you're comfortable with.</p></div>
+          </div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+      <div class="step" onclick="tog(this)">
+        <div class="sn">6</div>
+        <div class="sb">
+          <div class="st">Confirm the Swap</div>
+          <div class="sd">Tap Confirm — the Pi blockchain handles the rest automatically.</div>
+          <div class="sdt">
+            <p>Once confirmed, the smart contract automatically processes your swap. The tokens will appear in your Pi Wallet within seconds to minutes depending on network activity.</p>
+            <div class="tip"><div>💡</div><p>All transactions are permanently recorded on the Pi blockchain. You can verify your swap in your transaction history.</p></div>
+          </div>
+        </div>
+        <div class="sa">▾</div>
+      </div>
+    </div>
+
+    <!-- PiDEX and GCV -->
+    <div style="background:linear-gradient(135deg,rgba(245,197,24,0.12),rgba(232,82,10,0.12));border:2px solid rgba(245,197,24,0.4);border-radius:18px;padding:22px;margin-bottom:28px;">
+      <div style="font-weight:800;color:#F5C518;font-size:1rem;margin-bottom:10px;text-align:center;">📈 PiDEX + GCV — The Connection Africa Must Understand</div>
+      <p style="color:#F0EBF8;font-size:.88rem;line-height:1.75;margin-bottom:12px;">
+        Every swap on PiDEX contributes to <strong style="color:#F5C518;">real price discovery</strong>. Unlike speculative prices on outside exchanges, PiDEX reflects <strong style="color:#00D4AA;">actual utility and demand</strong> within the Pi ecosystem.
+      </p>
+      <p style="color:#B8A8D8;font-size:.85rem;line-height:1.75;margin-bottom:14px;">
+        As more African pioneers use PiDEX — buying goods, paying for services, swapping tokens — the <strong style="color:#F5C518;">true value of Pi becomes visible on-chain</strong>. This is the foundation that makes GCV adoption credible and unstoppable.
+      </p>
+      <div class="tip gtip" style="margin-bottom:0;">
+        <div>🌍</div>
+        <p><strong>Africa's role:</strong> With 1.4 billion people, Africa's trading activity on PiDEX can single-handedly drive Pi's price discovery. Every African pioneer using PiDEX is building the case for GCV = $314,159.</p>
+      </div>
+    </div>
+
+    <!-- Security Warning -->
+    <div class="slbl">🔐 PiDEX Safety — Critical for African Pioneers</div>
+    <div class="cards" style="margin-bottom:28px;">
+      <div class="card sec-warn">
+        <div class="ci">🚫</div>
+        <h3>Only Use Official PiDEX</h3>
+        <p>PiDEX is ONLY accessible inside Pi Wallet in Pi Browser. Any website or app claiming to be "PiDEX" outside of Pi Browser is a SCAM. Never connect your wallet to external sites.</p>
+      </div>
+      <div class="card sec-warn">
+        <div class="ci">⚠️</div>
+        <h3>Never Share Passphrase</h3>
+        <p>No PiDEX transaction will ever ask for your 24-word passphrase. If anything asks for it — stop immediately. You are being scammed.</p>
+      </div>
+      <div class="card sec-warn">
+        <div class="ci">🎭</div>
+        <h3>Fake Token Scams</h3>
+        <p>Scammers create fake tokens with similar names to real ones. Always check the exact token name and contract address before swapping. Only trade vetted, approved tokens on PiDEX.</p>
+      </div>
+      <div class="card sec-ok">
+        <div class="ci">✅</div>
+        <h3>Start Small Always</h3>
+        <p>Your first PiDEX swap should be a tiny amount — just to learn the process. Never swap large amounts until you fully understand how it works.</p>
+      </div>
+      <div class="card sec-ok">
+        <div class="ci">📋</div>
+        <h3>Verify Every Transaction</h3>
+        <p>Always check transaction details before confirming. Review the token names, amounts, fees, and receiving address carefully every single time.</p>
+      </div>
+      <div class="card sec-ok">
+        <div class="ci">🔗</div>
+        <h3>Official Links Only</h3>
+        <p>Access PiDEX only through Pi Browser → Pi Wallet. Official Pi: <strong style="color:#00D4AA;">minepi.com</strong>. Report scams to support@minepi.com.</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="slbl">❓ PiDEX FAQ — Africa Pioneers</div>
+    <div class="fi" onclick="this.classList.toggle('on')">
+      <div class="fq"><span>Do I need to be KYC verified to use PiDEX?</span><span class="farr">▾</span></div>
+      <div class="fa">Yes. KYC verification is required before accessing Pi Wallet and PiDEX features. Complete your KYC first inside the Pi app.</div>
+    </div>
+    <div class="fi" onclick="this.classList.toggle('on')">
+      <div class="fq"><span>How much Pi do I need to start using PiDEX?</span><span class="farr">▾</span></div>
+      <div class="fa">There is no official minimum, but you need enough Pi to cover the swap amount PLUS the gas fee. Start very small to learn the process first.</div>
+    </div>
+    <div class="fi" onclick="this.classList.toggle('on')">
+      <div class="fq"><span>Can I use PiDEX on a basic Android phone?</span><span class="farr">▾</span></div>
+      <div class="fa">Yes — as long as your phone can run Pi Browser, you can access PiDEX. It is designed to work on the smartphones most common across Africa.</div>
+    </div>
+    <div class="fi" onclick="this.classList.toggle('on')">
+      <div class="fq"><span>Is PiDEX the same as selling Pi on an outside exchange?</span><span class="farr">▾</span></div>
+      <div class="fa">No. PiDEX operates INSIDE the Pi ecosystem. You are swapping Pi for other Pi ecosystem tokens — not selling Pi for fiat currency on an external exchange. This is ecosystem trading, not cashing out.</div>
+    </div>
+    <div class="fi" onclick="this.classList.toggle('on')">
+      <div class="fq"><span>Can I provide liquidity and earn rewards?</span><span class="farr">▾</span></div>
+      <div class="fa">Yes! Pioneers can add Pi to liquidity pools and earn a share of the trading fees generated by that pool. This is a way to put your Pi to work earning passive rewards within the ecosystem.</div>
+    </div>
+    <div class="fi" onclick="this.classList.toggle('on')">
+      <div class="fq"><span>What tokens can I swap on PiDEX?</span><span class="farr">▾</span></div>
+      <div class="fa">Only Pi-vetted tokens that have passed Pi Network's approval process. New tokens are added as they are verified. Check inside Pi Wallet for the current list of available pairs.</div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background:#211A3A;border:1.5px solid rgba(0,212,170,0.4);border-radius:16px;padding:24px;text-align:center;margin-top:8px;">
+      <p style="font-weight:800;color:#00D4AA;font-size:1rem;margin-bottom:8px;">🔄 Ready to Explore PiDEX?</p>
+      <p style="color:#B8A8D8;font-size:.86rem;margin-bottom:16px;">Open Pi Browser → Pi Wallet → Look for the DEX or Swap tab. Start with a tiny amount and explore Africa's newest financial frontier!</p>
+      <button class="btn btn-teal" onclick="sc('pilaunchpad')">🚀 Next: Pi Launchpad →</button>
+    </div>
+  </div><!-- end pidex-content -->
+</section>
 <!-- ══ MERCHANTS ══ -->
 <section id="merchants" class="locked-section">
   <div class="slbl" id="lbl-merchants">🏪 Members Only</div>
