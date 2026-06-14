@@ -1490,7 +1490,7 @@ const pll = document.getElementById('pilaunchpad-lock');
   if(pll) pll.classList.add('hidden');
   if(plc) plc.style.display = 'block';
 }
-lfunction setErr(m){document.getElementById('gerr').textContent=m;}
+function setErr(m){document.getElementById('gerr').textContent=m;}
 function requirePaid(id){ if(isPaid){ sc(id); return; } showGate(); }
 function sc(id){
   document.getElementById('gate').style.display='none';
