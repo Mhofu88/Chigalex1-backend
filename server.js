@@ -1214,6 +1214,526 @@ app.post('/ambassador/admin/reset-period', async (req, res) => {
   }
 });
 
+// ── TIER CONFIGURATION ──────────────────────────────────────
+// Change rewards in ONE place — updates everywhere!
+const TIER_CONFIG = {
+  starter: {
+    name:        'Starter',
+    emoji:       '🌱',
+    min_recruits: 1,
+    max_recruits: 4,
+    pi_per_recruit: 0.005,   // Pi earned per recruit at this tier
+    bonus_on_entry: 0.01,    // Bonus Pi when first reaching this tier
+    color:       '#00D4AA',
+  },
+  bronze: {
+    name:        'Bronze',
+    emoji:       '🥉',
+    min_recruits: 5,
+    max_recruits: 9,
+    pi_per_recruit: 0.01,
+    bonus_on_entry: 0.05,
+    color:       '#CD7F32',
+  },
+  silver: {
+    name:        'Silver',
+    emoji:       '🥈',
+    min_recruits: 10,
+    max_recruits: 19,
+    pi_per_recruit: 0.02,
+    bonus_on_entry: 0.1,
+    color:       '#C0C0C0',
+  },
+  gold: {
+    name:        'Gold',
+    emoji:       '🏅',
+    min_recruits: 20,
+    max_recruits: 49,
+    pi_per_recruit: 0.05,
+    bonus_on_entry: 0.25,
+    color:       '#F5C518',
+  },
+  diamond: {
+    name:        'Diamond',
+    emoji:       '⭐',
+    min_recruits: 50,
+    max_recruits: Infinity,
+    pi_per_recruit: 0.1,
+    bonus_on_entry: 1.0,
+    color:       '#9B59B6',
+  }
+};
+
+// ── HELPER: Get tier from recruit count ──────────────────────
+function calculateTier(recruits) {
+  if (recruits >= 50) return TIER_CONFIG.diamond;
+  if (recruits >= 20) return TIER_CONFIG.gold;
+  if (recruits >= 10) return TIER_CONFIG.silver;
+  if (recruits >= 5)  return TIER_CONFIG.bronze;
+  if (recruits >= 1)  return TIER_CONFIG.starter;
+  return null; // Not yet active
+}
+
+// ── HELPER: Calculate total Pi earned ───────────────────────
+function calculateTotalPiEarned(recruitHistory) {
+  let total = 0;
+  let currentTier = null;
+
+  recruitHistory.forEach((recruit, index) => {
+    const recruitNumber = index + 1;
+    const tier = calculateTier(recruitNumber);
+    if (!tier) return;
+
+    // Add per-recruit reward
+    total += tier.pi_per_recruit;
+
+    // Add tier entry bonus if tier changed
+    if (!currentTier || currentTier.name !== tier.name) {
+      total += tier.bonus_on_entry;
+      currentTier = tier;
+    }
+  });
+
+  return parseFloat(total.toFixed(4));
+}
+
+// ── HELPER: Build reward breakdown ──────────────────────────
+function buildRewardBreakdown(recruits) {
+  const breakdown = [];
+  let runningTotal = 0;
+
+  Object.values(TIER_CONFIG).forEach(tier => {
+    const recruitsInTier = Math.min(
+      Math.max(0, recruits - tier.min_recruits + 1),
+      tier.max_recruits - tier.min_recruits + 1
+    );
+
+    if (recruitsInTier > 0) {
+      const tierEarnings = (recruitsInTier * tier.pi_per_recruit) + tier.bonus_on_entry;
+      runningTotal += tierEarnings;
+      breakdown.push({
+        tier:           tier.name,
+        emoji:          tier.emoji,
+        recruits_in_tier: recruitsInTier,
+        per_recruit:    tier.pi_per_recruit,
+        entry_bonus:    tier.bonus_on_entry,
+        tier_total:     parseFloat(tierEarnings.toFixed(4)),
+        running_total:  parseFloat(runningTotal.toFixed(4)),
+      });
+    }
+  });
+
+  return breakdown;
+}
+
+// ── HELPER: Send Pi Network notification (placeholder) ───────
+async function notifyAmbassador(pi_username, message) {
+  // Pi Network does not yet have a public push notification API
+  // When available, integrate here
+  // For now — log for admin to manually notify via Pi chat
+  try {
+    const notifKey = `notifications:${pi_username}`;
+    let notifs = [];
+    const existing = await redisClient.get(notifKey);
+    if (existing) notifs = JSON.parse(existing);
+
+    notifs.unshift({
+      message,
+      timestamp: new Date().toISOString(),
+      read: false,
+    });
+
+    // Keep last 50 notifications
+    if (notifs.length > 50) notifs = notifs.slice(0, 50);
+    await redisClient.set(notifKey, JSON.stringify(notifs));
+
+    console.log(`📲 Notification queued for @${pi_username}: ${message}`);
+  } catch(e) {
+    console.error('Notification error:', e);
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// ENDPOINTS
+// ════════════════════════════════════════════════════════════
+
+// ── 1. GET TIER CONFIG (Public) ──────────────────────────────
+// Frontend uses this to display tier requirements dynamically
+app.get('/ambassador/tiers', (req, res) => {
+  res.json({
+    tiers: Object.values(TIER_CONFIG),
+    currency: 'π',
+    note: 'Rewards are distributed manually by admin via Pi Network payment'
+  });
+});
+
+// ── 2. GET MY AMBASSADOR DASHBOARD ──────────────────────────
+// GET /ambassador/dashboard/:username
+// Called when a logged-in ambassador views their stats
+app.get('/ambassador/dashboard/:username', async (req, res) => {
+  const { username } = req.params;
+
+  try {
+    // Get ambassador data
+    const ambData = await redisClient.get(`ambassador:${username}`);
+    if (!ambData) {
+      return res.status(404).json({ error: 'Ambassador not found. Apply at landing.html!' });
+    }
+
+    const amb = JSON.parse(ambData);
+    if (!amb.approved) {
+      return res.json({
+        status: 'pending',
+        message: 'Your application is under review. We will contact you via Pi Network within 48 hours.',
+        pi_username: username,
+      });
+    }
+
+    // Get recruit history
+    let history = [];
+    try {
+      const histData = await redisClient.get(`ambassador_history:${username}`);
+      if (histData) history = JSON.parse(histData);
+    } catch(e) {}
+
+    const currentTier  = calculateTier(amb.recruits || 0);
+    const nextTier     = calculateTier((amb.recruits || 0) + 1);
+    const tierChanged  = nextTier && currentTier && nextTier.name !== currentTier.name;
+    const totalPi      = calculateTotalPiEarned(history);
+    const breakdown    = buildRewardBreakdown(amb.recruits || 0);
+
+    // Next tier progress
+    let nextTierInfo = null;
+    if (currentTier && currentTier.name !== 'Diamond') {
+      const nextConfig = Object.values(TIER_CONFIG).find(
+        t => t.min_recruits > (amb.recruits || 0)
+      );
+      if (nextConfig) {
+        nextTierInfo = {
+          name:      nextConfig.name,
+          emoji:     nextConfig.emoji,
+          needed:    nextConfig.min_recruits,
+          remaining: nextConfig.min_recruits - (amb.recruits || 0),
+          bonus_on_reach: nextConfig.bonus_on_entry,
+        };
+      }
+    }
+
+    // Get unread notifications
+    let notifications = [];
+    try {
+      const notifData = await redisClient.get(`notifications:${username}`);
+      if (notifData) notifications = JSON.parse(notifData).filter(n => !n.read);
+    } catch(e) {}
+
+    res.json({
+      status:          'active',
+      pi_username:     amb.pi_username,
+      name:            amb.name,
+      country:         amb.country,
+      joined_month:    amb.joined_month,
+      approved_date:   amb.approved_date,
+
+      // Recruit stats
+      recruits:        amb.recruits        || 0,
+      recruits_month:  amb.recruits_month  || 0,
+      recruits_week:   amb.recruits_week   || 0,
+
+      // Tier info
+      current_tier:    currentTier,
+      next_tier:       nextTierInfo,
+      is_diamond:      currentTier?.name === 'Diamond',
+
+      // Reward info
+      pi_earned:       totalPi,
+      pi_paid:         amb.pi_paid         || 0,
+      pi_pending:      parseFloat((totalPi - (amb.pi_paid || 0)).toFixed(4)),
+      reward_breakdown: breakdown,
+
+      // Recent activity
+      recent_recruits:  history.slice(0, 5),
+      total_recruits_recorded: history.length,
+
+      // Notifications
+      unread_notifications: notifications.slice(0, 5),
+      notification_count:   notifications.length,
+    });
+
+  } catch(err) {
+    console.error('Dashboard error:', err);
+    res.status(500).json({ error: 'Failed to load dashboard' });
+  }
+});
+
+// ── 3. ADMIN: RECORD RECRUIT WITH AUTO TIER ──────────────────
+// POST /ambassador/record-recruit
+// Upgraded version with full automatic tier tracking
+app.post('/ambassador/record-recruit', async (req, res) => {
+  const {
+    admin_username,
+    ambassador_username,
+    business_name,
+    country,
+    notes,
+    business_type,
+  } = req.body;
+
+  const ADMIN_ACCOUNTS = ['chigalex1', 'admin2', 'dorisyin', 'chigodop'];
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  try {
+    const ambKey  = `ambassador:${ambassador_username}`;
+    const ambData = await redisClient.get(ambKey);
+    if (!ambData) return res.status(404).json({ error: 'Ambassador not found' });
+
+    const amb = JSON.parse(ambData);
+    const { month, week } = getPeriodKey();
+
+    // Get old tier before incrementing
+    const oldTier = calculateTier(amb.recruits || 0);
+
+    // Increment all recruit counters
+    amb.recruits       = (amb.recruits       || 0) + 1;
+    amb.recruits_month = (amb.recruits_month || 0) + 1;
+    amb.recruits_week  = (amb.recruits_week  || 0) + 1;
+
+    // Calculate new tier
+    const newTier    = calculateTier(amb.recruits);
+    const tierChanged = !oldTier || oldTier.name !== newTier.name;
+
+    // Calculate Pi earned for this recruit
+    let piEarned = newTier.pi_per_recruit;
+    if (tierChanged) piEarned += newTier.bonus_on_entry;
+    amb.pi_rewarded = parseFloat(((amb.pi_rewarded || 0) + piEarned).toFixed(4));
+
+    // Record tier changes history
+    if (tierChanged) {
+      if (!amb.tier_history) amb.tier_history = [];
+      amb.tier_history.push({
+        from:      oldTier ? oldTier.name : 'None',
+        to:        newTier.name,
+        date:      new Date().toISOString(),
+        recruits:  amb.recruits,
+      });
+
+      // Queue tier-up notification
+      await notifyAmbassador(
+        ambassador_username,
+        `🎉 CONGRATULATIONS @${ambassador_username}! You've been promoted to ${newTier.emoji} ${newTier.name} tier! You earned a ${newTier.bonus_on_entry}π bonus! Keep onboarding businesses across ${amb.country}! 🌍`
+      );
+    } else {
+      // Regular recruit notification
+      await notifyAmbassador(
+        ambassador_username,
+        `✅ Recruit #${amb.recruits} recorded! Business: ${business_name || 'New Business'} · ${amb.country}. Total Pi earned: ${amb.pi_rewarded}π · Tier: ${newTier.emoji} ${newTier.name}`
+      );
+    }
+
+    // Save recruit to history
+    const historyKey = `ambassador_history:${ambassador_username}`;
+    let history = [];
+    try {
+      const existing = await redisClient.get(historyKey);
+      if (existing) history = JSON.parse(existing);
+    } catch(e) {}
+
+    history.unshift({
+      business_name:   business_name  || 'Unknown Business',
+      business_type:   business_type  || 'General',
+      country:         country        || amb.country,
+      notes:           notes          || '',
+      recorded_by:     admin_username,
+      date:            new Date().toISOString(),
+      month,
+      week,
+      recruit_number:  amb.recruits,
+      tier_at_time:    newTier.name,
+      pi_earned:       parseFloat(piEarned.toFixed(4)),
+    });
+
+    if (history.length > 1000) history = history.slice(0, 1000);
+    await redisClient.set(historyKey, JSON.stringify(history));
+
+    // Save updated ambassador
+    await redisClient.set(ambKey, JSON.stringify(amb));
+
+    // Build response
+    const response = {
+      success:          true,
+      ambassador:       ambassador_username,
+      country:          amb.country,
+      total_recruits:   amb.recruits,
+      recruits_month:   amb.recruits_month,
+      current_tier:     newTier,
+      tier_changed:     tierChanged,
+      old_tier:         oldTier?.name || 'None',
+      new_tier:         newTier.name,
+      pi_earned_this:   parseFloat(piEarned.toFixed(4)),
+      pi_total_earned:  amb.pi_rewarded,
+      pi_pending_payout: parseFloat((amb.pi_rewarded - (amb.pi_paid || 0)).toFixed(4)),
+    };
+
+    if (tierChanged) {
+      response.message = `🎉 TIER UP! @${ambassador_username} promoted to ${newTier.emoji} ${newTier.name}! Bonus: ${newTier.bonus_on_entry}π · Total earned: ${amb.pi_rewarded}π`;
+      response.celebration = true;
+    } else {
+      response.message = `✅ Recruit #${amb.recruits} recorded for @${ambassador_username} · ${newTier.emoji} ${newTier.name} · Pi earned: ${piEarned}π · Total: ${amb.pi_rewarded}π`;
+    }
+
+    // Next tier progress
+    const nextTierConfig = Object.values(TIER_CONFIG).find(
+      t => t.min_recruits > amb.recruits
+    );
+    if (nextTierConfig) {
+      response.next_tier = {
+        name:      nextTierConfig.name,
+        emoji:     nextTierConfig.emoji,
+        remaining: nextTierConfig.min_recruits - amb.recruits,
+        bonus:     nextTierConfig.bonus_on_entry,
+      };
+    }
+
+    res.json(response);
+
+  } catch(err) {
+    console.error('Record recruit error:', err);
+    res.status(500).json({ error: 'Failed to record recruit' });
+  }
+});
+
+// ── 4. ADMIN: RECORD PI PAYOUT ───────────────────────────────
+// POST /ambassador/record-payout
+// Called when admin pays Pi rewards to an ambassador
+app.post('/ambassador/record-payout', async (req, res) => {
+  const { admin_username, ambassador_username, amount, txid, notes } = req.body;
+
+  const ADMIN_ACCOUNTS = ['chigalex1', 'admin2', 'dorisyin', 'chigodop'];
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  try {
+    const ambKey  = `ambassador:${ambassador_username}`;
+    const ambData = await redisClient.get(ambKey);
+    if (!ambData) return res.status(404).json({ error: 'Ambassador not found' });
+
+    const amb = JSON.parse(ambData);
+
+    // Record payout
+    const paidAmount  = parseFloat(amount) || 0;
+    amb.pi_paid       = parseFloat(((amb.pi_paid || 0) + paidAmount).toFixed(4));
+    amb.last_payout   = {
+      amount:    paidAmount,
+      txid:      txid  || '',
+      notes:     notes || '',
+      date:      new Date().toISOString(),
+      paid_by:   admin_username,
+    };
+
+    if (!amb.payout_history) amb.payout_history = [];
+    amb.payout_history.unshift(amb.last_payout);
+
+    await redisClient.set(ambKey, JSON.stringify(amb));
+
+    // Notify ambassador of payout
+    await notifyAmbassador(
+      ambassador_username,
+      `💰 Pi reward received! ${paidAmount}π has been sent to your Pi Wallet. Thank you for growing Pi adoption in ${amb.country}! 🌍 Keep onboarding — your next rewards are accumulating! 🚀`
+    );
+
+    const pending = parseFloat((amb.pi_rewarded - amb.pi_paid).toFixed(4));
+
+    res.json({
+      success:         true,
+      ambassador:      ambassador_username,
+      amount_paid:     paidAmount,
+      total_paid:      amb.pi_paid,
+      total_earned:    amb.pi_rewarded,
+      pending_balance: pending,
+      message:         `✅ ${paidAmount}π payout recorded for @${ambassador_username}. Pending balance: ${pending}π`,
+    });
+
+  } catch(err) {
+    console.error('Payout error:', err);
+    res.status(500).json({ error: 'Failed to record payout' });
+  }
+});
+
+// ── 5. GET AMBASSADOR NOTIFICATIONS ─────────────────────────
+// GET /ambassador/notifications/:username
+app.get('/ambassador/notifications/:username', async (req, res) => {
+  const { username } = req.params;
+  try {
+    const notifData = await redisClient.get(`notifications:${username}`);
+    const notifs    = notifData ? JSON.parse(notifData) : [];
+
+    // Mark all as read
+    const updated = notifs.map(n => ({ ...n, read: true }));
+    await redisClient.set(`notifications:${username}`, JSON.stringify(updated));
+
+    res.json({
+      notifications:  notifs,
+      unread_count:   notifs.filter(n => !n.read).length,
+    });
+  } catch(err) {
+    res.status(500).json({ error: 'Failed to load notifications' });
+  }
+});
+
+// ── 6. ADMIN: FULL REWARDS SUMMARY ──────────────────────────
+// GET /ambassador/admin/rewards-summary?admin=chigalex1
+app.get('/ambassador/admin/rewards-summary', async (req, res) => {
+  const admin = req.query.admin;
+  const ADMIN_ACCOUNTS = ['chigalex1', 'admin2', 'dorisyin', 'chigodop'];
+  if (!ADMIN_ACCOUNTS.includes((admin || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  try {
+    const allAmbs = await getAllAmbassadors();
+    const approved = allAmbs.filter(a => a.approved);
+
+    const summary = {
+      total_ambassadors:  approved.length,
+      total_recruits:     approved.reduce((s, a) => s + (a.recruits || 0), 0),
+      total_pi_earned:    approved.reduce((s, a) => s + (a.pi_rewarded || 0), 0).toFixed(4),
+      total_pi_paid:      approved.reduce((s, a) => s + (a.pi_paid    || 0), 0).toFixed(4),
+      total_pi_pending:   approved.reduce((s, a) => s + ((a.pi_rewarded || 0) - (a.pi_paid || 0)), 0).toFixed(4),
+
+      // Tier breakdown
+      by_tier: {
+        diamond: approved.filter(a => (a.recruits || 0) >= 50).length,
+        gold:    approved.filter(a => (a.recruits || 0) >= 20 && (a.recruits || 0) < 50).length,
+        silver:  approved.filter(a => (a.recruits || 0) >= 10 && (a.recruits || 0) < 20).length,
+        bronze:  approved.filter(a => (a.recruits || 0) >= 5  && (a.recruits || 0) < 10).length,
+        starter: approved.filter(a => (a.recruits || 0) >= 1  && (a.recruits || 0) < 5).length,
+      },
+
+      // Countries represented
+      countries: [...new Set(approved.map(a => a.country))].sort(),
+
+      // Ambassadors with pending payouts
+      pending_payouts: approved
+        .filter(a => ((a.pi_rewarded || 0) - (a.pi_paid || 0)) > 0)
+        .map(a => ({
+          pi_username: a.pi_username,
+          country:     a.country,
+          tier:        calculateTier(a.recruits || 0)?.name,
+          pending:     parseFloat(((a.pi_rewarded || 0) - (a.pi_paid || 0)).toFixed(4)),
+        }))
+        .sort((a, b) => b.pending - a.pending),
+    };
+
+    res.json(summary);
+
+  } catch(err) {
+    console.error('Rewards summary error:', err);
+    res.status(500).json({ error: 'Failed to load summary' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Chigalex1 running on port ${PORT}`);
   console.log(`   Health:     http://localhost:${PORT}/health`);
