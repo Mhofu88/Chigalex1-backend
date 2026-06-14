@@ -672,6 +672,30 @@ app.get('*', (req, res) => {
 // ════════════════════════════════════════════
 // ── START SERVER ──
 // ════════════════════════════════════════════
+const PRICING = {
+  membership: 0.01,          // Membership fee in Pi
+  advert: 0.01,              // Advert fee in Pi
+  merchant: 0.01,
+app.get('/api/pricing', (req, res) => {
+  res.json({
+    membership: PRICING.membership,
+    advert: PRICING.advert,
+    merchant: PRICING.merchant,
+    currency: 'π',
+    formatted: {
+      membership: `${PRICING.membership}π`,
+      advert: `${PRICING.advert}π`,
+      merchant: `${PRICING.merchant}π`,
+    }
+  });
+});
+
+app.post('/ai/chat/free', async (req, res) => {
+  const { message, history = [] } = req.body;
+  if (!message) return res.status(400).json({ error: 'No message' });
+
+  const FREE_SYSTEM_PROMPT = `You are Chigalex1 AI — a Pi Network assistant for Africa.
+
 app.listen(PORT, () => {
   console.log(`🚀 Chigalex1 running on port ${PORT}`);
   console.log(`   Health:     http://localhost:${PORT}/health`);
