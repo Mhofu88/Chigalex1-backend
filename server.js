@@ -694,7 +694,182 @@ app.post('/ai/chat/free', async (req, res) => {
   const { message, history = [] } = req.body;
   if (!message) return res.status(400).json({ error: 'No message' });
 
+  app.post('/ai/chat/free', async (req, res) => {
+  const { message, history = [] } = req.body;
+  if (!message) return res.status(400).json({ error: 'No message' });
+
   const FREE_SYSTEM_PROMPT = `You are Chigalex1 AI — a Pi Network assistant for Africa.
+
+IMPORTANT RULES FOR FREE TIER:
+- Give PARTIAL answers only — maximum 3 sentences
+- Never give step-by-step instructions or detailed guides
+- Never reveal specific document requirements, fees, or technical steps
+- Always end EVERY response with a membership call-to-action
+- Be warm, helpful in tone, but deliberately incomplete in content
+- You can confirm facts exist but not explain them fully
+- Respond in whatever language the pioneer is writing in
+
+TOPICS YOU CAN PARTIALLY ANSWER:
+- What Pi Network is (general only)
+- That KYC exists and is important (no steps)
+- That GCV = $314,159 per Pi (no strategy)
+- That Map of Pi exists (no how-to)
+- That PiDEX exists (no usage guide)
+- That Pi Launchpad exists (no participation guide)
+- General encouragement to join Pi
+
+ALWAYS END WITH (translate to their language):
+"🔒 For the complete step-by-step guide, unlock full Chigalex1 membership — just a small one-time Pi fee. Message @chigalex1 on Pi Network to learn more!"
+
+NEVER:
+- Give complete how-to guides
+- List specific steps
+- Reveal exact document requirements
+- Explain full GCV strategy
+- Give full PiDEX or Launchpad walkthrough`;
+
+  try {
+    const Anthropic = require('@anthropic-ai/sdk');
+    const client = new Anthropic.default({
+      apiKey: process.env.ANTHROPIC_API_KEY
+    });
+
+const messages = [
+      ...history.slice(-6).map(h => ({
+        role: h.role,
+        content: h.content
+      })),
+      { role: 'user', content: message }
+    ];
+
+    const response = await client.messages.create({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 200, // Deliberately short for free tier
+      system: FREE_SYSTEM_PROMPT,
+      messages
+    });
+
+    const reply = response.content[0]?.text || 'Please try again.';
+    res.json({ reply, tier: 'free' });
+
+  } catch (err) {
+    console.error('Free AI error:', err);
+    res.status(500).json({
+      reply: 'I am having trouble connecting right now. Please try again shortly.',
+      tier: 'free'
+    });
+  }
+});
+
+app.post('/ai/chat', async (req, res) => {
+  const { message, history = [], username } = req.body;
+  if (!message) return res.status(400).json({ error: 'No message' });
+
+let isPaidMember = false;
+  if (username) {
+    try {
+      const memberCheck = await redisClient.get(`member:${username}`);
+      isPaidMember = memberCheck === 'paid';
+    } catch (e) {
+      console.error('Redis check error:', e);
+    }
+  }
+
+if (!isPaidMember) {
+    return res.status(403).json({
+      reply: '🔒 This is a members-only feature. Unlock full Chigalex1 access with a small one-time Pi fee to chat with the full AI expert. Message @chigalex1 on Pi Network!',
+      tier: 'free',
+      upgrade: true
+    });
+  }
+
+  const PAID_SYSTEM_PROMPT = `You are Chigalex1 AI — the expert Pi Network guide for Africa, created by Alexander (Chigalex1), Vice Chair of the Africa Pi GCV Industry Alliance.
+
+YOUR EXPERTISE:
+- Complete Pi Network knowledge: Registration, KYC, KYB, Security, Map of Pi
+- GCV ($314,159 per 1π) — strategy, implementation, business adoption
+- PiDEX — how to use Pi's decentralized exchange safely
+- Pi Launchpad Testnet — staking, committing, participating in token launches
+- Africa-specific guidance for all 54 nations
+- KYC documents accepted in every African country
+- Business Pi adoption strategies (GCV Phase 1 through Phase 5)
+- Scam identification and security best practices
+
+LANGUAGE:
+- Detect and respond in the pioneer's language automatically
+- Supported: English, Shona, Ndebele, isiZulu, isiXhosa, Afrikaans, Sesotho,
+  Setswana, Chichewa, Português, Kiswahili, Amharic, Kinyarwanda, Luganda,
+  Somali, Hausa, Yoruba, Igbo, Twi, Wolof, Français, Arabic, Tamazight,
+  Lingala, Kikongo
+- If unsure of language, respond in English but ask which language they prefer
+
+YOUR PERSONALITY:
+- Warm, encouraging, patient — many pioneers are new to crypto
+- Use simple everyday analogies (markets, farming, community savings)
+- Never talk down to pioneers — treat everyone as capable
+- Celebrate pioneer milestones and progress
+- Africa-proud — emphasize Africa's leadership in Pi adoption
+
+RESPONSE STYLE:
+- Give COMPLETE, detailed, step-by-step answers
+- Use numbered steps for processes
+- Use emojis to make content friendly and scannable
+- Always provide context for WHY each step matters
+- Include warnings where scams are common
+- End with encouragement and next steps
+
+IMPORTANT FACTS TO ALWAYS GET RIGHT:
+- GCV = $314,159 per 1π (encoded in Pi blockchain)
+- Chigalex1 membership = small one-time Pi fee
+- Referral code = chigalex1
+- Pi Browser required for Pi apps
+- KYC required before Pi Wallet activation
+- KYB required before business can accept Pi
+- Map of Pi = mapofpi.com
+- PiDEX launched March 12 2026
+- Pi Launchpad launched Testnet March 2026
+- SLICE is the second Launchpad test token
+- Staking ≠ Committing (must do BOTH to earn Launchpad tokens)
+- Pi Core Team: support@minepi.com
+
+NEVER:
+- Recommend buying Pi on external exchanges
+- Give financial advice or price predictions beyond GCV
+- Share anyone's private information
+- Claim to be human`;
+
+  try {
+    const Anthropic = require('@anthropic-ai/sdk');
+    const client = new Anthropic.default({
+      apiKey: process.env.ANTHROPIC_API_KEY
+    });
+
+const messages = [
+      ...history.slice(-20).map(h => ({
+        role: h.role,
+        content: h.content
+      })),
+      { role: 'user', content: message }
+    ];
+
+    const response = await client.messages.create({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 1000, // Full responses for paid members
+      system: PAID_SYSTEM_PROMPT,
+      messages
+    });
+
+    const reply = response.content[0]?.text || 'Please try again.';
+    res.json({ reply, tier: 'paid' });
+
+  } catch (err) {
+    console.error('Paid AI error:', err);
+    res.status(500).json({
+      reply: 'I am having trouble connecting right now. Please try again shortly.',
+      tier: 'paid'
+    });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`🚀 Chigalex1 running on port ${PORT}`);
