@@ -1367,6 +1367,146 @@ footer a:hover{color:#F5C518;}
     </div>
   </div>
 
+<div class="divider"></div>
+
+<section id="my-dashboard" style="display:none;">
+  <div class="slbl">🤝 Your Ambassador Dashboard</div>
+  <div class="stit" id="dash-title">My Performance</div>
+
+  <!-- Tier Progress Bar -->
+  <div style="background:#211A3A;border:1.5px solid rgba(245,197,24,0.3);border-radius:16px;padding:24px;margin-bottom:20px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <div>
+        <div id="dash-tier-emoji" style="font-size:2rem;"></div>
+        <div id="dash-tier-name" style="font-weight:800;font-size:1.1rem;"></div>
+      </div>
+      <div style="text-align:right;">
+        <div id="dash-recruits" style="font-size:2.5rem;font-weight:900;color:#F5C518;"></div>
+        <div style="color:#7A6A9A;font-size:.75rem;">total businesses</div>
+      </div>
+    </div>
+    <div id="dash-progress-bar" style="height:8px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden;margin-bottom:8px;">
+      <div id="dash-progress-fill" style="height:100%;border-radius:100px;background:linear-gradient(90deg,#F5C518,#E8520A);transition:width 0.5s;"></div>
+    </div>
+    <div id="dash-next-tier" style="font-size:.78rem;color:#B8A8D8;"></div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:20px;">
+    <div class="pi-fact">
+      <div class="pi-fact-icon">📅</div>
+      <div class="pi-fact-num" id="dash-month-recruits">--</div>
+      <div class="pi-fact-label">This Month</div>
+    </div>
+    <div class="pi-fact">
+      <div class="pi-fact-icon">⚡</div>
+      <div class="pi-fact-num" id="dash-week-recruits">--</div>
+      <div class="pi-fact-label">This Week</div>
+    </div>
+    <div class="pi-fact">
+      <div class="pi-fact-icon">💰</div>
+      <div class="pi-fact-num" id="dash-pi-earned">--</div>
+      <div class="pi-fact-label">Pi Earned</div>
+    </div>
+    <div class="pi-fact">
+      <div class="pi-fact-icon">⏳</div>
+      <div class="pi-fact-num" id="dash-pi-pending">--</div>
+      <div class="pi-fact-label">Pi Pending</div>
+    </div>
+  </div>
+
+  <!-- Notifications -->
+  <div id="dash-notifications" style="display:none;background:#211A3A;border:1px solid rgba(245,197,24,0.3);border-radius:14px;padding:18px;margin-bottom:20px;">
+    <div style="font-weight:700;color:#F5C518;margin-bottom:12px;">🔔 Notifications</div>
+    <div id="dash-notif-list"></div>
+  </div>
+
+  <!-- Recent Recruits -->
+  <div style="background:#211A3A;border:1px solid rgba(0,212,170,0.2);border-radius:14px;padding:18px;">
+    <div style="font-weight:700;color:#00D4AA;margin-bottom:12px;">📋 Recent Businesses Recorded</div>
+    <div id="dash-recent-list" style="color:#7A6A9A;font-size:.84rem;">Loading...</div>
+  </div>
+</section>
+
+── JAVASCRIPT ──
+
+async function loadAmbassadorDashboard(username) {
+  try {
+    const r = await fetch(API + '/ambassador/dashboard/' + username);
+    const d = await r.json();
+
+    if (d.status !== 'active') return; // Not an approved ambassador
+
+    // Show dashboard section
+    const dash = document.getElementById('my-dashboard');
+    if (dash) dash.style.display = 'block';
+
+    // Fill tier info
+    const tier = d.current_tier;
+    document.getElementById('dash-tier-emoji').textContent = tier?.emoji || '🌱';
+    document.getElementById('dash-tier-name').textContent  = tier?.name  || 'Starter';
+    document.getElementById('dash-recruits').textContent   = d.recruits  || 0;
+
+    // Progress bar
+    if (d.next_tier) {
+      const needed    = d.next_tier.needed;
+      const current   = d.recruits;
+      const tierStart = needed - d.next_tier.remaining - 1;
+      const progress  = Math.round(((current - tierStart) / (needed - tierStart)) * 100);
+      document.getElementById('dash-progress-fill').style.width = progress + '%';
+      document.getElementById('dash-next-tier').textContent =
+        `${d.next_tier.remaining} more businesses to ${d.next_tier.emoji} ${d.next_tier.name} · +${d.next_tier.bonus_on_reach}π bonus!`;
+    } else {
+      document.getElementById('dash-progress-fill').style.width = '100%';
+      document.getElementById('dash-next-tier').textContent = '⭐ Maximum Diamond tier achieved! You are Africa\'s Pi Champion!';
+    }
+
+    // Stats
+    document.getElementById('dash-month-recruits').textContent = d.recruits_month || 0;
+    document.getElementById('dash-week-recruits').textContent  = d.recruits_week  || 0;
+    document.getElementById('dash-pi-earned').textContent      = (d.pi_earned     || 0) + 'π';
+    document.getElementById('dash-pi-pending').textContent     = (d.pi_pending    || 0) + 'π';
+
+    // Notifications
+    if (d.unread_notifications && d.unread_notifications.length > 0) {
+      const notifDiv  = document.getElementById('dash-notifications');
+      const notifList = document.getElementById('dash-notif-list');
+      if (notifDiv) notifDiv.style.display = 'block';
+      if (notifList) {
+        notifList.innerHTML = d.unread_notifications.map(n => `
+          <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:.83rem;color:#F0EBF8;line-height:1.6;">
+            ${esc(n.message)}
+            <div style="font-size:.7rem;color:#7A6A9A;margin-top:3px;">${new Date(n.timestamp).toLocaleDateString()}</div>
+          </div>`).join('');
+      }
+    }
+
+    // Recent recruits
+    const recentList = document.getElementById('dash-recent-list');
+    if (recentList) {
+      if (!d.recent_recruits || d.recent_recruits.length === 0) {
+        recentList.innerHTML = '<p style="color:#7A6A9A;font-size:.84rem;">No businesses recorded yet. Start onboarding and contact @chigalex1 to record your first recruit!</p>';
+      } else {
+        recentList.innerHTML = d.recent_recruits.map(r => `
+          <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <div style="font-weight:700;font-size:.86rem;color:#F0EBF8;">${esc(r.business_name)}</div>
+              <div style="font-size:.73rem;color:#7A6A9A;">📍 ${esc(r.country)} · #${r.recruit_number} · ${r.tier_at_time}</div>
+            </div>
+            <div style="font-size:.78rem;color:#00D4AA;font-weight:700;">+${r.pi_earned}π</div>
+          </div>`).join('');
+      }
+    }
+
+  } catch(e) {
+    console.error('Dashboard load error:', e);
+  }
+}
+
+// Call this inside openApp() after isPaid check:
+// if (isPaid && piUser) loadAmbassadorDashboard(piUser.username);
+*/
+
   <!-- PERIOD FILTER -->
   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
     <div style="font-size:.72rem;color:#7A6A9A;align-self:center;font-weight:600;">Filter:</div>
