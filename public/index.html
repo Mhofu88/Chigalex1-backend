@@ -1286,6 +1286,108 @@ footer a:hover{color:#F5C518;}
 
 <div class="divider"></div>
 
+
+<div class="divider"></div>
+
+<section id="leaderboard">
+  <div class="slbl" id="lbl-leaderboard">🏆 Africa Pi Ambassador Program</div>
+  <div class="stit" id="sec-leaderboard-title">Ambassador Leaderboard</div>
+  <p class="ssub" id="sec-leaderboard-sub">Our top country ambassadors driving Pi adoption across all 54 African nations. Every business they onboard moves Africa closer to GCV.</p>
+
+  <!-- LIVE STATS BAR -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:28px;">
+    <div class="pi-fact" style="border-color:rgba(245,197,24,0.3);">
+      <div class="pi-fact-icon">🤝</div>
+      <div class="pi-fact-num" id="lb-total-ambassadors">--</div>
+      <div class="pi-fact-label">Active Ambassadors</div>
+    </div>
+    <div class="pi-fact" style="border-color:rgba(0,212,170,0.3);">
+      <div class="pi-fact-icon">🏢</div>
+      <div class="pi-fact-num" id="lb-total-recruits">--</div>
+      <div class="pi-fact-label">Businesses Onboarded</div>
+    </div>
+    <div class="pi-fact" style="border-color:rgba(232,82,10,0.3);">
+      <div class="pi-fact-icon">🌍</div>
+      <div class="pi-fact-num" id="lb-total-countries">--</div>
+      <div class="pi-fact-label">Countries Reached</div>
+    </div>
+    <div class="pi-fact" style="border-color:rgba(123,45,139,0.3);">
+      <div class="pi-fact-icon">💰</div>
+      <div class="pi-fact-num" id="lb-total-pi">--</div>
+      <div class="pi-fact-label">Pi Rewards Distributed</div>
+    </div>
+  </div>
+
+  <!-- TIER LEGEND -->
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;">
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,170,0.12);border:1px solid rgba(0,212,170,0.3);border-radius:100px;padding:5px 14px;font-size:.72rem;font-weight:700;color:#00D4AA;">🌱 Starter 1–4</div>
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(205,127,50,0.12);border:1px solid rgba(205,127,50,0.3);border-radius:100px;padding:5px 14px;font-size:.72rem;font-weight:700;color:#CD7F32;">🥉 Bronze 5–9</div>
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(192,192,192,0.12);border:1px solid rgba(192,192,192,0.3);border-radius:100px;padding:5px 14px;font-size:.72rem;font-weight:700;color:#C0C0C0;">🥈 Silver 10–19</div>
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.3);border-radius:100px;padding:5px 14px;font-size:.72rem;font-weight:700;color:#F5C518;">🏅 Gold 20–49</div>
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(155,89,182,0.15);border:1px solid rgba(155,89,182,0.4);border-radius:100px;padding:5px 14px;font-size:.72rem;font-weight:700;color:#9B59B6;">⭐ Diamond 50+</div>
+  </div>
+
+  <!-- TOP 3 PODIUM -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F5C518;margin-bottom:14px;">🏆 Top 3 This Month</div>
+    <div id="lb-podium" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+      <!-- Filled by JavaScript -->
+      <div style="background:#211A3A;border-radius:16px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.07);">
+        <div style="font-size:1.6rem;margin-bottom:6px;">🥈</div>
+        <div style="font-size:.75rem;color:#7A6A9A;">Loading...</div>
+      </div>
+      <div style="background:#211A3A;border-radius:16px;padding:20px;text-align:center;border:1.5px solid rgba(245,197,24,0.4);transform:translateY(-8px);">
+        <div style="font-size:2rem;margin-bottom:6px;">🥇</div>
+        <div style="font-size:.75rem;color:#7A6A9A;">Loading...</div>
+      </div>
+      <div style="background:#211A3A;border-radius:16px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,0.07);">
+        <div style="font-size:1.6rem;margin-bottom:6px;">🥉</div>
+        <div style="font-size:.75rem;color:#7A6A9A;">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL LEADERBOARD TABLE -->
+  <div style="background:#211A3A;border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-bottom:24px;">
+    <!-- Table Header -->
+    <div style="display:grid;grid-template-columns:40px 1fr 80px 80px 90px;gap:8px;padding:12px 16px;background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:.68rem;font-weight:700;color:#7A6A9A;text-transform:uppercase;">#</div>
+      <div style="font-size:.68rem;font-weight:700;color:#7A6A9A;text-transform:uppercase;">Ambassador</div>
+      <div style="font-size:.68rem;font-weight:700;color:#7A6A9A;text-transform:uppercase;text-align:center;">Country</div>
+      <div style="font-size:.68rem;font-weight:700;color:#7A6A9A;text-transform:uppercase;text-align:center;">Recruits</div>
+      <div style="font-size:.68rem;font-weight:700;color:#7A6A9A;text-transform:uppercase;text-align:center;">Tier</div>
+    </div>
+    <!-- Table Body -->
+    <div id="lb-table-body">
+      <!-- Loading state -->
+      <div style="padding:32px;text-align:center;color:#7A6A9A;font-size:.85rem;">
+        <div style="font-size:1.4rem;margin-bottom:8px;">⏳</div>
+        Loading leaderboard...
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD FILTER -->
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
+    <div style="font-size:.72rem;color:#7A6A9A;align-self:center;font-weight:600;">Filter:</div>
+    <button class="tab on" onclick="loadLeaderboard('all',this)" style="padding:6px 16px;font-size:.75rem;" id="lb-filter-all">🌍 All Time</button>
+    <button class="tab" onclick="loadLeaderboard('month',this)" style="padding:6px 16px;font-size:.75rem;" id="lb-filter-month">📅 This Month</button>
+    <button class="tab" onclick="loadLeaderboard('week',this)" style="padding:6px 16px;font-size:.75rem;" id="lb-filter-week">⚡ This Week</button>
+  </div>
+
+  <!-- BECOME AMBASSADOR CTA -->
+  <div style="background:linear-gradient(135deg,rgba(232,82,10,0.14),rgba(123,45,139,0.14));border:1.5px solid rgba(232,82,10,0.4);border-radius:18px;padding:28px;text-align:center;">
+    <div style="font-size:1.8rem;margin-bottom:10px;">🌍</div>
+    <div style="font-weight:800;color:#E8520A;font-size:1rem;margin-bottom:8px;" id="amb-cta-title">Want to be on this leaderboard?</div>
+    <p style="color:#B8A8D8;font-size:.86rem;line-height:1.7;margin-bottom:20px;" id="amb-cta-body">Become a Chigalex1 Country Ambassador — onboard businesses in your nation, earn Pi rewards automatically, and represent your country on the Africa Pi leaderboard.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="/landing.html" class="btn" style="background:linear-gradient(135deg,#E8520A,#F5C518);text-decoration:none;" id="btn-become-ambassador">🤝 Become an Ambassador</a>
+      <button class="btn btn-out" onclick="sc('faq')" id="btn-learn-program">📋 Learn About the Program</button>
+    </div>
+  </div>
+
+</section>
+
 <!-- ══ DISCLAIMER ══ -->
 <section>
   <div class="slbl" id="lbl-disclaimer">⚖️ Disclaimer</div>
