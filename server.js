@@ -871,6 +871,351 @@ const messages = [
   }
 });
 
+function getPeriodKey() {
+  const now = new Date();
+  const month = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  const week = `${now.getFullYear()}-W${String(Math.ceil(now.getDate()/7)).padStart(2,'0')}`;
+  return { month, week };
+}
+
+function getTier(recruits) {
+  if (recruits >= 50) return { name: 'Diamond', emoji: '⭐', pi_reward: 5.0 };
+  if (recruits >= 20) return { name: 'Gold',    emoji: '🏅', pi_reward: 2.0 };
+  if (recruits >= 10) return { name: 'Silver',  emoji: '🥈', pi_reward: 1.0 };
+  if (recruits >= 5)  return { name: 'Bronze',  emoji: '🥉', pi_reward: 0.5 };
+  return                     { name: 'Starter', emoji: '🌱', pi_reward: 0.1 };
+}
+
+async function getAllAmbassadors() {
+  try {
+    const keys = await redisClient.keys('ambassador:*');
+    if (!keys || keys.length === 0) return [];
+
+    const ambassadors = [];
+    for (const key of keys) {
+      const data = await redisClient.get(key);
+      if (data) {
+        try {
+          const amb = JSON.parse(data);
+          ambassadors.push(amb);
+        } catch(e) {}
+      }
+    }
+    return ambassadors;
+  } catch(e) {
+    console.error('Redis getAllAmbassadors error:', e);
+    return [];
+  }
+}
+
+app.get('/ambassador/leaderboard', async (req, res) => {
+  const period = req.query.period || 'all';
+
+  try {
+    const allAmbs = await getAllAmbassadors();
+
+    // Sort by recruits descending
+    const sorted = allAmbs
+      .filter(a => a.approved === true)
+      .sort((a, b) => {
+        const recruitsA = period === 'month' ? (a.recruits_month || 0) :
+                         period === 'week'  ? (a.recruits_week  || 0) :
+                                              (a.recruits       || 0);
+        const recruitsB = period === 'month' ? (b.recruits_month || 0) :
+                         period === 'week'  ? (b.recruits_week  || 0) :
+                                              (b.recruits       || 0);
+        return recruitsB - recruitsA;
+      })
+      .map(a => ({
+        pi_username:   a.pi_username,
+        name:          a.name,
+        country:       a.country,
+        recruits:      period === 'month' ? (a.recruits_month || 0) :
+                       period === 'week'  ? (a.recruits_week  || 0) :
+                                            (a.recruits       || 0),
+        tier:          getTier(a.recruits || 0),
+        joined_month:  a.joined_month || '',
+        pi_rewarded:   a.pi_rewarded  || 0,
+      }));
+
+const stats = {
+      total_ambassadors: sorted.length,
+      total_recruits:    sorted.reduce((sum, a) => sum + a.recruits, 0),
+      total_countries:   new Set(sorted.map(a => a.country)).size,
+      total_pi_rewarded: allAmbs.reduce((sum, a) => sum + (a.pi_rewarded || 0), 0).toFixed(2),
+    };
+
+    res.json({ ambassadors: sorted, stats, period });
+
+  } catch(err) {
+    console.error('Leaderboard error:', err);
+    res.status(500).json({ ambassadors: [], stats: {}, error: 'Failed to load' });
+  }
+});
+
+app.post('/ambassador/apply', async (req, res) => {
+  const { name, country, pi_username, phone, lang, why, biz, timestamp } = req.body;
+  if (!name || !country || !pi_username || !why) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  try {
+    const { month } = getPeriodKey();
+    const applicationKey = `ambassador_application:${pi_username}`;
+    const application = {
+      name,
+      country,
+      pi_username,
+      phone:      phone || '',
+      lang:       lang  || 'en',
+      why,
+      biz:        biz   || '',
+      timestamp:  timestamp || new Date().toISOString(),
+      status:     'pending',
+      applied_month: month,
+    };
+
+await redisClient.set(applicationKey, JSON.stringify(application));
+
+const logKey = `ambassador_applications_log`;
+    let log = [];
+    try {
+      const existing = await redisClient.get(logKey);
+      if (existing) log = JSON.parse(existing);
+    } catch(e) {}
+    log.unshift({ pi_username, name, country, timestamp: application.timestamp });
+    if (log.length > 200) log = log.slice(0, 200);
+    await redisClient.set(logKey, JSON.stringify(log));
+
+    res.json({ success: true, message: 'Application received! We will review and contact you via Pi Network within 48 hours.' });
+
+  } catch(err) {
+    console.error('Ambassador apply error:', err);
+    res.status(500).json({ error: 'Failed to save application' });
+  }
+});
+
+app.post('/ambassador/approve', async (req, res) => {
+  const { admin_username, pi_username } = req.body;
+
+  // Verify admin
+  const ADMIN_ACCOUNTS = ['chigalex1', 'admin2', 'dorisyin', 'chigodop'];
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  try {
+    const appKey = `ambassador_application:${pi_username}`;
+    const appData = await redisClient.get(appKey);
+    if (!appData) return res.status(404).json({ error: 'Application not found' });
+
+    const application = JSON.parse(appData);
+    const { month } = getPeriodKey();
+
+    // Create ambassador profile
+    const ambassador = {
+      ...application,
+      approved:       true,
+      approved_by:    admin_username,
+      approved_date:  new Date().toISOString(),
+      recruits:       0,
+      recruits_month: 0,
+      recruits_week:  0,
+      pi_rewarded:    0,
+      joined_month:   month,
+      status:         'active',
+    };
+
+await redisClient.set(`ambassador:${pi_username}`, JSON.stringify(ambassador));
+
+await redisClient.set(`member:${pi_username}`, 'paid');
+
+res.json({ success: true, message: `✅ ${pi_username} approved as ambassador and granted free membership!` });
+
+  } catch(err) {
+    console.error('Approve error:', err);
+    res.status(500).json({ error: 'Failed to approve ambassador' });
+  }
+});
+
+app.post('/ambassador/record-recruit', async (req, res) => {
+  const { admin_username, ambassador_username, business_name, country, notes } = req.body;
+
+  // Verify admin
+  const ADMIN_ACCOUNTS = ['chigalex1', 'admin2', 'dorisyin', 'chigodop'];
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  try {
+    const ambKey = `ambassador:${ambassador_username}`;
+    const ambData = await redisClient.get(ambKey);
+    if (!ambData) return res.status(404).json({ error: 'Ambassador not found' });
+
+    const amb = JSON.parse(ambData);
+    const { month, week } = getPeriodKey();
+
+amb.recruits        = (amb.recruits        || 0) + 1;
+    amb.recruits_month  = (amb.recruits_month  || 0) + 1;
+    amb.recruits_week   = (amb.recruits_week   || 0) + 1;
+
+const oldTier = getTier(amb.recruits - 1);
+    const newTier = getTier(amb.recruits);
+    const tierChanged = oldTier.name !== newTier.name;
+
+const recruitRecord = {
+      business_name:   business_name || 'Unknown Business',
+      country:         country        || amb.country,
+      notes:           notes          || '',
+      recorded_by:     admin_username,
+      date:            new Date().toISOString(),
+      month,
+      recruit_number:  amb.recruits,
+    };
+
+const historyKey = `ambassador_history:${ambassador_username}`;
+    let history = [];
+    try {
+      const existing = await redisClient.get(historyKey);
+      if (existing) history = JSON.parse(existing);
+    } catch(e) {}
+    history.unshift(recruitRecord);
+    if (history.length > 500) history = history.slice(0, 500);
+    await redisClient.set(historyKey, JSON.stringify(history));
+
+const rewardEarned = newTier.pi_reward / 10; // Fractional reward per recruit
+    amb.pi_rewarded = parseFloat(((amb.pi_rewarded || 0) + rewardEarned).toFixed(4));
+
+await redisClient.set(ambKey, JSON.stringify(amb));
+
+    res.json({
+      success:      true,
+      ambassador:   ambassador_username,
+      total_recruits: amb.recruits,
+      current_tier: newTier,
+      tier_changed: tierChanged,
+      old_tier:     oldTier.name,
+      new_tier:     newTier.name,
+      pi_rewarded:  amb.pi_rewarded,
+      message: tierChanged
+        ? `🎉 TIER UP! ${ambassador_username} promoted to ${newTier.emoji} ${newTier.name}!`
+        : `✅ Recruit recorded for ${ambassador_username}. Total: ${amb.recruits} · Tier: ${newTier.emoji} ${newTier.name}`
+    });
+
+  } catch(err) {
+    console.error('Record recruit error:', err);
+    res.status(500).json({ error: 'Failed to record recruit' });
+  }
+});
+
+app.get('/ambassador/profile/:username', async (req, res) => {
+  const { username } = req.params;
+
+  try {
+    const ambData = await redisClient.get(`ambassador:${username}`);
+    if (!ambData) return res.status(404).json({ error: 'Ambassador not found' });
+
+    const amb = JSON.parse(ambData);
+    const tier = getTier(amb.recruits || 0);
+    const nextTierThresholds = { Starter: 5, Bronze: 10, Silver: 20, Gold: 50, Diamond: null };
+    const nextThreshold = nextTierThresholds[tier.name];
+   
+let history = [];
+    try {
+      const histData = await redisClient.get(`ambassador_history:${username}`);
+      if (histData) history = JSON.parse(histData);
+    } catch(e) {}
+
+    res.json({
+      pi_username:    amb.pi_username,
+      name:           amb.name,
+      country:        amb.country,
+      approved_date:  amb.approved_date,
+      joined_month:   amb.joined_month,
+      recruits:       amb.recruits        || 0,
+      recruits_month: amb.recruits_month  || 0,
+      recruits_week:  amb.recruits_week   || 0,
+      pi_rewarded:    amb.pi_rewarded     || 0,
+      tier:           tier,
+      next_tier:      nextThreshold ? {
+        threshold: nextThreshold,
+        remaining: nextThreshold - (amb.recruits || 0)
+      } : null,
+      recent_recruits: history.slice(0, 10),
+    });
+
+  } catch(err) {
+    console.error('Profile error:', err);
+    res.status(500).json({ error: 'Failed to load profile' });
+  }
+});
+
+app.get('/ambassador/admin/applications', async (req, res) => {
+  const admin = req.query.admin;
+  const ADMIN_ACCOUNTS = ['chigalex1', 'admin2', 'dorisyin', 'chigodop'];
+  if (!ADMIN_ACCOUNTS.includes((admin || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  try {
+    const logData = await redisClient.get('ambassador_applications_log');
+    const log = logData ? JSON.parse(logData) : [];
+
+    // Get full application data for each
+    const applications = [];
+    for (const entry of log.slice(0, 50)) {
+      try {
+        const appData = await redisClient.get(`ambassador_application:${entry.pi_username}`);
+        if (appData) {
+          const app = JSON.parse(appData);
+          // Check if already approved
+          const ambData = await redisClient.get(`ambassador:${entry.pi_username}`);
+          app.already_approved = !!ambData;
+          applications.push(app);
+        }
+      } catch(e) {}
+    }
+
+    res.json({ applications, total: applications.length });
+
+  } catch(err) {
+    console.error('Applications error:', err);
+    res.status(500).json({ error: 'Failed to load applications' });
+  }
+});
+
+app.post('/ambassador/admin/reset-period', async (req, res) => {
+  const { admin_username, period } = req.body;
+  const ADMIN_ACCOUNTS = ['chigalex1', 'admin2', 'dorisyin', 'chigodop'];
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  try {
+    const allAmbs = await getAllAmbassadors();
+    let updated = 0;
+
+    for (const amb of allAmbs) {
+      if (period === 'week') {
+        amb.recruits_week = 0;
+      } else if (period === 'month') {
+        amb.recruits_month = 0;
+        amb.recruits_week  = 0;
+      }
+      await redisClient.set(`ambassador:${amb.pi_username}`, JSON.stringify(amb));
+      updated++;
+    }
+
+    res.json({ success: true, message: `Reset ${period} counts for ${updated} ambassadors` });
+
+  } catch(err) {
+    console.error('Reset error:', err);
+    res.status(500).json({ error: 'Failed to reset' });
+  }
+});
+
+
+
 app.listen(PORT, () => {
   console.log(`🚀 Chigalex1 running on port ${PORT}`);
   console.log(`   Health:     http://localhost:${PORT}/health`);
@@ -879,3 +1224,5 @@ app.listen(PORT, () => {
   console.log(`   Privacy:    http://localhost:${PORT}/privacy`);
   console.log(`   Terms:      http://localhost:${PORT}/terms`);
 });
+
+
