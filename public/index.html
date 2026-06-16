@@ -1831,7 +1831,9 @@ try { Pi.init({ version:"2.0", sandbox:false }); }
 catch(e){ console.warn('Pi SDK: open in Pi Browser'); }
 
 function showGate(){ document.getElementById('gate').style.display='flex'; window.scrollTo(0,0); }
-function browseFreely(){ document.getElementById('gate').style.display='none'; loadFaqs(); renderAdverts(); }
+function browseFreely(){ document.getElementById('gate').style.display='none';loadFaqs(); renderAdverts();
+loadPricing();
+loadLeaderboard('all');}
 
 async function piLogin(){
   const btn=document.getElementById('loginBtn');
@@ -1896,10 +1898,23 @@ function openApp(){
     nc.textContent=(isOwner?'👑 ':'')+' @'+piUser.username;
   }
   if(isPaid) unlockPaidContent();
-  if(isPaid) document.getElementById('chatbot-fab').style.display='flex';
-  loadFaqs(); loadAnswers(); renderAdverts(); renderMerchants();
+document.getElementById('chatbot-fab').style.display = 'flex';
+if (isPaid) {
+  const w = document.getElementById('cb-welcome');
+  if (w) w.textContent = '👋 Welcome! I\'m your full Chigalex1 AI expert — ask me anything about Pi Network, KYC, KYB, GCV, PiDEX, Launchpad or Map of Pi in 25 African languages!';
+  const s = document.getElementById('cb-sub');
+  if (s) s.textContent = 'Full Expert · 25 Languages · Unlimited';
+} else {
+  const w = document.getElementById('cb-welcome');
+  if (w) w.textContent = '👋 Hi! I\'m Chigalex1 AI — I can give you a taste of Pi Network guidance. Unlock full membership for complete step-by-step answers in 25 African languages!';
+  const s = document.getElementById('cb-sub');
+  if (s) s.textContent = 'Free Preview · Upgrade for Full Access';
 }
-
+loadFaqs(); loadAnswers(); renderAdverts(); renderMerchants();
+loadPricing();
+loadLeaderboard('all');
+if (isPaid && piUser) loadAmbassadorDashboard(piUser.username);
+  
 function unlockPaidContent(){
 ['learn-lock','mapofpi-lock','merchants-lock'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.add('hidden'); });
   const lp=document.getElementById('learn-preview'); const lc=document.getElementById('learn-content');
@@ -1963,20 +1978,43 @@ async function submitMerchant(){
 }
 function toggleChat(){ chatOpen=!chatOpen; document.getElementById('chatbot-window').classList.toggle('open',chatOpen); if(chatOpen)document.getElementById('cbInput').focus(); }
 function cbAsk(q){document.getElementById('cbInput').value=q;cbSend();}
+
 async function cbSend(){
-  const input=document.getElementById('cbInput'); const q=input.value.trim(); if(!q)return;
-  input.value=''; document.getElementById('cbSugs').style.display='none';
-  addCbMsg(q,'user'); const typingEl=addCbMsg('Thinking...','bot typing');
-  cbHistory.push({role:'user',content:q});
-  try{
-    const response=await fetch(API+'/ai/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,history:cbHistory.slice(-10)})});
-    const data=await response.json(); const reply=data.reply||'Please try again.';
-    typingEl.textContent=reply; typingEl.classList.remove('typing');
-    cbHistory.push({role:'assistant',content:reply});
-    if(cbHistory.length>20)cbHistory=cbHistory.slice(-20);
-  }catch(e){ typingEl.textContent='Sorry, trouble connecting. Please try again.'; typingEl.classList.remove('typing'); }
-  document.getElementById('cbMessages').scrollTop=999999;
+  const input = document.getElementById('cbInput');
+  const q = input.value.trim();
+  if (!q) return;
+  input.value = '';
+  document.getElementById('cbSugs').style.display = 'none';
+  addCbMsg(q, 'user');
+  const typingEl = addCbMsg('Thinking...', 'bot typing');
+  cbHistory.push({ role: 'user', content: q });
+
+  try {
+    const endpoint = isPaid ? '/ai/chat' : '/ai/chat/free';
+    const response = await fetch(API + endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: q,
+        history: cbHistory.slice(-10),
+        username: piUser ? piUser.username : ''
+      })
+    });
+    const data = await response.json();
+    const reply = data.reply || 'Please try again.';
+    typingEl.textContent = reply;
+    typingEl.classList.remove('typing');
+    if (!data.upgrade) {
+      cbHistory.push({ role: 'assistant', content: reply });
+      if (cbHistory.length > 20) cbHistory = cbHistory.slice(-20);
+    }
+  } catch(e) {
+    typingEl.textContent = 'Sorry, trouble connecting. Please try again.';
+    typingEl.classList.remove('typing');
+  }
+  document.getElementById('cbMessages').scrollTop = 999999;
 }
+
 function addCbMsg(text,type){ const msgs=document.getElementById('cbMessages'); const el=document.createElement('div'); el.className='cb-msg '+type; el.textContent=text; msgs.appendChild(el); msgs.scrollTop=999999; return el; }
 async function loadFaqs(){
   try{ const r=await fetch(API+'/faqs'); const d=await r.json(); const el=document.getElementById('dynFaq'); if(!d.faqs||!d.faqs.length)return; el.innerHTML=d.faqs.slice().reverse().map(f=>`<div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>${esc(f.question)}<span class="ntag">NEW</span></span><span class="farr">▾</span></div><div class="fa">${esc(f.answer)}</div></div>`).join(''); }catch(e){}
