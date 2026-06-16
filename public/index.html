@@ -1787,7 +1787,7 @@ async function loadAmbassadorDashboard(username) {
 
 <script>
 const API = window.location.origin;
-let LIVE_PRICING = { membership: '0.01', advert: '0.5', merchant: '0.01' };
+let LIVE_PRICING = { membership: '0.01', advert: '0.01', merchant: '0.01' };
 
 async function loadPricing() {
   try {
@@ -1799,6 +1799,7 @@ async function loadPricing() {
     document.querySelectorAll('.live-price-merchant').forEach(el => el.textContent = LIVE_PRICING.merchant + 'π');
   } catch(e) { console.warn('Could not load pricing:', e); }
 }
+
 let piUser = null;
 let isPaid = false;
 let chatOpen = false;
@@ -1822,13 +1823,25 @@ const SAMPLE_ADVERTS = [
   { icon:"🏠", title:"Pi Rentals Nairobi", desc:"Furnished apartments. First month in Pi!", cta:"View Listings", link:"#" },
 ];
 
+// Capture ?ref= param on page load
+(function captureRef() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const refCode = urlParams.get('ref');
+  if (refCode) sessionStorage.setItem('chigalex1_ref', refCode);
+})();
+
 try { Pi.init({ version:"2.0", sandbox:false }); }
 catch(e){ console.warn('Pi SDK: open in Pi Browser'); }
 
 function showGate(){ document.getElementById('gate').style.display='flex'; window.scrollTo(0,0); }
-function browseFreely(){ document.getElementById('gate').style.display='none';loadFaqs(); renderAdverts();
-loadPricing();
-loadLeaderboard('all');}
+
+function browseFreely(){
+  document.getElementById('gate').style.display='none';
+  loadFaqs();
+  renderAdverts();
+  loadPricing();
+  loadLeaderboard('all');
+}
 
 async function piLogin(){
   const btn=document.getElementById('loginBtn');
@@ -1882,7 +1895,7 @@ async function piPay(){
   }catch(e){setErr('Payment failed: '+(e.message||e));resetPayBtn();}
 }
 
-function resetPayBtn(){const b=document.getElementById('payBtn');b.disabled=false;b.innerHTML='💳 Pay 0.01π &amp; Unlock Full Training';}
+function resetPayBtn(){const b=document.getElementById('payBtn');b.disabled=false;b.innerHTML='💳 Pay <span class="live-price-membership">0.01</span>π &amp; Unlock Full Training';}
 function handleIncomplete(p){console.log('Incomplete:',p);}
 
 function openApp(){
@@ -1893,40 +1906,41 @@ function openApp(){
     nc.textContent=(isOwner?'👑 ':'')+' @'+piUser.username;
   }
   if(isPaid) unlockPaidContent();
-document.getElementById('chatbot-fab').style.display = 'flex';
-if (isPaid) {
-  const w = document.getElementById('cb-welcome');
-  if (w) w.textContent = '👋 Welcome! I\'m your full Chigalex1 AI expert — ask me anything about Pi Network, KYC, KYB, GCV, PiDEX, Launchpad or Map of Pi in 25 African languages!';
-  const s = document.getElementById('cb-sub');
-  if (s) s.textContent = 'Full Expert · 25 Languages · Unlimited';
-} else {
-  const w = document.getElementById('cb-welcome');
-  if (w) w.textContent = '👋 Hi! I\'m Chigalex1 AI — I can give you a taste of Pi Network guidance. Unlock full membership for complete step-by-step answers in 25 African languages!';
-  const s = document.getElementById('cb-sub');
-  if (s) s.textContent = 'Free Preview · Upgrade for Full Access';
+
+  // Show chatbot for everyone — free teaser or paid full
+  document.getElementById('chatbot-fab').style.display='flex';
+  if(isPaid){
+    const w=document.getElementById('cb-welcome');
+    if(w) w.textContent='👋 Welcome! I\'m your full Chigalex1 AI expert — ask me anything about Pi Network, KYC, KYB, GCV, PiDEX, Launchpad or Map of Pi in 25 African languages!';
+    const s=document.getElementById('cb-sub');
+    if(s) s.textContent='Full Expert · 25 Languages · Unlimited';
+  } else {
+    const w=document.getElementById('cb-welcome');
+    if(w) w.textContent='👋 Hi! I\'m Chigalex1 AI — I can give you a taste of Pi Network guidance. Unlock full membership for complete step-by-step answers in 25 African languages!';
+    const s=document.getElementById('cb-sub');
+    if(s) s.textContent='Free Preview · Upgrade for Full Access';
+  }
+
+  loadFaqs(); loadAnswers(); renderAdverts(); renderMerchants();
+  loadPricing();
+  loadLeaderboard('all');
+  if(isPaid && piUser) loadAmbassadorDashboard(piUser.username);
 }
-loadFaqs(); loadAnswers(); renderAdverts(); renderMerchants();
-loadPricing();
-loadLeaderboard('all');
-if (isPaid && piUser) loadAmbassadorDashboard(piUser.username);}
-  
+
 function unlockPaidContent(){
-['learn-lock','mapofpi-lock','merchants-lock'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.add('hidden'); });
+  ['learn-lock','mapofpi-lock','merchants-lock'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.add('hidden'); });
   const lp=document.getElementById('learn-preview'); const lc=document.getElementById('learn-content');
   if(lp) lp.style.display='none'; if(lc) lc.style.display='block';
   const mp=document.getElementById('mapofpi').querySelector('.lock-preview'); const mc=document.getElementById('mapofpi-content');
   if(mp) mp.style.display='none'; if(mc) mc.style.display='block';
   const mrp=document.getElementById('merchants').querySelector('.lock-preview'); const mrc=document.getElementById('merchants-content');
   if(mrp) mrp.style.display='none'; if(mrc) mrc.style.display='block';
- const pdl = document.getElementById('pidex-lock');
-  const pdc = document.getElementById('pidex-content');
-  if(pdl) pdl.classList.add('hidden');
-  if(pdc) pdc.style.display = 'block';
-const pll = document.getElementById('pilaunchpad-lock');
-  const plc = document.getElementById('pilaunchpad-content');
-  if(pll) pll.classList.add('hidden');
-  if(plc) plc.style.display = 'block';
+  const pdl=document.getElementById('pidex-lock'); const pdc=document.getElementById('pidex-content');
+  if(pdl) pdl.classList.add('hidden'); if(pdc) pdc.style.display='block';
+  const pll=document.getElementById('pilaunchpad-lock'); const plc=document.getElementById('pilaunchpad-content');
+  if(pll) pll.classList.add('hidden'); if(plc) plc.style.display='block';
 }
+
 function setErr(m){document.getElementById('gerr').textContent=m;}
 function requirePaid(id){ if(isPaid){ sc(id); return; } showGate(); }
 function sc(id){
@@ -1941,7 +1955,7 @@ function tog(el){ const was=el.classList.contains('on'); el.closest('.steps').qu
 function renderAdverts(){
   const strip=document.getElementById('advertStrip');
   const cards=SAMPLE_ADVERTS.map(a=>`<div class="advert-card"><span class="advert-tag">Sponsored · π</span><div class="advert-icon">${a.icon}</div><div class="advert-title">${esc(a.title)}</div><div class="advert-desc">${esc(a.desc)}</div><a href="${a.link}" class="advert-cta">${esc(a.cta)}</a></div>`).join('');
-  strip.innerHTML=cards+`<div class="place-advert-box"><p id="advert-reach-txt">📣 Reach pioneers across 54 African nations</p><button class="btn" style="font-size:.78rem;padding:8px 16px;" onclick="sc('advertise')" id="btn-place-advert">Place Advert — 0.01π</button></div>`;
+  strip.innerHTML=cards+`<div class="place-advert-box"><p>📣 Reach pioneers across 54 African nations</p><button class="btn" style="font-size:.78rem;padding:8px 16px;" onclick="sc('advertise')">Place Advert — 0.01π</button></div>`;
 }
 function toggleAdvertForm(){ const f=document.getElementById('advertForm'); f.classList.toggle('show'); if(f.classList.contains('show'))f.scrollIntoView({behavior:'smooth'}); }
 async function submitAdvert(){
@@ -1971,46 +1985,47 @@ async function submitMerchant(){
   document.getElementById('mf-ok').style.display='block';
   setTimeout(()=>document.getElementById('mf-ok').style.display='none',8000);
 }
+
 function toggleChat(){ chatOpen=!chatOpen; document.getElementById('chatbot-window').classList.toggle('open',chatOpen); if(chatOpen)document.getElementById('cbInput').focus(); }
 function cbAsk(q){document.getElementById('cbInput').value=q;cbSend();}
 
 async function cbSend(){
-  const input = document.getElementById('cbInput');
-  const q = input.value.trim();
-  if (!q) return;
-  input.value = '';
-  document.getElementById('cbSugs').style.display = 'none';
-  addCbMsg(q, 'user');
-  const typingEl = addCbMsg('Thinking...', 'bot typing');
-  cbHistory.push({ role: 'user', content: q });
-
-  try {
-    const endpoint = isPaid ? '/ai/chat' : '/ai/chat/free';
-    const response = await fetch(API + endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        message: q,
-        history: cbHistory.slice(-10),
-        username: piUser ? piUser.username : ''
+  const input=document.getElementById('cbInput');
+  const q=input.value.trim();
+  if(!q) return;
+  input.value='';
+  document.getElementById('cbSugs').style.display='none';
+  addCbMsg(q,'user');
+  const typingEl=addCbMsg('Thinking...','bot typing');
+  cbHistory.push({role:'user',content:q});
+  try{
+    const endpoint=isPaid ? '/ai/chat' : '/ai/chat/free';
+    const response=await fetch(API+endpoint,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        message:q,
+        history:cbHistory.slice(-10),
+        username:piUser ? piUser.username : ''
       })
     });
-    const data = await response.json();
-    const reply = data.reply || 'Please try again.';
-    typingEl.textContent = reply;
+    const data=await response.json();
+    const reply=data.reply||'Please try again.';
+    typingEl.textContent=reply;
     typingEl.classList.remove('typing');
-    if (!data.upgrade) {
-      cbHistory.push({ role: 'assistant', content: reply });
-      if (cbHistory.length > 20) cbHistory = cbHistory.slice(-20);
+    if(!data.upgrade){
+      cbHistory.push({role:'assistant',content:reply});
+      if(cbHistory.length>20) cbHistory=cbHistory.slice(-20);
     }
-  } catch(e) {
-    typingEl.textContent = 'Sorry, trouble connecting. Please try again.';
+  }catch(e){
+    typingEl.textContent='Sorry, trouble connecting. Please try again.';
     typingEl.classList.remove('typing');
   }
-  document.getElementById('cbMessages').scrollTop = 999999;
+  document.getElementById('cbMessages').scrollTop=999999;
 }
 
 function addCbMsg(text,type){ const msgs=document.getElementById('cbMessages'); const el=document.createElement('div'); el.className='cb-msg '+type; el.textContent=text; msgs.appendChild(el); msgs.scrollTop=999999; return el; }
+
 async function loadFaqs(){
   try{ const r=await fetch(API+'/faqs'); const d=await r.json(); const el=document.getElementById('dynFaq'); if(!d.faqs||!d.faqs.length)return; el.innerHTML=d.faqs.slice().reverse().map(f=>`<div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span>${esc(f.question)}<span class="ntag">NEW</span></span><span class="farr">▾</span></div><div class="fa">${esc(f.answer)}</div></div>`).join(''); }catch(e){}
 }
@@ -2018,217 +2033,144 @@ async function loadAnswers(){ try{ const r=await fetch(API+'/questions/answered'
 function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function setLb(btn,l){document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');setLang(l);}
 
-<!-- ══ LEADERBOARD JAVASCRIPT ════════════════════════════════════ -->
-<!-- Add inside your existing <script> block, before the closing </script> -->
-<script>
-// ── LEADERBOARD HELPERS ──────────────────────────────────────────
+// ── LEADERBOARD ──────────────────────────────────────────────────
 function getTierInfo(recruits) {
-  if (recruits >= 50) return { label: '⭐ Diamond', class: 'tier-diamond' };
-  if (recruits >= 20) return { label: '🏅 Gold',    class: 'tier-gold' };
-  if (recruits >= 10) return { label: '🥈 Silver',  class: 'tier-silver' };
-  if (recruits >= 5)  return { label: '🥉 Bronze',  class: 'tier-bronze' };
-  return                     { label: '🌱 Starter', class: 'tier-starter' };
+  if(recruits>=50) return {label:'⭐ Diamond',class:'tier-diamond'};
+  if(recruits>=20) return {label:'🏅 Gold',class:'tier-gold'};
+  if(recruits>=10) return {label:'🥈 Silver',class:'tier-silver'};
+  if(recruits>=5)  return {label:'🥉 Bronze',class:'tier-bronze'};
+  return                  {label:'🌱 Starter',class:'tier-starter'};
 }
-
-function getRankDisplay(rank) {
-  if (rank === 1) return { text: '🥇', class: 'top1' };
-  if (rank === 2) return { text: '🥈', class: 'top2' };
-  if (rank === 3) return { text: '🥉', class: 'top3' };
-  return { text: `#${rank}`, class: '' };
+function getRankDisplay(rank){
+  if(rank===1) return {text:'🥇',class:'top1'};
+  if(rank===2) return {text:'🥈',class:'top2'};
+  if(rank===3) return {text:'🥉',class:'top3'};
+  return {text:`#${rank}`,class:''};
 }
-
-function getFlag(country) {
-  const flags = {
-    'Zimbabwe':'🇿🇼','South Africa':'🇿🇦','Nigeria':'🇳🇬','Kenya':'🇰🇪',
-    'Ghana':'🇬🇭','Ethiopia':'🇪🇹','Tanzania':'🇹🇿','Uganda':'🇺🇬',
-    'Rwanda':'🇷🇼','Mozambique':'🇲🇿','Zambia':'🇿🇲','Botswana':'🇧🇼',
-    'Malawi':'🇲🇼','Senegal':'🇸🇳','Egypt':'🇪🇬','Morocco':'🇲🇦',
-    'Algeria':'🇩🇿','DRC':'🇨🇩','Congo':'🇨🇬','Cameroon':'🇨🇲',
-    'Angola':'🇦🇴','Somalia':'🇸🇴','Sudan':'🇸🇩','Tunisia':'🇹🇳',
-  };
-  return (flags[country] || '🌍') + ' ';
+function getFlag(country){
+  const flags={'Zimbabwe':'🇿🇼','South Africa':'🇿🇦','Nigeria':'🇳🇬','Kenya':'🇰🇪','Ghana':'🇬🇭','Ethiopia':'🇪🇹','Tanzania':'🇹🇿','Uganda':'🇺🇬','Rwanda':'🇷🇼','Mozambique':'🇲🇿','Zambia':'🇿🇲','Botswana':'🇧🇼','Malawi':'🇲🇼','Senegal':'🇸🇳','Egypt':'🇪🇬','Morocco':'🇲🇦','Algeria':'🇩🇿','DRC':'🇨🇩','Congo':'🇨🇬','Cameroon':'🇨🇲','Angola':'🇦🇴','Somalia':'🇸🇴'};
+  return (flags[country]||'🌍')+' ';
 }
-
-function renderPodium(ambassadors) {
-  const podium = document.getElementById('lb-podium');
-  if (!podium) return;
-  const top3 = ambassadors.slice(0, 3);
-  // Podium order: 2nd place left, 1st place centre, 3rd place right
-  const order = [top3[1], top3[0], top3[2]];
-  const classes = ['second', 'first', 'third'];
-  const emojis = ['🥈', '🥇', '🥉'];
-  podium.innerHTML = order.map((amb, i) => {
-    if (!amb) return `<div class="podium-card ${classes[i]}"><div class="podium-emoji">${emojis[i]}</div><div style="color:#7A6A9A;font-size:.75rem;">—</div></div>`;
-    const tier = getTierInfo(amb.recruits);
-    return `
-      <div class="podium-card ${classes[i]}">
-        <div class="podium-emoji">${emojis[i]}</div>
-        <div class="podium-name">@${esc(amb.pi_username)}</div>
-        <div class="podium-country">${getFlag(amb.country)}${esc(amb.country)}</div>
-        <div class="podium-recruits">${amb.recruits}</div>
-        <div class="podium-label">businesses</div>
-        <div style="margin-top:6px;" class="lb-tier ${tier.class}">${tier.label}</div>
-      </div>`;
+function renderPodium(ambassadors){
+  const podium=document.getElementById('lb-podium'); if(!podium) return;
+  const top3=ambassadors.slice(0,3);
+  const order=[top3[1],top3[0],top3[2]];
+  const classes=['second','first','third'];
+  const emojis=['🥈','🥇','🥉'];
+  podium.innerHTML=order.map((amb,i)=>{
+    if(!amb) return `<div class="podium-card ${classes[i]}"><div class="podium-emoji">${emojis[i]}</div><div style="color:#7A6A9A;font-size:.75rem;">—</div></div>`;
+    const tier=getTierInfo(amb.recruits);
+    return `<div class="podium-card ${classes[i]}"><div class="podium-emoji">${emojis[i]}</div><div class="podium-name">@${esc(amb.pi_username)}</div><div class="podium-country">${getFlag(amb.country)}${esc(amb.country)}</div><div class="podium-recruits">${amb.recruits}</div><div class="podium-label">businesses</div><div style="margin-top:6px;" class="lb-tier ${tier.class}">${tier.label}</div></div>`;
   }).join('');
 }
-
-function renderTable(ambassadors) {
-  const tbody = document.getElementById('lb-table-body');
-  if (!tbody) return;
-  if (!ambassadors || ambassadors.length === 0) {
-    tbody.innerHTML = `
-      <div style="padding:32px;text-align:center;color:#7A6A9A;font-size:.85rem;">
-        <div style="font-size:1.4rem;margin-bottom:8px;">🌱</div>
-        No ambassadors yet — be the first in your country!<br/>
-        <a href="/landing.html" style="color:#E8520A;font-weight:700;font-size:.82rem;text-decoration:none;margin-top:10px;display:inline-block;">Apply Now →</a>
-      </div>`;
+function renderTable(ambassadors){
+  const tbody=document.getElementById('lb-table-body'); if(!tbody) return;
+  if(!ambassadors||ambassadors.length===0){
+    tbody.innerHTML=`<div style="padding:32px;text-align:center;color:#7A6A9A;font-size:.85rem;"><div style="font-size:1.4rem;margin-bottom:8px;">🌱</div>No ambassadors yet — be the first in your country!<br/><a href="/landing.html" style="color:#E8520A;font-weight:700;font-size:.82rem;text-decoration:none;margin-top:10px;display:inline-block;">Apply Now →</a></div>`;
     return;
   }
-  tbody.innerHTML = ambassadors.map((amb, i) => {
-    const rank = getRankDisplay(i + 1);
-    const tier = getTierInfo(amb.recruits);
-    return `
-      <div class="lb-row">
-        <div class="lb-rank ${rank.class}">${rank.text}</div>
-        <div>
-          <div class="lb-name">@${esc(amb.pi_username)}</div>
-          <div class="lb-sub">${esc(amb.name || '')} · ${amb.joined_month || ''}</div>
-        </div>
-        <div class="lb-country">${getFlag(amb.country)}${esc(amb.country)}</div>
-        <div class="lb-recruits">${amb.recruits}</div>
-        <div class="lb-tier ${tier.class}">${tier.label}</div>
-      </div>`;
+  tbody.innerHTML=ambassadors.map((amb,i)=>{
+    const rank=getRankDisplay(i+1); const tier=getTierInfo(amb.recruits);
+    return `<div class="lb-row"><div class="lb-rank ${rank.class}">${rank.text}</div><div><div class="lb-name">@${esc(amb.pi_username)}</div><div class="lb-sub">${esc(amb.name||'')} · ${amb.joined_month||''}</div></div><div class="lb-country">${getFlag(amb.country)}${esc(amb.country)}</div><div class="lb-recruits">${amb.recruits}</div><div class="lb-tier ${tier.class}">${tier.label}</div></div>`;
   }).join('');
 }
-
-function renderStats(stats) {
-  if (!stats) return;
-  const el = (id, val) => { const e = document.getElementById(id); if(e) e.textContent = val; };
-  el('lb-total-ambassadors', stats.total_ambassadors || '0');
-  el('lb-total-recruits',    stats.total_recruits    || '0');
-  el('lb-total-countries',   stats.total_countries   || '0');
-  el('lb-total-pi',         (stats.total_pi_rewarded || '0') + 'π');
+function renderStats(stats){
+  if(!stats) return;
+  const el=(id,val)=>{const e=document.getElementById(id);if(e)e.textContent=val;};
+  el('lb-total-ambassadors',stats.total_ambassadors||'0');
+  el('lb-total-recruits',stats.total_recruits||'0');
+  el('lb-total-countries',stats.total_countries||'0');
+  el('lb-total-pi',(stats.total_pi_rewarded||'0')+'π');
 }
-
-async function loadLeaderboard(period = 'all', btnEl = null) {
-  document.querySelectorAll('#leaderboard .tab').forEach(b => b.classList.remove('on'));
-  if (btnEl) btnEl.classList.add('on');
-  else { const def = document.getElementById('lb-filter-all'); if(def) def.classList.add('on'); }
-
-  const tbody = document.getElementById('lb-table-body');
-  if (tbody) tbody.innerHTML = `<div style="padding:24px;text-align:center;color:#7A6A9A;font-size:.84rem;"><div class="spin" style="display:inline-block;"></div> Loading...</div>`;
-
-  try {
-    const r = await fetch(`${API}/ambassador/leaderboard?period=${period}`);
-    const d = await r.json();
+async function loadLeaderboard(period='all',btnEl=null){
+  document.querySelectorAll('#leaderboard .tab').forEach(b=>b.classList.remove('on'));
+  if(btnEl) btnEl.classList.add('on');
+  else {const def=document.getElementById('lb-filter-all');if(def)def.classList.add('on');}
+  const tbody=document.getElementById('lb-table-body');
+  if(tbody) tbody.innerHTML=`<div style="padding:24px;text-align:center;color:#7A6A9A;font-size:.84rem;"><div class="spin" style="display:inline-block;"></div> Loading...</div>`;
+  try{
+    const r=await fetch(`${API}/ambassador/leaderboard?period=${period}`);
+    const d=await r.json();
     renderStats(d.stats);
-    renderPodium(d.ambassadors || []);
-    renderTable(d.ambassadors  || []);
-  } catch (e) {
-    console.error('Leaderboard error:', e);
-    if (tbody) tbody.innerHTML = `<div style="padding:24px;text-align:center;color:#FF7043;font-size:.84rem;">Unable to load leaderboard. Please try again.</div>`;
+    renderPodium(d.ambassadors||[]);
+    renderTable(d.ambassadors||[]);
+  }catch(e){
+    console.error('Leaderboard error:',e);
+    if(tbody) tbody.innerHTML=`<div style="padding:24px;text-align:center;color:#FF7043;font-size:.84rem;">Unable to load leaderboard. Please try again.</div>`;
   }
 }
 
 // ── AMBASSADOR DASHBOARD ─────────────────────────────────────────
-async function loadAmbassadorDashboard(username) {
-  try {
-    const r = await fetch(API + '/ambassador/dashboard/' + username);
-    const d = await r.json();
-    if (d.status !== 'active') return;
-
-    const dash = document.getElementById('my-dashboard');
-    if (dash) dash.style.display = 'block';
-
-    const tier = d.current_tier || {};
-    const set = (id, val) => { const e = document.getElementById(id); if(e) e.textContent = val; };
-
-    set('dash-tier-emoji', tier.emoji || '🌱');
-    set('dash-tier-name',  tier.name  || 'Starter');
-    set('dash-recruits',   d.recruits || 0);
-
-    // Progress bar
-    const fill = document.getElementById('dash-progress-fill');
-    if (fill && d.next_tier) {
-      const needed    = d.next_tier.needed;
-      const current   = d.recruits;
-      const tierStart = Math.max(0, needed - d.next_tier.remaining - 1);
-      const progress  = Math.min(100, Math.round(((current - tierStart) / (needed - tierStart)) * 100));
-      fill.style.width = progress + '%';
-      set('dash-next-tier', `${d.next_tier.remaining} more businesses to ${d.next_tier.emoji || ''} ${d.next_tier.name} · +${d.next_tier.bonus_on_reach}π bonus!`);
-    } else if (fill) {
-      fill.style.width = '100%';
-      set('dash-next-tier', '⭐ Maximum Diamond tier achieved! You are Africa\'s Pi Champion!');
+async function loadAmbassadorDashboard(username){
+  try{
+    const r=await fetch(API+'/ambassador/dashboard/'+username);
+    const d=await r.json();
+    if(d.status!=='active') return;
+    const dash=document.getElementById('my-dashboard');
+    if(dash) dash.style.display='block';
+    const tier=d.current_tier||{};
+    const set=(id,val)=>{const e=document.getElementById(id);if(e)e.textContent=val;};
+    set('dash-tier-emoji',tier.emoji||'🌱');
+    set('dash-tier-name',tier.name||'Starter');
+    set('dash-recruits',d.recruits||0);
+    const fill=document.getElementById('dash-progress-fill');
+    if(fill&&d.next_tier){
+      const needed=d.next_tier.needed; const current=d.recruits;
+      const tierStart=Math.max(0,needed-d.next_tier.remaining-1);
+      const progress=Math.min(100,Math.round(((current-tierStart)/(needed-tierStart))*100));
+      fill.style.width=progress+'%';
+      set('dash-next-tier',`${d.next_tier.remaining} more businesses to ${d.next_tier.emoji||''} ${d.next_tier.name} · +${d.next_tier.bonus_on_reach}π bonus!`);
+    } else if(fill){
+      fill.style.width='100%';
+      set('dash-next-tier','⭐ Maximum Diamond tier achieved! You are Africa\'s Pi Champion!');
     }
-
-    // Stats
-    set('dash-month-recruits', d.recruits_month || 0);
-    set('dash-week-recruits',  d.recruits_week  || 0);
-    set('dash-pi-earned',     (d.pi_earned      || 0) + 'π');
-    set('dash-pi-pending',    (d.pi_pending      || 0) + 'π');
-
-    // Referral link
+    set('dash-month-recruits',d.recruits_month||0);
+    set('dash-week-recruits',d.recruits_week||0);
+    set('dash-pi-earned',(d.pi_earned||0)+'π');
+    set('dash-pi-pending',(d.pi_pending||0)+'π');
     setupReferralLink(username);
-
-    // Notifications
-    if (d.unread_notifications && d.unread_notifications.length > 0) {
-      const notifDiv  = document.getElementById('dash-notifications');
-      const notifList = document.getElementById('dash-notif-list');
-      if (notifDiv) notifDiv.style.display = 'block';
-      if (notifList) {
-        notifList.innerHTML = d.unread_notifications.map(n => `
-          <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:.83rem;color:#F0EBF8;line-height:1.6;">
-            ${esc(n.message)}
-            <div style="font-size:.7rem;color:#7A6A9A;margin-top:3px;">${new Date(n.timestamp).toLocaleDateString()}</div>
-          </div>`).join('');
-      }
+    if(d.unread_notifications&&d.unread_notifications.length>0){
+      const notifDiv=document.getElementById('dash-notifications');
+      const notifList=document.getElementById('dash-notif-list');
+      if(notifDiv) notifDiv.style.display='block';
+      if(notifList) notifList.innerHTML=d.unread_notifications.map(n=>`<div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:.83rem;color:#F0EBF8;line-height:1.6;">${esc(n.message)}<div style="font-size:.7rem;color:#7A6A9A;margin-top:3px;">${new Date(n.timestamp).toLocaleDateString()}</div></div>`).join('');
     }
-
-    // Recent recruits
-    const recentList = document.getElementById('dash-recent-list');
-    if (recentList) {
-      if (!d.recent_recruits || d.recent_recruits.length === 0) {
-        recentList.innerHTML = '<p style="color:#7A6A9A;font-size:.84rem;">No businesses recorded yet. Start onboarding and contact @chigalex1 to record your first recruit!</p>';
+    const recentList=document.getElementById('dash-recent-list');
+    if(recentList){
+      if(!d.recent_recruits||d.recent_recruits.length===0){
+        recentList.innerHTML='<p style="color:#7A6A9A;font-size:.84rem;">No businesses recorded yet. Start onboarding and contact @chigalex1 to record your first recruit!</p>';
       } else {
-        recentList.innerHTML = d.recent_recruits.map(rec => `
-          <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;">
-            <div>
-              <div style="font-weight:700;font-size:.86rem;color:#F0EBF8;">${esc(rec.business_name)}</div>
-              <div style="font-size:.73rem;color:#7A6A9A;">📍 ${esc(rec.country)} · #${rec.recruit_number} · ${rec.tier_at_time}</div>
-            </div>
-            <div style="font-size:.78rem;color:#00D4AA;font-weight:700;">+${rec.pi_earned}π</div>
-          </div>`).join('');
+        recentList.innerHTML=d.recent_recruits.map(rec=>`<div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;"><div><div style="font-weight:700;font-size:.86rem;color:#F0EBF8;">${esc(rec.business_name)}</div><div style="font-size:.73rem;color:#7A6A9A;">📍 ${esc(rec.country)} · #${rec.recruit_number} · ${rec.tier_at_time}</div></div><div style="font-size:.78rem;color:#00D4AA;font-weight:700;">+${rec.pi_earned}π</div></div>`).join('');
       }
     }
-  } catch(e) {
-    console.error('Dashboard load error:', e);
-  }
+  }catch(e){ console.error('Dashboard load error:',e); }
 }
 
-// ── REFERRAL LINK ────────────────────────────────────────────────
-function setupReferralLink(username) {
-  const link = `${window.location.origin}/index.html?ref=${username}`;
-  const input = document.getElementById('referral-link-input');
-  if (input) input.value = link;
+function setupReferralLink(username){
+  const link=`${window.location.origin}/index.html?ref=${username}`;
+  const input=document.getElementById('referral-link-input');
+  if(input) input.value=link;
 }
-
-function copyReferralLink() {
-  const input = document.getElementById('referral-link-input');
-  if (!input) return;
-  input.select();
-  document.execCommand('copy');
+function copyReferralLink(){
+  const input=document.getElementById('referral-link-input');
+  if(!input) return;
+  input.select(); document.execCommand('copy');
   alert('✅ Referral link copied! Share it on WhatsApp, Facebook, Pi groups!');
 }
 
-// ── CAPTURE ?ref= PARAM ON PAGE LOAD ────────────────────────────
-(function captureRef() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const refCode = urlParams.get('ref');
-  if (refCode) sessionStorage.setItem('chigalex1_ref', refCode);
-})();
-
 </script>
-
 </body>
-
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+   
