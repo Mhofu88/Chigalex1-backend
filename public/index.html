@@ -1972,6 +1972,217 @@ async function loadFaqs(){
 async function loadAnswers(){ try{ const r=await fetch(API+'/questions/answered'); const d=await r.json(); if(!d.questions||!d.questions.length)return; }catch(e){} }
 function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function setLb(btn,l){document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');setLang(l);}
+
+<!-- ══ LEADERBOARD JAVASCRIPT ════════════════════════════════════ -->
+<!-- Add inside your existing <script> block, before the closing </script> -->
+<script>
+// ── LEADERBOARD HELPERS ──────────────────────────────────────────
+function getTierInfo(recruits) {
+  if (recruits >= 50) return { label: '⭐ Diamond', class: 'tier-diamond' };
+  if (recruits >= 20) return { label: '🏅 Gold',    class: 'tier-gold' };
+  if (recruits >= 10) return { label: '🥈 Silver',  class: 'tier-silver' };
+  if (recruits >= 5)  return { label: '🥉 Bronze',  class: 'tier-bronze' };
+  return                     { label: '🌱 Starter', class: 'tier-starter' };
+}
+
+function getRankDisplay(rank) {
+  if (rank === 1) return { text: '🥇', class: 'top1' };
+  if (rank === 2) return { text: '🥈', class: 'top2' };
+  if (rank === 3) return { text: '🥉', class: 'top3' };
+  return { text: `#${rank}`, class: '' };
+}
+
+function getFlag(country) {
+  const flags = {
+    'Zimbabwe':'🇿🇼','South Africa':'🇿🇦','Nigeria':'🇳🇬','Kenya':'🇰🇪',
+    'Ghana':'🇬🇭','Ethiopia':'🇪🇹','Tanzania':'🇹🇿','Uganda':'🇺🇬',
+    'Rwanda':'🇷🇼','Mozambique':'🇲🇿','Zambia':'🇿🇲','Botswana':'🇧🇼',
+    'Malawi':'🇲🇼','Senegal':'🇸🇳','Egypt':'🇪🇬','Morocco':'🇲🇦',
+    'Algeria':'🇩🇿','DRC':'🇨🇩','Congo':'🇨🇬','Cameroon':'🇨🇲',
+    'Angola':'🇦🇴','Somalia':'🇸🇴','Sudan':'🇸🇩','Tunisia':'🇹🇳',
+  };
+  return (flags[country] || '🌍') + ' ';
+}
+
+function renderPodium(ambassadors) {
+  const podium = document.getElementById('lb-podium');
+  if (!podium) return;
+  const top3 = ambassadors.slice(0, 3);
+  // Podium order: 2nd place left, 1st place centre, 3rd place right
+  const order = [top3[1], top3[0], top3[2]];
+  const classes = ['second', 'first', 'third'];
+  const emojis = ['🥈', '🥇', '🥉'];
+  podium.innerHTML = order.map((amb, i) => {
+    if (!amb) return `<div class="podium-card ${classes[i]}"><div class="podium-emoji">${emojis[i]}</div><div style="color:#7A6A9A;font-size:.75rem;">—</div></div>`;
+    const tier = getTierInfo(amb.recruits);
+    return `
+      <div class="podium-card ${classes[i]}">
+        <div class="podium-emoji">${emojis[i]}</div>
+        <div class="podium-name">@${esc(amb.pi_username)}</div>
+        <div class="podium-country">${getFlag(amb.country)}${esc(amb.country)}</div>
+        <div class="podium-recruits">${amb.recruits}</div>
+        <div class="podium-label">businesses</div>
+        <div style="margin-top:6px;" class="lb-tier ${tier.class}">${tier.label}</div>
+      </div>`;
+  }).join('');
+}
+
+function renderTable(ambassadors) {
+  const tbody = document.getElementById('lb-table-body');
+  if (!tbody) return;
+  if (!ambassadors || ambassadors.length === 0) {
+    tbody.innerHTML = `
+      <div style="padding:32px;text-align:center;color:#7A6A9A;font-size:.85rem;">
+        <div style="font-size:1.4rem;margin-bottom:8px;">🌱</div>
+        No ambassadors yet — be the first in your country!<br/>
+        <a href="/landing.html" style="color:#E8520A;font-weight:700;font-size:.82rem;text-decoration:none;margin-top:10px;display:inline-block;">Apply Now →</a>
+      </div>`;
+    return;
+  }
+  tbody.innerHTML = ambassadors.map((amb, i) => {
+    const rank = getRankDisplay(i + 1);
+    const tier = getTierInfo(amb.recruits);
+    return `
+      <div class="lb-row">
+        <div class="lb-rank ${rank.class}">${rank.text}</div>
+        <div>
+          <div class="lb-name">@${esc(amb.pi_username)}</div>
+          <div class="lb-sub">${esc(amb.name || '')} · ${amb.joined_month || ''}</div>
+        </div>
+        <div class="lb-country">${getFlag(amb.country)}${esc(amb.country)}</div>
+        <div class="lb-recruits">${amb.recruits}</div>
+        <div class="lb-tier ${tier.class}">${tier.label}</div>
+      </div>`;
+  }).join('');
+}
+
+function renderStats(stats) {
+  if (!stats) return;
+  const el = (id, val) => { const e = document.getElementById(id); if(e) e.textContent = val; };
+  el('lb-total-ambassadors', stats.total_ambassadors || '0');
+  el('lb-total-recruits',    stats.total_recruits    || '0');
+  el('lb-total-countries',   stats.total_countries   || '0');
+  el('lb-total-pi',         (stats.total_pi_rewarded || '0') + 'π');
+}
+
+async function loadLeaderboard(period = 'all', btnEl = null) {
+  document.querySelectorAll('#leaderboard .tab').forEach(b => b.classList.remove('on'));
+  if (btnEl) btnEl.classList.add('on');
+  else { const def = document.getElementById('lb-filter-all'); if(def) def.classList.add('on'); }
+
+  const tbody = document.getElementById('lb-table-body');
+  if (tbody) tbody.innerHTML = `<div style="padding:24px;text-align:center;color:#7A6A9A;font-size:.84rem;"><div class="spin" style="display:inline-block;"></div> Loading...</div>`;
+
+  try {
+    const r = await fetch(`${API}/ambassador/leaderboard?period=${period}`);
+    const d = await r.json();
+    renderStats(d.stats);
+    renderPodium(d.ambassadors || []);
+    renderTable(d.ambassadors  || []);
+  } catch (e) {
+    console.error('Leaderboard error:', e);
+    if (tbody) tbody.innerHTML = `<div style="padding:24px;text-align:center;color:#FF7043;font-size:.84rem;">Unable to load leaderboard. Please try again.</div>`;
+  }
+}
+
+// ── AMBASSADOR DASHBOARD ─────────────────────────────────────────
+async function loadAmbassadorDashboard(username) {
+  try {
+    const r = await fetch(API + '/ambassador/dashboard/' + username);
+    const d = await r.json();
+    if (d.status !== 'active') return;
+
+    const dash = document.getElementById('my-dashboard');
+    if (dash) dash.style.display = 'block';
+
+    const tier = d.current_tier || {};
+    const set = (id, val) => { const e = document.getElementById(id); if(e) e.textContent = val; };
+
+    set('dash-tier-emoji', tier.emoji || '🌱');
+    set('dash-tier-name',  tier.name  || 'Starter');
+    set('dash-recruits',   d.recruits || 0);
+
+    // Progress bar
+    const fill = document.getElementById('dash-progress-fill');
+    if (fill && d.next_tier) {
+      const needed    = d.next_tier.needed;
+      const current   = d.recruits;
+      const tierStart = Math.max(0, needed - d.next_tier.remaining - 1);
+      const progress  = Math.min(100, Math.round(((current - tierStart) / (needed - tierStart)) * 100));
+      fill.style.width = progress + '%';
+      set('dash-next-tier', `${d.next_tier.remaining} more businesses to ${d.next_tier.emoji || ''} ${d.next_tier.name} · +${d.next_tier.bonus_on_reach}π bonus!`);
+    } else if (fill) {
+      fill.style.width = '100%';
+      set('dash-next-tier', '⭐ Maximum Diamond tier achieved! You are Africa\'s Pi Champion!');
+    }
+
+    // Stats
+    set('dash-month-recruits', d.recruits_month || 0);
+    set('dash-week-recruits',  d.recruits_week  || 0);
+    set('dash-pi-earned',     (d.pi_earned      || 0) + 'π');
+    set('dash-pi-pending',    (d.pi_pending      || 0) + 'π');
+
+    // Referral link
+    setupReferralLink(username);
+
+    // Notifications
+    if (d.unread_notifications && d.unread_notifications.length > 0) {
+      const notifDiv  = document.getElementById('dash-notifications');
+      const notifList = document.getElementById('dash-notif-list');
+      if (notifDiv) notifDiv.style.display = 'block';
+      if (notifList) {
+        notifList.innerHTML = d.unread_notifications.map(n => `
+          <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:.83rem;color:#F0EBF8;line-height:1.6;">
+            ${esc(n.message)}
+            <div style="font-size:.7rem;color:#7A6A9A;margin-top:3px;">${new Date(n.timestamp).toLocaleDateString()}</div>
+          </div>`).join('');
+      }
+    }
+
+    // Recent recruits
+    const recentList = document.getElementById('dash-recent-list');
+    if (recentList) {
+      if (!d.recent_recruits || d.recent_recruits.length === 0) {
+        recentList.innerHTML = '<p style="color:#7A6A9A;font-size:.84rem;">No businesses recorded yet. Start onboarding and contact @chigalex1 to record your first recruit!</p>';
+      } else {
+        recentList.innerHTML = d.recent_recruits.map(rec => `
+          <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <div style="font-weight:700;font-size:.86rem;color:#F0EBF8;">${esc(rec.business_name)}</div>
+              <div style="font-size:.73rem;color:#7A6A9A;">📍 ${esc(rec.country)} · #${rec.recruit_number} · ${rec.tier_at_time}</div>
+            </div>
+            <div style="font-size:.78rem;color:#00D4AA;font-weight:700;">+${rec.pi_earned}π</div>
+          </div>`).join('');
+      }
+    }
+  } catch(e) {
+    console.error('Dashboard load error:', e);
+  }
+}
+
+// ── REFERRAL LINK ────────────────────────────────────────────────
+function setupReferralLink(username) {
+  const link = `${window.location.origin}/index.html?ref=${username}`;
+  const input = document.getElementById('referral-link-input');
+  if (input) input.value = link;
+}
+
+function copyReferralLink() {
+  const input = document.getElementById('referral-link-input');
+  if (!input) return;
+  input.select();
+  document.execCommand('copy');
+  alert('✅ Referral link copied! Share it on WhatsApp, Facebook, Pi groups!');
+}
+
+// ── CAPTURE ?ref= PARAM ON PAGE LOAD ────────────────────────────
+(function captureRef() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const refCode = urlParams.get('ref');
+  if (refCode) sessionStorage.setItem('chigalex1_ref', refCode);
+})();
+</script>
+
 </script>
 
 </body>
