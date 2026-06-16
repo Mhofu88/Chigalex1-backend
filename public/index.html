@@ -1792,6 +1792,18 @@ async function loadAmbassadorDashboard(username) {
 
 <script>
 const API = window.location.origin;
+let LIVE_PRICING = { membership: '0.01', advert: '0.01', merchant: '0.01' };
+
+async function loadPricing() {
+  try {
+    const r = await fetch(API + '/api/pricing');
+    const d = await r.json();
+    if (d.membership) LIVE_PRICING = d;
+    document.querySelectorAll('.live-price-membership').forEach(el => el.textContent = LIVE_PRICING.membership + 'π');
+    document.querySelectorAll('.live-price-advert').forEach(el => el.textContent = LIVE_PRICING.advert + 'π');
+    document.querySelectorAll('.live-price-merchant').forEach(el => el.textContent = LIVE_PRICING.merchant + 'π');
+  } catch(e) { console.warn('Could not load pricing:', e); }
+}
 let piUser = null;
 let isPaid = false;
 let chatOpen = false;
