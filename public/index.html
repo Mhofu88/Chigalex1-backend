@@ -1913,7 +1913,7 @@ if (isPaid) {
 loadFaqs(); loadAnswers(); renderAdverts(); renderMerchants();
 loadPricing();
 loadLeaderboard('all');
-if (isPaid && piUser) loadAmbassadorDashboard(piUser.username);
+if (isPaid && piUser) loadAmbassadorDashboard(piUser.username);}
   
 function unlockPaidContent(){
 ['learn-lock','mapofpi-lock','merchants-lock'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.add('hidden'); });
@@ -2231,8 +2231,6 @@ function copyReferralLink() {
   const refCode = urlParams.get('ref');
   if (refCode) sessionStorage.setItem('chigalex1_ref', refCode);
 })();
-</script>
-
 </script>
 
 </body>
