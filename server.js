@@ -122,7 +122,7 @@ async function getQuestions(filter = 'all') {
 // ════════════════════════════════════════════
 const PRICING = {
   membership: 0.01,
-  advert: 0.01,
+  advert: 0.5,
   merchant: 0.01,
 };
 
