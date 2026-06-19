@@ -114,6 +114,7 @@ async function getQuestions(filter = 'all') {
   ids.forEach(id => pipeline.hgetall(`question:${id}`));
   const results = await pipeline.exec();
   return results.filter(Boolean);
+   }
 }
 
 // ════════════════════════════════════════════
@@ -147,6 +148,7 @@ async function setPricing(type, value) {
   current[type] = value;
   await redis.set('config:pricing', JSON.stringify(current));
   return current;
+  }
 }
 
 // ════════════════════════════════════════════
@@ -209,8 +211,8 @@ app.post('/admin/update-pricing', async (req, res) => {
     console.error('Update pricing error:', e);
     res.status(500).json({ error: 'Failed to update pricing' });
   }
-});
- ════════════════════════════════════════════
+}
+// ════════════════════════════════════════════
 // ── AMBASSADOR / TIER CONFIG & HELPERS ──
 // ════════════════════════════════════════════
 const ADMIN_ACCOUNTS = ['chigalex1', 'anointedp1', 'dorisyin', 'chigodop'];
@@ -1126,7 +1128,6 @@ app.post('/ambassador/approve', async (req, res) => {
     res.status(500).json({ error: 'Failed to approve ambassador' });
   }
 });
-
 
 app.post('/ambassador/force-create', async (req, res) => {
   if (!requireRedis(res)) return;
