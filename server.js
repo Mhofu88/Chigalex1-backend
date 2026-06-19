@@ -114,7 +114,8 @@ async function getQuestions(filter = 'all') {
   ids.forEach(id => pipeline.hgetall(`question:${id}`));
   const results = await pipeline.exec();
   return results.filter(Boolean);
-));
+  }
+}
 
 // ════════════════════════════════════════════
 // ── PRICING CONFIG (DYNAMIC — Redis-backed) ──
