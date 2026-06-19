@@ -1127,6 +1127,65 @@ app.post('/ambassador/approve', async (req, res) => {
   }
 });
 
+
+app.post('/ambassador/force-create', async (req, res) => {
+  if (!requireRedis(res)) return;
+  const { admin_username, pi_username, name, country, phone, why } = req.body;
+
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  if (!pi_username) {
+    return res.status(400).json({ error: 'pi_username required' });
+  }
+
+  try {
+    // Check if already exists as ambassador
+    const existing = await redis.get(`ambassador:${pi_username}`);
+    if (existing) {
+      return res.json({ success: true, message: `@${pi_username} is already an ambassador.`, already_existed: true });
+    }
+
+    const { month } = getPeriodKey();
+
+    const ambassador = {
+      name: name || pi_username,
+      country: country || 'Unknown',
+      pi_username,
+      phone: phone || '',
+      lang: 'en',
+      why: why || 'Added directly by admin',
+      biz: '',
+      timestamp: new Date().toISOString(),
+      approved: true,
+      approved_by: admin_username,
+      approved_date: new Date().toISOString(),
+      recruits: 0,
+      recruits_month: 0,
+      recruits_week: 0,
+      pi_rewarded: 0,
+      pi_paid: 0,
+      joined_month: month,
+      status: 'active',
+      force_created: true,
+    };
+
+    await redis.set(`ambassador:${pi_username}`, JSON.stringify(ambassador));
+    await redis.set(`member:${pi_username}:status`, 'paid');
+    await redis.zadd('member:index', { score: Date.now(), member: pi_username });
+
+    res.json({
+      success: true,
+      message: `✅ @${pi_username} force-created as ambassador and granted free membership!`,
+      ambassador
+    });
+  } catch (err) {
+    console.error('Force create error:', err);
+    res.status(500).json({ error: 'Failed to force-create ambassador' });
+  }
+});
+
 // 3. RECORD RECRUIT (with automatic tier tracking)
 app.post('/ambassador/record-recruit', async (req, res) => {
   if (!requireRedis(res)) return;
