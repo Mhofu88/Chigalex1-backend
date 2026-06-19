@@ -1640,4 +1640,3 @@ app.listen(PORT, () => {
   console.log(`   Privacy:    http://localhost:${PORT}/privacy`);
   console.log(`   Terms:      http://localhost:${PORT}/terms`);
 });
-
