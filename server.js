@@ -991,7 +991,7 @@ RESPONSE STYLE:
 
 IMPORTANT FACTS TO ALWAYS GET RIGHT:
 - GCV = $314,159 per 1π (encoded in Pi blockchain)
-- Chigalex1 membership = ${PRICING.membership}π one-time fee
+- Chigalex1 membership = ${(await getPricing()).membership}π one-time fee
 - Referral code = chigalex1
 - Pi Browser required for Pi apps
 - KYC required before Pi Wallet activation
