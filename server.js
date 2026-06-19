@@ -117,16 +117,100 @@ async function getQuestions(filter = 'all') {
 }
 
 // ════════════════════════════════════════════
-// ── PRICING CONFIG ──
-// Change values here — updates everywhere!
+// ── PRICING CONFIG (DYNAMIC — Redis-backed) ──
+// Defaults below are used only if Redis has no value yet.
 // ════════════════════════════════════════════
-const PRICING = {
+const DEFAULT_PRICING = {
   membership: 0.01,
-  advert: 0.5,
+  advert: 0.01,
   merchant: 0.01,
 };
 
+async function getPricing() {
+  if (!redis) return DEFAULT_PRICING;
+  try {
+    const stored = await redis.get('config:pricing');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      return { ...DEFAULT_PRICING, ...parsed };
+    }
+    return DEFAULT_PRICING;
+  } catch (e) {
+    console.error('getPricing error:', e);
+    return DEFAULT_PRICING;
+  }
+}
+
+async function setPricing(type, value) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getPricing();
+  current[type] = value;
+  await redis.set('config:pricing', JSON.stringify(current));
+  return current;
+}
+
 // ════════════════════════════════════════════
+// ── PRICING ENDPOINTS ──
+// ════════════════════════════════════════════
+
+// PUBLIC — used by index.html loadPricing()
+app.get('/api/pricing', async (req, res) => {
+  try {
+    const p = await getPricing();
+    res.json({
+      membership: p.membership,
+      advert: p.advert,
+      merchant: p.merchant,
+      currency: 'π',
+      formatted: {
+        membership: `${p.membership}π`,
+        advert: `${p.advert}π`,
+        merchant: `${p.merchant}π`,
+      }
+    });
+  } catch (e) {
+    res.json({
+      membership: DEFAULT_PRICING.membership,
+      advert: DEFAULT_PRICING.advert,
+      merchant: DEFAULT_PRICING.merchant,
+      currency: 'π',
+    });
+  }
+});
+
+// ADMIN ONLY — used by admin.html pricing tab
+app.post('/admin/update-pricing', async (req, res) => {
+  const { admin_username, type, value } = req.body;
+
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  const validTypes = ['membership', 'advert', 'merchant'];
+  if (!validTypes.includes(type)) {
+    return res.status(400).json({ error: 'Invalid pricing type. Must be: membership, advert, or merchant' });
+  }
+
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue <= 0) {
+    return res.status(400).json({ error: 'Value must be a positive number' });
+  }
+
+  if (!requireRedis(res)) return;
+
+  try {
+    const updated = await setPricing(type, numValue);
+    res.json({
+      success: true,
+      message: `✅ ${type} price updated to ${numValue}π — live everywhere instantly!`,
+      pricing: updated,
+    });
+  } catch (e) {
+    console.error('Update pricing error:', e);
+    res.status(500).json({ error: 'Failed to update pricing' });
+  }
+});
+ ════════════════════════════════════════════
 // ── AMBASSADOR / TIER CONFIG & HELPERS ──
 // ════════════════════════════════════════════
 const ADMIN_ACCOUNTS = ['chigalex1', 'anointedp1', 'dorisyin', 'chigodop'];
@@ -767,23 +851,6 @@ app.delete('/admin/adverts/:id', async (req, res) => {
     await redis.zrem('advert:index:approved', id);
     res.json({ success: true });
   } catch (e) { res.status(500).json({ error: e.message }); }
-});
-
-// ════════════════════════════════════════════
-// ── PRICING (PUBLIC) ──
-// ════════════════════════════════════════════
-app.get('/api/pricing', (req, res) => {
-  res.json({
-    membership: PRICING.membership,
-    advert: PRICING.advert,
-    merchant: PRICING.merchant,
-    currency: 'π',
-    formatted: {
-      membership: `${PRICING.membership}π`,
-      advert: `${PRICING.advert}π`,
-      merchant: `${PRICING.merchant}π`,
-    }
-  });
 });
 
 // ════════════════════════════════════════════
