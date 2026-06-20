@@ -236,6 +236,76 @@ footer a:hover{color:#F5C518;}
 .tier-gold{background:rgba(245,197,24,0.12);color:#F5C518;}
 .tier-diamond{background:rgba(155,89,182,0.15);color:#9B59B6;}
 </style>
+
+<style>
+/* Bigger, gold, animated arrows for step details and FAQ */
+.sa {
+  margin-left: auto;
+  color: #F5C518 !important;
+  font-size: 1.4rem !important;
+  font-weight: 900;
+  transition: transform 0.3s, color 0.3s;
+  flex-shrink: 0;
+  padding-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(245, 197, 24, 0.12);
+  border-radius: 50%;
+  border: 1.5px solid rgba(245, 197, 24, 0.3);
+  animation: arrowPulse 2.5s ease-in-out infinite;
+}
+.step.on .sa {
+  transform: rotate(180deg);
+  background: rgba(245, 197, 24, 0.25);
+  border-color: #F5C518;
+  animation: none;
+}
+@keyframes arrowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(245, 197, 24, 0); }
+}
+
+/* Same treatment for FAQ arrows */
+.farr {
+  color: #F5C518 !important;
+  font-size: 1.3rem !important;
+  font-weight: 900;
+  transition: transform 0.3s, color 0.3s;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: rgba(245, 197, 24, 0.1);
+  border-radius: 50%;
+}
+.fi.on .farr {
+  transform: rotate(180deg);
+  background: rgba(245, 197, 24, 0.22);
+}
+
+/* Tap hint text — appears briefly to guide new users */
+.step::after {
+  content: 'Tap for details';
+  position: absolute;
+  right: 54px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.62rem;
+  color: #7A6A9A;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.step:not(.on):hover::after {
+  opacity: 1;
+}
+</style>
 </head>
 <body>
 
