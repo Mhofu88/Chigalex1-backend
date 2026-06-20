@@ -115,7 +115,6 @@ async function getQuestions(filter = 'all') {
   const results = await pipeline.exec();
   return results.filter(Boolean);
   }
-}
 
 // ════════════════════════════════════════════
 // ── PRICING CONFIG (DYNAMIC — Redis-backed) ──
@@ -149,7 +148,6 @@ async function setPricing(type, value) {
   await redis.set('config:pricing', JSON.stringify(current));
   return current;
   }
-}
 
 // ════════════════════════════════════════════
 // ── PRICING ENDPOINTS ──
@@ -207,11 +205,15 @@ app.post('/admin/update-pricing', async (req, res) => {
       message: `✅ ${type} price updated to ${numValue}π — live everywhere instantly!`,
       pricing: updated,
     });
-  } catch (e) {
+
+} catch (e) {
     console.error('Update pricing error:', e);
     res.status(500).json({ error: 'Failed to update pricing' });
   }
-}
+});
+// ════════════════════════════════════════════
+// ── AMBASSADOR / TIER CONFIG & HELPERS ──
+  
 // ════════════════════════════════════════════
 // ── AMBASSADOR / TIER CONFIG & HELPERS ──
 // ════════════════════════════════════════════
