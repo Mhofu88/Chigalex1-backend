@@ -121,9 +121,9 @@ async function getQuestions(filter = 'all') {
 // Defaults below are used only if Redis has no value yet.
 // ════════════════════════════════════════════
 const DEFAULT_PRICING = {
-  membership: 0.01,
-  advert: 0.01,
-  merchant: 0.01,
+  membership: 0.1,
+  advert: 0.3,
+  merchant: 0.5,
 };
 
 async function getPricing() {
