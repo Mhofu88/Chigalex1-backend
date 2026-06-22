@@ -1189,6 +1189,96 @@ app.post('/ambassador/force-create', async (req, res) => {
   }
 });
 
+// ════════════════════════════════════════════════════════════════
+// ONE-TIME FIX: Delete a corrupted ambassador record so it can be
+// rebuilt cleanly with Force-Create.
+//
+// This is admin-only, additive (doesn't touch any existing route),
+// and only deletes the SPECIFIC key you pass in — nothing else.
+//
+// Add this to server.js, right after the /ambassador/force-create
+// route.
+// ════════════════════════════════════════════════════════════════
+
+app.post('/ambassador/admin/delete-broken-record', async (req, res) => {
+  if (!requireRedis(res)) return;
+  const { admin_username, pi_username } = req.body;
+
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  if (!pi_username) {
+    return res.status(400).json({ error: 'pi_username required' });
+  }
+
+  try {
+    // Try both common casings to be thorough, since Redis keys are
+    // case-sensitive and the corrupted record could exist under
+    // either form.
+    const variants = [
+      pi_username,
+      pi_username.toLowerCase(),
+      pi_username.charAt(0).toUpperCase() + pi_username.slice(1).toLowerCase(),
+    ];
+    const uniqueVariants = [...new Set(variants)];
+
+    const deleted = [];
+    for (const variant of uniqueVariants) {
+      const key = `ambassador:${variant}`;
+      const existed = await redis.get(key);
+      if (existed) {
+        await redis.del(key);
+        deleted.push(key);
+      }
+    }
+
+    res.json({
+      success: true,
+      message: deleted.length > 0
+        ? `✅ Deleted ${deleted.length} record(s): ${deleted.join(', ')}. You can now Force-Create @${pi_username} cleanly.`
+        : `No ambassador record found for any casing of "${pi_username}". Nothing to delete.`,
+      deleted_keys: deleted,
+    });
+  } catch (err) {
+    console.error('Delete broken record error:', err);
+    res.status(500).json({ error: 'Failed to delete record' });
+  }
+});
+
+/*
+═══════════════════════════════════════════════════════════════
+HOW TO USE — STEP BY STEP FOR PETER
+═══════════════════════════════════════════════════════════════
+
+1. Add this route to server.js (after force-create route)
+2. Deploy
+3. Call this ONE TIME via the admin panel or a direct request:
+
+   POST https://chigalex1-backend.onrender.com/ambassador/admin/delete-broken-record
+   Body: {
+     "admin_username": "chigalex1",
+     "pi_username": "anointedp1"
+   }
+
+   This checks for and deletes "ambassador:anointedp1",
+   "ambassador:Anointedp1" — whichever casing exists — clearing
+   out the corrupted record.
+
+4. Then go back to admin.html → Force-Create Ambassador → fill in
+   Peter's details again → submit. This rebuilds a clean record.
+
+5. Verify by visiting:
+   https://chigalex1-backend.onrender.com/ambassador/profile/anointedp1
+   It should now return his data instead of "Failed to load profile".
+
+6. Check the leaderboard:
+   https://chigalex1-backend.onrender.com/ambassador/leaderboard?period=all
+   Peter should now appear in the ambassadors array.
+═══════════════════════════════════════════════════════════════
+*/
+
+
 // 3. RECORD RECRUIT (with automatic tier tracking)
 app.post('/ambassador/record-recruit', async (req, res) => {
   if (!requireRedis(res)) return;
