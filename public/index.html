@@ -1787,7 +1787,8 @@ async function loadPricing() {
     const r = await fetch(API + '/api/pricing');
     const d = await r.json();
     if (d.membership) LIVE_PRICING = d;
-    document.querySelectorAll('.live-price-membership').forEach(el => el.textContent = LIVE_PRICING.membership + 'π');
+ 
+document.querySelectorAll('.live-price-membership').forEach(el => el.textContent = LIVE_PRICING.membership);
     document.querySelectorAll('.live-price-advert').forEach(el => el.textContent = LIVE_PRICING.advert + 'π');
     document.querySelectorAll('.live-price-merchant').forEach(el => el.textContent = LIVE_PRICING.merchant + 'π');
   } catch(e) { console.warn('Could not load pricing:', e); }
