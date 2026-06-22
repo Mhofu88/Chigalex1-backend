@@ -363,8 +363,9 @@ footer a:hover{color:#F5C518;}
     </div>
     <button class="btn" id="loginBtn" onclick="piLogin()">🔐 <span id="btn-pay-txt">Pay <span class="live-price-membership">0.01</span>π &amp; Unlock Full Training</span></button>
     <div id="uinfo" style="display:none;margin-top:13px;padding:10px;background:#2A2048;border-radius:10px;font-size:.84rem;color:#F0EBF8;"></div>
-    <button class="btn" id="payBtn" style="display:none;" onclick="piPay()">💳 <span id="btn-pay-txt">Pay 0.01π &amp; Unlock Full Training</span></button>
-    <button class="btn" id="enterBtn" style="display:none;" onclick="openApp()">✅ <span id="btn-enter-txt">Enter Training Hub</span></button>
+    
+<button class="btn" id="payBtn" style="display:none;" onclick="piPay()">💳 <span id="btn-pay-txt">Pay <span class="live-price-membership">0.01</span>π &amp; Unlock Full Training</span></button>
+  <button class="btn" id="enterBtn" style="display:none;" onclick="openApp()">✅ <span id="btn-enter-txt">Enter Training Hub</span></button>
     <button class="btn" style="display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);" id="browseBtn" onclick="browseFreely()">👀 <span id="btn-browse-txt">Browse Free Content First</span></button>
     <div class="gerr" id="gerr"></div>
     <p class="gnote" id="gnote-txt">⚠️ Must be opened inside the Pi Browser app</p>
@@ -479,10 +480,10 @@ footer a:hover{color:#F5C518;}
     <p id="aboutpi-tip">Pi Network is <strong>invite-only</strong>. Use referral code <strong style="color:#F5C518;">chigalex1</strong> or visit <a href="https://minepi.com/chigalex1" target="_blank" style="color:#F5C518;font-weight:700;">minepi.com/chigalex1</a> to get started free.</p>
   </div>
   <div style="margin-top:20px;background:#211A3A;border:1.5px solid rgba(123,45,139,0.35);border-radius:16px;padding:24px;">
-    <p style="font-weight:700;color:#F0EBF8;margin-bottom:12px;" id="unlock-prompt-title">🔒 Want the full step-by-step training?</p>
-    <p style="color:#B8A8D8;font-size:.86rem;line-height:1.65;margin-bottom:16px;" id="unlock-prompt-body">Unlock registration, KYC, KYB, Map of Pi, AI Chatbot, Merchant Directory, and advanced ecosystem training — all for a one-time fee of <strong style="color:#F5C518;">0.01π</strong>.</p>
-    <button class="btn" onclick="showGate()" id="btn-unlock-full">🚀 Unlock Full Training — 0.01π</button>
-  </div>
+    <p style="font-weight:700;color:#F0EBF8;margin-bottom:12px;" id="unlock-prompt-title">🔒 Want the full step-by-step training?</p>   
+  <p style="color:#B8A8D8;font-size:.86rem;line-height:1.65;margin-bottom:16px;" id="unlock-prompt-body">Unlock registration, KYC, KYB, Map of Pi, AI Chatbot, Merchant Directory, and advanced ecosystem training — all for a one-time fee of <strong style="color:#F5C518;"><span class="live-price-membership">0.01</span>π</strong>.</p>
+    <button class="btn" onclick="showGate()" id="btn-unlock-full">🚀 Unlock Full Training — <span class="live-price-membership">0.01</span>π</button>
+     </div>
 </section>
 
 <div class="africa-divider"></div>
