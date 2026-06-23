@@ -649,7 +649,8 @@ footer a:hover{color:#F5C518;}
     <div class="fg"><label id="lbl-af-pi">Pi Username</label><input id="af-pi" placeholder="your Pi username"/></div>
     <div class="fg"><label id="lbl-af-link">Link (optional)</label><input id="af-link" placeholder="https://..."/></div>
     <div class="fg"><label id="lbl-af-icon">Icon (emoji)</label><input id="af-icon" placeholder="🍽️" maxlength="4"/></div>
-    <div class="tip gtip" style="margin-bottom:16px;"><div>💡</div><p id="advert-pay-tip">Pay <strong>0.01π</strong> to <strong style="color:#F5C518;">@chigalex1</strong> with memo <strong>"Advert"</strong> after submitting.</p></div>
+    <div class="tip gtip" style="margin-bottom:16px;"><div>💡</div><p id="advert-pay-tip">Pay <strong><span class="live-price-advert">0.01</span>π</strong> to <strong</p>
+   <p id="advert-pay-tip">Pay <strong><span class="live-price-advert">0.01</span>π</strong> to  style="color:#F5C518;">@chigalex1</strong> with memo <strong>"Advert"</strong> after submitting.</p></div>
     <button class="btn btn-gold" onclick="submitAdvert()" id="btn-submit-advert">📨 <span id="btn-submit-advert-txt">Submit Advert</span></button>
     <div id="af-ok" class="okbox" id="af-ok-txt">✅ Submitted! Pay 0.01π to @chigalex1 memo "Advert" to activate.</div>
   </div>
@@ -1330,7 +1331,7 @@ footer a:hover{color:#F5C518;}
   <div class="lock-overlay" id="merchants-lock">
     <div class="lock-icon">🏪🔒</div>
     <div class="lock-title" id="merchants-lock-title">Members Only Directory</div>
-    <div class="lock-sub" id="merchants-lock-sub">Find Pi-accepting businesses across 54 African nations. Unlock with 0.01π.</div>
+    <div class="lock-sub" id="merchants-lock-sub">Find Pi-accepting businesses across 54 African nations. Unlock with π.</div>
   <button class="btn btn-teal" onclick="showGate()" style="max-width:280px;" id="btn-unlock-merchants">🔓 <span id="btn-unlock-merchants-txt">Unlock Directory — <span class="live-price-membership">0.01</span>π</span></button>  
     </div>
   <div class="lock-preview">
@@ -1352,7 +1353,8 @@ footer a:hover{color:#F5C518;}
       <button class="mfil" onclick="filterCat('education',this)" id="mfil-education">📚 Education</button>
     </div>
     <div class="merchant-grid" id="merchantGrid"></div>
-    <button class="add-merchant-btn" onclick="toggleMerchantForm()" id="btn-list-biz">🏪 <span id="btn-list-biz-txt">List Your Business — 0.01π One-Time</span></button>
+    <button class="add-merchant-btn" onclick="toggleMerchantForm()" id="btn-list-biz">🏪 <span id="btn-list-biz-txt">List Your Business — <span class="live-price-merchant">0.01</span>π One-Time</span>
+</button>
     <div class="merchant-form" id="merchantForm">
       <h3 style="color:#00D4AA;font-weight:800;margin-bottom:6px;" id="merchant-form-title">🏪 Add Your Business</h3>
       <p style="color:#B8A8D8;font-size:.83rem;margin-bottom:18px;" id="merchant-form-body">Visible to pioneers across all 54 African nations.</p>
@@ -1364,8 +1366,8 @@ footer a:hover{color:#F5C518;}
       <div class="fg"><label id="lbl-mf-contact">WhatsApp / Contact</label><input id="mf-contact" placeholder="+263..."/></div>
       <div class="fg"><label id="lbl-mf-pi">Pi Username</label><input id="mf-pi" placeholder="your Pi username"/></div>
       <div class="fg"><label id="lbl-mf-map">Map of Pi URL (optional)</label><input id="mf-map" placeholder="https://mapofpi.com/..."/></div>
-      <div class="tip gtip" style="margin-bottom:14px;"><div>💡</div><p id="merchant-pay-tip">Pay <strong>0.01π</strong> to <strong style="color:#F5C518;">@chigalex1</strong> memo <strong>"Merchant"</strong> to activate.</p></div>
-      <button class="btn btn-teal" onclick="submitMerchant()" id="btn-submit-merchant">💳 <span id="btn-submit-merchant-txt">Submit &amp; Pay 0.01π to List</span></button>
+      <div class="tip gtip" style="margin-bottom:14px;"><div>💡</div><p id="merchant-pay-tip">Pay <strong><span class="live-price-merchant">0.01</span>π</strong> to...</p>                  style="color:#F5C518;">@chigalex1</strong> memo <strong>"Merchant"</strong> to activate.</p></div>
+      <button class="btn btn-teal" onclick="submitMerchant()" id="btn-submit-merchant">💳 <span id="btn-submit-merchant-txt">Submit &amp; Pay <span class="live-price-merchant">0.01</span>π to List</span></button>
       <div id="mf-ok" class="okbox"><span id="mf-ok-txt">✅ Submitted! Pay 0.01π to @chigalex1 memo "Merchant". Live within 24 hours.</span></div>
     </div>
   </div>
