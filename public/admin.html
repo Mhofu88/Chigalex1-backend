@@ -140,10 +140,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:#7B2D8B;}
       <div class="result" id="deleteResult"></div>
     </div>
 
-
-
-
-    <!-- PENDING APPLICATIONS -->
+  <!-- PENDING APPLICATIONS -->
     <div class="card">
       <h3>📋 Pending Applications</h3>
       <button class="btn-sm" style="background:linear-gradient(135deg,#7B2D8B,#9B59B6);" onclick="loadApplications()">📋 Load Applications</button>
@@ -278,15 +275,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:#7B2D8B;}
 
   </div>
 
-
-
-
-
-
   <!-- ══ TAB: REWARDS ══ -->
 
-
-  <div id="tab-rewards" style="display:none;">
+    <div id="tab-rewards" style="display:none;">
 
     <!-- CURRENT TIER CONFIG — Editable -->
     <div class="card">
@@ -472,8 +463,6 @@ async function forceCreateAmb(){
   }catch(e){ showResult('forceResult','Error: '+e.message,true); }
 }
 
-
-
 // ── DELETE BROKEN RECORD ──────────────────────────────────────────
 async function deleteBrokenRecord(){
   const pi = document.getElementById('deleteAmbUser').value.trim();
@@ -534,9 +523,7 @@ async function updateTier(tierName){
       true
     );
   }
-
-
-
+}
 
 async function loadApplications(){
   try{
