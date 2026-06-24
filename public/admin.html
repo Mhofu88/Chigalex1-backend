@@ -124,6 +124,25 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:#7B2D8B;}
       <div class="result" id="forceResult"></div>
     </div>
 
+    <div class="card">
+      <h3>🗑️ Delete Broken Ambassador Record <span class="badge warn">One-Time Fix</span></h3>
+      <p style="color:#B8A8D8;font-size:.78rem;margin-bottom:12px;">
+        Use this ONLY when an ambassador record is corrupted (shows "Failed to load profile").
+        After deleting, go to Force-Create above to rebuild a clean record for the same username.
+      </p>
+      <div class="row">
+        <div class="fg">
+          <label>Pi Username to Delete</label>
+          <input id="deleteAmbUser" placeholder="anointedp1"/>
+        </div>
+        <button class="btn-sm btn-red" onclick="deleteBrokenRecord()">🗑️ Delete Record</button>
+      </div>
+      <div class="result" id="deleteResult"></div>
+    </div>
+
+
+
+
     <!-- PENDING APPLICATIONS -->
     <div class="card">
       <h3>📋 Pending Applications</h3>
