@@ -278,42 +278,98 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:#7B2D8B;}
 
   </div>
 
+
+
+
+
+
   <!-- ══ TAB: REWARDS ══ -->
+
+
   <div id="tab-rewards" style="display:none;">
+
+    <!-- CURRENT TIER CONFIG — Editable -->
     <div class="card">
-      <h3>🎖️ Current Tier Config</h3>
-      <p style="color:#B8A8D8;font-size:.82rem;margin-bottom:14px;">Tier rewards are set in server.js TIER_CONFIG. Reference below for consistency when updating pricing.</p>
-      <div style="display:grid;gap:10px;">
-        <div style="background:#2A2048;border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;">
-          <span>🌱 Starter (1–4)</span><span style="color:#00D4AA;font-weight:700;">+0.005π/recruit · +0.01π bonus</span>
+      <h3>🎖️ Edit Tier Reward Values</h3>
+      <p style="color:#B8A8D8;font-size:.82rem;margin-bottom:16px;">
+        Edit reward amounts per tier. Changes update the backend immediately — no redeploy needed.
+        <strong style="color:#FF7043;">⚠️ Requires editable tier config endpoint in server.js (see notes below).</strong>
+      </p>
+
+      <!-- STARTER -->
+      <div style="background:#2A2048;border-radius:12px;padding:16px;margin-bottom:12px;border-left:3px solid #00D4AA;">
+        <div style="font-weight:800;color:#00D4AA;margin-bottom:10px;">🌱 Starter Tier (1–4 recruits)</div>
+        <div class="row">
+          <div class="fg"><label>π per Recruit</label><input id="tier-starter-per" type="number" step="0.001" placeholder="0.005"/></div>
+          <div class="fg"><label>Entry Bonus π</label><input id="tier-starter-bonus" type="number" step="0.001" placeholder="0.01"/></div>
+          <button class="btn-sm btn-teal" onclick="updateTier('starter')">💾 Save</button>
         </div>
-        <div style="background:#2A2048;border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;">
-          <span>🥉 Bronze (5–9)</span><span style="color:#CD7F32;font-weight:700;">+0.01π/recruit · +0.05π bonus</span>
-        </div>
-        <div style="background:#2A2048;border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;">
-          <span>🥈 Silver (10–19)</span><span style="color:#C0C0C0;font-weight:700;">+0.02π/recruit · +0.1π bonus</span>
-        </div>
-        <div style="background:#2A2048;border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;">
-          <span>🏅 Gold (20–49)</span><span style="color:#F5C518;font-weight:700;">+0.05π/recruit · +0.25π bonus</span>
-        </div>
-        <div style="background:#2A2048;border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;">
-          <span>⭐ Diamond (50+)</span><span style="color:#9B59B6;font-weight:700;">+0.1π/recruit · +1.0π bonus</span>
-        </div>
+        <div class="result" id="tier-starter-result"></div>
       </div>
+
+      <!-- BRONZE -->
+      <div style="background:#2A2048;border-radius:12px;padding:16px;margin-bottom:12px;border-left:3px solid #CD7F32;">
+        <div style="font-weight:800;color:#CD7F32;margin-bottom:10px;">🥉 Bronze Tier (5–9 recruits)</div>
+        <div class="row">
+          <div class="fg"><label>π per Recruit</label><input id="tier-bronze-per" type="number" step="0.001" placeholder="0.01"/></div>
+          <div class="fg"><label>Entry Bonus π</label><input id="tier-bronze-bonus" type="number" step="0.001" placeholder="0.05"/></div>
+          <button class="btn-sm btn-teal" onclick="updateTier('bronze')">💾 Save</button>
+        </div>
+        <div class="result" id="tier-bronze-result"></div>
+      </div>
+
+      <!-- SILVER -->
+      <div style="background:#2A2048;border-radius:12px;padding:16px;margin-bottom:12px;border-left:3px solid #C0C0C0;">
+        <div style="font-weight:800;color:#C0C0C0;margin-bottom:10px;">🥈 Silver Tier (10–19 recruits)</div>
+        <div class="row">
+          <div class="fg"><label>π per Recruit</label><input id="tier-silver-per" type="number" step="0.001" placeholder="0.02"/></div>
+          <div class="fg"><label>Entry Bonus π</label><input id="tier-silver-bonus" type="number" step="0.001" placeholder="0.1"/></div>
+          <button class="btn-sm btn-teal" onclick="updateTier('silver')">💾 Save</button>
+        </div>
+        <div class="result" id="tier-silver-result"></div>
+      </div>
+
+      <!-- GOLD -->
+      <div style="background:#2A2048;border-radius:12px;padding:16px;margin-bottom:12px;border-left:3px solid #F5C518;">
+        <div style="font-weight:800;color:#F5C518;margin-bottom:10px;">🏅 Gold Tier (20–49 recruits)</div>
+        <div class="row">
+          <div class="fg"><label>π per Recruit</label><input id="tier-gold-per" type="number" step="0.001" placeholder="0.05"/></div>
+          <div class="fg"><label>Entry Bonus π</label><input id="tier-gold-bonus" type="number" step="0.001" placeholder="0.25"/></div>
+          <button class="btn-sm btn-teal" onclick="updateTier('gold')">💾 Save</button>
+        </div>
+        <div class="result" id="tier-gold-result"></div>
+      </div>
+
+      <!-- DIAMOND -->
+      <div style="background:#2A2048;border-radius:12px;padding:16px;margin-bottom:16px;border-left:3px solid #9B59B6;">
+        <div style="font-weight:800;color:#9B59B6;margin-bottom:10px;">⭐ Diamond Tier (50+ recruits)</div>
+        <div class="row">
+          <div class="fg"><label>π per Recruit</label><input id="tier-diamond-per" type="number" step="0.001" placeholder="0.1"/></div>
+          <div class="fg"><label>Entry Bonus π</label><input id="tier-diamond-bonus" type="number" step="0.001" placeholder="1.0"/></div>
+          <button class="btn-sm btn-teal" onclick="updateTier('diamond')">💾 Save</button>
+        </div>
+        <div class="result" id="tier-diamond-result"></div>
+      </div>
+
+      <button class="btn-sm" style="background:linear-gradient(135deg,#7B2D8B,#9B59B6);" onclick="loadCurrentTiers()">🔄 Load Current Tier Values</button>
+      <div id="currentTiers" style="margin-top:14px;"></div>
     </div>
 
+    <!-- REWARDS SUMMARY -->
     <div class="card">
       <h3>📊 Full Rewards Summary</h3>
       <button class="btn-sm" style="background:linear-gradient(135deg,#7B2D8B,#9B59B6);" onclick="loadRewardsSummary()">📊 Load Summary</button>
       <div id="rewardsSummaryFull" style="margin-top:14px;"></div>
     </div>
 
+    <!-- PLATFORM RESERVE -->
     <div class="card">
       <h3>💰 Platform Reserve</h3>
       <button class="btn-sm btn-teal" onclick="loadPlatformReserve()">💰 Load Reserve</button>
       <div id="reserveResult" style="margin-top:14px;"></div>
     </div>
-  </div>
+
+  </div><!-- end tab-rewards -->
 
   <!-- ══ TAB: MEMBERS ══ -->
   <div id="tab-members" style="display:none;">
