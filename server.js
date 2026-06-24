@@ -211,6 +211,75 @@ app.post('/admin/update-pricing', async (req, res) => {
     res.status(500).json({ error: 'Failed to update pricing' });
   }
 });
+
+!--
+// TIER CONFIG — Redis-backed (same pattern as pricing)
+async function getTierConfig() {
+  if (!redis) return TIER_CONFIG;
+  try {
+    const stored = await redis.get('config:tiers');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      // Merge with defaults so any missing tiers still work
+      return { ...TIER_CONFIG, ...parsed };
+    }
+    return TIER_CONFIG;
+  } catch (e) {
+    return TIER_CONFIG;
+  }
+}
+
+async function setTierConfig(tierName, pi_per_recruit, bonus_on_entry) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getTierConfig();
+  if (!current[tierName]) throw new Error(`Unknown tier: ${tierName}`);
+  current[tierName] = {
+    ...current[tierName],
+    pi_per_recruit: parseFloat(pi_per_recruit),
+    bonus_on_entry: parseFloat(bonus_on_entry),
+  };
+  await redis.set('config:tiers', JSON.stringify(current));
+  return current;
+}
+
+app.post('/admin/update-tier', async (req, res) => {
+  const { admin_username, tier, pi_per_recruit, bonus_on_entry } = req.body;
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+  const validTiers = ['starter', 'bronze', 'silver', 'gold', 'diamond'];
+  if (!validTiers.includes(tier)) {
+    return res.status(400).json({ error: 'Invalid tier name' });
+  }
+  if (isNaN(parseFloat(pi_per_recruit)) || isNaN(parseFloat(bonus_on_entry))) {
+    return res.status(400).json({ error: 'pi_per_recruit and bonus_on_entry must be numbers' });
+  }
+  if (!requireRedis(res)) return;
+  try {
+    const updated = await setTierConfig(tier, pi_per_recruit, bonus_on_entry);
+    res.json({
+      success: true,
+      message: `✅ ${tier} tier updated — ${pi_per_recruit}π/recruit · ${bonus_on_entry}π entry bonus. Live immediately!`,
+      tiers: updated,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Also update calculateTier() to use Redis config — add this helper:
+async function calculateTierAsync(recruits) {
+  const config = await getTierConfig();
+  const tiers = Object.values(config).sort((a, b) => b.min_recruits - a.min_recruits);
+  for (const tier of tiers) {
+    if (recruits >= tier.min_recruits) return tier;
+  }
+  return null;
+}
+// Note: Use calculateTierAsync() in record-recruit and dashboard routes
+// instead of the synchronous calculateTier() once this is deployed.
+-->
+
 // ════════════════════════════════════════════
 // ── AMBASSADOR / TIER CONFIG & HELPERS ──
   
