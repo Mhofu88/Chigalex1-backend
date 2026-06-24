@@ -212,7 +212,6 @@ app.post('/admin/update-pricing', async (req, res) => {
   }
 });
 
-!--
 // TIER CONFIG — Redis-backed (same pattern as pricing)
 async function getTierConfig() {
   if (!redis) return TIER_CONFIG;
@@ -278,7 +277,7 @@ async function calculateTierAsync(recruits) {
 }
 // Note: Use calculateTierAsync() in record-recruit and dashboard routes
 // instead of the synchronous calculateTier() once this is deployed.
--->
+
 
 // ════════════════════════════════════════════
 // ── AMBASSADOR / TIER CONFIG & HELPERS ──
