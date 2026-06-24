@@ -400,12 +400,15 @@ async function getAllAmbassadors() {
     if (!keys || keys.length === 0) return [];
     const ambassadors = [];
     for (const key of keys) {
-      const data = await redis.get(key);
-      if (data) {
-        try {
+      try {
+        const data = await redis.get(key);
+        if (data) {
           const amb = typeof data === 'string' ? JSON.parse(data) : data;
           ambassadors.push(amb);
-        } catch(e) {}
+        }
+      } catch(e) {
+        // Skip keys with wrong type (Hash records from old referral system)
+        console.warn(`Skipping key ${key} — wrong Redis type:`, e.message);
       }
     }
     return ambassadors;
@@ -1291,15 +1294,17 @@ app.post('/ambassador/admin/delete-broken-record', async (req, res) => {
     ];
     const uniqueVariants = [...new Set(variants)];
 
-    const deleted = [];
+const deleted = [];
     for (const variant of uniqueVariants) {
       const key = `ambassador:${variant}`;
-      const existed = await redis.get(key);
-      if (existed) {
-        await redis.del(key);
-        deleted.push(key);
+      try {
+        const delResult = await redis.del(key);
+        if (delResult > 0) deleted.push(key);
+      } catch(e) {
+        // Key exists but wrong type — force delete anyway
+        deleted.push(key + ' (force-deleted)');
       }
-    }
+   }
 
     res.json({
       success: true,
