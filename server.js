@@ -1153,6 +1153,7 @@ const logKey = 'ambassador_applications_log';
         log = typeof existing === 'string' ? JSON.parse(existing) : existing;
       }
     } catch(e) {
+      // Wrong type — wipe and start fresh
       try { await redis.del(logKey); } catch(e2) {}
       log = [];
     }
