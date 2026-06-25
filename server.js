@@ -285,7 +285,7 @@ async function calculateTierAsync(recruits) {
 // ════════════════════════════════════════════
 // ── AMBASSADOR / TIER CONFIG & HELPERS ──
 // ════════════════════════════════════════════
-const ADMIN_ACCOUNTS = ['chigalex1', 'anointedp1', 'dorisyin', 'chigodop'];
+const ADMIN_ACCOUNTS = ['chigalex1', 'admin2', 'dorisyin', 'chigodop'];
 
 const TIER_CONFIG = {
   starter: {
