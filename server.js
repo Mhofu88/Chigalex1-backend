@@ -1219,19 +1219,21 @@ app.post('/ambassador/force-create', async (req, res) => {
     return res.status(400).json({ error: 'pi_username required' });
   }
 
+const pi_username_clean = pi_username.toLowerCase().trim();
+
   try {
     // Check if already exists as ambassador
-    const existing = await redis.get(`ambassador:${pi_username}`);
+    const existing = await redis.get(`ambassador:${pi_username_clean}`);
     if (existing) {
-      return res.json({ success: true, message: `@${pi_username} is already an ambassador.`, already_existed: true });
+      return res.json({ success: true, message: `@${pi_username_clean} is already an ambassador.`, already_existed: true });
     }
 
     const { month } = getPeriodKey();
 
     const ambassador = {
-      name: name || pi_username,
+      name: name || pi_username_clean,
       country: country || 'Unknown',
-      pi_username,
+      pi_username_clean   ,
       phone: phone || '',
       lang: 'en',
       why: why || 'Added directly by admin',
@@ -1250,13 +1252,13 @@ app.post('/ambassador/force-create', async (req, res) => {
       force_created: true,
     };
 
-    await redis.set(`ambassador:${pi_username}`, JSON.stringify(ambassador));
-    await redis.set(`member:${pi_username}:status`, 'paid');
-    await redis.zadd('member:index', { score: Date.now(), member: pi_username });
+    await redis.set(`ambassador:${pi_username_clean}`, JSON.stringify(ambassador));
+    await redis.set(`member:${pi_username_clean}:status`, 'paid');
+    await redis.zadd('member:index', { score: Date.now(), member: pi_username_clean });
 
     res.json({
       success: true,
-      message: `✅ @${pi_username} force-created as ambassador and granted free membership!`,
+      message: `✅ @${pi_username_clean} force-created as ambassador and granted free membership!`,
       ambassador
     });
   } catch (err) {
