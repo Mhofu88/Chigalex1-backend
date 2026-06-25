@@ -1145,12 +1145,17 @@ app.post('/ambassador/apply', async (req, res) => {
     };
     await redis.set(applicationKey, JSON.stringify(application));
 
-    const logKey = 'ambassador_applications_log';
+const logKey = 'ambassador_applications_log';
     let log = [];
     try {
       const existing = await redis.get(logKey);
-      if (existing) log = JSON.parse(existing);
-    } catch(e) {}
+      if (existing) {
+        log = typeof existing === 'string' ? JSON.parse(existing) : existing;
+      }
+    } catch(e) {
+      try { await redis.del(logKey); } catch(e2) {}
+      log = [];
+    }
     log.unshift({ pi_username, name, country, timestamp: application.timestamp });
     if (log.length > 200) log = log.slice(0, 200);
     await redis.set(logKey, JSON.stringify(log));
