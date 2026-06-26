@@ -491,8 +491,8 @@ async function updateTier(tierName){
 
 async function loadApplications(){
   try{
-    const d = await api('/ambassador/admin/applications?admin='+ADMIN_USER);
-    const list = document.getElementById('applicationsList');
+   const d = await api('/ambassador/admin/scan-applications?admin='+ADMIN_USER); 
+     const list = document.getElementById('applicationsList');
     if(!d.applications || d.applications.length===0){
       list.innerHTML='<p style="color:#7A6A9A;font-size:.84rem;">No pending applications.</p>'; return;
     }
