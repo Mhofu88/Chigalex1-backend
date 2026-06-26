@@ -1725,6 +1725,38 @@ app.get('/ambassador/admin/applications', async (req, res) => {
   }
 });
 
+// SCAN ALL APPLICATIONS — finds applications even if log is broken
+app.get('/ambassador/admin/scan-applications', async (req, res) => {
+  if (!requireRedis(res)) return;
+  const admin = req.query.admin;
+  if (!ADMIN_ACCOUNTS.includes((admin || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+  try {
+    // Scan Redis directly for all application keys
+    const keys = await redis.keys('ambassador_application:*');
+    const applications = [];
+    for (const key of keys) {
+      try {
+        const data = await redis.get(key);
+        if (data) {
+          const app = typeof data === 'string' ? JSON.parse(data) : data;
+          const ambData = await redis.get(`ambassador:${app.pi_username}`);
+          app.already_approved = !!ambData;
+          applications.push(app);
+        }
+      } catch(e) {}
+    }
+    // Sort newest first
+    applications.sort((a, b) => 
+      new Date(b.timestamp) - new Date(a.timestamp)
+    );
+    res.json({ applications, total: applications.length });
+  } catch(err) {
+    res.status(500).json({ error: 'Failed to scan applications' });
+  }
+});
+
 // 11. ADMIN: RESET PERIOD
 app.post('/ambassador/admin/reset-period', async (req, res) => {
   if (!requireRedis(res)) return;
