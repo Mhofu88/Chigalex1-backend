@@ -2250,7 +2250,12 @@ function openApp(){
     const isOwner=OWNER_ACCOUNTS.includes(piUser.username.toLowerCase());
     nc.textContent=(isOwner?'👑 ':'')+' @'+piUser.username;
   }
-  if(isPaid) unlockPaidContent();
+  if(isPaid) {
+  unlockPaidContent();
+  updatePiDEXAndLaunchVisibility(true);
+} else {
+  updatePiDEXAndLaunchVisibility(false);
+}
 
   // Show chatbot for everyone — free teaser or paid full
   document.getElementById('chatbot-fab').style.display='flex';
