@@ -2503,6 +2503,38 @@ function copyReferralLink(){
   alert('✅ Referral link copied! Share it on WhatsApp, Facebook, Pi groups!');
 }
 
+function updatePiDEXAndLaunchVisibility(isPaidMember) {
+
+  // PiDEX
+  const pidexLock = document.getElementById('pidex-lock-box');
+  const pidexCta  = document.getElementById('pidex-cta-box');
+  if (pidexLock && pidexCta) {
+    pidexLock.style.display = isPaidMember ? 'none'  : 'block';
+    pidexCta.style.display  = isPaidMember ? 'block' : 'none';
+  }
+
+  // Pi Launch
+  const pilaunchLock = document.getElementById('pilaunch-lock-box');
+  const pilaunchCta  = document.getElementById('pilaunch-cta-box');
+  if (pilaunchLock && pilaunchCta) {
+    pilaunchLock.style.display = isPaidMember ? 'none'  : 'block';
+    pilaunchCta.style.display  = isPaidMember ? 'block' : 'none';
+  }
+}
+
+// Connect the unlock buttons to your existing payment flow
+function handleUnlock(section) {
+  // This calls your existing payment handler
+  // Replace 'startPayment' with whatever your current unlock button calls
+  if (typeof startPayment === 'function') {
+    startPayment();
+  } else {
+    // Fallback — scroll to your existing unlock button
+    const existingBtn = document.getElementById('btn-unlock-full');
+    if (existingBtn) existingBtn.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 </script>
 </body>
 </html>
