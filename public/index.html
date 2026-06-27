@@ -305,6 +305,208 @@ footer a:hover{color:#F5C518;}
 .step:not(.on):hover::after {
   opacity: 1;
 }
+
+/* ── SECTION WRAPPER ── */
+.content-section {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 32px;
+  padding: 0 16px;
+}
+
+/* ── SECTION LABEL (matches lbl-alliance, lbl-gcv style) ── */
+.section-label {
+  display: inline-block;
+  background: rgba(123,45,139,0.2);
+  border: 1px solid rgba(123,45,139,0.5);
+  color: #9B59B6;
+  border-radius: 100px;
+  padding: 4px 16px;
+  font-size: .75rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: .04em;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #F0EBF8;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.section-sub {
+  font-size: .82rem;
+  color: #B8A8D8;
+  line-height: 1.6;
+}
+
+/* ── FEATURE BADGE ── */
+.feature-badge {
+  background: linear-gradient(135deg, rgba(0,212,170,0.15), rgba(123,45,139,0.15));
+  border: 1.5px solid rgba(0,212,170,0.4);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: #00D4AA;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.feature-badge-launch {
+  background: linear-gradient(135deg, rgba(232,82,10,0.15), rgba(245,197,24,0.15));
+  border-color: rgba(232,82,10,0.4);
+  color: #E8520A;
+}
+
+/* ── INFO CARDS GRID ── */
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.info-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.info-card-highlight {
+  background: rgba(245,197,24,0.07);
+  border-color: rgba(245,197,24,0.25);
+}
+.info-card-warn {
+  background: rgba(255,112,67,0.07);
+  border-color: rgba(255,112,67,0.25);
+}
+.info-card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+.info-card-title {
+  font-size: .85rem;
+  font-weight: 800;
+  color: #F5C518;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.info-card-body {
+  font-size: .78rem;
+  color: #B8A8D8;
+  line-height: 1.6;
+}
+
+/* ── TIPS ROW ── */
+.tips-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.tip-item {
+  background: rgba(0,212,170,0.08);
+  border: 1px solid rgba(0,212,170,0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: .78rem;
+  color: #00D4AA;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ── WARNINGS ROW ── */
+.warnings-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.warn-item {
+  background: rgba(245,197,24,0.08);
+  border: 1px solid rgba(245,197,24,0.25);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: .78rem;
+  color: #F5C518;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* ── LOCK BOX ── */
+.lock-box {
+  background: rgba(0,0,0,0.3);
+  border: 1.5px solid rgba(123,45,139,0.4);
+  border-radius: 16px;
+  padding: 20px 18px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.lock-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+.lock-title {
+  font-size: .92rem;
+  font-weight: 800;
+  color: #F0EBF8;
+  margin-bottom: 8px;
+}
+.lock-sub {
+  font-size: .78rem;
+  color: #B8A8D8;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.unlock-btn {
+  background: linear-gradient(135deg, #7B2D8B, #9B59B6);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-family: 'Sora', sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(123,45,139,0.4);
+  transition: transform 0.2s;
+  width: 100%;
+  max-width: 340px;
+}
+.unlock-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ── CTA BOX (members only) ── */
+.cta-box {
+  background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(123,45,139,0.08));
+  border: 1.5px solid rgba(0,212,170,0.3);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 8px;
+}
+.cta-title {
+  font-size: .9rem;
+  font-weight: 800;
+  color: #00D4AA;
+  margin-bottom: 8px;
+}
+.cta-body {
+  font-size: .78rem;
+  color: #B8A8D8;
+  line-height: 1.6;
+}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 420px) {
+  .section-title { font-size: 1.1rem; }
+  .unlock-btn { font-size: .82rem; padding: 11px 20px; }
+}
+
 </style>
 </head>
 <body>
