@@ -1216,7 +1216,6 @@ pt: {
   "pilaunch-cta-body":"Guia completo do Pi Launchpad dentro do Chigalex1 — avaliar projetos, fazer stake, commit correto e ganhar recompensas."
 },
 
-// ══════════════════════════════════════════════════════════════════════
 sw: {
   "lbl-pidex":"🔁 Wanachama Pekee",
   "sec-pidex-title":"PiDEX — Soko la Kubadilishana la Pi",
