@@ -180,52 +180,10 @@ en: {
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Members-only · Ask me anything about Pi",
 "cb-welcome":"👋 Hello! I'm your Chigalex1 AI — expert Pi guide for Africa. Ask me about KYC, KYB, Map of Pi, GCV strategy, or security in your language!"
 },
-en: {
-  // ── PiDEX ──
-  "lbl-pidex":"🔁 Members Only",
-  "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
-  "sec-pidex-sub":"PiDEX launched March 2025. Trade Pi tokens safely inside the Pi enclosed ecosystem — no external exchange needed.",
-  "pidex-badge":"🔁 PiDEX — Live on Pi Mainnet",
-  "pidex-what-title":"What is PiDEX?",
-  "pidex-what-body":"PiDEX is Pi Network's official decentralized exchange — built inside the Pi Browser. It allows pioneers to trade Pi tokens peer-to-peer, without sending Pi to external exchanges. Your Pi stays inside the safe enclosed ecosystem.",
-  "pidex-access-title":"How to Access PiDEX",
-  "pidex-access-body":"Open Pi Browser → search PiDEX → sign in with Pi Network. You must have completed KYC and have an active Pi Wallet to use PiDEX.",
-  "pidex-trade-title":"How to Trade on PiDEX",
-  "pidex-trade-body":"Step 1: Open PiDEX inside Pi Browser. Step 2: Select the token pair you want to trade. Step 3: Enter the amount. Step 4: Review the exchange rate. Step 5: Confirm the trade — it settles instantly on the Pi blockchain.",
-  "pidex-safety-title":"PiDEX Safety Rules",
-  "pidex-safety-body":"Only access PiDEX through the official Pi Browser. Never use external websites claiming to be PiDEX. Never share your passphrase on any trading platform. Only trade tokens listed on the official Pi ecosystem.",
-  "pidex-lock-title":"Full PiDEX Tutorial — Members Only",
-  "pidex-lock-sub":"Complete step-by-step PiDEX walkthrough — how to set up, trade safely, and avoid PiDEX scams. Unlock with 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Unlock PiDEX Tutorial — 0.01π",
-  "pidex-tip-1":"✅ PiDEX only works inside Pi Browser — never a regular browser.",
-  "pidex-tip-2":"✅ Your KYC must be approved before you can trade.",
-  "pidex-tip-3":"✅ All trades settle on the Pi blockchain — fast, fee-light, secure.",
-  "pidex-cta-title":"📚 Ready to trade on PiDEX?",
-  "pidex-cta-body":"Full PiDEX trading guide inside Chigalex1 — how to set up your wallet, select token pairs, execute trades, and stay safe from PiDEX scams across Africa.",
 
-  // ── Pi Launch ──
-  "lbl-pilaunch":"🚀 Members Only",
-  "sec-pilaunch-title":"Pi Launchpad — Token Launch Platform",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet launched March 2025. Stake Pi, commit Pi, and earn new ecosystem tokens — before the world knows they exist.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Active",
-  "pilaunch-what-title":"What is Pi Launchpad?",
-  "pilaunch-what-body":"Pi Launchpad is Pi Network's official token launch platform. New Pi ecosystem projects raise Pi from the community — and reward participants with their new tokens. It is the Pi equivalent of a crypto launchpad — but safe, enclosed, and community-driven.",
-  "pilaunch-stake-title":"What is Staking?",
-  "pilaunch-stake-body":"Staking means locking a portion of your Pi in a smart contract to show support for a project. Staked Pi earns you eligibility for token rewards. You can unstake after the launch period ends.",
-  "pilaunch-commit-title":"What is Committing? (DIFFERENT from Staking)",
-  "pilaunch-commit-body":"Committing is a SEPARATE action from staking. After you stake, you must ALSO commit your Pi to a specific project to actually receive token rewards. Staking alone is NOT enough — you must do BOTH steps.",
-  "pilaunch-slice-title":"SLICE — The Second Launchpad Test Token",
-  "pilaunch-slice-body":"SLICE is the second token launched on Pi Launchpad Testnet (after the first test token). It was used to test the full stake-and-commit process. Pioneers who staked AND committed Pi received SLICE tokens as rewards.",
-  "pilaunch-earn-title":"How to Earn Launchpad Tokens",
-  "pilaunch-earn-body":"Step 1: Open Pi Browser → Pi Launchpad. Step 2: Find an active token launch. Step 3: STAKE your Pi to show support. Step 4: COMMIT your Pi to that specific project. Step 5: Wait for the launch to close. Step 6: Receive your token rewards automatically.",
-  "pilaunch-lock-title":"Full Pi Launchpad Tutorial — Members Only",
-  "pilaunch-lock-sub":"Complete guide — how to stake, commit, choose projects, and maximise token rewards on Pi Launchpad. Unlock with 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Unlock Pi Launchpad Guide — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking alone does NOT earn you tokens — you MUST also commit.",
-  "pilaunch-warn-2":"⚠️ Only use Pi Launchpad inside the official Pi Browser — never external sites.",
-  "pilaunch-cta-title":"📚 Ready to participate in Pi Launchpad?",
-  "pilaunch-cta-body":"Full Pi Launchpad guide inside Chigalex1 — how to evaluate projects, stake safely, commit correctly, and earn token rewards across the Pi ecosystem."
-},
+
+
+
 
 sn: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -294,52 +252,8 @@ sn: {
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Nhengo chete · Nditende mibvunzo yePi",
 "cb-welcome":"👋 Mhoroi! Ndini AI yenyu yeChigalex1 — munyanzvi wePi weAfrica. Nditende nezveKYC, KYB, Mapa yePi, GCV kana security!"
 },
-sn: {
-  // ── PiDEX ──
-  "lbl-pidex":"🔁 Nhengo Chete",
-  "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
-  "sec-pidex-sub":"PiDEX yakatangwa Kurume 2025. Tima Pi tokens zvakachengeteka mukati mePi ecosystem — hapana exchange yekunze.",
-  "pidex-badge":"🔁 PiDEX — Iri Pane Pi Mainnet",
-  "pidex-what-title":"PiDEX Chii?",
-  "pidex-what-body":"PiDEX ndiyo Pi Network exchange yekutengesa tokens pakati pevanhu, iri mukati mePi Browser. Inobvumira vanamaiguru kutengesa Pi tokens pachena, pasina kutumira Pi kuexchanges dzekunze.",
-  "pidex-access-title":"Kuwana PiDEX",
-  "pidex-access-body":"Vhura Pi Browser → tsvaga PiDEX → pinda nePi Network. Unofanirwa kupedza KYC uye kuve neActive Pi Wallet kutumisha PiDEX.",
-  "pidex-trade-title":"Kutengeserana PaPiDEX",
-  "pidex-trade-body":"Nhanho 1: Vhura PiDEX mukati mePi Browser. Nhanho 2: Sarudza matoken pairs aunoda. Nhanho 3: Pinda huwandu. Nhanho 4: Ongorora mutengo. Nhanho 5: Simbisa — inosimbiswa nekukurumidza paPi blockchain.",
-  "pidex-safety-title":"Mirayiro yeKuchengeteka kwePiDEX",
-  "pidex-safety-body":"Pinda PiDEX chete kuburikidza nePi Browser yakakasimira. Usashandise mawebsites ekunze anoti ndiPiDEX. Usapa passphrase yako paplatform yekutengesa. Tengesa tokens dzakaonekwa pane Pi ecosystem.",
-  "pidex-lock-title":"Chidzidzo Chizere chePiDEX — Nhengo Chete",
-  "pidex-lock-sub":"Chidzidzo chizere chePiDEX — kumisa, kutengesa zvakachengeteka, uye kudzivisa maScams. Vhura ne0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Vhura Chidzidzo chePiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX inoshanda chete mukati mePi Browser — kwete browser yezvakaita.",
-  "pidex-tip-2":"✅ KYC yako inofanirwa kubvumirwa usati watengesa.",
-  "pidex-tip-3":"✅ Kutengesa kwose kunosimbiswa paPi blockchain — nekukurumidza uye nechengeteko.",
-  "pidex-cta-title":"📚 Wagadzirira kutengesa paPiDEX?",
-  "pidex-cta-body":"Chidzidzo chizere chePiDEX mukati meChigalex1 — kumisa chikwama chako, kusarudza token pairs, kuita kutengesa, uye kuchengeteka kubva maScams.",
 
-  // ── Pi Launch ──
-  "lbl-pilaunch":"🚀 Nhengo Chete",
-  "sec-pilaunch-title":"Pi Launchpad — Platform yekuTangisa Tokens",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet yakatangwa Kurume 2025. Stake Pi, commit Pi, uye uwane tokens dzitsva — usati pasi rose raziva.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Iri Kushanda",
-  "pilaunch-what-title":"Pi Launchpad Chii?",
-  "pilaunch-what-body":"Pi Launchpad ndiyo platform yekutanga tokens yepi Network. Mapurojekiti matsva ePi ecosystem anokumbira Pi kubva kumunharaunda — uye anopa vapiganye tokens dzavo itsva.",
-  "pilaunch-stake-title":"Staking Chii?",
-  "pilaunch-stake-body":"Staking kureva kukiya chikamu chePi yako musmart contract kuraridza tsigiro yepurojekiti. Pi yakaStaked inokupa mukana wekuwana odha yetoken rewards. Unogona kuUnstake mushure memuganho welaunch.",
-  "pilaunch-commit-title":"Committing Chii? (YAKASIYANASIYANA neStaking)",
-  "pilaunch-commit-body":"Committing chiito CHAKASIYANASIYANA neStaking. Mushure mekuStake, unofanirwawo kuCommit Pi yako kupurojekiti yakakurumbira kuti uwane token rewards. Staking ega HAZVIREVE — unofanirwa kuita zvose ZVIVIRI.",
-  "pilaunch-slice-title":"SLICE — Token Yechipiri yeTestnet",
-  "pilaunch-slice-body":"SLICE nditoken yechipiri yakasunungurwa paPi Launchpad Testnet. Yaishandiswa kuyedza maitiro ose ekuStake-neCommit. Vanamaiguru vakuStake uye vakaCommit Pi vakagamuchira SLICE tokens sekuodha.",
-  "pilaunch-earn-title":"Kuwana Launchpad Tokens",
-  "pilaunch-earn-body":"Nhanho 1: Vhura Pi Browser → Pi Launchpad. Nhanho 2: Tsvaga token launch iri kushanda. Nhanho 3: STAKE Pi yako. Nhanho 4: COMMIT Pi yako kupurojekiti. Nhanho 5: Mirira kuguma. Nhanho 6: Gamuchira token rewards zvakatarira.",
-  "pilaunch-lock-title":"Chidzidzo Chizere chePi Launchpad — Nhengo Chete",
-  "pilaunch-lock-sub":"Chidzidzo chizere — kuStake, kuCommit, kusarudza mapurojekiti, uye kuwana token rewards. Vhura ne0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Vhura Chidzidzo chePi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking ega HAIKUSIMBIRI uwane tokens — unofanirwawo kuCommit.",
-  "pilaunch-warn-2":"⚠️ Shandisa Pi Launchpad chete mukati mePi Browser yakakasimira — kwete masaiti ekunze.",
-  "pilaunch-cta-title":"📚 Wagadzirira kupinda maPi Launchpad?",
-  "pilaunch-cta-body":"Chidzidzo chizere chePi Launchpad mukati meChigalex1 — kuongorora mapurojekiti, kuStake zvakachengeteka, kuCommit zvakanaka, uye kuwana token rewards."
-},
+ 
 
 nd: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -408,92 +322,11 @@ nd: {
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Amalungu kuphela · Ngibuze noma yini mayelana ne-Pi",
 "cb-welcome":"👋 Sawubona! Ngimi i-AI yakho yeChigalex1 — umhlahlandlela we-Pi wosozwe we-Afrika. Ngibuze nge-KYC, KYB, Ibalazwe le-Pi, isu le-GCV noma ukuphepha!"
 },
-nd: {
-  "lbl-pidex":"🔁 Amalungu Kuphela",
-  "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
-  "sec-pidex-sub":"PiDEX yasungulwa ngo-March 2025. Hwebelana nge-Pi tokens ngokuphephile phakathi kwe-Pi ecosystem — akudingeki exchange yangaphandle.",
-  "pidex-badge":"🔁 PiDEX — Isebenza ku-Pi Mainnet",
-  "pidex-what-title":"Yini i-PiDEX?",
-  "pidex-what-body":"I-PiDEX yi-exchange esemthethweni ye-Pi Network ehwebelana nge-tokens phakathi kwabantu, iphakathi kwe-Pi Browser. Ivumela abahleli ukuhweba nge-Pi tokens ngokuqondile, ngaphandle kokuthumela i-Pi ku-exchanges zangaphandle.",
-  "pidex-access-title":"Ukufinyelela i-PiDEX",
-  "pidex-access-body":"Vula i-Pi Browser → sesha i-PiDEX → ngena nge-Pi Network. Kufanele uphethe i-KYC futhi ube ne-Pi Wallet esebenzayo ukuze usebenzise i-PiDEX.",
-  "pidex-trade-title":"Ukuhweba ku-PiDEX",
-  "pidex-trade-body":"Isigaba 1: Vula i-PiDEX ku-Pi Browser. Isigaba 2: Khetha amapheyane e-token ofuna ukuhweba ngawo. Isigaba 3: Faka inani. Isigaba 4: Hlola izinga lokushintshana. Isigaba 5: Qinisekisa — kugcwaliswa ngokushesha ku-Pi blockchain.",
-  "pidex-safety-title":"Imithetho Yokuphepha ye-PiDEX",
-  "pidex-safety-body":"Finyelela i-PiDEX kuphela nge-Pi Browser esemthethweni. Ungasebenzisi amawebhusayithi angaphandle athi nge-PiDEX. Ungabikelani i-passphrase yakho kunoma yikuphi i-platform. Hweba kuphela nge-tokens ezisohlwini lwe-Pi ecosystem.",
-  "pidex-lock-title":"Isifundo Esigcwele se-PiDEX — Amalungu Kuphela",
-  "pidex-lock-sub":"Isifundo esigcwele se-PiDEX — ukusetha, ukuhweba ngokuphephile, ukugwema izikhwahlela. Vula nge-0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Vula Isifundo se-PiDEX — 0.01π",
-  "pidex-tip-1":"✅ I-PiDEX isebenza kuphela ku-Pi Browser — hhayi i-browser evamile.",
-  "pidex-tip-2":"✅ I-KYC yakho kufanele isamukelwe ngaphambi kokuhweba.",
-  "pidex-tip-3":"✅ Zonke izivumelwano zigcwaliswa ku-Pi blockchain — ngokushesha futhi ngokuphephile.",
-  "pidex-cta-title":"📚 Ulungele ukuhweba ku-PiDEX?",
-  "pidex-cta-body":"Isifundo esigcwele se-PiDEX ku-Chigalex1 — ukusetha i-wallet yakho, ukukhetha amapheyane, ukwenza izivumelwano, futhi ukuphepha ezikhohlisayo.",
-  "lbl-pilaunch":"🚀 Amalungu Kuphela",
-  "sec-pilaunch-title":"Pi Launchpad — Inkundla Yokuqalisa Amathokheni",
-  "sec-pilaunch-sub":"I-Pi Launchpad Testnet yasungulwa ngo-March 2025. Faka i-Pi, thembisa i-Pi, futhi uzuze amathokheni amatsha — ngaphambi kokuba umhlaba uzazi.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Iyasebenza",
-  "pilaunch-what-title":"Yini i-Pi Launchpad?",
-  "pilaunch-what-body":"I-Pi Launchpad yinkundla esemthethweni yokuqalisa amathokheni ye-Pi Network. Amaphrojekthi amatsha e-Pi ecosystem aqoqa i-Pi emphakathini — futhi anika abahleli amathokheni awo amatsha.",
-  "pilaunch-stake-title":"Yini i-Staking?",
-  "pilaunch-stake-body":"I-Staking kusho ukukhiyela ingxenye ye-Pi yakho kwisivumelwano esihlakaniphile ukubonakalisa ukusekela iphrojekthi. I-Pi ebekiwe ikunika ilungelo lokuthola izindlela zetokheni. Ungakhipha ngemva kwesikhathi sokuqalisa.",
-  "pilaunch-commit-title":"Yini i-Committing? (IYAHLUKA ne-Staking)",
-  "pilaunch-commit-body":"I-Committing yisenzo ESAHLUKENE ne-Staking. Ngemva kokubeka, KUFANELE FUTHI ubophe i-Pi yakho ephrojekthini ethile ukuze uzuze izindlela zetokheni. I-Staking yodwa AYENELE — kufanele wenze zombili izinyathelo.",
-  "pilaunch-slice-title":"SLICE — Itokheni Yesibili Ye-Testnet",
-  "pilaunch-slice-body":"I-SLICE itokheni yesibili ekhishwe ku-Pi Launchpad Testnet. Yasetshenziswa ukuhlola inqubo yokuBeka-nokuThembisa. Abahleli ababeka futhi baTHEMBISA i-Pi bathola amathokheni e-SLICE njengomvuzo.",
-  "pilaunch-earn-title":"Ukuthola Amathokheni e-Launchpad",
-  "pilaunch-earn-body":"Isigaba 1: Vula Pi Browser → Pi Launchpad. Isigaba 2: Thola ukuqalisa kwetokheni okusebenzayo. Isigaba 3: BEKA i-Pi yakho. Isigaba 4: THEMBISA i-Pi yakho ephrojekthini. Isigaba 5: Linda ukuvalwa. Isigaba 6: Thola amathokheni akho ngokuzenzakalelayo.",
-  "pilaunch-lock-title":"Isifundo Esigcwele se-Pi Launchpad — Amalungu Kuphela",
-  "pilaunch-lock-sub":"Umhlahlandlela ophelele — ukubeka, ukuthembisa, ukukhetha amaphrojekthi, nokuzuza imivuzo. Vula nge-0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Vula Umhlahlandlela we-Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ I-Staking yodwa AYIKUNIKI amathokheni — KUFANELE FUTHI uThembise.",
-  "pilaunch-warn-2":"⚠️ Sebenzisa i-Pi Launchpad kuphela ku-Pi Browser esemthethweni — hhayi izici zangaphandle.",
-  "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza ku-Pi Launchpad?",
-  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka ngokuphephile, ukuthembisa ngendlela efanele, nokuzuza imivuzo."
-},
-zu: {
-  "lbl-pidex":"🔁 Amalungu Kuphela",
-  "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
-  "sec-pidex-sub":"I-PiDEX yaqalwa ngo-March 2025. Hwebelana nge-Pi tokens ngokuphephile ku-Pi ecosystem — akudingeki exchange yangaphandle.",
-  "pidex-badge":"🔁 PiDEX — Isebenza ku-Pi Mainnet",
-  "pidex-what-title":"Yini i-PiDEX?",
-  "pidex-what-body":"I-PiDEX yi-exchange esemthethweni ye-Pi Network ehwebelana nge-tokens phakathi kwabantu, iphakathi kwe-Pi Browser. Ivumela abahleli ukuhweba nge-Pi tokens ngokuqondile — i-Pi yakho ihlala ephephile ku-ecosystem efungwe.",
-  "pidex-access-title":"Ukufinyelela i-PiDEX",
-  "pidex-access-body":"Vula i-Pi Browser → sesha i-PiDEX → ngena nge-Pi Network. I-KYC yakho kufanele iphelele futhi ube ne-Pi Wallet esebenzayo.",
-  "pidex-trade-title":"Ukuhweba ku-PiDEX",
-  "pidex-trade-body":"Isinyathelo 1: Vula i-PiDEX ku-Pi Browser. Isinyathelo 2: Khetha amapheyane e-token. Isinyathelo 3: Faka inani. Isinyathelo 4: Hlola izinga. Isinyathelo 5: Qinisekisa — kugcwaliswa ngokushesha ku-Pi blockchain.",
-  "pidex-safety-title":"Imithetho Yokuphepha ye-PiDEX",
-  "pidex-safety-body":"Finyelela i-PiDEX kuphela nge-Pi Browser esemthethweni. Ungasebenzisi amawebhusayithi angaphandle. Ungabikelani i-passphrase yakho. Hweba kuphela nge-tokens ze-Pi ecosystem.",
-  "pidex-lock-title":"Isifundo Esigcwele se-PiDEX — Amalungu Kuphela",
-  "pidex-lock-sub":"Isifundo esigcwele se-PiDEX — ukusetha, ukuhweba, ukugwema izikhwahlela. Vula nge-0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Vula Isifundo se-PiDEX — 0.01π",
-  "pidex-tip-1":"✅ I-PiDEX isebenza kuphela ku-Pi Browser.",
-  "pidex-tip-2":"✅ I-KYC yakho kufanele isamukelwe ngaphambi kokuhweba.",
-  "pidex-tip-3":"✅ Zonke izivumelwano zigcwaliswa ku-Pi blockchain ngokuphephile.",
-  "pidex-cta-title":"📚 Ulungele ukuhweba ku-PiDEX?",
-  "pidex-cta-body":"Isifundo esigcwele se-PiDEX ku-Chigalex1 — ukusetha i-wallet, ukukhetha amapheyane, ukwenza izivumelwano, nokuphepha.",
-  "lbl-pilaunch":"🚀 Amalungu Kuphela",
-  "sec-pilaunch-title":"Pi Launchpad — Inkundla Yokuqalisa Amathokheni",
-  "sec-pilaunch-sub":"I-Pi Launchpad Testnet yaqalwa ngo-March 2025. Beka i-Pi, thembisa i-Pi, futhi uzuze amathokheni — ngaphambi komhlaba.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Iyasebenza",
-  "pilaunch-what-title":"Yini i-Pi Launchpad?",
-  "pilaunch-what-body":"I-Pi Launchpad yinkundla esemthethweni yokuqalisa amathokheni. Amaphrojekthi amatsha aqoqa i-Pi emphakathini — futhi anika abahleli amathokheni amatsha njengomvuzo.",
-  "pilaunch-stake-title":"Yini i-Staking?",
-  "pilaunch-stake-body":"I-Staking ukukhiyela ingxenye ye-Pi yakho ukubonakalisa ukusekela iphrojekthi. I-Pi ebekiwe ikunika ilungelo lokuthola amathokheni. Ungakhipha ngemva kwesikhathi sokuqalisa.",
-  "pilaunch-commit-title":"Yini i-Committing? (IYAHLUKA ne-Staking)",
-  "pilaunch-commit-body":"I-Committing isenzo ESAHLUKENE. Ngemva kokubeka, KUFANELE FUTHI ubophe i-Pi yakho ephrojekthini ukuze uzuze amathokheni. I-Staking yodwa AYENELE — wenze izinyathelo ZOMBILI.",
-  "pilaunch-slice-title":"SLICE — Itokheni Yesibili Ye-Testnet",
-  "pilaunch-slice-body":"I-SLICE itokheni yesibili ku-Pi Launchpad Testnet. Yasetshenziswa ukuhlola inqubo. Abahleli ababeka futhi bathembisa i-Pi bathola amathokheni e-SLICE.",
-  "pilaunch-earn-title":"Ukuthola Amathokheni e-Launchpad",
-  "pilaunch-earn-body":"Isinyathelo 1: Vula Pi Browser → Pi Launchpad. Isinyathelo 2: Thola ukuqalisa okusebenzayo. Isinyathelo 3: BEKA i-Pi. Isinyathelo 4: THEMBISA i-Pi ephrojekthini. Isinyathelo 5: Linda ukuvalwa. Isinyathelo 6: Thola amathokheni ngokuzenzakalelayo.",
-  "pilaunch-lock-title":"Isifundo Esigcwele — Amalungu Kuphela",
-  "pilaunch-lock-sub":"Umhlahlandlela ophelele — ukubeka, ukuthembisa, ukukhetha amaphrojekthi. Vula nge-0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Vula Umhlahlandlela we-Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ I-Staking yodwa AYIKUNIKI amathokheni — KUFANELE uThembise futhi.",
-  "pilaunch-warn-2":"⚠️ Sebenzisa i-Pi Launchpad kuphela ku-Pi Browser esemthethweni.",
-  "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza?",
-  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo."
-},
+
+
+
+
+
 
 zu: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -554,49 +387,10 @@ zu: {
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Amalungu kuphela · Ngibuze noma yini mayelana ne-Pi",
 "cb-welcome":"👋 Sawubona! Ngimi i-AI yakho yeChigalex1 — umhlahlandlela we-Pi we-Afrika. Ngibuze nge-KYC, KYB, Ibalazwe le-Pi, noma ukuphepha!"
 },
-zu: {
-  "lbl-pidex":"🔁 Amalungu Kuphela",
-  "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
-  "sec-pidex-sub":"I-PiDEX yaqalwa ngo-March 2025. Hwebelana nge-Pi tokens ngokuphephile ku-Pi ecosystem — akudingeki exchange yangaphandle.",
-  "pidex-badge":"🔁 PiDEX — Isebenza ku-Pi Mainnet",
-  "pidex-what-title":"Yini i-PiDEX?",
-  "pidex-what-body":"I-PiDEX yi-exchange esemthethweni ye-Pi Network ehwebelana nge-tokens phakathi kwabantu, iphakathi kwe-Pi Browser. Ivumela abahleli ukuhweba nge-Pi tokens ngokuqondile — i-Pi yakho ihlala ephephile ku-ecosystem efungwe.",
-  "pidex-access-title":"Ukufinyelela i-PiDEX",
-  "pidex-access-body":"Vula i-Pi Browser → sesha i-PiDEX → ngena nge-Pi Network. I-KYC yakho kufanele iphelele futhi ube ne-Pi Wallet esebenzayo.",
-  "pidex-trade-title":"Ukuhweba ku-PiDEX",
-  "pidex-trade-body":"Isinyathelo 1: Vula i-PiDEX ku-Pi Browser. Isinyathelo 2: Khetha amapheyane e-token. Isinyathelo 3: Faka inani. Isinyathelo 4: Hlola izinga. Isinyathelo 5: Qinisekisa — kugcwaliswa ngokushesha ku-Pi blockchain.",
-  "pidex-safety-title":"Imithetho Yokuphepha ye-PiDEX",
-  "pidex-safety-body":"Finyelela i-PiDEX kuphela nge-Pi Browser esemthethweni. Ungasebenzisi amawebhusayithi angaphandle. Ungabikelani i-passphrase yakho. Hweba kuphela nge-tokens ze-Pi ecosystem.",
-  "pidex-lock-title":"Isifundo Esigcwele se-PiDEX — Amalungu Kuphela",
-  "pidex-lock-sub":"Isifundo esigcwele se-PiDEX — ukusetha, ukuhweba, ukugwema izikhwahlela. Vula nge-0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Vula Isifundo se-PiDEX — 0.01π",
-  "pidex-tip-1":"✅ I-PiDEX isebenza kuphela ku-Pi Browser.",
-  "pidex-tip-2":"✅ I-KYC yakho kufanele isamukelwe ngaphambi kokuhweba.",
-  "pidex-tip-3":"✅ Zonke izivumelwano zigcwaliswa ku-Pi blockchain ngokuphephile.",
-  "pidex-cta-title":"📚 Ulungele ukuhweba ku-PiDEX?",
-  "pidex-cta-body":"Isifundo esigcwele se-PiDEX ku-Chigalex1 — ukusetha i-wallet, ukukhetha amapheyane, ukwenza izivumelwano, nokuphepha.",
-  "lbl-pilaunch":"🚀 Amalungu Kuphela",
-  "sec-pilaunch-title":"Pi Launchpad — Inkundla Yokuqalisa Amathokheni",
-  "sec-pilaunch-sub":"I-Pi Launchpad Testnet yaqalwa ngo-March 2025. Beka i-Pi, thembisa i-Pi, futhi uzuze amathokheni — ngaphambi komhlaba.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Iyasebenza",
-  "pilaunch-what-title":"Yini i-Pi Launchpad?",
-  "pilaunch-what-body":"I-Pi Launchpad yinkundla esemthethweni yokuqalisa amathokheni. Amaphrojekthi amatsha aqoqa i-Pi emphakathini — futhi anika abahleli amathokheni amatsha njengomvuzo.",
-  "pilaunch-stake-title":"Yini i-Staking?",
-  "pilaunch-stake-body":"I-Staking ukukhiyela ingxenye ye-Pi yakho ukubonakalisa ukusekela iphrojekthi. I-Pi ebekiwe ikunika ilungelo lokuthola amathokheni. Ungakhipha ngemva kwesikhathi sokuqalisa.",
-  "pilaunch-commit-title":"Yini i-Committing? (IYAHLUKA ne-Staking)",
-  "pilaunch-commit-body":"I-Committing isenzo ESAHLUKENE. Ngemva kokubeka, KUFANELE FUTHI ubophe i-Pi yakho ephrojekthini ukuze uzuze amathokheni. I-Staking yodwa AYENELE — wenze izinyathelo ZOMBILI.",
-  "pilaunch-slice-title":"SLICE — Itokheni Yesibili Ye-Testnet",
-  "pilaunch-slice-body":"I-SLICE itokheni yesibili ku-Pi Launchpad Testnet. Yasetshenziswa ukuhlola inqubo. Abahleli ababeka futhi bathembisa i-Pi bathola amathokheni e-SLICE.",
-  "pilaunch-earn-title":"Ukuthola Amathokheni e-Launchpad",
-  "pilaunch-earn-body":"Isinyathelo 1: Vula Pi Browser → Pi Launchpad. Isinyathelo 2: Thola ukuqalisa okusebenzayo. Isinyathelo 3: BEKA i-Pi. Isinyathelo 4: THEMBISA i-Pi ephrojekthini. Isinyathelo 5: Linda ukuvalwa. Isinyathelo 6: Thola amathokheni ngokuzenzakalelayo.",
-  "pilaunch-lock-title":"Isifundo Esigcwele — Amalungu Kuphela",
-  "pilaunch-lock-sub":"Umhlahlandlela ophelele — ukubeka, ukuthembisa, ukukhetha amaphrojekthi. Vula nge-0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Vula Umhlahlandlela we-Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ I-Staking yodwa AYIKUNIKI amathokheni — KUFANELE uThembise futhi.",
-  "pilaunch-warn-2":"⚠️ Sebenzisa i-Pi Launchpad kuphela ku-Pi Browser esemthethweni.",
-  "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza?",
-  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo."
-},
+
+
+
+
 
 xh: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -657,49 +451,10 @@ xh: {
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Amalungu kuphela · Ndibuze nantoni na malunga ne-Pi",
 "cb-welcome":"👋 Molo! Ndim i-AI yakho yeChigalex1 — umhlahlandlela we-Pi we-Afrika. Ndibuze nge-KYC, KYB, Ibalazwe le-Pi, noma ukhuseleko!"
 },
-xh: {
-  "lbl-pidex":"🔁 Amalungu Kuphela",
-  "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
-  "sec-pidex-sub":"I-PiDEX yaqalwa ngo-March 2025. Hwebelana nge-Pi tokens ngokuphephile kwi-Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — Isebenza kwi-Pi Mainnet",
-  "pidex-what-title":"Yintoni i-PiDEX?",
-  "pidex-what-body":"I-PiDEX yi-exchange esemthethweni ye-Pi Network. Ivumela wonke umntu ukuhweba nge-Pi tokens ngokuqondile phakathi kwi-Pi Browser — ngaphandle kokuthumela i-Pi kwi-exchanges zangaphandle.",
-  "pidex-access-title":"Ukufikelela i-PiDEX",
-  "pidex-access-body":"Vula i-Pi Browser → khangela i-PiDEX → ngena nge-Pi Network. I-KYC yakho kufuneka iphelele kwaye ube ne-Pi Wallet esebenzayo.",
-  "pidex-trade-title":"Ukuhweba kwi-PiDEX",
-  "pidex-trade-body":"Isinyathelo 1: Vula i-PiDEX kwi-Pi Browser. Isinyathelo 2: Khetha amapheyane e-token. Isinyathelo 3: Faka inani. Isinyathelo 4: Hlola izinga. Isinyathelo 5: Qinisekisa — kugcwaliswa kwi-Pi blockchain.",
-  "pidex-safety-title":"Imithetho Yokuphepha ye-PiDEX",
-  "pidex-safety-body":"Fikelela i-PiDEX kuphela nge-Pi Browser esemthethweni. Ungasebenzisi amawebhusayithi angaphandle. Ungabikelani i-passphrase yakho. Hweba kuphela nge-tokens ze-Pi ecosystem.",
-  "pidex-lock-title":"Isifundo Esipheleleyo se-PiDEX — Amalungu Kuphela",
-  "pidex-lock-sub":"Isifundo esipheleleyo — ukusetha, ukuhweba ngokuphephile, ukugwema izikhwahlela. Vula nge-0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Vula Isifundo se-PiDEX — 0.01π",
-  "pidex-tip-1":"✅ I-PiDEX isebenza kuphela kwi-Pi Browser.",
-  "pidex-tip-2":"✅ I-KYC yakho kufuneka yamkelwe ngaphambi kokuhweba.",
-  "pidex-tip-3":"✅ Zonke izivumelwano zigcwaliswa kwi-Pi blockchain ngokuphephile.",
-  "pidex-cta-title":"📚 Ulungele ukuhweba kwi-PiDEX?",
-  "pidex-cta-body":"Isifundo esipheleleyo se-PiDEX ku-Chigalex1 — ukusetha i-wallet, ukukhetha amapheyane, ukwenza izivumelwano, nokuphepha.",
-  "lbl-pilaunch":"🚀 Amalungu Kuphela",
-  "sec-pilaunch-title":"Pi Launchpad — Inkundla Yokuqalisa Amathokheni",
-  "sec-pilaunch-sub":"I-Pi Launchpad Testnet yaqalwa ngo-March 2025. Beka i-Pi, thembisa i-Pi, futhi uzuze amathokheni amatsha.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Iyasebenza",
-  "pilaunch-what-title":"Yintoni i-Pi Launchpad?",
-  "pilaunch-what-body":"I-Pi Launchpad yinkundla esemthethweni yokuqalisa amathokheni. Amaphrojekthi amatsha aqoqa i-Pi emphakathini — futhi anika abahleli amathokheni amatsha.",
-  "pilaunch-stake-title":"Yintoni i-Staking?",
-  "pilaunch-stake-body":"I-Staking ukukhiyela ingxenye ye-Pi yakho ukubonakalisa ukuxhasa iphrojekthi. I-Pi ebekiwe ikunika ilungelo lokuthola amathokheni.",
-  "pilaunch-commit-title":"Yintoni i-Committing? (YAHLUKA kwi-Staking)",
-  "pilaunch-commit-body":"I-Committing isenzo ESAHLUKENE. Emva kokubeka, KUFUNEKA FUTHI ubophe i-Pi yakho kwiphrojekthi ukuze uzuze amathokheni. I-Staking yodwa AYANELE — yenza zombili izinyathelo.",
-  "pilaunch-slice-title":"SLICE — Itokheni Yesibini Ye-Testnet",
-  "pilaunch-slice-body":"I-SLICE itokheni yesibini kwi-Pi Launchpad Testnet. Yasetshenziswa ukuhlola inqubo. Abahleli ababeka futhi baTHEMBISA i-Pi bathola amathokheni e-SLICE.",
-  "pilaunch-earn-title":"Ukufumana Amathokheni e-Launchpad",
-  "pilaunch-earn-body":"Isinyathelo 1: Vula Pi Browser → Pi Launchpad. Isinyathelo 2: Fumana ukuqalisa okusebenzayo. Isinyathelo 3: BEKA i-Pi. Isinyathelo 4: THEMBISA i-Pi kwiphrojekthi. Isinyathelo 5: Linda ukuvalwa. Isinyathelo 6: Fumana amathokheni ngokuzenzakalelayo.",
-  "pilaunch-lock-title":"Isifundo Esipheleleyo — Amalungu Kuphela",
-  "pilaunch-lock-sub":"Umhlahlandlela ophelele — ukubeka, ukuthembisa, ukukhetha amaphrojekthi. Vula nge-0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Vula Umhlahlandlela we-Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ I-Staking yodwa AYIKUNIKI amathokheni — KUFUNEKA uThembise futhi.",
-  "pilaunch-warn-2":"⚠️ Sebenzisa i-Pi Launchpad kuphela kwi-Pi Browser esemthethweni.",
-  "pilaunch-cta-title":"📚 Ulungele ukuthatha inxaxheba?",
-  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo."
-},
+
+
+
+
 
 af: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -760,49 +515,12 @@ af: {
 "cb-title":"Chigalex1 KI-Assistent","cb-sub":"Slegs lede · Vra my enigiets oor Pi",
 "cb-welcome":"👋 Hallo! Ek is jou Chigalex1 KI — kundige Pi-gids vir Afrika. Vra my oor KYC, KYB, Pi-Kaart, GCV of sekuriteit!"
 },
-af: {
-  "lbl-pidex":"🔁 Slegs Lede",
-  "sec-pidex-title":"PiDEX — Pi Gedesentraliseerde Ruil",
-  "sec-pidex-sub":"PiDEX het Maart 2025 bekendgestel. Verhandel Pi-tokens veilig binne die Pi-ekosisteem — geen eksterne ruil nodig nie.",
-  "pidex-badge":"🔁 PiDEX — Lewendig op Pi Mainnet",
-  "pidex-what-title":"Wat is PiDEX?",
-  "pidex-what-body":"PiDEX is Pi Network se amptelike gedesentraliseerde ruil — gebou binne die Pi Browser. Dit laat baanbrekers toe om Pi-tokens van persoon tot persoon te verhandel sonder om Pi na eksterne ruile te stuur.",
-  "pidex-access-title":"Hoe om PiDEX te Gebruik",
-  "pidex-access-body":"Maak Pi Browser oop → soek PiDEX → meld aan met Pi Network. Jy moet KYC voltooi het en 'n aktiewe Pi-beursie hê.",
-  "pidex-trade-title":"Hoe om op PiDEX te Verhandel",
-  "pidex-trade-body":"Stap 1: Maak PiDEX oop in Pi Browser. Stap 2: Kies die tokenpaar. Stap 3: Voer die bedrag in. Stap 4: Hersien die wisselkoers. Stap 5: Bevestig — word onmiddellik op Pi blockchain verwerk.",
-  "pidex-safety-title":"PiDEX Veiligheidsreëls",
-  "pidex-safety-body":"Toegang tot PiDEX slegs deur die amptelike Pi Browser. Moenie eksterne webwerwe gebruik nie. Moenie jou wagfrase deel nie. Verhandel slegs tokens wat op die Pi-ekosisteem gelys is.",
-  "pidex-lock-title":"Volledige PiDEX-tutoriaal — Slegs Lede",
-  "pidex-lock-sub":"Volledige stap-vir-stap PiDEX-gids. Ontsluit met 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Ontsluit PiDEX-tutoriaal — 0.01π",
-  "pidex-tip-1":"✅ PiDEX werk slegs binne Pi Browser.",
-  "pidex-tip-2":"✅ Jou KYC moet goedgekeur word voor jy kan verhandel.",
-  "pidex-tip-3":"✅ Alle transaksies word op die Pi blockchain verwerk.",
-  "pidex-cta-title":"📚 Gereed om op PiDEX te verhandel?",
-  "pidex-cta-body":"Volledige PiDEX-gids binne Chigalex1 — beursie-opstelling, tokenpare, transaksies en veiligheid.",
-  "lbl-pilaunch":"🚀 Slegs Lede",
-  "sec-pilaunch-title":"Pi Launchpad — Token Bekendstellingsplatform",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet het Maart 2025 bekendgestel. Stel Pi, verbind Pi, en verdien nuwe tokens — voordat die wêreld dit weet.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Aktief",
-  "pilaunch-what-title":"Wat is Pi Launchpad?",
-  "pilaunch-what-body":"Pi Launchpad is Pi Network se amptelike tokenbekendstellingsplatform. Nuwe Pi-ekosisteemprojekte versamel Pi van die gemeenskap — en beloon deelnemers met nuwe tokens.",
-  "pilaunch-stake-title":"Wat is Inset (Staking)?",
-  "pilaunch-stake-body":"Inset beteken om 'n deel van jou Pi in 'n slim kontrak te sluit om ondersteuning vir 'n projek te toon. Jou ingesette Pi gee jou reg op tokenbelonings.",
-  "pilaunch-commit-title":"Wat is Verbinding (Committing)? (VERSKIL van Inset)",
-  "pilaunch-commit-body":"Verbinding is 'n APARTE aksie van inset. Nadat jy ingesit het, MOET jy ook jou Pi aan 'n spesifieke projek verbind om belonings te ontvang. Inset alleen is NIE genoeg nie — doen BEIDE stappe.",
-  "pilaunch-slice-title":"SLICE — Die Tweede Toets-token",
-  "pilaunch-slice-body":"SLICE is die tweede token op Pi Launchpad Testnet. Dit is gebruik om die inset-en-verbind proses te toets. Baanbrekers wat ingesit EN verbind het, het SLICE-tokens ontvang.",
-  "pilaunch-earn-title":"Hoe om Launchpad-tokens te Verdien",
-  "pilaunch-earn-body":"Stap 1: Pi Browser → Pi Launchpad. Stap 2: Vind 'n aktiewe tokenbekendstelling. Stap 3: SET jou Pi in. Stap 4: VERBIND jou Pi aan die projek. Stap 5: Wag vir sluiting. Stap 6: Ontvang tokenbelonings outomaties.",
-  "pilaunch-lock-title":"Volledige Pi Launchpad-gids — Slegs Lede",
-  "pilaunch-lock-sub":"Volledige gids — inset, verbinding, projekkeuse en belonings. Ontsluit met 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Ontsluit Pi Launchpad-gids — 0.01π",
-  "pilaunch-warn-1":"⚠️ Inset alleen verdien NIE tokens nie — jy MOET ook verbind.",
-  "pilaunch-warn-2":"⚠️ Gebruik Pi Launchpad slegs in die amptelike Pi Browser.",
-  "pilaunch-cta-title":"📚 Gereed om aan Pi Launchpad deel te neem?",
-  "pilaunch-cta-body":"Volledige Pi Launchpad-gids binne Chigalex1 — projekte evalueer, veilig insit, korrek verbind en tokenbelonings verdien."
-},
+
+
+
+
+
+
 
 st: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -863,49 +581,11 @@ st: {
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Ditho feela · Mpolele dipotso tsohle ka Pi",
 "cb-welcome":"👋 Dumela! Ke AI ya hao ya Chigalex1 — setsebi sa Pi sa Afrika. Mpolele ka KYC, KYB, Mmapa wa Pi, GCV kapa tshireletso!"
 },
-st: {
-  "lbl-pidex":"🔁 Ditho Feela",
-  "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
-  "sec-pidex-sub":"PiDEX e ile ya qala ka Tlhakubele 2025. Rekisetsa Pi tokens ka bolokolohi kahare ho Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — E Sebetsa ho Pi Mainnet",
-  "pidex-what-title":"PiDEX ke eng?",
-  "pidex-what-body":"PiDEX ke exchange ya semolao ya Pi Network e hahiloeng kahare ho Pi Browser. E lumella baetapele ho rekisetsa Pi tokens papali le papali, ntle le ho romela Pi ho di-exchange tsa kantle.",
-  "pidex-access-title":"Ho Fumana PiDEX",
-  "pidex-access-body":"Bula Pi Browser → batlana le PiDEX → kena ka Pi Network. O tlameha ho phethela KYC le ho ba le Pi Wallet e sebetsang.",
-  "pidex-trade-title":"Ho Rekisetsa ho PiDEX",
-  "pidex-trade-body":"Mohato 1: Bula PiDEX ho Pi Browser. Mohato 2: Kgetha diphetha tsa token. Mohato 3: Kenya palo. Mohato 4: Hlahloba sekhahla. Mohato 5: Netefatsa — e phethwa ka lebelo ho Pi blockchain.",
-  "pidex-safety-title":"Melao ya Tshireletso ya PiDEX",
-  "pidex-safety-body":"Fumana PiDEX ka Pi Browser ya semolao feela. O se ke wa sebedisa disaete tsa kantle. O se ke wa arolelana passphrase ya hao. Rekisetsa tokens tse lerweng ho Pi ecosystem feela.",
-  "pidex-lock-title":"Thuto e Felletseng ya PiDEX — Ditho Feela",
-  "pidex-lock-sub":"Thuto e felletseng ya PiDEX. Bula ka 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Bula Thuto ya PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX e sebetsa feela kahare ho Pi Browser.",
-  "pidex-tip-2":"✅ KYC ya hao e tlameha ho amohelwa pele o ka rekisetsa.",
-  "pidex-tip-3":"✅ Diphepelo tsohle di phethwa ho Pi blockchain ka polokeho.",
-  "pidex-cta-title":"📚 O itokiselitse ho rekisetsa ho PiDEX?",
-  "pidex-cta-body":"Thuto e felletseng ya PiDEX kahare ho Chigalex1 — ho bea seruti, ho kgetha diphetha, ho phetha dipheelo le polokeho.",
-  "lbl-pilaunch":"🚀 Ditho Feela",
-  "sec-pilaunch-title":"Pi Launchpad — Sethala sa Ho Qalisa Ditokene",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet e ile ya qala ka Tlhakubele 2025. Bea Pi, ineele Pi, le ho fumana ditokene tse ntjha.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet E a Sebetsa",
-  "pilaunch-what-title":"Pi Launchpad ke eng?",
-  "pilaunch-what-body":"Pi Launchpad ke sethala sa semolao sa ho qalisa ditokene sa Pi Network. Merero e mecha e kgoboketsa Pi ho tswa setjhabeng — mme e phela baetapele ka ditokene tse ntjha.",
-  "pilaunch-stake-title":"Staking ke eng?",
-  "pilaunch-stake-body":"Staking ke ho khunamela karolo ya Pi ya hao ho kontrakeng e bohlale ho bontsha tshehetso ya morero. Pi e beuweng e o fa tokelo ya ho amohela meputso ya token.",
-  "pilaunch-commit-title":"Committing ke eng? (E FAPANE le Staking)",
-  "pilaunch-commit-body":"Committing ke ketso E AROHANENG le Staking. Kamora ho bea, O TLAMEHA HO IKOPANYA le Pi ya hao ho morero o itseng ho fumana meputso. Staking feela HA E LEKANE — etsa diketsong TSE PEDI.",
-  "pilaunch-slice-title":"SLICE — Tokene ya Bobedi ya Testnet",
-  "pilaunch-slice-body":"SLICE ke tokene ya bobedi ho Pi Launchpad Testnet. E ile ya sebediswa ho leka ts'ebetso ya ho bea-le-ho ineela. Baetapele ba beileng le ba ikopanyang ba ile ba fumana ditokene tsa SLICE.",
-  "pilaunch-earn-title":"Ho Fumana Ditokene tsa Launchpad",
-  "pilaunch-earn-body":"Mohato 1: Bula Pi Browser → Pi Launchpad. Mohato 2: Fumana qalo ya token e sebetsang. Mohato 3: BEA Pi ya hao. Mohato 4: INEELA Pi ho morero. Mohato 5: Emela ho koalwa. Mohato 6: Amohela ditokene ka bo-tsona.",
-  "pilaunch-lock-title":"Thuto e Felletseng — Ditho Feela",
-  "pilaunch-lock-sub":"Tataiso e felletseng — ho bea, ho ineela, ho kgetha merero. Bula ka 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Bula Tataiso ya Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking feela HA E FANE ditokene — O TLAMEHA HO INEELA hape.",
-  "pilaunch-warn-2":"⚠️ Sebedisa Pi Launchpad feela ho Pi Browser ya semolao.",
-  "pilaunch-cta-title":"📚 O itokiselitse ho kenela Pi Launchpad?",
-  "pilaunch-cta-body":"Tataiso e felletseng ya Pi Launchpad kahare ho Chigalex1 — ho hlahloba merero, ho bea, ho ineela le ho fumana meputso."
-},
+
+
+
+
+
 
 tn: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -966,49 +646,11 @@ tn: {
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Ditlhopho feela · Mpolele dipotso tsotlhe ka Pi",
 "cb-welcome":"👋 Dumela! Ke AI ya gago ya Chigalex1 — setlhodi sa Pi sa Aferika. Mpolele ka KYC, KYB, Mmapa wa Pi, GCV kgotsa tshireletso!"
 },
-tn: {
-  "lbl-pidex":"🔁 Ditlhopho Feela",
-  "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
-  "sec-pidex-sub":"PiDEX e simolola ka Tlhakubele 2025. Rekisetsa Pi tokens ka polokeho mo gare ga Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — E Dira mo Pi Mainnet",
-  "pidex-what-title":"PiDEX ke eng?",
-  "pidex-what-body":"PiDEX ke exchange ya semolao ya Pi Network e agiweng mo gare ga Pi Browser. E letlela baetapele go rekisetsa Pi tokens seatla le seatla, ntle le go romela Pi go di-exchange tsa ntlha.",
-  "pidex-access-title":"Go Fitlhelela PiDEX",
-  "pidex-access-body":"Bula Pi Browser → batla PiDEX → tsena ka Pi Network. O tshwanetse go phethela KYC le go nna le Pi Wallet e e dirang.",
-  "pidex-trade-title":"Go Rekisetsa mo PiDEX",
-  "pidex-trade-body":"Kgato 1: Bula PiDEX mo Pi Browser. Kgato 2: Tlhopha diphetha tsa token. Kgato 3: Tsenya palo. Kgato 4: Sekaseka sekhahla. Kgato 5: Netefatsa — e phethiwa ka lebelo mo Pi blockchain.",
-  "pidex-safety-title":"Melao ya Tshireletso ya PiDEX",
-  "pidex-safety-body":"Fitlhelela PiDEX ka Pi Browser ya semolao fela. O se dirisa disaete tsa ntlha. O se arele passphrase ya gago. Rekisetsa tokens tse lerweng mo Pi ecosystem fela.",
-  "pidex-lock-title":"Thuto e Feletseng ya PiDEX — Ditlhopho Feela",
-  "pidex-lock-sub":"Thuto e feletseng ya PiDEX. Bula ka 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Bula Thuto ya PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX e dira fela mo gare ga Pi Browser.",
-  "pidex-tip-2":"✅ KYC ya gago e tshwanetse go amogelwa pele ga go rekisetsa.",
-  "pidex-tip-3":"✅ Dipheelo tsotlhe di phethiwa mo Pi blockchain ka polokeho.",
-  "pidex-cta-title":"📚 A o ikagile go rekisetsa mo PiDEX?",
-  "pidex-cta-body":"Thuto e feletseng ya PiDEX mo Chigalex1 — go bea seroto, go tlhopha diphetha, go diragatsa dipheelo le polokeho.",
-  "lbl-pilaunch":"🚀 Ditlhopho Feela",
-  "sec-pilaunch-title":"Pi Launchpad — Sethala sa Go Simolola Ditokene",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet e simolola ka Tlhakubele 2025. Bea Pi, ikopanya Pi, le go amogela ditokene tse ntjha.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet E a Dira",
-  "pilaunch-what-title":"Pi Launchpad ke eng?",
-  "pilaunch-what-body":"Pi Launchpad ke sethala sa semolao sa go simolola ditokene. Merero e mecha e kgoboketsa Pi mo setjhabeng — mme e naya baetapele ditokene tse ntjha.",
-  "pilaunch-stake-title":"Staking ke eng?",
-  "pilaunch-stake-body":"Staking ke go tshwara karolo ya Pi ya gago mo kontrakeng e bohlale go bontsha tshegetso ya morero. Pi e beiweng e go naya tshiamo ya go amogela meputso ya token.",
-  "pilaunch-commit-title":"Committing ke eng? (E FAROLOGANA le Staking)",
-  "pilaunch-commit-body":"Committing ke tiragalo E FAROLOGANENG. Morago ga go bea, O TSHWANETSE GAPE go ikopanya Pi ya gago le morero o o rileng go amogela meputso. Staking fela GA E LEKANE — dira dikgato TSE PEDI.",
-  "pilaunch-slice-title":"SLICE — Tokene ya Bobedi ya Testnet",
-  "pilaunch-slice-body":"SLICE ke tokene ya bobedi mo Pi Launchpad Testnet. E ne ya dirisetswa go leka tsamaiso. Baetapele ba beileng le ba ikopanyang ba amogela ditokene tsa SLICE.",
-  "pilaunch-earn-title":"Go Amogela Ditokene tsa Launchpad",
-  "pilaunch-earn-body":"Kgato 1: Bula Pi Browser → Pi Launchpad. Kgato 2: Bona qalo ya token e e dirang. Kgato 3: BEA Pi ya gago. Kgato 4: IKOPANYA Pi le morero. Kgato 5: Emela go koalwa. Kgato 6: Amogela ditokene ka tsona tse di itseng.",
-  "pilaunch-lock-title":"Thuto e Feletseng — Ditlhopho Feela",
-  "pilaunch-lock-sub":"Kaedi e feletseng — go bea, go ikopanya, go tlhopha merero. Bula ka 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Bula Kaedi ya Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking fela GA E NAYE ditokene — O TSHWANETSE GAPE go Ikopanya.",
-  "pilaunch-warn-2":"⚠️ Dirisa Pi Launchpad fela mo Pi Browser ya semolao.",
-  "pilaunch-cta-title":"📚 A o ikagile go tsaya karolo mo Pi Launchpad?",
-  "pilaunch-cta-body":"Kaedi e feletseng ya Pi Launchpad mo Chigalex1 — go sekaseka merero, go bea, go ikopanya le go amogela meputso."
-},
+
+
+
+
+
 
 ny: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -1069,49 +711,11 @@ ny: {
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Mamembala okha · Ndifunseni chilichonse cha Pi",
 "cb-welcome":"👋 Moni! Ndine AI yanu ya Chigalex1 — katswiri wa Pi wa Africa. Ndifunseni za KYC, KYB, Mapu a Pi, GCV kapena chitetezo!"
 },
-ny: {
-  "lbl-pidex":"🔁 Mamembala Okha",
-  "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
-  "sec-pidex-sub":"PiDEX inayamba Marichi 2025. Gulitsana ndi Pi tokens mokhetsa mkati mwa Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — Ikugwira Ntchito ku Pi Mainnet",
-  "pidex-what-title":"PiDEX ndi chiyani?",
-  "pidex-what-body":"PiDEX ndi exchange yachilungamo ya Pi Network yomangidwa mkati mwa Pi Browser. Imalola apitiriri kugulitsana ndi Pi tokens mwachinsinsi, popanda kutumiza Pi ku exchanges zakunja.",
-  "pidex-access-title":"Kupeza PiDEX",
-  "pidex-access-body":"Tsegurani Pi Browser → sakani PiDEX → lowani ndi Pi Network. Muyenera kupedza KYC ndi kukhala ndi Pi Wallet yogwira ntchito.",
-  "pidex-trade-title":"Kugulitsana ku PiDEX",
-  "pidex-trade-body":"Gawo 1: Tsegurani PiDEX mu Pi Browser. Gawo 2: Sankhani token pairs. Gawo 3: Lowetsani kuchuluka. Gawo 4: Onani mtengo. Gawo 5: Tsimikizani — imatsimikiziwa msanga pa Pi blockchain.",
-  "pidex-safety-title":"Malamulo a Chitetezo cha PiDEX",
-  "pidex-safety-body":"Pezani PiDEX kudzera mwa Pi Browser yachilungamo chabe. Osagwiritsa ntchito masaiti a kunze. Osagawana passphrase yanu. Gulitsani tokens zokhazikitsidwa pa Pi ecosystem chabe.",
-  "pidex-lock-title":"Phunziro Lonse la PiDEX — Mamembala Okha",
-  "pidex-lock-sub":"Phunziro lonse la PiDEX. Tsegurani ndi 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Tsegurani Phunziro la PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX imagwira ntchito chabe mkati mwa Pi Browser.",
-  "pidex-tip-2":"✅ KYC yanu iyenera kulandiridwa musanagulitsane.",
-  "pidex-tip-3":"✅ Zogulitsana zonse zimasimbidwa pa Pi blockchain mokhetsa.",
-  "pidex-cta-title":"📚 Mwakonzeka kugulitsana pa PiDEX?",
-  "pidex-cta-body":"Phunziro lonse la PiDEX mkati mwa Chigalex1 — kukonza chikwama, kusankha token pairs, kugulitsana, ndi chitetezo.",
-  "lbl-pilaunch":"🚀 Mamembala Okha",
-  "sec-pilaunch-title":"Pi Launchpad — Platform Yoyambitsa Tokens",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet inayamba Marichi 2025. Ika Pi, iere Pi, ndi kupeza tokens zatsopano.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Ikugwira Ntchito",
-  "pilaunch-what-title":"Pi Launchpad ndi chiyani?",
-  "pilaunch-what-body":"Pi Launchpad ndi platform yachilungamo yoyambitsa tokens ya Pi Network. Mapulojekiti atsopano a Pi ecosystem amasonkhanitsa Pi kuchokera ku anthu — ndi kupatsira apitiriri tokens zawo zatsopano.",
-  "pilaunch-stake-title":"Staking ndi chiyani?",
-  "pilaunch-stake-body":"Staking ndiye kukhokhera gawo la Pi yanu mu smart contract kusonyeza chithandizo cha pulojekiti. Pi yoikedwa ikupatsani ufulu wopeza mphoto za token.",
-  "pilaunch-commit-title":"Committing ndi chiyani? (YOSIYANA ndi Staking)",
-  "pilaunch-commit-body":"Committing ndi chochita CHOSIYANA. Pambuyo pokuika, MUYENERONSO kulumbira Pi yanu ku pulojekiti inayake kuti mupeze mphoto. Staking yokha SAYENERA — chitani machitidwe OWA AWIRI.",
-  "pilaunch-slice-title":"SLICE — Token Yachiwiri ya Testnet",
-  "pilaunch-slice-body":"SLICE ndi token yachiwiri pa Pi Launchpad Testnet. Inagwiritsidwa ntchito kuyesa njira. Apitiriri omwe anaika ndipo analumbira Pi adalandira tokens za SLICE.",
-  "pilaunch-earn-title":"Kupeza Tokens za Launchpad",
-  "pilaunch-earn-body":"Gawo 1: Tsegurani Pi Browser → Pi Launchpad. Gawo 2: Pezani yoyambitsa tokens yogwira ntchito. Gawo 3: IKANI Pi yanu. Gawo 4: IERE Pi yanu ku pulojekiti. Gawo 5: Dikirani kumkidzidwa. Gawo 6: Landirani tokens mwokha.",
-  "pilaunch-lock-title":"Phunziro Lonse — Mamembala Okha",
-  "pilaunch-lock-sub":"Chongolero chonse — kuika, kulumbira, kusankha mapulojekiti. Tsegurani ndi 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Tsegurani Chongolero cha Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking yokha SIKUPATSANI tokens — MUYENERONSO kulumbira.",
-  "pilaunch-warn-2":"⚠️ Gwiritsani ntchito Pi Launchpad chabe mkati mwa Pi Browser yachilungamo.",
-  "pilaunch-cta-title":"📚 Mwakonzeka kulowa mu Pi Launchpad?",
-  "pilaunch-cta-body":"Chongolero chonse cha Pi Launchpad mkati mwa Chigalex1 — kuyesa mapulojekiti, kuika, kulumbira, ndi kupeza mphoto."
-},
+
+
+
+
+
 
 pt: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -1172,93 +776,13 @@ pt: {
 "cb-title":"Assistente IA Chigalex1","cb-sub":"Apenas membros · Pergunte-me qualquer coisa sobre Pi",
 "cb-welcome":"👋 Olá! Sou o seu AI Chigalex1 — guia Pi especialista para África. Pergunte-me sobre KYC, KYB, Mapa do Pi, estratégia GCV ou segurança!"
 },
-pt: {
-  "lbl-pidex":"🔁 Apenas Membros",
-  "sec-pidex-title":"PiDEX — Exchange Descentralizada Pi",
-  "sec-pidex-sub":"PiDEX lançou em março de 2025. Negoceie tokens Pi em segurança dentro do ecossistema Pi fechado.",
-  "pidex-badge":"🔁 PiDEX — Ao Vivo na Pi Mainnet",
-  "pidex-what-title":"O que é PiDEX?",
-  "pidex-what-body":"PiDEX é a exchange descentralizada oficial da Pi Network — construída dentro do Pi Browser. Permite que pioneiros negociem tokens Pi entre si, sem enviar Pi para exchanges externas.",
-  "pidex-access-title":"Como Aceder ao PiDEX",
-  "pidex-access-body":"Abra o Pi Browser → pesquise PiDEX → entre com Pi Network. Deve ter o KYC concluído e uma Pi Wallet ativa.",
-  "pidex-trade-title":"Como Negociar no PiDEX",
-  "pidex-trade-body":"Passo 1: Abra o PiDEX no Pi Browser. Passo 2: Selecione o par de tokens. Passo 3: Introduza o valor. Passo 4: Reveja a taxa de câmbio. Passo 5: Confirme — liquidado instantaneamente na blockchain Pi.",
-  "pidex-safety-title":"Regras de Segurança do PiDEX",
-  "pidex-safety-body":"Aceda ao PiDEX apenas através do Pi Browser oficial. Nunca use sites externos. Nunca partilhe a sua frase-passe. Negoceie apenas tokens listados no ecossistema Pi.",
-  "pidex-lock-title":"Tutorial Completo do PiDEX — Apenas Membros",
-  "pidex-lock-sub":"Tutorial completo do PiDEX. Desbloqueie com 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Desbloquear Tutorial PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX funciona apenas dentro do Pi Browser.",
-  "pidex-tip-2":"✅ O seu KYC deve ser aprovado antes de negociar.",
-  "pidex-tip-3":"✅ Todas as transações são liquidadas na blockchain Pi com segurança.",
-  "pidex-cta-title":"📚 Pronto para negociar no PiDEX?",
-  "pidex-cta-body":"Guia completo do PiDEX dentro do Chigalex1 — configurar carteira, selecionar pares, executar transações e segurança.",
-  "lbl-pilaunch":"🚀 Apenas Membros",
-  "sec-pilaunch-title":"Pi Launchpad — Plataforma de Lançamento de Tokens",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet lançou em março de 2025. Faça stake, comprometa Pi e ganhe novos tokens.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Ativo",
-  "pilaunch-what-title":"O que é Pi Launchpad?",
-  "pilaunch-what-body":"Pi Launchpad é a plataforma oficial de lançamento de tokens da Pi Network. Novos projetos do ecossistema Pi recolhem Pi da comunidade — e recompensam os participantes com novos tokens.",
-  "pilaunch-stake-title":"O que é Staking?",
-  "pilaunch-stake-body":"Staking significa bloquear uma parte do seu Pi num contrato inteligente para mostrar apoio a um projeto. O Pi em stake dá-lhe elegibilidade para recompensas de tokens.",
-  "pilaunch-commit-title":"O que é Committing? (DIFERENTE do Staking)",
-  "pilaunch-commit-body":"Committing é uma ação SEPARADA do staking. Depois de fazer stake, DEVE TAMBÉM comprometer o seu Pi a um projeto específico para receber recompensas. Staking sozinho NÃO é suficiente — faça OS DOIS passos.",
-  "pilaunch-slice-title":"SLICE — O Segundo Token de Teste",
-  "pilaunch-slice-body":"SLICE é o segundo token lançado no Pi Launchpad Testnet. Foi usado para testar o processo de stake-e-commit. Pioneiros que fizeram stake E commit receberam tokens SLICE.",
-  "pilaunch-earn-title":"Como Ganhar Tokens do Launchpad",
-  "pilaunch-earn-body":"Passo 1: Pi Browser → Pi Launchpad. Passo 2: Encontre um lançamento ativo. Passo 3: Faça STAKE do seu Pi. Passo 4: COMPROMETA o Pi ao projeto. Passo 5: Aguarde o encerramento. Passo 6: Receba os tokens automaticamente.",
-  "pilaunch-lock-title":"Guia Completo do Pi Launchpad — Apenas Membros",
-  "pilaunch-lock-sub":"Guia completo — stake, commit, escolha de projetos e recompensas. Desbloqueie com 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Desbloquear Guia Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking sozinho NÃO lhe dá tokens — DEVE TAMBÉM fazer commit.",
-  "pilaunch-warn-2":"⚠️ Use Pi Launchpad apenas no Pi Browser oficial.",
-  "pilaunch-cta-title":"📚 Pronto para participar no Pi Launchpad?",
-  "pilaunch-cta-body":"Guia completo do Pi Launchpad dentro do Chigalex1 — avaliar projetos, fazer stake, commit correto e ganhar recompensas."
-},
 
-sw: {
-  "lbl-pidex":"🔁 Wanachama Pekee",
-  "sec-pidex-title":"PiDEX — Soko la Kubadilishana la Pi",
-  "sec-pidex-sub":"PiDEX ilizinduliwa Machi 2025. Fanya biashara ya Pi tokens kwa usalama ndani ya Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — Hai kwenye Pi Mainnet",
-  "pidex-what-title":"PiDEX ni nini?",
-  "pidex-what-body":"PiDEX ni soko rasmi la kubadilishana la Pi Network lililojengwa ndani ya Pi Browser. Inaruhusu waanzilishi kufanya biashara ya Pi tokens moja kwa moja, bila kutuma Pi kwenye masoko ya nje.",
-  "pidex-access-title":"Jinsi ya Kupata PiDEX",
-  "pidex-access-body":"Fungua Pi Browser → tafuta PiDEX → ingia na Pi Network. Unahitaji kukamilisha KYC na kuwa na Pi Wallet inayofanya kazi.",
-  "pidex-trade-title":"Jinsi ya Kufanya Biashara kwenye PiDEX",
-  "pidex-trade-body":"Hatua 1: Fungua PiDEX kwenye Pi Browser. Hatua 2: Chagua jozi la token. Hatua 3: Weka kiasi. Hatua 4: Kagua kiwango cha ubadilishani. Hatua 5: Thibitisha — inakamilika mara moja kwenye Pi blockchain.",
-  "pidex-safety-title":"Sheria za Usalama za PiDEX",
-  "pidex-safety-body":"Fikia PiDEX kupitia Pi Browser rasmi pekee. Usitumie tovuti za nje. Usishiriki nywila yako. Fanya biashara ya tokens zilizoorodheshwa kwenye Pi ecosystem pekee.",
-  "pidex-lock-title":"Mwongozo Kamili wa PiDEX — Wanachama Pekee",
-  "pidex-lock-sub":"Mwongozo kamili wa PiDEX. Fungua na 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Fungua Mwongozo wa PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX inafanya kazi ndani ya Pi Browser pekee.",
-  "pidex-tip-2":"✅ KYC yako lazima ikubaliwe kabla ya kufanya biashara.",
-  "pidex-tip-3":"✅ Biashara zote zinakamilika kwenye Pi blockchain kwa usalama.",
-  "pidex-cta-title":"📚 Uko tayari kufanya biashara kwenye PiDEX?",
-  "pidex-cta-body":"Mwongozo kamili wa PiDEX ndani ya Chigalex1 — kusanidi mkoba, kuchagua jozi, kufanya biashara na usalama.",
-  "lbl-pilaunch":"🚀 Wanachama Pekee",
-  "sec-pilaunch-title":"Pi Launchpad — Jukwaa la Uzinduzi wa Tokens",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet ilizinduliwa Machi 2025. Weka Pi, ahidi Pi, na kupata tokens mpya.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Inafanya Kazi",
-  "pilaunch-what-title":"Pi Launchpad ni nini?",
-  "pilaunch-what-body":"Pi Launchpad ni jukwaa rasmi la uzinduzi wa tokens la Pi Network. Miradi mipya ya Pi ecosystem inakusanya Pi kutoka kwa jamii — na kuwatuza washiriki kwa tokens mpya.",
-  "pilaunch-stake-title":"Staking ni nini?",
-  "pilaunch-stake-body":"Staking ni kufunga sehemu ya Pi yako katika mkataba mzuri kuonyesha msaada wa mradi. Pi iliyowekwa inakupa haki ya kupata tuzo za token.",
-  "pilaunch-commit-title":"Committing ni nini? (TOFAUTI na Staking)",
-  "pilaunch-commit-body":"Committing ni hatua TOFAUTI na Staking. Baada ya kuweka, LAZIMA PIA uahidi Pi yako kwa mradi maalum kupata tuzo. Staking peke yake HAITOSHI — fanya hatua ZOTE MBILI.",
-  "pilaunch-slice-title":"SLICE — Token ya Pili ya Testnet",
-  "pilaunch-slice-body":"SLICE ni token ya pili kwenye Pi Launchpad Testnet. Ilitumika kujaribu mchakato. Waanzilishi walioweka NA kuahidi Pi walipata tokens za SLICE.",
-  "pilaunch-earn-title":"Jinsi ya Kupata Tokens za Launchpad",
-  "pilaunch-earn-body":"Hatua 1: Pi Browser → Pi Launchpad. Hatua 2: Pata uzinduzi unaofanya kazi. Hatua 3: WEKA Pi yako. Hatua 4: AHIDI Pi yako kwa mradi. Hatua 5: Subiri kufungwa. Hatua 6: Pokea tokens moja kwa moja.",
-  "pilaunch-lock-title":"Mwongozo Kamili — Wanachama Pekee",
-  "pilaunch-lock-sub":"Mwongozo kamili — kuweka, kuahidi, kuchagua miradi. Fungua na 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Fungua Mwongozo wa Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking peke yake HAIKUPI tokens — LAZIMA PIA uahidi.",
-  "pilaunch-warn-2":"⚠️ Tumia Pi Launchpad ndani ya Pi Browser rasmi pekee.",
-  "pilaunch-cta-title":"📚 Uko tayari kushiriki kwenye Pi Launchpad?",
-  "pilaunch-cta-body":"Mwongozo kamili wa Pi Launchpad ndani ya Chigalex1 — kutathmini miradi, kuweka, kuahidi, na kupata tuzo."
-},
+
+
+
+
+
+
 
 sw: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -1317,51 +841,12 @@ sw: {
 "footer-tagline":"🌍 Africa Pi Network Education Hub",
 "footer-ref":"Rufaa: chigalex1","footer-nations":"Nchi 54 · Lugha 25",
 "cb-title":"Msaidizi wa AI wa Chigalex1","cb-sub":"Wanachama pekee · Niulize chochote kuhusu Pi",
-"cb-welcome":"👋 Habari! Mimi ni AI yako ya Chigalex1 — mwongozo mtaalamu wa Pi wa Afrika. Niulize kuhusu KYC, KYB, Ramani ya Pi, mkakati wa GCV au usalama!"
+"cb-welcome":"👋 Habari! Mimi ni AI yako ya Chigalex1 — mwongozo mtaalamu wa Pi wa Afrika. Niulize kuhusu KYC, KYB, Ramani ya Pi, mkakati wa GCV au us."
 },
-am: {
-  "lbl-pidex":"🔁 አባሎች ብቻ",
-  "sec-pidex-title":"PiDEX — የPi ያልተማከለ ልውውጥ",
-  "sec-pidex-sub":"PiDEX በማርች 2025 ተጀምሯል። Pi tokens ደህንነቱ በተጠበቀ ሁኔታ ውስጥ ይገበያዩ።",
-  "pidex-badge":"🔁 PiDEX — በPi Mainnet ላይ ቀጥታ",
-  "pidex-what-title":"PiDEX ምንድን ነው?",
-  "pidex-what-body":"PiDEX የPi Network ኦፊሴላዊ ያልተማከለ ልውውጥ ነው — Pi Browser ውስጥ ተሰርቷል። አቅኚዎች Pi tokens ቀጥተኛ ለቀጥታ ሳይልኩ ሊገበያዩ ያስችላቸዋል።",
-  "pidex-access-title":"PiDEX እንዴት ይደረሳል",
-  "pidex-access-body":"Pi Browser ይክፈቱ → PiDEX ይፈልጉ → Pi Network ሲጠቀሙ ይግቡ። KYC መጠናቀቅ አለበት እና ንቁ Pi Wallet ያስፈልጋል።",
-  "pidex-trade-title":"PiDEX ላይ ልወዳደር እንዴት",
-  "pidex-trade-body":"ደረጃ 1: Pi Browser ውስጥ PiDEX ይክፈቱ። ደረጃ 2: Token ጥንድ ይምረጡ። ደረጃ 3: መጠን ያስገቡ። ደረጃ 4: ዋጋ ያጣሩ። ደረጃ 5: ያረጋግጡ — ወዲያውኑ Pi blockchain ላይ ይፈጸማል።",
-  "pidex-safety-title":"የPiDEX ደህንነት ህጎች",
-  "pidex-safety-body":"PiDEX ደህንነቱ ወደ Pi Browser ብቻ ይድረሱ። ውጪ ድረ-ገጾችን አይጠቀሙ። Passphrase አይካፈሉ። የPi ecosystem tokens ብቻ ይገበያዩ።",
-  "pidex-lock-title":"ሙሉ PiDEX ስልጠና — አባሎች ብቻ",
-  "pidex-lock-sub":"ሙሉ PiDEX ስልጠና። በ0.01π ይክፈቱ።",
-  "btn-unlock-pidex-txt":"🔓 PiDEX ስልጠና ይክፈቱ — 0.01π",
-  "pidex-tip-1":"✅ PiDEX Pi Browser ውስጥ ብቻ ይሰራል።",
-  "pidex-tip-2":"✅ KYC ከመገበያየትዎ በፊት ተፈቅዶ መሆን አለበት።",
-  "pidex-tip-3":"✅ ሁሉም 거래 Pi blockchain ላይ ደህንነቱ ተጠብቆ ይፈጸማል።",
-  "pidex-cta-title":"📚 PiDEX ላይ ለመገበያየት ዝግጁ ነዎት?",
-  "pidex-cta-body":"ሙሉ PiDEX ስልጠና Chigalex1 ውስጥ — ቦርሳ ማዘጋጀት፣ ጥንዶች መምረጥ፣ ልውውጥ ማካሄድ እና ደህንነት።",
-  "lbl-pilaunch":"🚀 አባሎች ብቻ",
-  "sec-pilaunch-title":"Pi Launchpad — የToken ጅምር መድረክ",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet በማርች 2025 ተጀምሯል። Pi ያስቀምጡ፣ Pi ይቁጠሩ፣ አዲስ tokens ያግኙ።",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet ንቁ ነው",
-  "pilaunch-what-title":"Pi Launchpad ምንድን ነው?",
-  "pilaunch-what-body":"Pi Launchpad የPi Network ኦፊሴላዊ token ጅምር መድረክ ነው። አዲስ ፕሮጀክቶች Pi ከማህበረሰቡ ይሰበስባሉ — ተሳታፊዎችን በአዲስ tokens ይሸልማሉ።",
-  "pilaunch-stake-title":"Staking ምንድን ነው?",
-  "pilaunch-stake-body":"Staking ማለት Pi ክፍሉን smart contract ውስጥ ቆልፎ ፕሮጀክቱን ድጋፍ ማሳየት ነው። የተቀመጠ Pi token ሽልማቶችን ለማግኘት ብቁ ያደርጋቸዋል።",
-  "pilaunch-commit-title":"Committing ምንድን ነው? (ከStaking የተለየ)",
-  "pilaunch-commit-body":"Committing ከStaking የተለየ ድርጊት ነው። ካስቀመጡ በኋላ፣ ሽልማቶቹን ለማግኘት Pi ወደ ልዩ ፕሮጀክት COMMIT ማድረግ አለብዎት። Staking ብቻ አይበቃም — ሁለቱንም ደረጃዎች ያድርጉ።",
-  "pilaunch-slice-title":"SLICE — ሁለተኛው Testnet Token",
-  "pilaunch-slice-body":"SLICE Pi Launchpad Testnet ላይ ሁለተኛ token ነው። ሂደቱን ለመፈተን ያገለገለ ነበር። ያስቀመጡ እና ቁጥሮ ያቀረቡ አቅኚዎች SLICE tokens አገኙ።",
-  "pilaunch-earn-title":"Launchpad Tokens ማግኘት እንዴት",
-  "pilaunch-earn-body":"ደረጃ 1: Pi Browser → Pi Launchpad። ደረጃ 2: ንቁ token ጅምር ያግኙ። ደረጃ 3: Pi STAKE ያድርጉ። ደረጃ 4: Pi ወደ ፕሮጀክት COMMIT ያድርጉ። ደረጃ 5: ዝጋ እስኪ ይጠብቁ። ደረጃ 6: Tokens ያስቡ።",
-  "pilaunch-lock-title":"ሙሉ Pi Launchpad ስልጠና — አባሎች ብቻ",
-  "pilaunch-lock-sub":"ሙሉ ስልጠና — stake፣ commit፣ ፕሮጀክት መምረጥ። በ0.01π ይክፈቱ።",
-  "btn-unlock-pilaunch-txt":"🔓 Pi Launchpad ስልጠና ይክፈቱ — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking ብቻ tokens አይሰጥም — COMMIT ማድረግም አለብዎት።",
-  "pilaunch-warn-2":"⚠️ Pi Launchpad Pi Browser ብቻ ውስጥ ይጠቀሙ።",
-  "pilaunch-cta-title":"📚 Pi Launchpad ለመሳተፍ ዝግጁ ነዎት?",
-  "pilaunch-cta-body":"ሙሉ Pi Launchpad ስልጠና Chigalex1 ውስጥ — ፕሮጀክቶች መገምገም፣ stake ማድረግ፣ commit ማድረግ እና token ሽልማቶች ማግኘት።"
-},
+
+
+
+
 
 am: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -1422,49 +907,13 @@ am: {
 "cb-title":"Chigalex1 AI ረዳት","cb-sub":"አባሎች ብቻ · ስለ Pi ማንኛውንም ነገር ይጠይቁኝ",
 "cb-welcome":"👋 ሰላም! እኔ የChigalex1 AI ነኝ — ለአፍሪካ ባለሙያ Pi መምሪያ። KYC፣ KYB፣ የPi ካርታ፣ GCV ወይም ደህንነት ይጠይቁኝ!"
 },
-am: {
-  "lbl-pidex":"🔁 አባሎች ብቻ",
-  "sec-pidex-title":"PiDEX — የPi ያልተማከለ ልውውጥ",
-  "sec-pidex-sub":"PiDEX በማርች 2025 ተጀምሯል። Pi tokens ደህንነቱ በተጠበቀ ሁኔታ ውስጥ ይገበያዩ።",
-  "pidex-badge":"🔁 PiDEX — በPi Mainnet ላይ ቀጥታ",
-  "pidex-what-title":"PiDEX ምንድን ነው?",
-  "pidex-what-body":"PiDEX የPi Network ኦፊሴላዊ ያልተማከለ ልውውጥ ነው — Pi Browser ውስጥ ተሰርቷል። አቅኚዎች Pi tokens ቀጥተኛ ለቀጥታ ሳይልኩ ሊገበያዩ ያስችላቸዋል።",
-  "pidex-access-title":"PiDEX እንዴት ይደረሳል",
-  "pidex-access-body":"Pi Browser ይክፈቱ → PiDEX ይፈልጉ → Pi Network ሲጠቀሙ ይግቡ። KYC መጠናቀቅ አለበት እና ንቁ Pi Wallet ያስፈልጋል።",
-  "pidex-trade-title":"PiDEX ላይ ልወዳደር እንዴት",
-  "pidex-trade-body":"ደረጃ 1: Pi Browser ውስጥ PiDEX ይክፈቱ። ደረጃ 2: Token ጥንድ ይምረጡ። ደረጃ 3: መጠን ያስገቡ። ደረጃ 4: ዋጋ ያጣሩ። ደረጃ 5: ያረጋግጡ — ወዲያውኑ Pi blockchain ላይ ይፈጸማል።",
-  "pidex-safety-title":"የPiDEX ደህንነት ህጎች",
-  "pidex-safety-body":"PiDEX ደህንነቱ ወደ Pi Browser ብቻ ይድረሱ። ውጪ ድረ-ገጾችን አይጠቀሙ። Passphrase አይካፈሉ። የPi ecosystem tokens ብቻ ይገበያዩ።",
-  "pidex-lock-title":"ሙሉ PiDEX ስልጠና — አባሎች ብቻ",
-  "pidex-lock-sub":"ሙሉ PiDEX ስልጠና። በ0.01π ይክፈቱ።",
-  "btn-unlock-pidex-txt":"🔓 PiDEX ስልጠና ይክፈቱ — 0.01π",
-  "pidex-tip-1":"✅ PiDEX Pi Browser ውስጥ ብቻ ይሰራል።",
-  "pidex-tip-2":"✅ KYC ከመገበያየትዎ በፊት ተፈቅዶ መሆን አለበት።",
-  "pidex-tip-3":"✅ ሁሉም 거래 Pi blockchain ላይ ደህንነቱ ተጠብቆ ይፈጸማል።",
-  "pidex-cta-title":"📚 PiDEX ላይ ለመገበያየት ዝግጁ ነዎት?",
-  "pidex-cta-body":"ሙሉ PiDEX ስልጠና Chigalex1 ውስጥ — ቦርሳ ማዘጋጀት፣ ጥንዶች መምረጥ፣ ልውውጥ ማካሄድ እና ደህንነት።",
-  "lbl-pilaunch":"🚀 አባሎች ብቻ",
-  "sec-pilaunch-title":"Pi Launchpad — የToken ጅምር መድረክ",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet በማርች 2025 ተጀምሯል። Pi ያስቀምጡ፣ Pi ይቁጠሩ፣ አዲስ tokens ያግኙ።",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet ንቁ ነው",
-  "pilaunch-what-title":"Pi Launchpad ምንድን ነው?",
-  "pilaunch-what-body":"Pi Launchpad የPi Network ኦፊሴላዊ token ጅምር መድረክ ነው። አዲስ ፕሮጀክቶች Pi ከማህበረሰቡ ይሰበስባሉ — ተሳታፊዎችን በአዲስ tokens ይሸልማሉ።",
-  "pilaunch-stake-title":"Staking ምንድን ነው?",
-  "pilaunch-stake-body":"Staking ማለት Pi ክፍሉን smart contract ውስጥ ቆልፎ ፕሮጀክቱን ድጋፍ ማሳየት ነው። የተቀመጠ Pi token ሽልማቶችን ለማግኘት ብቁ ያደርጋቸዋል።",
-  "pilaunch-commit-title":"Committing ምንድን ነው? (ከStaking የተለየ)",
-  "pilaunch-commit-body":"Committing ከStaking የተለየ ድርጊት ነው። ካስቀመጡ በኋላ፣ ሽልማቶቹን ለማግኘት Pi ወደ ልዩ ፕሮጀክት COMMIT ማድረግ አለብዎት። Staking ብቻ አይበቃም — ሁለቱንም ደረጃዎች ያድርጉ።",
-  "pilaunch-slice-title":"SLICE — ሁለተኛው Testnet Token",
-  "pilaunch-slice-body":"SLICE Pi Launchpad Testnet ላይ ሁለተኛ token ነው። ሂደቱን ለመፈተን ያገለገለ ነበር። ያስቀመጡ እና ቁጥሮ ያቀረቡ አቅኚዎች SLICE tokens አገኙ።",
-  "pilaunch-earn-title":"Launchpad Tokens ማግኘት እንዴት",
-  "pilaunch-earn-body":"ደረጃ 1: Pi Browser → Pi Launchpad። ደረጃ 2: ንቁ token ጅምር ያግኙ። ደረጃ 3: Pi STAKE ያድርጉ። ደረጃ 4: Pi ወደ ፕሮጀክት COMMIT ያድርጉ። ደረጃ 5: ዝጋ እስኪ ይጠብቁ። ደረጃ 6: Tokens ያስቡ።",
-  "pilaunch-lock-title":"ሙሉ Pi Launchpad ስልጠና — አባሎች ብቻ",
-  "pilaunch-lock-sub":"ሙሉ ስልጠና — stake፣ commit፣ ፕሮጀክት መምረጥ። በ0.01π ይክፈቱ።",
-  "btn-unlock-pilaunch-txt":"🔓 Pi Launchpad ስልጠና ይክፈቱ — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking ብቻ tokens አይሰጥም — COMMIT ማድረግም አለብዎት።",
-  "pilaunch-warn-2":"⚠️ Pi Launchpad Pi Browser ብቻ ውስጥ ይጠቀሙ።",
-  "pilaunch-cta-title":"📚 Pi Launchpad ለመሳተፍ ዝግጁ ነዎት?",
-  "pilaunch-cta-body":"ሙሉ Pi Launchpad ስልጠና Chigalex1 ውስጥ — ፕሮጀክቶች መገምገም፣ stake ማድረግ፣ commit ማድረግ እና token ሽልማቶች ማግኘት።"
-},
+
+
+
+
+
+
+
 
 rw: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -1525,49 +974,12 @@ rw: {
 "cb-title":"Umufasha wa AI wa Chigalex1","cb-sub":"Abanyamuryango gusa · Mbaza ikibazo cyose ku Pi",
 "cb-welcome":"👋 Muraho! Ndi AI yawe ya Chigalex1 — inzobere ya Pi ya Afrika. Mbaza ku KYC, KYB, Ikarita ya Pi, GCV cyangwa umutekano!"
 },
-rw: {
-  "lbl-pidex":"🔁 Abanyamuryango Gusa",
-  "sec-pidex-title":"PiDEX — Isoko ry'Itumanahana rya Pi",
-  "sec-pidex-sub":"PiDEX yashinzwe Werurwe 2025. Kora ubucuruzi bwa Pi tokens mu burenganzira bwa Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — Iri kuri Pi Mainnet",
-  "pidex-what-title":"PiDEX ni iki?",
-  "pidex-what-body":"PiDEX ni isoko rasmi ry'itumanahana rya Pi Network ryubatswe mu Pi Browser. Iremerera abatangizi gucuruza Pi tokens ku buryo butaziguye, nta Pi zohererezwa ku masoko y'hanze.",
-  "pidex-access-title":"Uburyo bwo Kugera kuri PiDEX",
-  "pidex-access-body":"Fungura Pi Browser → shakisha PiDEX → injira na Pi Network. Ugomba kuba warangije KYC kandi ufite Pi Wallet ikorana.",
-  "pidex-trade-title":"Uburyo bwo Kucuruza kuri PiDEX",
-  "pidex-trade-body":"Intambwe 1: Fungura PiDEX muri Pi Browser. Intambwe 2: Hitamo urunigi rwa token. Intambwe 3: Shyiramo umubare. Intambwe 4: Reba igiciro. Intambwe 5: Emeza — irangirira vuba kuri Pi blockchain.",
-  "pidex-safety-title":"Amategeko y'Umutekano wa PiDEX",
-  "pidex-safety-body":"Injira PiDEX binyuze muri Pi Browser gusa. Ntukoreshe imbuga z'inyuma. Ntugabanye ijambo ryawe ry'ibanga. Kora ubucuruzi bwa tokens zirebwa na Pi ecosystem gusa.",
-  "pidex-lock-title":"Isomo Ryuzuye rya PiDEX — Abanyamuryango Gusa",
-  "pidex-lock-sub":"Isomo ryuzuye rya PiDEX. Fungura na 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Fungura Isomo rya PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX ikorana mu Pi Browser gusa.",
-  "pidex-tip-2":"✅ KYC yawe igomba kwemezwa mbere yo kucuruza.",
-  "pidex-tip-3":"✅ Ubucuruzi bwose burangirirwa kuri Pi blockchain mu mutekano.",
-  "pidex-cta-title":"📚 Witeguye kucuruza kuri PiDEX?",
-  "pidex-cta-body":"Isomo ryuzuye rya PiDEX muri Chigalex1 — gutegura imfuko, guhitamo urunigi, gukora ubucuruzi no kurinda umutekano.",
-  "lbl-pilaunch":"🚀 Abanyamuryango Gusa",
-  "sec-pilaunch-title":"Pi Launchpad — Urubuga rwo Gutangira Tokens",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet yashinzwe Werurwe 2025. Shyira Pi, emeza Pi, kandi ubone tokens nshya.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Ikorana",
-  "pilaunch-what-title":"Pi Launchpad ni iki?",
-  "pilaunch-what-body":"Pi Launchpad ni urubuga rasmi rwo gutangira tokens rwa Pi Network. Imishinga mishya y'ecosystem ya Pi ikusanya Pi mu muryango — kandi iguhe abagezi tokens nshya.",
-  "pilaunch-stake-title":"Staking ni iki?",
-  "pilaunch-stake-body":"Staking ni ugushyira igice cya Pi yawe muri smart contract kwerekana inkunga y'umushinga. Pi yashyizwe ikuha uburenganzira bwo kubona ibitambo bya token.",
-  "pilaunch-commit-title":"Committing ni iki? (ITANDUKANYE na Staking)",
-  "pilaunch-commit-body":"Committing ni igikorwa GITANDUKANYE. Nyuma yo gushyira, UGOMBA NANONE gusezerana Pi yawe ku mushinga runaka kugira ngo ubone ibitambo. Staking gusa NTIYANYE — kora intambwe ZOMBI.",
-  "pilaunch-slice-title":"SLICE — Iteganya rya Kabiri rya Testnet",
-  "pilaunch-slice-body":"SLICE ni token ya kabiri kuri Pi Launchpad Testnet. Yakoreshejwe kugenzura inzira. Abatangizi bashyize kandi bemeye Pi bahawe SLICE tokens.",
-  "pilaunch-earn-title":"Uburyo bwo Kubona Tokens za Launchpad",
-  "pilaunch-earn-body":"Intambwe 1: Pi Browser → Pi Launchpad. Intambwe 2: Shaka gutangira token gukorana. Intambwe 3: SHYIRA Pi yawe. Intambwe 4: EMEZA Pi yawe ku mushinga. Intambwe 5: Tegereza gufungwa. Intambwe 6: Bona tokens wenyine.",
-  "pilaunch-lock-title":"Isomo Ryuzuye — Abanyamuryango Gusa",
-  "pilaunch-lock-sub":"Amabwiriza yuzuye — gushyira, kwemeza, guhitamo imishinga. Fungura na 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Fungura Amabwiriza ya Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking gusa NTIKUHA tokens — UGOMBA NANONE kwemeza.",
-  "pilaunch-warn-2":"⚠️ Koresha Pi Launchpad muri Pi Browser rasmi gusa.",
-  "pilaunch-cta-title":"📚 Witeguye kugira uruhare muri Pi Launchpad?",
-  "pilaunch-cta-body":"Amabwiriza yuzuye ya Pi Launchpad muri Chigalex1 — gusuzuma imishinga, gushyira, kwemeza, no kubona ibitambo."
-},
+
+
+
+
+
+
 
 lg: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -1628,49 +1040,11 @@ lg: {
 "cb-title":"Omuyambi wa AI wa Chigalex1","cb-sub":"Abalonde bokka · Nbuuza kibuuzo kyonna ku Pi",
 "cb-welcome":"👋 Wasuze otya! Nze AI yo ya Chigalex1 — omuyoozi wa Pi akakasiziddwa wa Afurika. Nbuuza ku KYC, KYB, Mapu ya Pi, GCV oba obukuumi!"
 },
-lg: {
-  "lbl-pidex":"🔁 Abalonde Bokka",
-  "sec-pidex-title":"PiDEX — Amasoko ga Pi Agatawaana",
-  "sec-pidex-sub":"PiDEX yatandikibwa Maaci 2025. Suubuza Pi tokens bulungi mu nnyini wa Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — Eri ku Pi Mainnet",
-  "pidex-what-title":"PiDEX kiki?",
-  "pidex-what-body":"PiDEX ye amasoko akakasiziddwa ga Pi Network agaganiiddwa mu Pi Browser. Gataasa vanamaiguru kusuubuza Pi tokens obuganda ne obuganda, nti batume Pi ku masoko g'ebweru.",
-  "pidex-access-title":"Okufuna PiDEX",
-  "pidex-access-body":"Ggulawo Pi Browser → noonya PiDEX → yingira nePi Network. Ofunenga okumala KYC n'okuba na Pi Wallet ey'okukola.",
-  "pidex-trade-title":"Okusuubuza ku PiDEX",
-  "pidex-trade-body":"Ensonga 1: Ggulawo PiDEX mu Pi Browser. Ensonga 2: Londa eppeya ya token. Ensonga 3: Yingiza obungi. Ensonga 4: Kebera omuwendo. Ensonga 5: Kakasa — egema mangu ku Pi blockchain.",
-  "pidex-safety-title":"Amateeka g'Obukuumi bwa PiDEX",
-  "pidex-safety-body":"Funa PiDEX mu Pi Browser akakasiziddwa wokka. Otakozesa bisaiti by'ebweru. Otafuna passphrase yo. Suubuza tokens eziwa ku Pi ecosystem wokka.",
-  "pidex-lock-title":"Okuyigiriza Kwekimu kwa PiDEX — Abalonde Bokka",
-  "pidex-lock-sub":"Okuyigiriza kwekimu kwa PiDEX. Ggulawo ne 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Ggulawo Okuyigiriza kwa PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX ekola wokka mu nnyini wa Pi Browser.",
-  "pidex-tip-2":"✅ KYC yo eteekwa okukkirizibwa nga tonnayetandika kusuubuza.",
-  "pidex-tip-3":"✅ Okusuubuza kwose kukakasibwa ku Pi blockchain bulungi.",
-  "pidex-cta-title":"📚 Otegekeddwa okusuubuza ku PiDEX?",
-  "pidex-cta-body":"Okuyigiriza kwekimu kwa PiDEX mu Chigalex1 — okutegeka kissakawo, okukolonda eppeya, okusuubuza n'obukuumi.",
-  "lbl-pilaunch":"🚀 Abalonde Bokka",
-  "sec-pilaunch-title":"Pi Launchpad — Kifo ky'Okutandika Tokens",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet yatandikibwa Maaci 2025. Komya Pi, wandiika Pi, n'okufuna tokens empya.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Ekola",
-  "pilaunch-what-title":"Pi Launchpad kiki?",
-  "pilaunch-what-body":"Pi Launchpad ye kifo akakasiziddwa ky'okutandika tokens kya Pi Network. Ebikolwa bimpya bya Pi ecosystem bikunja Pi okuva mu nkuŋŋaana — n'okupawa abapiganyi tokens zaabwe empya.",
-  "pilaunch-stake-title":"Staking kiki?",
-  "pilaunch-stake-body":"Staking kwe kwekula ekitundu ky'Pi yo mu masezerano g'obwenge okwerekeza okuwagira ekirowoozo. Pi ekomeddwa ekupawa eddembe ly'okufuna emikisa gy'ebintu by'akasolya.",
-  "pilaunch-commit-title":"Committing kiki? (KYAWUKANA ne Staking)",
-  "pilaunch-commit-body":"Committing kikolwa EKYAWUKANA. Oluvannyuma lw'okukomya, OFUNIKA NAAWE okuwandiika Pi yo ku kikolwa ekimu okufuna emikisa. Staking wokka TEKIMALA — kola ensonga ZOMBI.",
-  "pilaunch-slice-title":"SLICE — Ekintu ky'Akasolya eky'Okubiri kya Testnet",
-  "pilaunch-slice-body":"SLICE ye token eyookubiri ku Pi Launchpad Testnet. Yakozesebwa okukebera enkola. Vanamaiguru abakomezza n'abaawandiika Pi baafuna SLICE tokens.",
-  "pilaunch-earn-title":"Okufuna Tokens z'Launchpad",
-  "pilaunch-earn-body":"Ensonga 1: Pi Browser → Pi Launchpad. Ensonga 2: Noonya okutandika token okukola. Ensonga 3: KOMYA Pi yo. Ensonga 4: WANDIIKA Pi yo ku kikolwa. Ensonga 5: Linda okuggalawo. Ensonga 6: Funa tokens wenyewe.",
-  "pilaunch-lock-title":"Okuyigiriza Kwekimu — Abalonde Bokka",
-  "pilaunch-lock-sub":"Ekyokulabirako kwekimu — okukomya, okuwandiika, okulonda ebikolwa. Ggulawo ne 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Ggulawo Ekyokulabirako kya Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking wokka TEKIKUWA tokens — OFUNIKA NAAWE okuwandiika.",
-  "pilaunch-warn-2":"⚠️ Kozesa Pi Launchpad mu Pi Browser akakasiziddwa wokka.",
-  "pilaunch-cta-title":"📚 Otegekeddwa okuweera mu Pi Launchpad?",
-  "pilaunch-cta-body":"Ekyokulabirako kwekimu kya Pi Launchpad mu Chigalex1 — okukebera ebikolwa, okukomya, okuwandiika n'okufuna emikisa."
-},
+
+
+
+
+
 
 so: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -1731,49 +1105,10 @@ so: {
 "cb-title":"Kaaliyaha AI ee Chigalex1","cb-sub":"Xubnaha kaliya · I weydii wax kasta oo ku saabsan Pi",
 "cb-welcome":"👋 Salaan! Aniga waxaan ahay AI-gaaga Chigalex1 — khabiirka Pi ee Afrika. I weydii KYC, KYB, Khariidadda Pi, GCV ama amniga!"
 },
-so: {
-  "lbl-pidex":"🔁 Xubnaha Kaliya",
-  "sec-pidex-title":"PiDEX — Suuqa Kala-qaybsanaanta Pi",
-  "sec-pidex-sub":"PiDEX waxaa la bilaabay Maarso 2025. Ganacsiga Pi tokens si ammaan ah gudaha Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — Waa Toos ku Pi Mainnet",
-  "pidex-what-title":"PiDEX waa maxay?",
-  "pidex-what-body":"PiDEX waa suuq rasmi ah oo aan xukumeysneyn ee Pi Network ee ku dhisan Pi Browser. Waxay saadaalaha u oggolaanaysaa inay ganacsadaan Pi tokens si toos ah, iyagoon u dirayneyn Pi suuqyada dibadda.",
-  "pidex-access-title":"Sida loo galo PiDEX",
-  "pidex-access-body":"Fur Pi Browser → raadi PiDEX → ku gal Pi Network. Waa in aad dhamaysay KYC oo aad leedahay Pi Wallet firfircoon.",
-  "pidex-trade-title":"Sida loo ganacsado PiDEX",
-  "pidex-trade-body":"Tallaabo 1: Fur PiDEX Pi Browser. Tallaabo 2: Dooro labada token. Tallaabo 3: Geli xaddiga. Tallaabo 4: Hubi heerka. Tallaabo 5: Xaqiiji — si degdeg ah ku dhammaanaysa Pi blockchain.",
-  "pidex-safety-title":"Xeerarka Ammaanka PiDEX",
-  "pidex-safety-body":"PiDEX ka gal oo kaliya Pi Browser rasmi ah. Ha isticmaalin websaydyada dibadda. Ha wadaaginin erayga sirta ah. Ganacsiga tokens ee ku jira Pi ecosystem oo keliya.",
-  "pidex-lock-title":"Faahfaahin Buuxda PiDEX — Xubnaha Kaliya",
-  "pidex-lock-sub":"Faahfaahin buuxda PiDEX. Fur 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Fur Faahfaahin PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX waxay shaqeysaa oo kaliya Pi Browser gudihiisa.",
-  "pidex-tip-2":"✅ KYC-gaagu waa in la ansixiyaa ka hor intaadan ganacsanin.",
-  "pidex-tip-3":"✅ Dhammaan ganacsiyadu waxay ku dhammaanayaan Pi blockchain si ammaan ah.",
-  "pidex-cta-title":"📚 Ma diyaar u tahay inaad ku ganacsato PiDEX?",
-  "pidex-cta-body":"Faahfaahin buuxda PiDEX gudaha Chigalex1 — dejinta boorsada, doorbidda labada token, fulinta ganacsiyada iyo ammaanka.",
-  "lbl-pilaunch":"🚀 Xubnaha Kaliya",
-  "sec-pilaunch-title":"Pi Launchpad — Goobta Bilowga Tokens",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet waxaa la bilaabay Maarso 2025. Dhig Pi, ballan-qaad Pi, kuna hel tokens cusub.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Waa Firfircoon",
-  "pilaunch-what-title":"Pi Launchpad waa maxay?",
-  "pilaunch-what-body":"Pi Launchpad waa goob rasmi ah oo loogu talo galay bilowga tokens ee Pi Network. Mashaariicda cusub ee Pi ecosystem waxay ka uruuriyaan Pi bulshadda — waxayna ka abaalmariyaan ka qaybgalayaasha tokens cusub.",
-  "pilaunch-stake-title":"Staking waa maxay?",
-  "pilaunch-stake-body":"Staking waxay ka dhigan tahay xabsi qayb of Pi-gaaga kontarakeeddii caqli-galka ah si loo muujiyo taageerada mashruuca. Pi la dhigay ayaa kuu siinaysa xaq aad ku helayso abaalmarinta token.",
-  "pilaunch-commit-title":"Committing waa maxay? (KALA DUWAN Staking)",
-  "pilaunch-commit-body":"Committing waa ficil GOONI AH oo ka duwan Staking. Ka dib dhigidda, WAAD KALE AHAYN inaad ku ballan-qaadato Pi-gaaga mashruuc gaar ah si aad u hesho abaalmarinta. Staking oo keliya KUMA FILNA — samee LABADA tallaabo.",
-  "pilaunch-slice-title":"SLICE — Token-ka Labaad ee Testnet",
-  "pilaunch-slice-body":"SLICE waa token-ka labaad ee Pi Launchpad Testnet. Waxa loo adeegsaday in lagu tijaabo habka. Saadaalaha dhigay oo ballan-qaady Pi waxay helaan SLICE tokens.",
-  "pilaunch-earn-title":"Sida loo Helo Tokens Launchpad",
-  "pilaunch-earn-body":"Tallaabo 1: Pi Browser → Pi Launchpad. Tallaabo 2: Hel bilowga token ee firfircoon. Tallaabo 3: DHIG Pi-gaaga. Tallaabo 4: BALLAN-QAAD Pi-gaaga mashruuca. Tallaabo 5: Sug xidhmada. Tallaabo 6: Hel tokens si toos ah.",
-  "pilaunch-lock-title":"Faahfaahin Buuxda — Xubnaha Kaliya",
-  "pilaunch-lock-sub":"Hagid buuxda — dhigidda, ballan-qaadashada, doorashada mashaariicda. Fur 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Fur Hagida Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking oo keliya KUMA SIINAYSO tokens — WAAD KALE AHAYN inaad ballan-qaadato.",
-  "pilaunch-warn-2":"⚠️ Pi Launchpad ku isticmaal Pi Browser rasmi ah oo keliya.",
-  "pilaunch-cta-title":"📚 Ma diyaar u tahay inaad ka qaybgasho Pi Launchpad?",
-  "pilaunch-cta-body":"Hagid buuxda Pi Launchpad gudaha Chigalex1 — qiimaynta mashaariicda, dhigidda, ballan-qaadashada saxda ah, iyo helida abaalmarinta."
-},
+
+
+
+
 
 ha: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -1834,49 +1169,10 @@ ha: {
 "cb-title":"Mataimakiyar AI ta Chigalex1","cb-sub":"Mambobi kawai · Tambaye ni komai game da Pi",
 "cb-welcome":"👋 Sannu! Ni ne AI ta Chigalex1 — jagoran Pi mai ƙwarewa na Afirka. Tambaye ni game da KYC, KYB, Taswirar Pi, GCV ko tsaro!"
 },
-ha: {
-  "lbl-pidex":"🔁 Mambobi Kawai",
-  "sec-pidex-title":"PiDEX — Musayar Musanya na Pi",
-  "sec-pidex-sub":"PiDEX ya fara a Maris 2025. Yi kasuwanci da Pi tokens cikin aminci a cikin Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — Yana Aiki a Pi Mainnet",
-  "pidex-what-title":"PiDEX mene ne?",
-  "pidex-what-body":"PiDEX shine cibiyar musayar Pi Network ta hukuma da aka gina a cikin Pi Browser. Tana ba masu fara aiki damar yin kasuwanci da Pi tokens kai tsaye tsakaninsu, ba tare da aika Pi zuwa musayar waje ba.",
-  "pidex-access-title":"Yadda Ake Isa PiDEX",
-  "pidex-access-body":"Buɗe Pi Browser → nemo PiDEX → shiga da Pi Network. Dole ne ka kammala KYC kuma ka sami Pi Wallet mai aiki.",
-  "pidex-trade-title":"Yadda Ake Kasuwanci a PiDEX",
-  "pidex-trade-body":"Mataki 1: Buɗe PiDEX a Pi Browser. Mataki 2: Zaɓi nau'in token. Mataki 3: Shigar da adadin. Mataki 4: Duba ƙimar musayar. Mataki 5: Tabbatar — ana cika shi nan take a Pi blockchain.",
-  "pidex-safety-title":"Ƙa'idodin Tsaro na PiDEX",
-  "pidex-safety-body":"Shiga PiDEX ta Pi Browser na hukuma kawai. Kada ka yi amfani da gidajen yanar gizo na waje. Kada ka raba kalmar sirrin ka. Yi kasuwanci da tokens da ke cikin Pi ecosystem kawai.",
-  "pidex-lock-title":"Cikakken Jagora na PiDEX — Mambobi Kawai",
-  "pidex-lock-sub":"Cikakken jagora na PiDEX. Buɗe da 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Buɗe Jagora na PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX yana aiki a cikin Pi Browser kawai.",
-  "pidex-tip-2":"✅ KYC ɗinka dole a yarda da shi kafin ka iya kasuwanci.",
-  "pidex-tip-3":"✅ Duk kasuwancin ana kammala shi a Pi blockchain cikin aminci.",
-  "pidex-cta-title":"📚 Shin ka shirya yin kasuwanci a PiDEX?",
-  "pidex-cta-body":"Cikakken jagora na PiDEX a cikin Chigalex1 — saita jakar, zaɓar nau'i, aiwatar da kasuwanci da kuma tsaro.",
-  "lbl-pilaunch":"🚀 Mambobi Kawai",
-  "sec-pilaunch-title":"Pi Launchpad — Dandali na Fara Tokens",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet ya fara a Maris 2025. Ajiye Pi, ɗauki alkawari na Pi, ka sami tokens sabbi.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Yana Aiki",
-  "pilaunch-what-title":"Pi Launchpad mene ne?",
-  "pilaunch-what-body":"Pi Launchpad shine dandali na hukuma na farawa tokens na Pi Network. Ayyukan sabbi na Pi ecosystem suna tattara Pi daga al'umma — suna kuma ba masu shiga lada ta tokens sabbi.",
-  "pilaunch-stake-title":"Staking mene ne?",
-  "pilaunch-stake-body":"Staking na nufin kulle wani ɓangare na Pi ɗinka a cikin kwangilar hankali don nuna goyon baya ga wani aiki. Pi da aka kulle tana ba ka cancanta don samun lada ta tokens.",
-  "pilaunch-commit-title":"Committing mene ne? (DABAN ne da Staking)",
-  "pilaunch-commit-body":"Committing aiki NE DABAN daga Staking. Bayan kulle, DOLE KA KUMA ɗauki alkawari da Pi ɗinka ga wani aiki na musamman don samun lada. Staking kaɗai BA YA ƊAUKE — yi matakan BIYU.",
-  "pilaunch-slice-title":"SLICE — Token ta Biyu ta Testnet",
-  "pilaunch-slice-body":"SLICE shine token na biyu a Pi Launchpad Testnet. An yi amfani da shi don gwada tsarin kulle-da-alkawari. Masu fara aiki da suka kulle kuma suka dauki alkawari sun sami SLICE tokens.",
-  "pilaunch-earn-title":"Yadda Ake Samun Tokens na Launchpad",
-  "pilaunch-earn-body":"Mataki 1: Pi Browser → Pi Launchpad. Mataki 2: Sami faran da ke aiki. Mataki 3: KULLE Pi ɗinka. Mataki 4: ƊAUKI ALKAWARI da Pi zuwa aikin. Mataki 5: Jira rufe. Mataki 6: Karɓi tokens kai tsaye.",
-  "pilaunch-lock-title":"Cikakken Jagora — Mambobi Kawai",
-  "pilaunch-lock-sub":"Cikakken jagorar — kulle, alkawari, zaɓar ayyuka. Buɗe da 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Buɗe Jagora na Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking kaɗai BA YA BA KA tokens — DOLE KA KUMA dauki alkawari.",
-  "pilaunch-warn-2":"⚠️ Yi amfani da Pi Launchpad a cikin Pi Browser na hukuma kawai.",
-  "pilaunch-cta-title":"📚 Shin ka shirya shiga Pi Launchpad?",
-  "pilaunch-cta-body":"Cikakken jagora na Pi Launchpad a cikin Chigalex1 — kimanta ayyuka, kulle, daukan alkawari, da kuma samun lada."
-},
+
+
+
+
 
 yo: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -1937,49 +1233,13 @@ yo: {
 "cb-title":"Olùrànlọ́wọ́ AI Chigalex1","cb-sub":"Àwọn ọmọ ẹgbẹ́ nìkan · Béèrè nípa Pi",
 "cb-welcome":"👋 Ẹ káàbọ̀! Èmi ni AI rẹ Chigalex1 — amoye Pi ti Áfríkà. Béèrè nípa KYC, KYB, Àpàtẹ̀ Pi, GCV tàbí ààbò!"
 },
-yo: {
-  "lbl-pidex":"🔁 Àwọn Ọmọ Ẹgbẹ́ Nìkan",
-  "sec-pidex-title":"PiDEX — Ìpàdé Ìsòwò Pi Tí Kò Ní Àárín",
-  "sec-pidex-sub":"PiDEX bẹ̀rẹ̀ ní Oṣù Kẹta 2025. Ṣòwò Pi tokens ní ààbò ẹ́gẹ́ Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — Tó Ń Ṣiṣẹ́ lórí Pi Mainnet",
-  "pidex-what-title":"Kí Ni PiDEX?",
-  "pidex-what-body":"PiDEX jẹ́ ìpàdé ìsòwò àkọ́kọ́ Pi Network tí a ṣe ní inú Pi Browser. Ó jẹ́ kí àwọn aṣáájú ṣòwò Pi tokens pẹ̀lú ara wọn taara, láì fi Pi ránṣẹ́ sí àwọn ìpàdé ìsòwò òde.",
-  "pidex-access-title":"Bí a Ṣe Ń Wọlé PiDEX",
-  "pidex-access-body":"Ṣí Pi Browser → wá PiDEX → wọlé pẹ̀lú Pi Network. O gbọdọ̀ parí KYC àti ní Pi Wallet tó ń ṣiṣẹ́.",
-  "pidex-trade-title":"Bí a Ṣe Ń Ṣòwò lórí PiDEX",
-  "pidex-trade-body":"Ìgbésẹ̀ 1: Ṣí PiDEX ní Pi Browser. Ìgbésẹ̀ 2: Yan orúkọ àwọn token. Ìgbésẹ̀ 3: Fún iye. Ìgbésẹ̀ 4: Ṣàyẹ̀wò ọ̀nà ìmúpadà. Ìgbésẹ̀ 5: Jẹ́rìísí — jẹ́ kó parí láìpẹ́ lórí Pi blockchain.",
-  "pidex-safety-title":"Àwọn Ìlànà Ààbò PiDEX",
-  "pidex-safety-body":"Wọlé PiDEX nìkan nípasẹ̀ Pi Browser àkọ́kọ́. Má ṣe lo àwọn ìkànsí ìta. Má ṣe pín gbólóhùn ìpamọ́ rẹ. Ṣòwò nìkan pẹ̀lú tokens tó wà nínú Pi ecosystem.",
-  "pidex-lock-title":"Ìtọ́ni Kíkún PiDEX — Àwọn Ọmọ Ẹgbẹ́ Nìkan",
-  "pidex-lock-sub":"Ìtọ́ni kíkún PiDEX. Ṣí pẹ̀lú 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Ṣí Ìtọ́ni PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX ń ṣiṣẹ́ nìkan ní inú Pi Browser.",
-  "pidex-tip-2":"✅ KYC rẹ gbọdọ̀ fọwọ́ sí ṣáájú ìṣòwò.",
-  "pidex-tip-3":"✅ Gbogbo ìsòwò parí lórí Pi blockchain ní ààbò.",
-  "pidex-cta-title":"📚 Ṣé o ṣetán láti ṣòwò lórí PiDEX?",
-  "pidex-cta-body":"Ìtọ́ni kíkún PiDEX ní Chigalex1 — ṣeto àpamọ́, yan àwọn token, ṣòwò àti ààbò.",
-  "lbl-pilaunch":"🚀 Àwọn Ọmọ Ẹgbẹ́ Nìkan",
-  "sec-pilaunch-title":"Pi Launchpad — Pẹpẹ Ìbẹ̀rẹ̀ Tokens",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet bẹ̀rẹ̀ ní Oṣù Kẹta 2025. Tú Pi sílẹ̀, ṣe àdéhùn Pi, kí o sì jo àwọn token tuntun.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Ń Ṣiṣẹ́",
-  "pilaunch-what-title":"Kí Ni Pi Launchpad?",
-  "pilaunch-what-body":"Pi Launchpad jẹ́ pẹpẹ àkọ́kọ́ ìbẹ̀rẹ̀ tokens Pi Network. Àwọn iṣẹ́ akanṣe tuntun Pi ecosystem ń gba Pi lọ́wọ́ àwùjọ — wọ́n sì ń sanwó àwọn olùkópa pẹ̀lú tokens tuntun.",
-  "pilaunch-stake-title":"Kí Ni Staking?",
-  "pilaunch-stake-body":"Staking túmọ̀ sí títi apá Pi rẹ sínú àdéhùn ọlọgbọn láti fi ìtìlẹ́yìn hàn fún iṣẹ́ kan. Pi tó ti tú fún ọ ní ẹ̀tọ́ láti gba àwọn àfikún token.",
-  "pilaunch-commit-title":"Kí Ni Committing? (YÀTỌ̀ sí Staking)",
-  "pilaunch-commit-body":"Committing jẹ́ ìgbésẹ̀ ỌTỌ̀ pátápátá. Lẹ́hìn títú, O GBỌ̀DỌ̀ TÚN ṣe àdéhùn Pi rẹ sí iṣẹ́ akanṣe kan láti jo àwọn àfikún. Staking nìkan KÒ TÓ — ṣe ÌGBÉSẸ̀ MÉJÌ.",
-  "pilaunch-slice-title":"SLICE — Token Kejì ti Testnet",
-  "pilaunch-slice-body":"SLICE jẹ́ token kejì lórí Pi Launchpad Testnet. A lò ó láti ṣàyẹ̀wò ìlànà. Àwọn aṣáájú tó tú àti tó ṣe àdéhùn Pi gba SLICE tokens.",
-  "pilaunch-earn-title":"Bí a Ṣe Ń Jo Tokens Launchpad",
-  "pilaunch-earn-body":"Ìgbésẹ̀ 1: Pi Browser → Pi Launchpad. Ìgbésẹ̀ 2: Wá ìbẹ̀rẹ̀ token tó ń ṣiṣẹ́. Ìgbésẹ̀ 3: TÚ Pi rẹ. Ìgbésẹ̀ 4: ṢE ÀDÉHÙN Pi rẹ sí iṣẹ́. Ìgbésẹ̀ 5: Dúró tí o fi parí. Ìgbésẹ̀ 6: Gbà tokens ní àárọ̀.",
-  "pilaunch-lock-title":"Ìtọ́ni Kíkún — Àwọn Ọmọ Ẹgbẹ́ Nìkan",
-  "pilaunch-lock-sub":"Ìtọ́ni kíkún — títú, àdéhùn, yíyan iṣẹ́. Ṣí pẹ̀lú 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Ṣí Ìtọ́ni Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking nìkan KÒ FÚN ọ NÍ tokens — O GBỌ̀DỌ̀ TÚN ṣe àdéhùn.",
-  "pilaunch-warn-2":"⚠️ Lo Pi Launchpad nìkan ní inú Pi Browser àkọ́kọ́.",
-  "pilaunch-cta-title":"📚 Ṣé o ṣetán láti kópa ní Pi Launchpad?",
-  "pilaunch-cta-body":"Ìtọ́ni kíkún Pi Launchpad ní Chigalex1 — ṣàyẹ̀wò iṣẹ́ akanṣe, títú, àdéhùn, àti jíjó àwọn àfikún."
-},
+
+
+
+
+
+
+
 
 ig: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -2040,49 +1300,12 @@ ig: {
 "cb-title":"Onye Enyemaka AI Chigalex1","cb-sub":"Ndị otu naanị · Jụọ m ajụjụ ọbụla maka Pi",
 "cb-welcome":"👋 Nnọọ! Abụ m AI gị Chigalex1 — onye nduzi Pi ọkachamara nke Africa. Jụọ m maka KYC, KYB, Ihe Atụ Pi, GCV ma ọ bụ nchedo!"
 },
-ig: {
-  "lbl-pidex":"🔁 Ndị Otu Naanị",
-  "sec-pidex-title":"PiDEX — Pi Ọchịchọ Ahịa Nke Enweghị Isi",
-  "sec-pidex-sub":"PiDEX bidoro na Mach 2025. Azụ ahịa Pi tokens n'ụzọ dị mma n'ime Pi ecosystem.",
-  "pidex-badge":"🔁 PiDEX — Na-arụ Ọrụ na Pi Mainnet",
-  "pidex-what-title":"Gịnị bụ PiDEX?",
-  "pidex-what-body":"PiDEX bụ ọchịchọ ahịa nke ọchịchọ Pi Network wuru n'ime Pi Browser. Ọ na-enye ndị ọsụ mbido ohere ịzụ ahịa Pi tokens n'ụzọ ọzọ, n'enweghị ịziga Pi n'ọchịchọ ahịa ndị ọzọ.",
-  "pidex-access-title":"Otu esi Nweta PiDEX",
-  "pidex-access-body":"Mepee Pi Browser → chọọ PiDEX → banye na Pi Network. Ị kwesịrị ịkwụcha KYC ma nwee Pi Wallet na-arụ ọrụ.",
-  "pidex-trade-title":"Otu esi Azụ Ahịa na PiDEX",
-  "pidex-trade-body":"Nzọụkwụ 1: Mepee PiDEX na Pi Browser. Nzọụkwụ 2: Họọ ụdị token. Nzọụkwụ 3: Tinye ọnụọgụ. Nzọụkwụ 4: Nyochaa ọnụ ego. Nzọụkwụ 5: Kwenye — ọ mechaa ozugbo na Pi blockchain.",
-  "pidex-safety-title":"Iwu Nchedo PiDEX",
-  "pidex-safety-body":"Bata PiDEX naanị site Pi Browser nke ọchịchọ. Akọbaghị ebe weebụ ndị ọzọ. Ekekọbaghị okwu nzuzo gị. Azụ ahịa naanị tokens e dere na Pi ecosystem.",
-  "pidex-lock-title":"Nkuzi Nke Ọha PiDEX — Ndị Otu Naanị",
-  "pidex-lock-sub":"Nkuzi nke ọha PiDEX. Mepee na 0.01π.",
-  "btn-unlock-pidex-txt":"🔓 Mepee Nkuzi PiDEX — 0.01π",
-  "pidex-tip-1":"✅ PiDEX na-arụ ọrụ naanị n'ime Pi Browser.",
-  "pidex-tip-2":"✅ Ị kwesịrị ịnweta nkwenye KYC tupu ị azụ ahịa.",
-  "pidex-tip-3":"✅ Azụ ahịa nile mechaa na Pi blockchain n'ụzọ dị mma.",
-  "pidex-cta-title":"📚 Ị dị njide ịzụ ahịa na PiDEX?",
-  "pidex-cta-body":"Nkuzi nke ọha PiDEX n'ime Chigalex1 — ịhazịrị akpa, ịhọọ ụdị token, ịzụ ahịa na nchedo.",
-  "lbl-pilaunch":"🚀 Ndị Otu Naanị",
-  "sec-pilaunch-title":"Pi Launchpad — Ebe Mmalite Tokens",
-  "sec-pilaunch-sub":"Pi Launchpad Testnet bidoro na Mach 2025. Tụgharịa Pi, kwenye Pi, nweta tokens ọhụrụ.",
-  "pilaunch-badge":"🚀 Pi Launchpad — Testnet Na-arụ Ọrụ",
-  "pilaunch-what-title":"Gịnị bụ Pi Launchpad?",
-  "pilaunch-what-body":"Pi Launchpad bụ ebe mmalite tokens nke ọchịchọ Pi Network. Ihe ọrụ ọhụrụ Pi ecosystem na-akọ Pi site n'ọha — ma na-akwụ ndị sonyere ụgwọ na tokens ọhụrụ.",
-  "pilaunch-stake-title":"Gịnị bụ Staking?",
-  "pilaunch-stake-body":"Staking pụtara itinye akụkụ nke Pi gị na njikwa ọghọm iji gosipụta nkwado ọrụ. Pi etinyere na-enye gị ikike ịnweta ụgwọ token.",
-  "pilaunch-commit-title":"Gịnị bụ Committing? (DỊ ICHE na Staking)",
-  "pilaunch-commit-body":"Committing bụ omume DỊ ICHE. Mgbe ị tinye, Ị KWESỊKWARA ikwenye Pi gị n'ọrụ ọ bụla iji nweta ụgwọ. Staking naanị EZUGHỊ OKE — mee USORO ABỤỌ.",
-  "pilaunch-slice-title":"SLICE — Token Nke Abụọ Nke Testnet",
-  "pilaunch-slice-body":"SLICE bụ token nke abụọ na Pi Launchpad Testnet. Ejiri ya nnwale usoro. Ndị ọsụ mbido tinyere ma kwenye Pi nwetara tokens SLICE.",
-  "pilaunch-earn-title":"Otu esi Nweta Tokens Launchpad",
-  "pilaunch-earn-body":"Nzọụkwụ 1: Pi Browser → Pi Launchpad. Nzọụkwụ 2: Chọta mmalite token na-arụ ọrụ. Nzọụkwụ 3: TINYE Pi gị. Nzọụkwụ 4: KWENYE Pi gị n'ọrụ. Nzọụkwụ 5: Chere mkpochapụ. Nzọụkwụ 6: Nweta tokens n'onwe ya.",
-  "pilaunch-lock-title":"Nkuzi Nke Ọha — Ndị Otu Naanị",
-  "pilaunch-lock-sub":"Nduzi nke ọha — itinye, ikwenye, ịhọọ ihe ọrụ. Mepee na 0.01π.",
-  "btn-unlock-pilaunch-txt":"🔓 Mepee Nduzi Pi Launchpad — 0.01π",
-  "pilaunch-warn-1":"⚠️ Staking naanị ANAGHỊ ENYE gị tokens — Ị KWESỊKWARA ikwenye.",
-  "pilaunch-warn-2":"⚠️ Jiri Pi Launchpad naanị n'ime Pi Browser nke ọchịchọ.",
-  "pilaunch-cta-title":"📚 Ị dị njide ịsonye na Pi Launchpad?",
-  "pilaunch-cta-body":"Nduzi nke ọha Pi Launchpad n'ime Chigalex1 — nyochaa ihe ọrụ, tinye, kwenye, nweta ụgwọ."
-},
+
+
+
+
+
+
 
 
 tw: {
@@ -2099,7 +1322,7 @@ tw: {
 "nav-subtitle":"🌍 Africa Pioneer Hub",
 "banner-title":"🌍 AFRICA Pi Network Education Hub",
 "region-north":"Atifi Afrika","region-west":"Atɔeɛ Afrika","region-east":"Apuei Afrika","region-central":"Empontenne Afrika","region-south":"Anafoɔ Afrika",
-"banner-stats":"· Amantam 54 · Kasa 22",
+"banner-stats":"· Amantam 54 · Kasa 25",
 "hero-badge":"🌍 Africa Pi Network Education Hub",
 "hero-h1":"Afrika Nyinaa Akɔ Pi Network",
 "hero-p":"Africa Pi GCV Industry Alliance amammerɛ fie titiriw — ma ahoɔden ntɔfoɔ ne akɔpere amantam 54 nyinaa so.",
@@ -2140,10 +1363,15 @@ tw: {
 "faq-q3":"GCV dɛn ne na ɛhia dɛn?","faq-a3":"GCV = $314,159 nkyɛn 1π adwene daa wɔ Pi blockchain.",
 "faq-q4":"Mɛnya dɛn ma nkafoɔ 0.01π?","faq-a4":"Nkɔ so daa wɔ: AI Chatbot, KYC/KYB Amammerɛ, Pi Mapa, Adwumayɛfoɔ Atɔfo.",
 "footer-tagline":"🌍 Africa Pi Network Education Hub",
-"footer-ref":"Referral: chigalex1","footer-nations":"Amantam 54 · Kasa 22",
+"footer-ref":"Referral: chigalex1","footer-nations":"Amantam 54 · Kasa 25",
 "cb-title":"Chigalex1 AI Boafoɔ","cb-sub":"Nkaafoɔ nko ara · Bisaa me nsɛm biara fa Pi ho",
 "cb-welcome":"👋 Akwaaba! Mene wo AI Chigalex1 — Pi nyansafoɔ wɔ Afrika. Bisaa me fa KYC, KYB, Pi Mapa, GCV anaa banbɔ ho!"
 },
+
+
+
+
+
 
 wo: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -2205,6 +1433,12 @@ wo: {
 "cb-welcome":"👋 Salamalekum! Maa ngi AI sa Chigalex1 — xam-xam Pi bu Afrika. Laajante man KYC, KYB, Pi Kaart, GCV walla bëgg-bëgg!"
 },
 
+
+
+
+
+
+
 fr: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Bienvenue sur Chigalex1",
@@ -2265,6 +1499,12 @@ fr: {
 "cb-welcome":"👋 Bonjour! Je suis votre IA Chigalex1 — guide Pi expert pour l'Afrique. Posez-moi des questions sur KYC, KYB, Carte Pi, stratégie GCV ou sécurité!"
 },
 
+
+
+
+
+
+
 ar: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"مرحباً بك في Chigalex1",
@@ -2320,10 +1560,16 @@ ar: {
 "faq-q3":"ما هو GCV ولماذا يهم؟","faq-a3":"GCV = 314,159 دولار لكل 1π مشفرة بالفعل في بلوكتشين Pi.",
 "faq-q4":"ما الذي أحصل عليه مقابل عضوية 0.01π؟","faq-a4":"وصول مدى الحياة لـ: المساعد الذكي وتدريب KYC/KYB وخريطة Pi ودليل التجار.",
 "footer-tagline":"🌍 Africa Pi Network Education Hub",
-"footer-ref":"الإحالة: chigalex1","footer-nations":"54 دولة · 22 لغة",
+"footer-ref":"الإحالة: chigalex1","footer-nations":"54 دولة ·22 لغة",
 "cb-title":"مساعد Chigalex1 الذكي","cb-sub":"للأعضاء فقط · اسألني أي شيء عن Pi",
 "cb-welcome":"👋 مرحباً! أنا مساعدك الذكي Chigalex1 — دليل Pi الخبير لأفريقيا. اسألني عن KYC أو KYB أو خريطة Pi أو GCV أو الأمان!"
 },
+
+
+
+
+
+
 
 ber: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -2385,6 +1631,10 @@ ber: {
 "cb-welcome":"👋 Azul! Nekk d AI-ik n Chigalex1 — aẓerraf n Pi n Afrik. Steqsi-yi ɣef KYC, KYB, Tiɣzeft Pi, GCV neɣ tazlaft!"
 },
 
+
+
+
+
 ln: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Boyei na Chigalex1",
@@ -2399,7 +1649,7 @@ ln: {
 "nav-subtitle":"🌍 Africa Pioneer Hub",
 "banner-title":"🌍 AFRICA Pi Network Education Hub",
 "region-north":"Afrique ya Nkoto","region-west":"Afrique ya Buponzi","region-east":"Afrique ya Bumongu","region-central":"Afrique ya Katikati","region-south":"Afrique ya Basudi",
-"banner-stats":"· Mibeko 54 · Minoko 22",
+"banner-stats":"· Mibeko 54 · Minoko 25",
 "hero-badge":"🌍 Africa Pi Network Education Hub",
 "hero-h1":"Kotia Afrique Nyonso na Pi Network",
 "hero-p":"Ndako ya mateya ya sembo ya Africa Pi GCV Industry Alliance — kopesa nguya balobeli mpe biznisi na mibeko nyonso 54.",
@@ -2440,10 +1690,15 @@ ln: {
 "faq-q3":"GCV ezali nini mpe mpo na nini ekomonisaka?","faq-a3":"GCV = $314,159 mpo na 1π ekomami kala na Pi blockchain.",
 "faq-q4":"Nakozwa nini mpo na kobanga ya batondi ya 0.01π?","faq-a4":"Kobata na bomoi nyonso ya: AI Chatbot, Mateya ya KYC/KYB, Kaart ya Pi, Molongeli ya Bavendeli.",
 "footer-tagline":"🌍 Africa Pi Network Education Hub",
-"footer-ref":"Referral: chigalex1","footer-nations":"Mibeko 54 · Minoko 22",
+"footer-ref":"Referral: chigalex1","footer-nations":"Mibeko 54 · Minoko 25",
 "cb-title":"Molungi wa AI wa Chigalex1","cb-sub":"Batondi kaka · Tuna ngai eloko nyonso mpo na Pi",
 "cb-welcome":"👋 Mbote! Ngai nde AI na yo ya Chigalex1 — mwangi wa Pi ya Afrique. Tuna ngai mpo na KYC, KYB, Kaart ya Pi, GCV to bozwi!"
 },
+
+
+
+
+
 
 kg: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -2459,7 +1714,7 @@ kg: {
 "nav-subtitle":"🌍 Africa Pioneer Hub",
 "banner-title":"🌍 AFRICA Pi Network Education Hub",
 "region-north":"Afrika ya Nkoto","region-west":"Afrika ya Ntombolo","region-east":"Afrika ya Ntanu","region-central":"Afrika ya Kati","region-south":"Afrika ya Mbazi",
-"banner-stats":"· Mazinga 54 · Ndinga 22",
+"banner-stats":"· Mazinga 54 · Ndinga 25",
 "hero-badge":"🌍 Africa Pi Network Education Hub",
 "hero-h1":"Kotombisa Afrika yonso na Pi Network",
 "hero-p":"Nzo ya malonga ya Afrika Pi GCV Industry Alliance — kukumisa bakwikama ye biznisi mu mazinga yonso 54.",
@@ -2500,10 +1755,13 @@ kg: {
 "faq-q3":"GCV nki yandi mpe mpo na nki emonisaka?","faq-a3":"GCV = $314,159 ya 1π ekomama kala na Pi blockchain.",
 "faq-q4":"Nakozwa nki mpo na banani ya 0.01π?","faq-a4":"Nzila ya moyo wonso ya: AI Chatbot, Malonga ya KYC/KYB, Mapa ya Pi, Kalata ya Bayendi.",
 "footer-tagline":"🌍 Africa Pi Network Education Hub",
-"footer-ref":"Referral: chigalex1","footer-nations":"Mazinga 54 · Ndinga 22",
+"footer-ref":"Referral: chigalex1","footer-nations":"Mazinga 54 · Ndinga 25",
 "cb-title":"Mfunzi wa AI wa Chigalex1","cb-sub":"Banani bonso · Tuna ngai mambu yonso ya Pi",
 "cb-welcome":"👋 Mbote! Ngai nde AI na yo ya Chigalex1 — mfundisi wa Pi ya Afrika. Tuna ngai ye KYC, KYB, Mapa ya Pi, GCV to bozwi!"
 }
+
+
+
 
 }; // end translations
 
