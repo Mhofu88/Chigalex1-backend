@@ -180,7 +180,6 @@ en: {
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Members-only · Ask me anything about Pi",
 "cb-welcome":"👋 Hello! I'm your Chigalex1 AI — expert Pi guide for Africa. Ask me about KYC, KYB, Map of Pi, GCV strategy, or security in your language!",
 
-// ── PiDEX ──
   "lbl-pidex":"🔁 Members Only",
   "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
   "sec-pidex-sub":"PiDEX launched March 2025. Trade Pi tokens safely inside the Pi enclosed ecosystem — no external exchange needed.",
