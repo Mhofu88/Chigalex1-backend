@@ -647,6 +647,7 @@ xh: {
   "pilaunch-cta-title":"📚 Ulungele ukuthatha inxaxheba?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo.",
 
+af: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Welkom by Chigalex1",
 "gate-sub":"Om baanbrekers en besighede oor al 54 Afrikaanse nasies te bemagtig om by die Pi-geslote ekosisteem-ekonomie aan te sluit.",
@@ -747,6 +748,7 @@ xh: {
   "pilaunch-cta-title":"📚 Gereed om aan Pi Launchpad deel te neem?",
   "pilaunch-cta-body":"Volledige Pi Launchpad-gids binne Chigalex1 — projekte evalueer, veilig insit, korrek verbind en tokenbelonings verdien.",
 
+st: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"O Amoheletswe ho Chigalex1",
 "gate-sub":"Ho matlafatsa baetapele le dikgwebo ho dinaha tsohle tse 54 tsa Afrika ho kena ekonoming ya Pi enclosed ecosystem.",
@@ -847,6 +849,7 @@ xh: {
   "pilaunch-cta-title":"📚 O itokiselitse ho kenela Pi Launchpad?",
   "pilaunch-cta-body":"Tataiso e felletseng ya Pi Launchpad kahare ho Chigalex1 — ho hlahloba merero, ho bea, ho ineela le ho fumana meputso.",
 
+tn: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"O amogetswe mo Chigalex1",
 "gate-sub":"Go matlafatsa baetapele le dikgwebo mo dinageng tsotlhe tse 54 tsa Aferika go tsena mo ekonoming ya Pi enclosed ecosystem.",
@@ -947,6 +950,7 @@ xh: {
   "pilaunch-cta-title":"📚 A o ikagile go tsaya karolo mo Pi Launchpad?",
   "pilaunch-cta-body":"Kaedi e feletseng ya Pi Launchpad mo Chigalex1 — go sekaseka merero, go bea, go ikopanya le go amogela meputso.",
 
+ny: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Mwakaribishwa ku Chigalex1",
 "gate-sub":"Kulimbikitsa apitiriri ndi mabizinesi m'maiko onse 54 a Africa kulowa mu Pi enclosed ecosystem economy.",
@@ -1005,6 +1009,7 @@ xh: {
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Mamembala okha · Ndifunseni chilichonse cha Pi",
 "cb-welcome":"👋 Moni! Ndine AI yanu ya Chigalex1 — katswiri wa Pi wa Africa. Ndifunseni za KYC, KYB, Mapu a Pi, GCV kapena chitetezo!",
 
+
 "lbl-pidex":"🔁 Mamembala Okha",
   "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
   "sec-pidex-sub":"PiDEX inayamba Marichi 2025. Gulitsana ndi Pi tokens mokhetsa mkati mwa Pi ecosystem.",
@@ -1047,6 +1052,7 @@ xh: {
   "pilaunch-cta-title":"📚 Mwakonzeka kulowa mu Pi Launchpad?",
   "pilaunch-cta-body":"Chongolero chonse cha Pi Launchpad mkati mwa Chigalex1 — kuyesa mapulojekiti, kuika, kulumbira, ndi kupeza mphoto.",
 
+pt: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Bem-vindo ao Chigalex1",
 "gate-sub":"Capacitando pioneiros e empresas em todas as 54 nações africanas para se juntarem à economia do ecossistema fechado Pi.",
@@ -1145,9 +1151,9 @@ xh: {
   "pilaunch-warn-1":"⚠️ Staking sozinho NÃO lhe dá tokens — DEVE TAMBÉM fazer commit.",
   "pilaunch-warn-2":"⚠️ Use Pi Launchpad apenas no Pi Browser oficial.",
   "pilaunch-cta-title":"📚 Pronto para participar no Pi Launchpad?",
-  "pilaunch-cta-body":"Guia completo do Pi Launchpad dentro do Chigalex1 — avaliar projetos, fazer stake, commit correto e ganhar recompensas."
-},
+  "pilaunch-cta-body":"Guia completo do Pi Launchpad dentro do Chigalex1 — avaliar projetos, fazer stake, commit correto e ganhar recompensas.",
 
+sw: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Karibu Chigalex1",
 "gate-sub":"Kuwawezesha waanzilishi na biashara katika mataifa yote 54 ya Afrika kujiunga na uchumi wa mfumo wa Pi uliofungwa.",
@@ -1248,6 +1254,7 @@ xh: {
   "pilaunch-cta-title":"📚 Uko tayari kushiriki kwenye Pi Launchpad?",
   "pilaunch-cta-body":"Mwongozo kamili wa Pi Launchpad ndani ya Chigalex1 — kutathmini miradi, kuweka, kuahidi, na kupata tuzo.",
 
+am: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"እንኳን ወደ Chigalex1 በደህና መጡ",
 "gate-sub":"በሁሉም 54 የአፍሪካ ሀገሮች ያሉ አቅኚዎችን እና ንግዶችን ወደ Pi closed ecosystem economy ለማስገባት ማብቃት።",
@@ -1304,8 +1311,7 @@ xh: {
 "footer-tagline":"🌍 Africa Pi Network Education Hub",
 "footer-ref":"ሪፈራል: chigalex1","footer-nations":"54 ሀገሮች · 25 ቋንቋዎች",
 "cb-title":"Chigalex1 AI ረዳት","cb-sub":"አባሎች ብቻ · ስለ Pi ማንኛውንም ነገር ይጠይቁኝ",
-"cb-welcome":"👋 ሰላም! እኔ የChigalex1 AI ነኝ — ለአፍሪካ ባለሙያ Pi መምሪያ። KYC፣ KYB፣ የPi ካርታ፣ GCV ወይም ደህንነት ይጠይቁኝ!"
-},
+"cb-welcome":"👋 ሰላም! እኔ የChigalex1 AI ነኝ — ለአፍሪካ ባለሙያ Pi መምሪያ። KYC፣ KYB፣ የPi ካርታ፣ GCV ወይም ደህንነት ይጠይቁኝ!",
 
 "lbl-pidex":"🔁 አባሎች ብቻ",
   "sec-pidex-title":"PiDEX — የPi ያልተማከለ ልውውጥ",
@@ -1349,6 +1355,7 @@ xh: {
   "pilaunch-cta-title":"📚 Pi Launchpad ለመሳተፍ ዝግጁ ነዎት?",
   "pilaunch-cta-body":"ሙሉ Pi Launchpad ስልጠና Chigalex1 ውስጥ — ፕሮጀክቶች መገምገም፣ stake ማድረግ፣ commit ማድረግ እና token ሽልማቶች ማግኘት።",
 
+rw: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Murakaza neza kuri Chigalex1",
 "gate-sub":"Gutera inkunga abatangizi n'amasosiyete mu bihugu byose 54 bya Afrika kujya mu bukungu bwa Pi ecosystem ifunze.",
@@ -1406,19 +1413,6 @@ xh: {
 "footer-ref":"Referral: chigalex1","footer-nations":"Ibihugu 54 · Indimi 25",
 "cb-title":"Umufasha wa AI wa Chigalex1","cb-sub":"Abanyamuryango gusa · Mbaza ikibazo cyose ku Pi",
 "cb-welcome":"👋 Muraho! Ndi AI yawe ya Chigalex1 — inzobere ya Pi ya Afrika. Mbaza ku KYC, KYB, Ikarita ya Pi, GCV cyangwa umutekano!",
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 "lbl-pidex":"🔁 Abanyamuryango Gusa",
   "sec-pidex-title":"PiDEX — Isoko ry'Itumanahana rya Pi",
