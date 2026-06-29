@@ -224,6 +224,7 @@ en: {
   "pilaunch-cta-title":"📚 Ready to participate in Pi Launchpad?",
   "pilaunch-cta-body":"Full Pi Launchpad guide inside Chigalex1 — how to evaluate projects, stake safely, commit correctly, and earn token rewards across the Pi ecosystem.",
 
+sn: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Murikidze kuChigalex1",
 "gate-sub":"Kusimbisa vanamaiguru nezvikwata munyika dzose 54 dzeAfrica kupinda muPi enclosed ecosystem economy.",
@@ -335,6 +336,7 @@ en: {
   "pilaunch-cta-title":"📚 Wagadzirira kupinda maPi Launchpad?",
   "pilaunch-cta-body":"Chidzidzo chizere chePi Launchpad mukati meChigalex1 — kuongorora mapurojekiti, kuStake zvakachengeteka, kuCommit zvakanaka, uye kuwana token rewards.",
 
+nd: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamukelekile e-Chigalex1",
 "gate-sub":"Ukuqinisa abahleli namabhizinisi kumazwe onke angu-54 e-Afrika ukungena kwi-Pi enclosed ecosystem economy.",
@@ -443,6 +445,7 @@ en: {
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza ku-Pi Launchpad?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka ngokuphephile, ukuthembisa ngendlela efanele, nokuzuza imivuzo.",
 
+zu: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamukelekile e-Chigalex1",
 "gate-sub":"Ukuqinisa abahleli namabhizinisi kumazwe onke angu-54 e-Afrika ukuba bangene kwi-Pi enclosed ecosystem.",
@@ -543,6 +546,7 @@ en: {
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo.",
 
+xh: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamkelekile e-Chigalex1",
 "gate-sub":"Ukomeleza abahleli namashishini kumazwe onke angama-54 e-Afrika ukuze bangene kwi-Pi enclosed ecosystem.",
