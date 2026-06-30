@@ -222,7 +222,7 @@ en: {
   "pilaunch-warn-1":"⚠️ Staking alone does NOT earn you tokens — you MUST also commit.",
   "pilaunch-warn-2":"⚠️ Only use Pi Launchpad inside the official Pi Browser — never external sites.",
   "pilaunch-cta-title":"📚 Ready to participate in Pi Launchpad?",
-  "pilaunch-cta-body":"Full Pi Launchpad guide inside Chigalex1 — how to evaluate projects, stake safely, commit correctly, and earn token rewards across the Pi ecosystem.",
+  "pilaunch-cta-body":"Full Pi Launchpad guide inside Chigalex1 — how to evaluate projects, stake safely, commit correctly, and earn token rewards across the Pi ecosystem."
 },
 
 sn: {
@@ -335,7 +335,7 @@ sn: {
   "pilaunch-warn-1":"⚠️ Staking ega HAIKUSIMBIRI uwane tokens — unofanirwawo kuCommit.",
   "pilaunch-warn-2":"⚠️ Shandisa Pi Launchpad chete mukati mePi Browser yakakasimira — kwete masaiti ekunze.",
   "pilaunch-cta-title":"📚 Wagadzirira kupinda maPi Launchpad?",
-  "pilaunch-cta-body":"Chidzidzo chizere chePi Launchpad mukati meChigalex1 — kuongorora mapurojekiti, kuStake zvakachengeteka, kuCommit zvakanaka, uye kuwana token rewards.",
+  "pilaunch-cta-body":"Chidzidzo chizere chePi Launchpad mukati meChigalex1 — kuongorora mapurojekiti, kuStake zvakachengeteka, kuCommit zvakanaka, uye kuwana token rewards."
 },
 
 nd: {
@@ -445,7 +445,7 @@ nd: {
   "pilaunch-warn-1":"⚠️ I-Staking yodwa AYIKUNIKI amathokheni — KUFANELE FUTHI uThembise.",
   "pilaunch-warn-2":"⚠️ Sebenzisa i-Pi Launchpad kuphela ku-Pi Browser esemthethweni — hhayi izici zangaphandle.",
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza ku-Pi Launchpad?",
-  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka ngokuphephile, ukuthembisa ngendlela efanele, nokuzuza imivuzo.",
+  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka ngokuphephile, ukuthembisa ngendlela efanele, nokuzuza imivuzo."
 },
 
 zu: {
