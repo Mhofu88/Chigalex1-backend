@@ -223,6 +223,7 @@ en: {
   "pilaunch-warn-2":"⚠️ Only use Pi Launchpad inside the official Pi Browser — never external sites.",
   "pilaunch-cta-title":"📚 Ready to participate in Pi Launchpad?",
   "pilaunch-cta-body":"Full Pi Launchpad guide inside Chigalex1 — how to evaluate projects, stake safely, commit correctly, and earn token rewards across the Pi ecosystem.",
+},
 
 sn: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -335,6 +336,7 @@ sn: {
   "pilaunch-warn-2":"⚠️ Shandisa Pi Launchpad chete mukati mePi Browser yakakasimira — kwete masaiti ekunze.",
   "pilaunch-cta-title":"📚 Wagadzirira kupinda maPi Launchpad?",
   "pilaunch-cta-body":"Chidzidzo chizere chePi Launchpad mukati meChigalex1 — kuongorora mapurojekiti, kuStake zvakachengeteka, kuCommit zvakanaka, uye kuwana token rewards.",
+},
 
 nd: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -444,6 +446,7 @@ nd: {
   "pilaunch-warn-2":"⚠️ Sebenzisa i-Pi Launchpad kuphela ku-Pi Browser esemthethweni — hhayi izici zangaphandle.",
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza ku-Pi Launchpad?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka ngokuphephile, ukuthembisa ngendlela efanele, nokuzuza imivuzo.",
+},
 
 zu: {
 "gate-badge-txt":"🌍 Africa Pi Network Education Hub",
