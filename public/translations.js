@@ -4,8 +4,7 @@
 
 const translations = {
 
-en: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+en: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Welcome to Chigalex1",
 "gate-sub":"Empowering pioneers and businesses across all 54 African nations to join the Pi enclosed ecosystem economy.",
 "fee-desc-txt":"One-time membership · Lifetime access to all training",
@@ -222,11 +221,9 @@ en: {
   "pilaunch-warn-1":"⚠️ Staking alone does NOT earn you tokens — you MUST also commit.",
   "pilaunch-warn-2":"⚠️ Only use Pi Launchpad inside the official Pi Browser — never external sites.",
   "pilaunch-cta-title":"📚 Ready to participate in Pi Launchpad?",
-  "pilaunch-cta-body":"Full Pi Launchpad guide inside Chigalex1 — how to evaluate projects, stake safely, commit correctly, and earn token rewards across the Pi ecosystem."
-},
+  "pilaunch-cta-body":"Full Pi Launchpad guide inside Chigalex1 — how to evaluate projects, stake safely, commit correctly, and earn token rewards across the Pi ecosystem."},
 
-sn: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+sn: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Murikidze kuChigalex1",
 "gate-sub":"Kusimbisa vanamaiguru nezvikwata munyika dzose 54 dzeAfrica kupinda muPi enclosed ecosystem economy.",
 "fee-desc-txt":"Bhenzi rimwe chete · Kushandisa kwenguva yose",
@@ -335,11 +332,9 @@ sn: {
   "pilaunch-warn-1":"⚠️ Staking ega HAIKUSIMBIRI uwane tokens — unofanirwawo kuCommit.",
   "pilaunch-warn-2":"⚠️ Shandisa Pi Launchpad chete mukati mePi Browser yakakasimira — kwete masaiti ekunze.",
   "pilaunch-cta-title":"📚 Wagadzirira kupinda maPi Launchpad?",
-  "pilaunch-cta-body":"Chidzidzo chizere chePi Launchpad mukati meChigalex1 — kuongorora mapurojekiti, kuStake zvakachengeteka, kuCommit zvakanaka, uye kuwana token rewards."
-},
+  "pilaunch-cta-body":"Chidzidzo chizere chePi Launchpad mukati meChigalex1 — kuongorora mapurojekiti, kuStake zvakachengeteka, kuCommit zvakanaka, uye kuwana token rewards."},
 
-nd: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+nd: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamukelekile e-Chigalex1",
 "gate-sub":"Ukuqinisa abahleli namabhizinisi kumazwe onke angu-54 e-Afrika ukungena kwi-Pi enclosed ecosystem economy.",
 "fee-desc-txt":"Inkokhelo eyodwa · Ukufinyelela kwempilo yonke",
@@ -445,11 +440,9 @@ nd: {
   "pilaunch-warn-1":"⚠️ I-Staking yodwa AYIKUNIKI amathokheni — KUFANELE FUTHI uThembise.",
   "pilaunch-warn-2":"⚠️ Sebenzisa i-Pi Launchpad kuphela ku-Pi Browser esemthethweni — hhayi izici zangaphandle.",
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza ku-Pi Launchpad?",
-  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka ngokuphephile, ukuthembisa ngendlela efanele, nokuzuza imivuzo."
-},
+  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka ngokuphephile, ukuthembisa ngendlela efanele, nokuzuza imivuzo."},
 
-zu: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+zu: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamukelekile e-Chigalex1",
 "gate-sub":"Ukuqinisa abahleli namabhizinisi kumazwe onke angu-54 e-Afrika ukuba bangene kwi-Pi enclosed ecosystem.",
 "fee-desc-txt":"Inkokhelo eyodwa · Ukufinyelela kwempilo yonke",
@@ -547,10 +540,9 @@ zu: {
   "pilaunch-warn-1":"⚠️ I-Staking yodwa AYIKUNIKI amathokheni — KUFANELE uThembise futhi.",
   "pilaunch-warn-2":"⚠️ Sebenzisa i-Pi Launchpad kuphela ku-Pi Browser esemthethweni.",
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza?",
-  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo.",
+  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo."},
 
-xh: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+xh: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamkelekile e-Chigalex1",
 "gate-sub":"Ukomeleza abahleli namashishini kumazwe onke angama-54 e-Afrika ukuze bangene kwi-Pi enclosed ecosystem.",
 "fee-desc-txt":"Inkokhelo enye · Ukufikelela ubomi bonke",
@@ -648,10 +640,10 @@ xh: {
   "pilaunch-warn-1":"⚠️ I-Staking yodwa AYIKUNIKI amathokheni — KUFUNEKA uThembise futhi.",
   "pilaunch-warn-2":"⚠️ Sebenzisa i-Pi Launchpad kuphela kwi-Pi Browser esemthethweni.",
   "pilaunch-cta-title":"📚 Ulungele ukuthatha inxaxheba?",
-  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo.",
+  "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo."
+},
 
-af: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+af: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Welkom by Chigalex1",
 "gate-sub":"Om baanbrekers en besighede oor al 54 Afrikaanse nasies te bemagtig om by die Pi-geslote ekosisteem-ekonomie aan te sluit.",
 "fee-desc-txt":"Eenmalige lidmaatskap · Lewenslangtoegang tot alle opleiding",
@@ -749,10 +741,10 @@ af: {
   "pilaunch-warn-1":"⚠️ Inset alleen verdien NIE tokens nie — jy MOET ook verbind.",
   "pilaunch-warn-2":"⚠️ Gebruik Pi Launchpad slegs in die amptelike Pi Browser.",
   "pilaunch-cta-title":"📚 Gereed om aan Pi Launchpad deel te neem?",
-  "pilaunch-cta-body":"Volledige Pi Launchpad-gids binne Chigalex1 — projekte evalueer, veilig insit, korrek verbind en tokenbelonings verdien.",
+  "pilaunch-cta-body":"Volledige Pi Launchpad-gids binne Chigalex1 — projekte evalueer, veilig insit, korrek verbind en tokenbelonings verdien."
+},
 
-st: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+st: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"O Amoheletswe ho Chigalex1",
 "gate-sub":"Ho matlafatsa baetapele le dikgwebo ho dinaha tsohle tse 54 tsa Afrika ho kena ekonoming ya Pi enclosed ecosystem.",
 "fee-desc-txt":"Tefo e le nngwe feela · Phihlello ya bophelo bohle",
