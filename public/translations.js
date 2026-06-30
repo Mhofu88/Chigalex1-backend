@@ -845,7 +845,6 @@ st: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-body":"Tataiso e felletseng ya Pi Launchpad kahare ho Chigalex1 — ho hlahloba merero, ho bea, ho ineela le ho fumana meputso."
 },
 
-
 tn: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"O amogetswe mo Chigalex1",
 "gate-sub":"Go matlafatsa baetapele le dikgwebo mo dinageng tsotlhe tse 54 tsa Aferika go tsena mo ekonoming ya Pi enclosed ecosystem.",
@@ -1651,10 +1650,10 @@ so: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-1":"⚠️ Staking oo keliya KUMA SIINAYSO tokens — WAAD KALE AHAYN inaad ballan-qaadato.",
   "pilaunch-warn-2":"⚠️ Pi Launchpad ku isticmaal Pi Browser rasmi ah oo keliya.",
   "pilaunch-cta-title":"📚 Ma diyaar u tahay inaad ka qaybgasho Pi Launchpad?",
-  "pilaunch-cta-body":"Hagid buuxda Pi Launchpad gudaha Chigalex1 — qiimaynta mashaariicda, dhigidda, ballan-qaadashada saxda ah, iyo helida abaalmarinta.",
+  "pilaunch-cta-body":"Hagid buuxda Pi Launchpad gudaha Chigalex1 — qiimaynta mashaariicda, dhigidda, ballan-qaadashada saxda ah, iyo helida abaalmarinta."
+},
 
-ha: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+ha: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Barka da zuwa Chigalex1",
 "gate-sub":"Ƙarfafa masu fara aiki da kasuwancin ƙasashe 54 na Afirka don shiga tattalin arzikin Pi closed ecosystem.",
 "fee-desc-txt":"Kuɗin shiga sau ɗaya · Damar yin komai har abada",
@@ -2316,8 +2315,7 @@ ar: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "footer-tagline":"🌍 Africa Pi Network Education Hub",
 "footer-ref":"الإحالة: chigalex1","footer-nations":"54 دولة ·22 لغة",
 "cb-title":"مساعد Chigalex1 الذكي","cb-sub":"للأعضاء فقط · اسألني أي شيء عن Pi",
-"cb-welcome":"👋 مرحباً! أنا مساعدك الذكي Chigalex1 — دليل Pi الخبير لأفريقيا. اسألني عن KYC أو KYB أو خريطة Pi أو GCV أو الأمان!"
-},
+"cb-welcome":"👋 مرحباً! أنا مساعدك الذكي Chigalex1 — دليل Pi الخبير لأفريقيا. اسألني عن KYC أو KYB أو خريطة Pi أو GCV أو الأمان!",
 
 "lbl-pidex":"🔁 للأعضاء فقط",
   "sec-pidex-title":"PiDEX — بورصة Pi اللامركزية",
@@ -2561,10 +2559,10 @@ ln: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-1":"⚠️ Staking kaka EPESI YO tokens TE — Osengeli MPEYE kokangama.",
   "pilaunch-warn-2":"⚠️ Kozala kobuka Pi Launchpad na Pi Browser ya sembo kaka.",
   "pilaunch-cta-title":"📚 Otinda kokota na Pi Launchpad?",
-  "pilaunch-cta-body":"Tataïso mobimba ya Pi Launchpad na Chigalex1 — kotala misala, kotalia, kokangama mpe kolata récompenses.",
+  "pilaunch-cta-body":"Tataïso mobimba ya Pi Launchpad na Chigalex1 — kotala misala, kotalia, kokangama mpe kolata récompenses."
+},
 
-kg: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+kg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Kiyenga mu Chigalex1",
 "gate-sub":"Kukumisa bakwikama ye biznisi mu mazinga yonso 54 ya Afrika kukota mu Pi closed ecosystem.",
 "fee-desc-txt":"Lutombu lumosi fonso · Nzila ya moyo wonso",
