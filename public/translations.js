@@ -842,10 +842,11 @@ st: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-1":"⚠️ Staking feela HA E FANE ditokene — O TLAMEHA HO INEELA hape.",
   "pilaunch-warn-2":"⚠️ Sebedisa Pi Launchpad feela ho Pi Browser ya semolao.",
   "pilaunch-cta-title":"📚 O itokiselitse ho kenela Pi Launchpad?",
-  "pilaunch-cta-body":"Tataiso e felletseng ya Pi Launchpad kahare ho Chigalex1 — ho hlahloba merero, ho bea, ho ineela le ho fumana meputso.",
+  "pilaunch-cta-body":"Tataiso e felletseng ya Pi Launchpad kahare ho Chigalex1 — ho hlahloba merero, ho bea, ho ineela le ho fumana meputso."
+},
 
-tn: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+
+tn: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"O amogetswe mo Chigalex1",
 "gate-sub":"Go matlafatsa baetapele le dikgwebo mo dinageng tsotlhe tse 54 tsa Aferika go tsena mo ekonoming ya Pi enclosed ecosystem.",
 "fee-desc-txt":"Tuelo nngwe feela · Phitlhelelo ya botshelo jotlhe",
@@ -943,10 +944,10 @@ tn: {
   "pilaunch-warn-1":"⚠️ Staking fela GA E NAYE ditokene — O TSHWANETSE GAPE go Ikopanya.",
   "pilaunch-warn-2":"⚠️ Dirisa Pi Launchpad fela mo Pi Browser ya semolao.",
   "pilaunch-cta-title":"📚 A o ikagile go tsaya karolo mo Pi Launchpad?",
-  "pilaunch-cta-body":"Kaedi e feletseng ya Pi Launchpad mo Chigalex1 — go sekaseka merero, go bea, go ikopanya le go amogela meputso.",
+  "pilaunch-cta-body":"Kaedi e feletseng ya Pi Launchpad mo Chigalex1 — go sekaseka merero, go bea, go ikopanya le go amogela meputso."
+},
 
-ny: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+ny: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Mwakaribishwa ku Chigalex1",
 "gate-sub":"Kulimbikitsa apitiriri ndi mabizinesi m'maiko onse 54 a Africa kulowa mu Pi enclosed ecosystem economy.",
 "fee-desc-txt":"Ndalama imodzi yokha · Mwayi wa moyo wonse",
@@ -1044,10 +1045,10 @@ ny: {
   "pilaunch-warn-1":"⚠️ Staking yokha SIKUPATSANI tokens — MUYENERONSO kulumbira.",
   "pilaunch-warn-2":"⚠️ Gwiritsani ntchito Pi Launchpad chabe mkati mwa Pi Browser yachilungamo.",
   "pilaunch-cta-title":"📚 Mwakonzeka kulowa mu Pi Launchpad?",
-  "pilaunch-cta-body":"Chongolero chonse cha Pi Launchpad mkati mwa Chigalex1 — kuyesa mapulojekiti, kuika, kulumbira, ndi kupeza mphoto.",
+  "pilaunch-cta-body":"Chongolero chonse cha Pi Launchpad mkati mwa Chigalex1 — kuyesa mapulojekiti, kuika, kulumbira, ndi kupeza mphoto."
+},
 
-pt: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+pt: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Bem-vindo ao Chigalex1",
 "gate-sub":"Capacitando pioneiros e empresas em todas as 54 nações africanas para se juntarem à economia do ecossistema fechado Pi.",
 "fee-desc-txt":"Adesão única · Acesso vitalício a toda a formação",
@@ -1145,10 +1146,10 @@ pt: {
   "pilaunch-warn-1":"⚠️ Staking sozinho NÃO lhe dá tokens — DEVE TAMBÉM fazer commit.",
   "pilaunch-warn-2":"⚠️ Use Pi Launchpad apenas no Pi Browser oficial.",
   "pilaunch-cta-title":"📚 Pronto para participar no Pi Launchpad?",
-  "pilaunch-cta-body":"Guia completo do Pi Launchpad dentro do Chigalex1 — avaliar projetos, fazer stake, commit correto e ganhar recompensas.",
+  "pilaunch-cta-body":"Guia completo do Pi Launchpad dentro do Chigalex1 — avaliar projetos, fazer stake, commit correto e ganhar recompensas."
+},
 
-sw: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+sw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Karibu Chigalex1",
 "gate-sub":"Kuwawezesha waanzilishi na biashara katika mataifa yote 54 ya Afrika kujiunga na uchumi wa mfumo wa Pi uliofungwa.",
 "fee-desc-txt":"Uanachama wa mara moja · Ufikiaji wa maisha yote kwa mafunzo yote",
@@ -1246,10 +1247,10 @@ sw: {
   "pilaunch-warn-1":"⚠️ Staking peke yake HAIKUPI tokens — LAZIMA PIA uahidi.",
   "pilaunch-warn-2":"⚠️ Tumia Pi Launchpad ndani ya Pi Browser rasmi pekee.",
   "pilaunch-cta-title":"📚 Uko tayari kushiriki kwenye Pi Launchpad?",
-  "pilaunch-cta-body":"Mwongozo kamili wa Pi Launchpad ndani ya Chigalex1 — kutathmini miradi, kuweka, kuahidi, na kupata tuzo.",
+  "pilaunch-cta-body":"Mwongozo kamili wa Pi Launchpad ndani ya Chigalex1 — kutathmini miradi, kuweka, kuahidi, na kupata tuzo."
+},
 
-am: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+am: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"እንኳን ወደ Chigalex1 በደህና መጡ",
 "gate-sub":"በሁሉም 54 የአፍሪካ ሀገሮች ያሉ አቅኚዎችን እና ንግዶችን ወደ Pi closed ecosystem economy ለማስገባት ማብቃት።",
 "fee-desc-txt":"አንድ ጊዜ ብቻ አባልነት · ለሁሉም ስልጠና የህይወት ዘመን ተደራሽነት",
@@ -1347,10 +1348,10 @@ am: {
   "pilaunch-warn-1":"⚠️ Staking ብቻ tokens አይሰጥም — COMMIT ማድረግም አለብዎት።",
   "pilaunch-warn-2":"⚠️ Pi Launchpad Pi Browser ብቻ ውስጥ ይጠቀሙ።",
   "pilaunch-cta-title":"📚 Pi Launchpad ለመሳተፍ ዝግጁ ነዎት?",
-  "pilaunch-cta-body":"ሙሉ Pi Launchpad ስልጠና Chigalex1 ውስጥ — ፕሮጀክቶች መገምገም፣ stake ማድረግ፣ commit ማድረግ እና token ሽልማቶች ማግኘት።",
+  "pilaunch-cta-body":"ሙሉ Pi Launchpad ስልጠና Chigalex1 ውስጥ — ፕሮጀክቶች መገምገም፣ stake ማድረግ፣ commit ማድረግ እና token ሽልማቶች ማግኘት።"
+},
 
-rw: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+rw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Murakaza neza kuri Chigalex1",
 "gate-sub":"Gutera inkunga abatangizi n'amasosiyete mu bihugu byose 54 bya Afrika kujya mu bukungu bwa Pi ecosystem ifunze.",
 "fee-desc-txt":"Kwiyandikisha rimwe gusa · Uburenganzira bw'ubuzima bwose",
@@ -1448,10 +1449,10 @@ rw: {
   "pilaunch-warn-1":"⚠️ Staking gusa NTIKUHA tokens — UGOMBA NANONE kwemeza.",
   "pilaunch-warn-2":"⚠️ Koresha Pi Launchpad muri Pi Browser rasmi gusa.",
   "pilaunch-cta-title":"📚 Witeguye kugira uruhare muri Pi Launchpad?",
-  "pilaunch-cta-body":"Amabwiriza yuzuye ya Pi Launchpad muri Chigalex1 — gusuzuma imishinga, gushyira, kwemeza, no kubona ibitambo.",
+  "pilaunch-cta-body":"Amabwiriza yuzuye ya Pi Launchpad muri Chigalex1 — gusuzuma imishinga, gushyira, kwemeza, no kubona ibitambo."
+},
 
-lg: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+lg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Tukuwakilidde ku Chigalex1",
 "gate-sub":"Okuwagira abatandisi n'ebibiina mu nsi zonna 54 za Afurika okuyingira mu Pi enclosed ecosystem economy.",
 "fee-desc-txt":"Ebintu eby'omuwendo gumu gwokka · Okutuuka obulamu bwonna",
@@ -1549,10 +1550,10 @@ lg: {
   "pilaunch-warn-1":"⚠️ Staking wokka TEKIKUWA tokens — OFUNIKA NAAWE okuwandiika.",
   "pilaunch-warn-2":"⚠️ Kozesa Pi Launchpad mu Pi Browser akakasiziddwa wokka.",
   "pilaunch-cta-title":"📚 Otegekeddwa okuweera mu Pi Launchpad?",
-  "pilaunch-cta-body":"Ekyokulabirako kwekimu kya Pi Launchpad mu Chigalex1 — okukebera ebikolwa, okukomya, okuwandiika n'okufuna emikisa.",
+  "pilaunch-cta-body":"Ekyokulabirako kwekimu kya Pi Launchpad mu Chigalex1 — okukebera ebikolwa, okukomya, okuwandiika n'okufuna emikisa."
+},
 
-so: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+so: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Ku soo dhawoow Chigalex1",
 "gate-sub":"Xoojinta saadaalaha iyo ganacsiyada dhammaan 54 dal ee Afrika si ay ugu biiraan dhaqaalaha Pi closed ecosystem.",
 "fee-desc-txt":"Xubin hal mar ah · Helitaan nolosha oo dhan",
@@ -1751,10 +1752,10 @@ ha: {
   "pilaunch-warn-1":"⚠️ Staking kaɗai BA YA BA KA tokens — DOLE KA KUMA dauki alkawari.",
   "pilaunch-warn-2":"⚠️ Yi amfani da Pi Launchpad a cikin Pi Browser na hukuma kawai.",
   "pilaunch-cta-title":"📚 Shin ka shirya shiga Pi Launchpad?",
-  "pilaunch-cta-body":"Cikakken jagora na Pi Launchpad a cikin Chigalex1 — kimanta ayyuka, kulle, daukan alkawari, da kuma samun lada.",
+  "pilaunch-cta-body":"Cikakken jagora na Pi Launchpad a cikin Chigalex1 — kimanta ayyuka, kulle, daukan alkawari, da kuma samun lada."
+},
 
-yo: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+yo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Ẹ káàbọ̀ sí Chigalex1",
 "gate-sub":"Ìfúnni agbára fún àwọn aṣáájú àti iṣowo ní gbogbo orílẹ̀-èdè 54 ti Áfríkà láti darapọ̀ mọ́ ètò ọrọ-ajé Pi.",
 "fee-desc-txt":"Ìdásílẹ̀ ẹẹkàn · Àǹfàní ayé rẹ sí gbogbo ikọ́",
@@ -1852,10 +1853,10 @@ yo: {
   "pilaunch-warn-1":"⚠️ Staking nìkan KÒ FÚN ọ NÍ tokens — O GBỌ̀DỌ̀ TÚN ṣe àdéhùn.",
   "pilaunch-warn-2":"⚠️ Lo Pi Launchpad nìkan ní inú Pi Browser àkọ́kọ́.",
   "pilaunch-cta-title":"📚 Ṣé o ṣetán láti kópa ní Pi Launchpad?",
-  "pilaunch-cta-body":"Ìtọ́ni kíkún Pi Launchpad ní Chigalex1 — ṣàyẹ̀wò iṣẹ́ akanṣe, títú, àdéhùn, àti jíjó àwọn àfikún.",
+  "pilaunch-cta-body":"Ìtọ́ni kíkún Pi Launchpad ní Chigalex1 — ṣàyẹ̀wò iṣẹ́ akanṣe, títú, àdéhùn, àti jíjó àwọn àfikún."
+},
 
-ig: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+ig: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Nnọọ na Chigalex1",
 "gate-sub":"Ịwusi ndị ọsụ mbido na azụmaahịa n'ime mba nile 54 nke Africa iji banye n'ọrụ ọha Pi ecosystem.",
 "fee-desc-txt":"Ọnụahịa otu oge · Nnweta ndụ nile",
@@ -1953,10 +1954,10 @@ ig: {
   "pilaunch-warn-1":"⚠️ Staking naanị ANAGHỊ ENYE gị tokens — Ị KWESỊKWARA ikwenye.",
   "pilaunch-warn-2":"⚠️ Jiri Pi Launchpad naanị n'ime Pi Browser nke ọchịchọ.",
   "pilaunch-cta-title":"📚 Ị dị njide ịsonye na Pi Launchpad?",
-  "pilaunch-cta-body":"Nduzi nke ọha Pi Launchpad n'ime Chigalex1 — nyochaa ihe ọrụ, tinye, kwenye, nweta ụgwọ.",
+  "pilaunch-cta-body":"Nduzi nke ọha Pi Launchpad n'ime Chigalex1 — nyochaa ihe ọrụ, tinye, kwenye, nweta ụgwọ."
+},
 
-tw: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+tw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Akwaaba Chigalex1",
 "gate-sub":"Ahoɔden ma ntɔfoɔ ne akɔpere nhyiam wɔ Afrika amantam 54 nyinaa so na wɔakɔ Pi ecosystem.",
 "fee-desc-txt":"Dua bi nko ara · Nkɔ so daa wɔ nniyam nyinaa mu",
@@ -2054,10 +2055,10 @@ tw: {
   "pilaunch-warn-1":"⚠️ Staking nko ara AMMA WO tokens — WO NKAA kamfo.",
   "pilaunch-warn-2":"⚠️ Di Pi Launchpad nko ara wɔ Pi Browser a ɛyɛ sem mu.",
   "pilaunch-cta-title":"📚 Wo atenase kɔ Pi Launchpad mu?",
-  "pilaunch-cta-body":"Pi Launchpad ɛkwan kɛse wɔ Chigalex1 mu — hwɛ nnwuma, kora, kamfo na nya awieeɛ.",
+  "pilaunch-cta-body":"Pi Launchpad ɛkwan kɛse wɔ Chigalex1 mu — hwɛ nnwuma, kora, kamfo na nya awieeɛ."
+},
 
-wo: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+wo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Dalal ak Chigalex1",
 "gate-sub":"Yokkuteek nawleen ak jumtukaay yi ci dëkk yi 54 Afrika ngir dañu dugg ci Pi enclosed ecosystem.",
 "fee-desc-txt":"Naan bu benn wëre rekk · Jëm ci yëngël bu mag yi soxor",
@@ -2155,10 +2156,10 @@ wo: {
   "pilaunch-warn-1":"⚠️ Staking rekk AMUL YEGG tokens — DANGA NÉKK TOGG ak.",
   "pilaunch-warn-2":"⚠️ Saaxi Pi Launchpad ci Pi Browser bu dëkk rekk.",
   "pilaunch-cta-title":"📚 Danga soxor dugg Pi Launchpad?",
-  "pilaunch-cta-body":"Jàng bu yëp Pi Launchpad ci Chigalex1 — xooloo yëgël, staking, committing ak yegg rewards.",
+  "pilaunch-cta-body":"Jàng bu yëp Pi Launchpad ci Chigalex1 — xooloo yëgël, staking, committing ak yegg rewards."
+},
 
-fr: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+fr: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Bienvenue sur Chigalex1",
 "gate-sub":"Autonomiser les pionniers et les entreprises dans les 54 nations africaines pour rejoindre l'économie de l'écosystème Pi fermé.",
 "fee-desc-txt":"Adhésion unique · Accès à vie à toute la formation",
@@ -2256,10 +2257,10 @@ fr: {
   "pilaunch-warn-1":"⚠️ Le staking seul NE VOUS DONNE PAS de tokens — VOUS DEVEZ AUSSI commiter.",
   "pilaunch-warn-2":"⚠️ Utilisez Pi Launchpad uniquement dans Pi Browser officiel.",
   "pilaunch-cta-title":"📚 Prêt à participer à Pi Launchpad?",
-  "pilaunch-cta-body":"Guide complet Pi Launchpad dans Chigalex1 — évaluer les projets, staker, commiter et gagner des récompenses.",
+  "pilaunch-cta-body":"Guide complet Pi Launchpad dans Chigalex1 — évaluer les projets, staker, commiter et gagner des récompenses."
+},
 
-ar: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+ar: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"مرحباً بك في Chigalex1",
 "gate-sub":"تمكين الرواد والأعمال في جميع الدول الأفريقية الـ54 للانضمام إلى اقتصاد النظام البيئي المغلق لـPi.",
 "fee-desc-txt":"عضوية لمرة واحدة · وصول مدى الحياة لجميع التدريبات",
@@ -2358,10 +2359,10 @@ ar: {
   "pilaunch-warn-1":"⚠️ Staking وحده لا يمنحك رموزاً — يجب عليك أيضاً الالتزام.",
   "pilaunch-warn-2":"⚠️ استخدم Pi Launchpad فقط في Pi Browser الرسمي.",
   "pilaunch-cta-title":"📚 هل أنت مستعد للمشاركة في Pi Launchpad؟",
-  "pilaunch-cta-body":"دليل Pi Launchpad الكامل داخل Chigalex1 — تقييم المشاريع والاحتجاز والالتزام الصحيح وكسب المكافآت.",
+  "pilaunch-cta-body":"دليل Pi Launchpad الكامل داخل Chigalex1 — تقييم المشاريع والاحتجاز والالتزام الصحيح وكسب المكافآت."
+},
 
-ber: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+ber: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Ansuf ɣer Chigalex1",
 "gate-sub":"Asekker n yimezdaɣ d tsdawit deg tmura 54 n Afrik ɣer usnimet n Pi.",
 "fee-desc-txt":"Isem n yiwen n tikkelt · Anezmir n tudert meṛṛa",
@@ -2459,10 +2460,10 @@ ber: {
   "pilaunch-warn-1":"⚠️ Staking kan UMA YAFK-AK tokens — Ilaq ad kemmdeḍ.",
   "pilaunch-warn-2":"⚠️ Sexdem Pi Launchpad deg Pi Browser s wiss garu kan.",
   "pilaunch-cta-title":"📚 Tḥulliḍ i Pi Launchpad?",
-  "pilaunch-cta-body":"Tataɣt tameqqrant n Pi Launchpad deg Chigalex1 — taɣulin ɣef imahilen, staking, committing u usɣur n tokens.",
+  "pilaunch-cta-body":"Tataɣt tameqqrant n Pi Launchpad deg Chigalex1 — taɣulin ɣef imahilen, staking, committing u usɣur n tokens."
+},
 
-ln: {
-"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+ln: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Boyei na Chigalex1",
 "gate-sub":"Kopesa nguya balobeli mpe biznisi na mibeko nyonso 54 ya Afrique na koyingira na economie ya Pi ecosystem efungameli.",
 "fee-desc-txt":"Kobanga moko feela · Kobata na bomoi nyonso",
