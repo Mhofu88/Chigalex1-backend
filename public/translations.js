@@ -223,12 +223,6 @@ en: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Ready to participate in Pi Launchpad?",
   "pilaunch-cta-body":"Full Pi Launchpad guide inside Chigalex1 — how to evaluate projects, stake safely, commit correctly, and earn token rewards across the Pi ecosystem.",
 
-// ══════════════════════════════════════════════════════════════════════
-// PiDEX + Pi Launchpad — BIG SECTION translation keys (titles/headers only)
-// Add these keys to the END of each existing language block in translations.js
-// (same pattern as before — paste before the closing } of each language)
-// ══════════════════════════════════════════════════════════════════════
-
 const bigsection_translations = {
 
 en: {
