@@ -1133,14 +1133,17 @@ footer a:hover{color:#F5C518;}
 
 <div class="divider"></div>
 
-<!-- ══ PIDEX ══ -->
+<!-- ═══════════════════════════════════════════════════════════════════
+     REPLACEMENT: Big PiDEX Section (id="pidex")
+         ═══════════════════════════════════════════════════════════════════ -->
+
 <section id="pidex" class="locked-section">
-  <div class="slbl">🔄 Members Only · New Feature</div>
-  <div class="stit">PiDEX — Pi's Own Exchange</div>
+  <div class="slbl" id="pidex-big-badge">🔄 Members Only · New Feature</div>
+  <div class="stit" id="pidex-big-title">PiDEX — Pi's Own Exchange</div>
   <div class="lock-overlay" id="pidex-lock">
     <div class="lock-icon">🔄🔒</div>
-    <div class="lock-title">Members Only</div>
-    <div class="lock-sub">Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.</div>
+    <div class="lock-title" id="pidex-big-lock-title">Members Only</div>
+    <div class="lock-sub" id="pidex-big-lock-sub">Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.</div>
     <button class="btn" onclick="showGate()" style="max-width:280px;">🔓 Unlock PiDEX Guide — <span class="live-price-membership">0.01</span>π</button>
   </div>
   <div class="lock-preview">
@@ -1149,239 +1152,91 @@ footer a:hover{color:#F5C518;}
       <p><strong>PiDEX launched March 12, 2026</strong> — Pi Network's own built-in exchange. You can now swap Pi for other tokens directly inside your Pi Wallet — no banks, no middlemen.</p>
     </div>
     <div class="cards">
-      <div class="card"><div class="ci">🔄</div><h3>What is PiDEX?</h3><p>A decentralized exchange built inside Pi Network. Swap Pi tokens peer-to-peer without leaving the Pi ecosystem.</p></div>
-      <div class="card"><div class="ci">🌍</div><h3>Why Africa?</h3><p>No bank account needed. No SWIFT fees. Trade Pi directly from your phone — even in the most remote areas.</p></div>
+      <div class="card"><div class="ci">🔄</div><h3 id="pidex-big-what-card-title">What is PiDEX?</h3><p id="pidex-big-what-card-body">A decentralized exchange built inside Pi Network. Swap Pi tokens peer-to-peer without leaving the Pi ecosystem.</p></div>
+      <div class="card"><div class="ci">🌍</div><h3 id="pidex-big-why-card-title">Why Africa?</h3><p id="pidex-big-why-card-body">No bank account needed. No SWIFT fees. Trade Pi directly from your phone — even in the most remote areas.</p></div>
     </div>
   </div>
   <div id="pidex-content" style="display:none;">
 
-    <!-- What is PiDEX — Plain Language -->
     <div style="background:linear-gradient(135deg,rgba(0,212,170,0.12),rgba(123,45,139,0.12));border:2px solid rgba(0,212,170,0.4);border-radius:18px;padding:24px;margin-bottom:28px;">
-      <div style="font-size:1.4rem;text-align:center;margin-bottom:12px;">🔄 What is PiDEX?</div>
-      <p style="color:#F5C518;font-weight:800;font-size:1rem;text-align:center;margin-bottom:14px;">Pi Network's Own Built-In Exchange — Live Since March 12, 2026</p>
+      <div style="font-size:1.4rem;text-align:center;margin-bottom:12px;" id="pidex-big-explain-title">🔄 What is PiDEX?</div>
+      <p style="color:#F5C518;font-weight:800;font-size:1rem;text-align:center;margin-bottom:14px;" id="pidex-big-explain-sub">Pi Network's Own Built-In Exchange — Live Since March 12, 2026</p>
       <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:16px;margin-bottom:14px;">
-        <p style="color:#F0EBF8;font-size:.9rem;line-height:1.75;margin-bottom:10px;">
-          <strong style="color:#00D4AA;">Think of it like this:</strong> A regular market where people buy and sell goods — except instead of tomatoes and bread, people are exchanging Pi tokens for other digital tokens, <strong>directly with each other</strong>, with no middleman taking a cut.
-        </p>
-        <p style="color:#B8A8D8;font-size:.85rem;line-height:1.75;">
-          PiDEX stands for <strong style="color:#F5C518;">Pi Decentralized Exchange</strong>. It lives inside your Pi Wallet and Pi Browser. It uses a system called an <strong style="color:#00D4AA;">Automated Market Maker (AMM)</strong> — a smart computer programme that automatically sets fair prices based on supply and demand, just like a market does naturally.
-        </p>
+        <p style="color:#F0EBF8;font-size:.9rem;line-height:1.75;margin-bottom:10px;" id="pidex-big-explain-p1">Think of it like this: A regular market where people buy and sell goods — except instead of tomatoes and bread, people are exchanging Pi tokens for other digital tokens, directly with each other, with no middleman taking a cut.</p>
+        <p style="color:#B8A8D8;font-size:.85rem;line-height:1.75;" id="pidex-big-explain-p2">PiDEX stands for Pi Decentralized Exchange. It lives inside your Pi Wallet and Pi Browser. It uses a system called an Automated Market Maker (AMM) — a smart computer programme that automatically sets fair prices based on supply and demand, just like a market does naturally.</p>
       </div>
       <div class="tip" style="margin-bottom:0;">
         <div>💡</div>
-        <p><strong>Simple version:</strong> PiDEX = a marketplace inside Pi where you can exchange your Pi for other project tokens — safely, without leaving the Pi ecosystem.</p>
+        <p id="pidex-big-explain-tip"><strong>Simple version:</strong> PiDEX = a marketplace inside Pi where you can exchange your Pi for other project tokens — safely, without leaving the Pi ecosystem.</p>
       </div>
     </div>
 
-    <!-- Key Concepts -->
-    <div class="slbl">📚 Key Concepts — Plain Language</div>
+    <div class="slbl" id="pidex-big-concepts-label">📚 Key Concepts — Plain Language</div>
     <div class="cards" style="margin-bottom:28px;">
-      <div class="card sec-ok">
-        <div class="ci">🤝</div>
-        <h3>Peer-to-Peer Trading</h3>
-        <p>You trade directly with other pioneers. No bank, no broker, no exchange company taking large fees. The Pi blockchain handles the transaction automatically and safely.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">🏊</div>
-        <h3>Liquidity Pools</h3>
-        <p>Think of a pool of water. Pioneers add their Pi to a shared pool. When someone wants to swap tokens, they draw from this pool. In return, pool contributors earn a small reward — called a <strong>liquidity fee</strong>.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">🤖</div>
-        <h3>Automated Market Maker</h3>
-        <p>No human sets prices on PiDEX. A smart mathematical formula automatically calculates fair prices based on how much of each token is available in the pool. More demand = higher price. More supply = lower price.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">🛡️</div>
-        <h3>Token Vetting</h3>
-        <p>Not just ANY token can appear on PiDEX. Pi Network reviews and approves tokens before they're listed — protecting pioneers from scam tokens and worthless projects.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">📈</div>
-        <h3>Price Discovery</h3>
-        <p>PiDEX helps establish the REAL value of Pi — based on actual trading activity, not speculation. Every swap on PiDEX is a vote for what Pi is truly worth.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">⛽</div>
-        <h3>Gas Fees</h3>
-        <p>A tiny fee paid to process your transaction on the blockchain. On PiDEX, fees are kept very low — making it accessible to African pioneers with small balances.</p>
-      </div>
+      <div class="card sec-ok"><div class="ci">🤝</div><h3 id="pidex-big-c1-title">Peer-to-Peer Trading</h3><p id="pidex-big-c1-body">You trade directly with other pioneers. No bank, no broker, no exchange company taking large fees. The Pi blockchain handles the transaction automatically and safely.</p></div>
+      <div class="card sec-ok"><div class="ci">🏊</div><h3 id="pidex-big-c2-title">Liquidity Pools</h3><p id="pidex-big-c2-body">Think of a pool of water. Pioneers add their Pi to a shared pool. When someone wants to swap tokens, they draw from this pool. In return, pool contributors earn a small reward — called a liquidity fee.</p></div>
+      <div class="card sec-ok"><div class="ci">🤖</div><h3 id="pidex-big-c3-title">Automated Market Maker</h3><p id="pidex-big-c3-body">No human sets prices on PiDEX. A smart mathematical formula automatically calculates fair prices based on how much of each token is available in the pool. More demand = higher price. More supply = lower price.</p></div>
+      <div class="card sec-ok"><div class="ci">🛡️</div><h3 id="pidex-big-c4-title">Token Vetting</h3><p id="pidex-big-c4-body">Not just ANY token can appear on PiDEX. Pi Network reviews and approves tokens before they're listed — protecting pioneers from scam tokens and worthless projects.</p></div>
+      <div class="card sec-ok"><div class="ci">📈</div><h3 id="pidex-big-c5-title">Price Discovery</h3><p id="pidex-big-c5-body">PiDEX helps establish the REAL value of Pi — based on actual trading activity, not speculation. Every swap on PiDEX is a vote for what Pi is truly worth.</p></div>
+      <div class="card sec-ok"><div class="ci">⛽</div><h3 id="pidex-big-c6-title">Gas Fees</h3><p id="pidex-big-c6-body">A tiny fee paid to process your transaction on the blockchain. On PiDEX, fees are kept very low — making it accessible to African pioneers with small balances.</p></div>
     </div>
 
-    <!-- How to Access PiDEX -->
-    <div class="slbl">📱 How to Access PiDEX — Step by Step</div>
+    <div class="slbl" id="pidex-big-steps-label">📱 How to Access PiDEX — Step by Step</div>
     <div class="steps" style="margin-bottom:28px;">
-      <div class="step" onclick="tog(this)">
-        <div class="sn">1</div>
-        <div class="sb">
-          <div class="st">Open Pi Browser</div>
-          <div class="sd">Launch the Pi Browser app on your phone — NOT a regular browser.</div>
-          <div class="sdt">
-            <p>Pi Browser is the gateway to the entire Pi ecosystem. Download it from Google Play or Apple App Store if you don't have it. Make sure you're logged in with your Pi account.</p>
-            <div class="tip"><div>💡</div><p>Pi Browser looks like a normal browser but is specially built for Pi Network DApps and features.</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
-      <div class="step" onclick="tog(this)">
-        <div class="sn">2</div>
-        <div class="sb">
-          <div class="st">Open Pi Wallet</div>
-          <div class="sd">Tap the Wallet icon inside Pi Browser.</div>
-          <div class="sdt">
-            <p>Your Pi Wallet is where PiDEX lives. Navigate to it inside Pi Browser. You'll see your Pi balance and the new DEX features added since March 12, 2026.</p>
-            <div class="tip wtip"><div>⚠️</div><p>You MUST have completed KYC to access Pi Wallet and PiDEX features. Complete your KYC first if you haven't.</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
-      <div class="step" onclick="tog(this)">
-        <div class="sn">3</div>
-        <div class="sb">
-          <div class="st">Find the DEX Tab</div>
-          <div class="sd">Look for "DEX" or "Exchange" inside your Pi Wallet.</div>
-          <div class="sdt">
-            <p>Inside Pi Wallet, look for a tab or button labelled DEX, Exchange, or Swap. This is the PiDEX interface. It shows available token pairs and current prices.</p>
-            <div class="tip"><div>💡</div><p>The interface may look different as Pi Network updates it — but always look for "DEX" or "Swap" labels.</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
-      <div class="step" onclick="tog(this)">
-        <div class="sn">4</div>
-        <div class="sb">
-          <div class="st">Choose a Token Pair</div>
-          <div class="sd">Select which tokens you want to swap — e.g. Pi → [Project Token].</div>
-          <div class="sdt">
-            <p>A token pair shows two tokens — what you're giving and what you're receiving. Example: <strong style="color:#F5C518;">Pi / USDT</strong> or <strong style="color:#F5C518;">Pi / [Ecosystem Token]</strong>. Only approved, vetted tokens appear here.</p>
-            <div class="tip gtip"><div>💡</div><p>Start with small amounts while learning. There's no rush — understand each step before committing larger Pi amounts.</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
-      <div class="step" onclick="tog(this)">
-        <div class="sn">5</div>
-        <div class="sb">
-          <div class="st">Enter Amount & Review</div>
-          <div class="sd">Type how much Pi you want to swap. Review the rate and fees.</div>
-          <div class="sdt">
-            <p>Before confirming:</p>
-            <p>✅ Check the exchange rate shown<br/>✅ Note the gas fee (should be very small)<br/>✅ Check the minimum amount you'll receive<br/>✅ Check for "slippage" — how much the price can move during your swap</p>
-            <div class="tip wtip"><div>⚠️</div><p>Prices can change between when you submit and when the transaction processes. Set a slippage tolerance you're comfortable with.</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
-      <div class="step" onclick="tog(this)">
-        <div class="sn">6</div>
-        <div class="sb">
-          <div class="st">Confirm the Swap</div>
-          <div class="sd">Tap Confirm — the Pi blockchain handles the rest automatically.</div>
-          <div class="sdt">
-            <p>Once confirmed, the smart contract automatically processes your swap. The tokens will appear in your Pi Wallet within seconds to minutes depending on network activity.</p>
-            <div class="tip"><div>💡</div><p>All transactions are permanently recorded on the Pi blockchain. You can verify your swap in your transaction history.</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
+      <div class="step" onclick="tog(this)"><div class="sn">1</div><div class="sb"><div class="st" id="pidex-big-s1-title">Open Pi Browser</div><div class="sd" id="pidex-big-s1-desc">Launch the Pi Browser app on your phone — NOT a regular browser.</div><div class="sdt"><p>Pi Browser is the gateway to the entire Pi ecosystem. Download it from Google Play or Apple App Store if you don't have it. Make sure you're logged in with your Pi account.</p><div class="tip"><div>💡</div><p>Pi Browser looks like a normal browser but is specially built for Pi Network DApps and features.</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">2</div><div class="sb"><div class="st" id="pidex-big-s2-title">Open Pi Wallet</div><div class="sd" id="pidex-big-s2-desc">Tap the Wallet icon inside Pi Browser.</div><div class="sdt"><p>Your Pi Wallet is where PiDEX lives. Navigate to it inside Pi Browser. You'll see your Pi balance and the new DEX features added since March 12, 2026.</p><div class="tip wtip"><div>⚠️</div><p>You MUST have completed KYC to access Pi Wallet and PiDEX features. Complete your KYC first if you haven't.</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">3</div><div class="sb"><div class="st" id="pidex-big-s3-title">Find the DEX Tab</div><div class="sd" id="pidex-big-s3-desc">Look for "DEX" or "Exchange" inside your Pi Wallet.</div><div class="sdt"><p>Inside Pi Wallet, look for a tab or button labelled DEX, Exchange, or Swap. This is the PiDEX interface. It shows available token pairs and current prices.</p><div class="tip"><div>💡</div><p>The interface may look different as Pi Network updates it — but always look for "DEX" or "Swap" labels.</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">4</div><div class="sb"><div class="st" id="pidex-big-s4-title">Choose a Token Pair</div><div class="sd" id="pidex-big-s4-desc">Select which tokens you want to swap — e.g. Pi → [Project Token].</div><div class="sdt"><p>A token pair shows two tokens — what you're giving and what you're receiving. Example: <strong style="color:#F5C518;">Pi / USDT</strong> or <strong style="color:#F5C518;">Pi / [Ecosystem Token]</strong>. Only approved, vetted tokens appear here.</p><div class="tip gtip"><div>💡</div><p>Start with small amounts while learning. There's no rush — understand each step before committing larger Pi amounts.</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">5</div><div class="sb"><div class="st" id="pidex-big-s5-title">Enter Amount & Review</div><div class="sd" id="pidex-big-s5-desc">Type how much Pi you want to swap. Review the rate and fees.</div><div class="sdt"><p>Before confirming:</p><p>✅ Check the exchange rate shown<br/>✅ Note the gas fee (should be very small)<br/>✅ Check the minimum amount you'll receive<br/>✅ Check for "slippage" — how much the price can move during your swap</p><div class="tip wtip"><div>⚠️</div><p>Prices can change between when you submit and when the transaction processes. Set a slippage tolerance you're comfortable with.</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">6</div><div class="sb"><div class="st" id="pidex-big-s6-title">Confirm the Swap</div><div class="sd" id="pidex-big-s6-desc">Tap Confirm — the Pi blockchain handles the rest automatically.</div><div class="sdt"><p>Once confirmed, the smart contract automatically processes your swap. The tokens will appear in your Pi Wallet within seconds to minutes depending on network activity.</p><div class="tip"><div>💡</div><p>All transactions are permanently recorded on the Pi blockchain. You can verify your swap in your transaction history.</p></div></div></div><div class="sa">▾</div></div>
     </div>
 
-    <!-- PiDEX and GCV -->
     <div style="background:linear-gradient(135deg,rgba(245,197,24,0.12),rgba(232,82,10,0.12));border:2px solid rgba(245,197,24,0.4);border-radius:18px;padding:22px;margin-bottom:28px;">
-      <div style="font-weight:800;color:#F5C518;font-size:1rem;margin-bottom:10px;text-align:center;">📈 PiDEX + GCV — The Connection Africa Must Understand</div>
-      <p style="color:#F0EBF8;font-size:.88rem;line-height:1.75;margin-bottom:12px;">
-        Every swap on PiDEX contributes to <strong style="color:#F5C518;">real price discovery</strong>. Unlike speculative prices on outside exchanges, PiDEX reflects <strong style="color:#00D4AA;">actual utility and demand</strong> within the Pi ecosystem.
-      </p>
-      <p style="color:#B8A8D8;font-size:.85rem;line-height:1.75;margin-bottom:14px;">
-        As more African pioneers use PiDEX — buying goods, paying for services, swapping tokens — the <strong style="color:#F5C518;">true value of Pi becomes visible on-chain</strong>. This is the foundation that makes GCV adoption credible and unstoppable.
-      </p>
-      <div class="tip gtip" style="margin-bottom:0;">
-        <div>🌍</div>
-        <p><strong>Africa's role:</strong> With 1.4 billion people, Africa's trading activity on PiDEX can single-handedly drive Pi's price discovery. Every African pioneer using PiDEX is building the case for GCV = $314,159.</p>
-      </div>
+      <div style="font-weight:800;color:#F5C518;font-size:1rem;margin-bottom:10px;text-align:center;" id="pidex-big-gcv-title">📈 PiDEX + GCV — The Connection Africa Must Understand</div>
+      <p style="color:#F0EBF8;font-size:.88rem;line-height:1.75;margin-bottom:12px;" id="pidex-big-gcv-p1">Every swap on PiDEX contributes to real price discovery. Unlike speculative prices on outside exchanges, PiDEX reflects actual utility and demand within the Pi ecosystem.</p>
+      <p style="color:#B8A8D8;font-size:.85rem;line-height:1.75;margin-bottom:14px;" id="pidex-big-gcv-p2">As more African pioneers use PiDEX — buying goods, paying for services, swapping tokens — the true value of Pi becomes visible on-chain. This is the foundation that makes GCV adoption credible and unstoppable.</p>
+      <div class="tip gtip" style="margin-bottom:0;"><div>🌍</div><p id="pidex-big-gcv-tip"><strong>Africa's role:</strong> With 1.4 billion people, Africa's trading activity on PiDEX can single-handedly drive Pi's price discovery. Every African pioneer using PiDEX is building the case for GCV = $314,159.</p></div>
     </div>
 
-    <!-- Security Warning -->
-    <div class="slbl">🔐 PiDEX Safety — Critical for African Pioneers</div>
+    <div class="slbl" id="pidex-big-safety-label">🔐 PiDEX Safety — Critical for African Pioneers</div>
     <div class="cards" style="margin-bottom:28px;">
-      <div class="card sec-warn">
-        <div class="ci">🚫</div>
-        <h3>Only Use Official PiDEX</h3>
-        <p>PiDEX is ONLY accessible inside Pi Wallet in Pi Browser. Any website or app claiming to be "PiDEX" outside of Pi Browser is a SCAM. Never connect your wallet to external sites.</p>
-      </div>
-      <div class="card sec-warn">
-        <div class="ci">⚠️</div>
-        <h3>Never Share Passphrase</h3>
-        <p>No PiDEX transaction will ever ask for your 24-word passphrase. If anything asks for it — stop immediately. You are being scammed.</p>
-      </div>
-      <div class="card sec-warn">
-        <div class="ci">🎭</div>
-        <h3>Fake Token Scams</h3>
-        <p>Scammers create fake tokens with similar names to real ones. Always check the exact token name and contract address before swapping. Only trade vetted, approved tokens on PiDEX.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">✅</div>
-        <h3>Start Small Always</h3>
-        <p>Your first PiDEX swap should be a tiny amount — just to learn the process. Never swap large amounts until you fully understand how it works.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">📋</div>
-        <h3>Verify Every Transaction</h3>
-        <p>Always check transaction details before confirming. Review the token names, amounts, fees, and receiving address carefully every single time.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">🔗</div>
-        <h3>Official Links Only</h3>
-        <p>Access PiDEX only through Pi Browser → Pi Wallet. Official Pi: <strong style="color:#00D4AA;">minepi.com</strong>. Report scams to support@minepi.com.</p>
-      </div>
+      <div class="card sec-warn"><div class="ci">🚫</div><h3 id="pidex-big-sf1-title">Only Use Official PiDEX</h3><p id="pidex-big-sf1-body">PiDEX is ONLY accessible inside Pi Wallet in Pi Browser. Any website or app claiming to be "PiDEX" outside of Pi Browser is a SCAM. Never connect your wallet to external sites.</p></div>
+      <div class="card sec-warn"><div class="ci">⚠️</div><h3 id="pidex-big-sf2-title">Never Share Passphrase</h3><p id="pidex-big-sf2-body">No PiDEX transaction will ever ask for your 24-word passphrase. If anything asks for it — stop immediately. You are being scammed.</p></div>
+      <div class="card sec-warn"><div class="ci">🎭</div><h3 id="pidex-big-sf3-title">Fake Token Scams</h3><p id="pidex-big-sf3-body">Scammers create fake tokens with similar names to real ones. Always check the exact token name and contract address before swapping. Only trade vetted, approved tokens on PiDEX.</p></div>
+      <div class="card sec-ok"><div class="ci">✅</div><h3 id="pidex-big-sf4-title">Start Small Always</h3><p id="pidex-big-sf4-body">Your first PiDEX swap should be a tiny amount — just to learn the process. Never swap large amounts until you fully understand how it works.</p></div>
+      <div class="card sec-ok"><div class="ci">📋</div><h3 id="pidex-big-sf5-title">Verify Every Transaction</h3><p id="pidex-big-sf5-body">Always check transaction details before confirming. Review the token names, amounts, fees, and receiving address carefully every single time.</p></div>
+      <div class="card sec-ok"><div class="ci">🔗</div><h3 id="pidex-big-sf6-title">Official Links Only</h3><p id="pidex-big-sf6-body">Access PiDEX only through Pi Browser → Pi Wallet. Official Pi: <strong style="color:#00D4AA;">minepi.com</strong>. Report scams to support@minepi.com.</p></div>
     </div>
 
-    <!-- FAQ -->
-    <div class="slbl">❓ PiDEX FAQ — Africa Pioneers</div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>Do I need to be KYC verified to use PiDEX?</span><span class="farr">▾</span></div>
-      <div class="fa">Yes. KYC verification is required before accessing Pi Wallet and PiDEX features. Complete your KYC first inside the Pi app.</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>How much Pi do I need to start using PiDEX?</span><span class="farr">▾</span></div>
-      <div class="fa">There is no official minimum, but you need enough Pi to cover the swap amount PLUS the gas fee. Start very small to learn the process first.</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>Can I use PiDEX on a basic Android phone?</span><span class="farr">▾</span></div>
-      <div class="fa">Yes — as long as your phone can run Pi Browser, you can access PiDEX. It is designed to work on the smartphones most common across Africa.</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>Is PiDEX the same as selling Pi on an outside exchange?</span><span class="farr">▾</span></div>
-      <div class="fa">No. PiDEX operates INSIDE the Pi ecosystem. You are swapping Pi for other Pi ecosystem tokens — not selling Pi for fiat currency on an external exchange. This is ecosystem trading, not cashing out.</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>Can I provide liquidity and earn rewards?</span><span class="farr">▾</span></div>
-      <div class="fa">Yes! Pioneers can add Pi to liquidity pools and earn a share of the trading fees generated by that pool. This is a way to put your Pi to work earning passive rewards within the ecosystem.</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>What tokens can I swap on PiDEX?</span><span class="farr">▾</span></div>
-      <div class="fa">Only Pi-vetted tokens that have passed Pi Network's approval process. New tokens are added as they are verified. Check inside Pi Wallet for the current list of available pairs.</div>
-    </div>
+    <div class="slbl" id="pidex-big-faq-label">❓ PiDEX FAQ — Africa Pioneers</div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pidex-big-faq1-q">Do I need to be KYC verified to use PiDEX?</span><span class="farr">▾</span></div><div class="fa" id="pidex-big-faq1-a">Yes. KYC verification is required before accessing Pi Wallet and PiDEX features. Complete your KYC first inside the Pi app.</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pidex-big-faq2-q">How much Pi do I need to start using PiDEX?</span><span class="farr">▾</span></div><div class="fa" id="pidex-big-faq2-a">There is no official minimum, but you need enough Pi to cover the swap amount PLUS the gas fee. Start very small to learn the process first.</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pidex-big-faq3-q">Can I use PiDEX on a basic Android phone?</span><span class="farr">▾</span></div><div class="fa" id="pidex-big-faq3-a">Yes — as long as your phone can run Pi Browser, you can access PiDEX. It is designed to work on the smartphones most common across Africa.</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pidex-big-faq4-q">Is PiDEX the same as selling Pi on an outside exchange?</span><span class="farr">▾</span></div><div class="fa" id="pidex-big-faq4-a">No. PiDEX operates INSIDE the Pi ecosystem. You are swapping Pi for other Pi ecosystem tokens — not selling Pi for fiat currency on an external exchange. This is ecosystem trading, not cashing out.</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pidex-big-faq5-q">Can I provide liquidity and earn rewards?</span><span class="farr">▾</span></div><div class="fa" id="pidex-big-faq5-a">Yes! Pioneers can add Pi to liquidity pools and earn a share of the trading fees generated by that pool. This is a way to put your Pi to work earning passive rewards within the ecosystem.</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pidex-big-faq6-q">What tokens can I swap on PiDEX?</span><span class="farr">▾</span></div><div class="fa" id="pidex-big-faq6-a">Only Pi-vetted tokens that have passed Pi Network's approval process. New tokens are added as they are verified. Check inside Pi Wallet for the current list of available pairs.</div></div>
 
-    <!-- CTA -->
     <div style="background:#211A3A;border:1.5px solid rgba(0,212,170,0.4);border-radius:16px;padding:24px;text-align:center;margin-top:8px;">
-      <p style="font-weight:800;color:#00D4AA;font-size:1rem;margin-bottom:8px;">🔄 Ready to Explore PiDEX?</p>
-      <p style="color:#B8A8D8;font-size:.86rem;margin-bottom:16px;">Open Pi Browser → Pi Wallet → Look for the DEX or Swap tab. Start with a tiny amount and explore Africa's newest financial frontier!</p>
-      <button class="btn btn-teal" onclick="sc('pilaunchpad')">🚀 Next: Pi Launchpad →</button>
+      <p style="font-weight:800;color:#00D4AA;font-size:1rem;margin-bottom:8px;" id="pidex-big-cta-title">🔄 Ready to Explore PiDEX?</p>
+      <p style="color:#B8A8D8;font-size:.86rem;margin-bottom:16px;" id="pidex-big-cta-body">Open Pi Browser → Pi Wallet → Look for the DEX or Swap tab. Start with a tiny amount and explore Africa's newest financial frontier!</p>
+      <button class="btn btn-teal" onclick="sc('pilaunchpad')" id="pidex-big-cta-btn">🚀 Next: Pi Launchpad →</button>
     </div>
-  </div><!-- end pidex-content -->
+  </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ PI LAUNCHPAD ══ -->
+<!-- ═══════════════════════════════════════════════════════════════════
+     REPLACEMENT: Big Pi Launchpad Section (id="pilaunchpad")
+     ═══════════════════════════════════════════════════════════════════ -->
+
 <section id="pilaunchpad" class="locked-section">
-  <div class="slbl">🚀 Members Only · Brand New · Testnet Live</div>
-  <div class="stit">Pi Launchpad — Africa's Gateway to New Pi Projects</div>
+  <div class="slbl" id="pilaunch-big-badge">🚀 Members Only · Brand New · Testnet Live</div>
+  <div class="stit" id="pilaunch-big-title">Pi Launchpad — Africa's Gateway to New Pi Projects</div>
   <div class="lock-overlay" id="pilaunchpad-lock">
     <div class="lock-icon">🚀🔒</div>
-    <div class="lock-title">Members Only</div>
-    <div class="lock-sub">Full Pi Launchpad guide — what it is, how to participate, and why Africa must be first. Unlock with 0.01π.</div>
+    <div class="lock-title" id="pilaunch-big-lock-title">Members Only</div>
+    <div class="lock-sub" id="pilaunch-big-lock-sub">Full Pi Launchpad guide — what it is, how to participate, and why Africa must be first. Unlock with 0.01π.</div>
   <button class="btn" onclick="showGate()" style="max-width:280px;">🔓 Unlock Launchpad Guide — <span class="live-price-membership">0.01</span>π</button>  
 </div>
   <div class="lock-preview">
@@ -1390,286 +1245,111 @@ footer a:hover{color:#F5C518;}
       <p><strong>Pi Launchpad launched March 2026 on Testnet</strong> — a brand new way for pioneers to get early access to new Pi ecosystem projects and tokens. Currently in test mode — the perfect time to LEARN before Mainnet!</p>
     </div>
     <div class="cards">
-      <div class="card"><div class="ci">🌱</div><h3>What is Launchpad?</h3><p>A platform where new Pi ecosystem projects launch their tokens — and pioneers get early access by supporting them with Pi.</p></div>
-      <div class="card"><div class="ci">🛡️</div><h3>Safe by Design</h3><p>Projects must have a WORKING app before launching. No speculation. No rug pulls. Pi goes into liquidity pools — not project pockets.</p></div>
+      <div class="card"><div class="ci">🌱</div><h3 id="pilaunch-big-what-card-title">What is Launchpad?</h3><p id="pilaunch-big-what-card-body">A platform where new Pi ecosystem projects launch their tokens — and pioneers get early access by supporting them with Pi.</p></div>
+      <div class="card"><div class="ci">🛡️</div><h3 id="pilaunch-big-safe-card-title">Safe by Design</h3><p id="pilaunch-big-safe-card-body">Projects must have a WORKING app before launching. No speculation. No rug pulls. Pi goes into liquidity pools — not project pockets.</p></div>
     </div>
   </div>
   <div id="pilaunchpad-content" style="display:none;">
 
-    <!-- LIVE STATUS BANNER -->
     <div style="background:linear-gradient(135deg,rgba(245,197,24,0.15),rgba(232,82,10,0.15));border:2px solid rgba(245,197,24,0.6);border-radius:14px;padding:16px 20px;margin-bottom:24px;display:flex;gap:14px;align-items:center;">
       <div style="font-size:1.6rem;">📡</div>
       <div>
-        <div style="font-weight:800;color:#F5C518;margin-bottom:4px;">LIVE STATUS — Testnet Active · June 2026</div>
-        <p style="color:#B8A8D8;font-size:.83rem;line-height:1.6;">Pi Launchpad is currently running on <strong style="color:#00D4AA;">Testnet</strong> with test tokens. A second test token <strong style="color:#F5C518;">SLICE</strong> was just released to improve the experience. Mainnet launch coming soon. NOW is the time to learn!</p>
+        <div style="font-weight:800;color:#F5C518;margin-bottom:4px;" id="pilaunch-big-status-title">LIVE STATUS — Testnet Active · June 2026</div>
+        <p style="color:#B8A8D8;font-size:.83rem;line-height:1.6;" id="pilaunch-big-status-body">Pi Launchpad is currently running on Testnet with test tokens. A second test token SLICE was just released to improve the experience. Mainnet launch coming soon. NOW is the time to learn!</p>
       </div>
     </div>
 
-    <!-- What is Pi Launchpad — Plain Language -->
     <div style="background:linear-gradient(135deg,rgba(123,45,139,0.15),rgba(232,82,10,0.12));border:2px solid rgba(123,45,139,0.4);border-radius:18px;padding:24px;margin-bottom:28px;">
-      <div style="font-size:1.4rem;text-align:center;margin-bottom:12px;">🚀 What is Pi Launchpad?</div>
-      <p style="color:#F5C518;font-weight:800;font-size:1rem;text-align:center;margin-bottom:14px;">Think of it Like a Community Market Opening — Powered by Pi</p>
+      <div style="font-size:1.4rem;text-align:center;margin-bottom:12px;" id="pilaunch-big-explain-title">🚀 What is Pi Launchpad?</div>
+      <p style="color:#F5C518;font-weight:800;font-size:1rem;text-align:center;margin-bottom:14px;" id="pilaunch-big-explain-sub">Think of it Like a Community Market Opening — Powered by Pi</p>
       <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:16px;margin-bottom:14px;">
-        <p style="color:#F0EBF8;font-size:.9rem;line-height:1.75;margin-bottom:12px;">
-          <strong style="color:#00D4AA;">Simple analogy:</strong> Imagine a new shop is about to open in your town. Before opening day, the owner says: <em>"Help us get started — pay a small amount now and get special early-customer benefits when we open."</em> That is essentially what Pi Launchpad does — except the "shop" is a new Pi app or project, and your "early payment" is Pi.
-        </p>
-        <p style="color:#B8A8D8;font-size:.85rem;line-height:1.75;margin-bottom:10px;">
-          Pi Launchpad is a platform inside Pi Browser where <strong style="color:#F5C518;">new Pi ecosystem projects launch their own tokens</strong>. Pioneers can support these projects early — and in return, receive the project's tokens at the best possible rate before everyone else.
-        </p>
-        <p style="color:#B8A8D8;font-size:.85rem;line-height:1.75;">
-          Unlike typical crypto launches where money goes into founders' pockets, <strong style="color:#00D4AA;">Pi Launchpad sends all Pioneer Pi into liquidity pools</strong> — making the token tradeable on PiDEX from day one, and protecting pioneers from scams.
-        </p>
+        <p style="color:#F0EBF8;font-size:.9rem;line-height:1.75;margin-bottom:12px;" id="pilaunch-big-explain-p1">Simple analogy: Imagine a new shop is about to open in your town. Before opening day, the owner says: "Help us get started — pay a small amount now and get special early-customer benefits when we open." That is essentially what Pi Launchpad does — except the "shop" is a new Pi app or project, and your "early payment" is Pi.</p>
+        <p style="color:#B8A8D8;font-size:.85rem;line-height:1.75;margin-bottom:10px;" id="pilaunch-big-explain-p2">Pi Launchpad is a platform inside Pi Browser where new Pi ecosystem projects launch their own tokens. Pioneers can support these projects early — and in return, receive the project's tokens at the best possible rate before everyone else.</p>
+        <p style="color:#B8A8D8;font-size:.85rem;line-height:1.75;" id="pilaunch-big-explain-p3">Unlike typical crypto launches where money goes into founders' pockets, Pi Launchpad sends all Pioneer Pi into liquidity pools — making the token tradeable on PiDEX from day one, and protecting pioneers from scams.</p>
       </div>
-      <div class="tip" style="margin-bottom:0;">
-        <div>💡</div>
-        <p><strong>Bottom line:</strong> Pi Launchpad = a safe, official way to discover and support new Pi projects early — and earn their tokens before Mainnet launches them.</p>
-      </div>
+      <div class="tip" style="margin-bottom:0;"><div>💡</div><p id="pilaunch-big-explain-tip"><strong>Bottom line:</strong> Pi Launchpad = a safe, official way to discover and support new Pi projects early — and earn their tokens before Mainnet launches them.</p></div>
     </div>
 
-    <!-- Key Concepts -->
-    <div class="slbl">📚 Key Concepts — Explained Simply for Every Pioneer</div>
+    <div class="slbl" id="pilaunch-big-concepts-label">📚 Key Concepts — Explained Simply for Every Pioneer</div>
     <div class="cards" style="margin-bottom:28px;">
-      <div class="card sec-ok">
-        <div class="ci">🏗️</div>
-        <h3>Product-First Projects Only</h3>
-        <p>Every project on Pi Launchpad MUST have a working app before launching their token. No empty promises. No vaporware. The app must exist and function — protecting pioneers from scam projects.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">🪙</div>
-        <h3>Ecosystem Tokens</h3>
-        <p>These are NOT Pi coins. They are new tokens created by Pi ecosystem projects — like loyalty points for that specific app. You earn them by supporting the project early, then use them inside that app.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">💧</div>
-        <h3>Liquidity Pools — Not Project Wallets</h3>
-        <p>When you commit Pi to a launch, your Pi goes into a shared liquidity pool — NOT into the project team's wallet. This prevents rug pulls (where teams take money and disappear) and creates instant trading ability on PiDEX.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">📌</div>
-        <h3>Staking Pi</h3>
-        <p>Staking means temporarily locking your Pi to show you want to participate. Think of it like putting your name on a list. You're saying: "I'm interested — hold my spot." Your Pi isn't spent yet — just reserved.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">✅</div>
-        <h3>Committing Pi</h3>
-        <p>Committing means actually sending your Pi into the launch. This is the final step. Unlike staking (just reserving), committing is your actual participation. You must BOTH stake AND commit to fully participate.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">⚡</div>
-        <h3>Early Access Benefit</h3>
-        <p>Pioneers who participate in a launch get tokens at the best early rate — before the token is publicly available on PiDEX. The earlier you participate, the better your token allocation relative to your Pi commitment.</p>
-      </div>
+      <div class="card sec-ok"><div class="ci">🏗️</div><h3 id="pilaunch-big-c1-title">Product-First Projects Only</h3><p id="pilaunch-big-c1-body">Every project on Pi Launchpad MUST have a working app before launching their token. No empty promises. No vaporware. The app must exist and function — protecting pioneers from scam projects.</p></div>
+      <div class="card sec-ok"><div class="ci">🪙</div><h3 id="pilaunch-big-c2-title">Ecosystem Tokens</h3><p id="pilaunch-big-c2-body">These are NOT Pi coins. They are new tokens created by Pi ecosystem projects — like loyalty points for that specific app. You earn them by supporting the project early, then use them inside that app.</p></div>
+      <div class="card sec-ok"><div class="ci">💧</div><h3 id="pilaunch-big-c3-title">Liquidity Pools — Not Project Wallets</h3><p id="pilaunch-big-c3-body">When you commit Pi to a launch, your Pi goes into a shared liquidity pool — NOT into the project team's wallet. This prevents rug pulls (where teams take money and disappear) and creates instant trading ability on PiDEX.</p></div>
+      <div class="card sec-ok"><div class="ci">📌</div><h3 id="pilaunch-big-c4-title">Staking Pi</h3><p id="pilaunch-big-c4-body">Staking means temporarily locking your Pi to show you want to participate. Think of it like putting your name on a list. You're saying: "I'm interested — hold my spot." Your Pi isn't spent yet — just reserved.</p></div>
+      <div class="card sec-ok"><div class="ci">✅</div><h3 id="pilaunch-big-c5-title">Committing Pi</h3><p id="pilaunch-big-c5-body">Committing means actually sending your Pi into the launch. This is the final step. Unlike staking (just reserving), committing is your actual participation. You must BOTH stake AND commit to fully participate.</p></div>
+      <div class="card sec-ok"><div class="ci">⚡</div><h3 id="pilaunch-big-c6-title">Early Access Benefit</h3><p id="pilaunch-big-c6-body">Pioneers who participate in a launch get tokens at the best early rate — before the token is publicly available on PiDEX. The earlier you participate, the better your token allocation relative to your Pi commitment.</p></div>
     </div>
 
-    <!-- Staking vs Committing — Special Callout -->
     <div style="background:rgba(245,197,24,0.08);border:1.5px solid rgba(245,197,24,0.4);border-radius:16px;padding:22px;margin-bottom:28px;">
-      <div style="font-weight:800;color:#F5C518;font-size:.95rem;margin-bottom:14px;text-align:center;">⚠️ The Most Confusing Part — Staking vs Committing</div>
-      <p style="color:#B8A8D8;font-size:.84rem;line-height:1.7;margin-bottom:16px;">Pi Network found that many pioneers staked Pi but then did NOT commit — meaning they missed out on actually participating! Here is the difference clearly:</p>
+      <div style="font-weight:800;color:#F5C518;font-size:.95rem;margin-bottom:14px;text-align:center;" id="pilaunch-big-confusing-title">⚠️ The Most Confusing Part — Staking vs Committing</div>
+      <p style="color:#B8A8D8;font-size:.84rem;line-height:1.7;margin-bottom:16px;" id="pilaunch-big-confusing-body">Pi Network found that many pioneers staked Pi but then did NOT commit — meaning they missed out on actually participating! Here is the difference clearly:</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-        <div style="background:rgba(255,112,67,0.1);border:1px solid rgba(255,112,67,0.35);border-radius:12px;padding:14px;">
-          <div style="font-weight:800;color:#FF7043;margin-bottom:8px;">📌 STAKING</div>
-          <p style="color:#F0EBF8;font-size:.82rem;line-height:1.6;">Reserving your Pi<br/>Like raising your hand<br/>Pi still in your wallet<br/>No tokens earned yet<br/><strong style="color:#FF7043;">NOT enough on its own!</strong></p>
-        </div>
-        <div style="background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.35);border-radius:12px;padding:14px;">
-          <div style="font-weight:800;color:#00D4AA;margin-bottom:8px;">✅ COMMITTING</div>
-          <p style="color:#F0EBF8;font-size:.82rem;line-height:1.6;">Actually sending Pi<br/>Like paying at the counter<br/>Pi goes to pool<br/>Tokens earned!<br/><strong style="color:#00D4AA;">This is what counts!</strong></p>
-        </div>
+        <div style="background:rgba(255,112,67,0.1);border:1px solid rgba(255,112,67,0.35);border-radius:12px;padding:14px;"><div style="font-weight:800;color:#FF7043;margin-bottom:8px;" id="pilaunch-big-staking-label">📌 STAKING</div><p style="color:#F0EBF8;font-size:.82rem;line-height:1.6;">Reserving your Pi<br/>Like raising your hand<br/>Pi still in your wallet<br/>No tokens earned yet<br/><strong style="color:#FF7043;">NOT enough on its own!</strong></p></div>
+        <div style="background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.35);border-radius:12px;padding:14px;"><div style="font-weight:800;color:#00D4AA;margin-bottom:8px;" id="pilaunch-big-committing-label">✅ COMMITTING</div><p style="color:#F0EBF8;font-size:.82rem;line-height:1.6;">Actually sending Pi<br/>Like paying at the counter<br/>Pi goes to pool<br/>Tokens earned!<br/><strong style="color:#00D4AA;">This is what counts!</strong></p></div>
       </div>
-      <div class="tip wtip" style="margin-top:14px;margin-bottom:0;">
-        <div>⚠️</div>
-        <p><strong>Remember:</strong> You must do BOTH — stake first, then commit. Staking alone does not earn you tokens. Many pioneers missed the first test launch because they only staked. Don't make that mistake!</p>
-      </div>
+      <div class="tip wtip" style="margin-top:14px;margin-bottom:0;"><div>⚠️</div><p id="pilaunch-big-confusing-tip"><strong>Remember:</strong> You must do BOTH — stake first, then commit. Staking alone does not earn you tokens. Many pioneers missed the first test launch because they only staked. Don't make that mistake!</p></div>
     </div>
 
-    <!-- How to Access Pi Launchpad -->
-    <div class="slbl">📱 How to Participate — Step by Step (Testnet)</div>
+    <div class="slbl" id="pilaunch-big-steps-label">📱 How to Participate — Step by Step (Testnet)</div>
     <div class="steps" style="margin-bottom:28px;">
-      <div class="step" onclick="tog(this)">
-        <div class="sn">1</div>
-        <div class="sb">
-          <div class="st">Open Pi Browser</div>
-          <div class="sd">Launch Pi Browser — the only way to access Pi Launchpad.</div>
-          <div class="sdt">
-            <p>Pi Launchpad is a Pi App — it only works inside Pi Browser. Make sure you are logged in with your Pi account. Regular Chrome or Firefox browsers cannot access this feature.</p>
-            <div class="tip gtip"><div>💡</div><p>Currently on Testnet — so you are using Test-Pi, not real Pi. This is the perfect time to practice with zero risk!</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
-      <div class="step" onclick="tog(this)">
-        <div class="sn">2</div>
-        <div class="sb">
-          <div class="st">Find the Pi Launchpad App</div>
-          <div class="sd">Search for "Pi Launchpad" in the Pi Browser app directory.</div>
-          <div class="sdt">
-            <p>Inside Pi Browser, look for the Pi Launchpad app. It may appear on the homepage or you can search for it. It was launched as a Pi App on Pi Day 2026 — March 14, 2026.</p>
-            <div class="tip"><div>💡</div><p>The Launchpad interface may look different as Pi Network updates it during the Testnet phase. Changes are expected and normal.</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
-      <div class="step" onclick="tog(this)">
-        <div class="sn">3</div>
-        <div class="sb">
-          <div class="st">Browse Available Launches</div>
-          <div class="sd">See which projects are currently launching tokens.</div>
-          <div class="sdt">
-            <p>The Launchpad shows you available projects. For each project you will see:</p>
-            <p style="margin-top:8px;">📋 Project name and description<br/>⏰ Launch timeline and deadlines<br/>🪙 Token details and allocation<br/>📱 Link to the project's working app<br/>💧 Pool size and participation stats</p>
-            <div class="tip gtip"><div>💡</div><p>Always tap through to the project's app first. Is it a real, working app? Does it make sense? Only support projects you understand and believe in.</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
-      <div class="step" onclick="tog(this)">
-        <div class="sn">4</div>
-        <div class="sb">
-          <div class="st">Stake Your Pi</div>
-          <div class="sd">Reserve your spot by staking Pi — this is step 1 of 2.</div>
-          <div class="sdt">
-            <p>Choose how much Pi you want to stake. This is your reservation. Your Pi stays in your wallet at this point — it is just locked temporarily to show your intent to participate.</p>
-            <div class="tip wtip"><div>⚠️</div><p>Remember — staking ALONE is not enough. You must also complete Step 5 (Committing) to actually earn tokens!</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
-      <div class="step" onclick="tog(this)">
-        <div class="sn">5</div>
-        <div class="sb">
-          <div class="st">Commit Your Pi — The Critical Step!</div>
-          <div class="sd">Actually send your Pi into the launch pool. This is what earns you tokens.</div>
-          <div class="sdt">
-            <p>After staking, you MUST also commit. Committing sends your Pi into the liquidity pool. This is the action that actually earns you the project's tokens.</p>
-            <p style="margin-top:8px;color:#F5C518;font-weight:700;">✅ Stake + Commit = Token allocation earned<br/>❌ Stake only = No tokens earned</p>
-            <div class="tip wtip"><div>⚠️</div><p>Pi found that many pioneers in the first test launch staked but forgot to commit. They missed out completely. Do not let this happen to you!</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
-      <div class="step" onclick="tog(this)">
-        <div class="sn">6</div>
-        <div class="sb">
-          <div class="st">Receive Your Tokens</div>
-          <div class="sd">After the launch window closes, tokens appear in your Pi Wallet.</div>
-          <div class="sdt">
-            <p>Once the launch completes, your project tokens are distributed to your Pi Wallet. You can then:</p>
-            <p style="margin-top:8px;">🔄 Trade them on PiDEX<br/>📱 Use them inside the project's app<br/>💰 Hold them as the project grows<br/>🎁 Share them with other pioneers</p>
-            <div class="tip"><div>💡</div><p>The real value of Launchpad tokens comes from using them inside their project apps — not just trading. Support projects that build real utility for Africa!</p></div>
-          </div>
-        </div>
-        <div class="sa">▾</div>
-      </div>
+      <div class="step" onclick="tog(this)"><div class="sn">1</div><div class="sb"><div class="st" id="pilaunch-big-s1-title">Open Pi Browser</div><div class="sd" id="pilaunch-big-s1-desc">Launch Pi Browser — the only way to access Pi Launchpad.</div><div class="sdt"><p>Pi Launchpad is a Pi App — it only works inside Pi Browser. Make sure you are logged in with your Pi account. Regular Chrome or Firefox browsers cannot access this feature.</p><div class="tip gtip"><div>💡</div><p>Currently on Testnet — so you are using Test-Pi, not real Pi. This is the perfect time to practice with zero risk!</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">2</div><div class="sb"><div class="st" id="pilaunch-big-s2-title">Find the Pi Launchpad App</div><div class="sd" id="pilaunch-big-s2-desc">Search for "Pi Launchpad" in the Pi Browser app directory.</div><div class="sdt"><p>Inside Pi Browser, look for the Pi Launchpad app. It may appear on the homepage or you can search for it. It was launched as a Pi App on Pi Day 2026 — March 14, 2026.</p><div class="tip"><div>💡</div><p>The Launchpad interface may look different as Pi Network updates it during the Testnet phase. Changes are expected and normal.</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">3</div><div class="sb"><div class="st" id="pilaunch-big-s3-title">Browse Available Launches</div><div class="sd" id="pilaunch-big-s3-desc">See which projects are currently launching tokens.</div><div class="sdt"><p>The Launchpad shows you available projects. For each project you will see:</p><p style="margin-top:8px;">📋 Project name and description<br/>⏰ Launch timeline and deadlines<br/>🪙 Token details and allocation<br/>📱 Link to the project's working app<br/>💧 Pool size and participation stats</p><div class="tip gtip"><div>💡</div><p>Always tap through to the project's app first. Is it a real, working app? Does it make sense? Only support projects you understand and believe in.</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">4</div><div class="sb"><div class="st" id="pilaunch-big-s4-title">Stake Your Pi</div><div class="sd" id="pilaunch-big-s4-desc">Reserve your spot by staking Pi — this is step 1 of 2.</div><div class="sdt"><p>Choose how much Pi you want to stake. This is your reservation. Your Pi stays in your wallet at this point — it is just locked temporarily to show your intent to participate.</p><div class="tip wtip"><div>⚠️</div><p>Remember — staking ALONE is not enough. You must also complete Step 5 (Committing) to actually earn tokens!</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">5</div><div class="sb"><div class="st" id="pilaunch-big-s5-title">Commit Your Pi — The Critical Step!</div><div class="sd" id="pilaunch-big-s5-desc">Actually send your Pi into the launch pool. This is what earns you tokens.</div><div class="sdt"><p>After staking, you MUST also commit. Committing sends your Pi into the liquidity pool. This is the action that actually earns you the project's tokens.</p><p style="margin-top:8px;color:#F5C518;font-weight:700;">✅ Stake + Commit = Token allocation earned<br/>❌ Stake only = No tokens earned</p><div class="tip wtip"><div>⚠️</div><p>Pi found that many pioneers in the first test launch staked but forgot to commit. They missed out completely. Do not let this happen to you!</p></div></div></div><div class="sa">▾</div></div>
+      <div class="step" onclick="tog(this)"><div class="sn">6</div><div class="sb"><div class="st" id="pilaunch-big-s6-title">Receive Your Tokens</div><div class="sd" id="pilaunch-big-s6-desc">After the launch window closes, tokens appear in your Pi Wallet.</div><div class="sdt"><p>Once the launch completes, your project tokens are distributed to your Pi Wallet. You can then:</p><p style="margin-top:8px;">🔄 Trade them on PiDEX<br/>📱 Use them inside the project's app<br/>💰 Hold them as the project grows<br/>🎁 Share them with other pioneers</p><div class="tip"><div>💡</div><p>The real value of Launchpad tokens comes from using them inside their project apps — not just trading. Support projects that build real utility for Africa!</p></div></div></div><div class="sa">▾</div></div>
     </div>
 
-    <!-- Testnet vs Mainnet -->
     <div style="background:rgba(0,212,170,0.08);border:1.5px solid rgba(0,212,170,0.3);border-radius:16px;padding:22px;margin-bottom:28px;">
-      <div style="font-weight:800;color:#00D4AA;font-size:.95rem;margin-bottom:14px;text-align:center;">📡 Testnet vs Mainnet — What's the Difference?</div>
+      <div style="font-weight:800;color:#00D4AA;font-size:.95rem;margin-bottom:14px;text-align:center;" id="pilaunch-big-testmain-title">📡 Testnet vs Mainnet — What's the Difference?</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
-        <div style="background:rgba(0,0,0,0.2);border-radius:12px;padding:14px;border:1px solid rgba(0,212,170,0.2);">
-          <div style="font-weight:800;color:#00D4AA;margin-bottom:8px;">📡 TESTNET (Now)</div>
-          <p style="color:#B8A8D8;font-size:.82rem;line-height:1.65;">Uses Test-Pi only<br/>No real money involved<br/>Safe to experiment<br/>Features may change<br/>Perfect for LEARNING<br/><strong style="color:#00D4AA;">Use it now — free practice!</strong></p>
-        </div>
-        <div style="background:rgba(0,0,0,0.2);border-radius:12px;padding:14px;border:1px solid rgba(245,197,24,0.2);">
-          <div style="font-weight:800;color:#F5C518;margin-bottom:8px;">🌍 MAINNET (Coming)</div>
-          <p style="color:#B8A8D8;font-size:.82rem;line-height:1.65;">Uses real Pi<br/>Real token value<br/>Permanent transactions<br/>Stable features<br/>Real economic impact<br/><strong style="color:#F5C518;">Those who learned on Testnet win!</strong></p>
-        </div>
+        <div style="background:rgba(0,0,0,0.2);border-radius:12px;padding:14px;border:1px solid rgba(0,212,170,0.2);"><div style="font-weight:800;color:#00D4AA;margin-bottom:8px;" id="pilaunch-big-testnet-label">📡 TESTNET (Now)</div><p style="color:#B8A8D8;font-size:.82rem;line-height:1.65;">Uses Test-Pi only<br/>No real money involved<br/>Safe to experiment<br/>Features may change<br/>Perfect for LEARNING<br/><strong style="color:#00D4AA;">Use it now — free practice!</strong></p></div>
+        <div style="background:rgba(0,0,0,0.2);border-radius:12px;padding:14px;border:1px solid rgba(245,197,24,0.2);"><div style="font-weight:800;color:#F5C518;margin-bottom:8px;" id="pilaunch-big-mainnet-label">🌍 MAINNET (Coming)</div><p style="color:#B8A8D8;font-size:.82rem;line-height:1.65;">Uses real Pi<br/>Real token value<br/>Permanent transactions<br/>Stable features<br/>Real economic impact<br/><strong style="color:#F5C518;">Those who learned on Testnet win!</strong></p></div>
       </div>
-      <div class="tip gtip" style="margin-bottom:0;">
-        <div>🌍</div>
-        <p><strong>Africa's advantage:</strong> Pioneers who master the Launchpad on Testnet NOW will be perfectly positioned to participate in the earliest and best Mainnet launches — getting tokens at the lowest possible rates before anyone else.</p>
-      </div>
+      <div class="tip gtip" style="margin-bottom:0;"><div>🌍</div><p id="pilaunch-big-testmain-tip"><strong>Africa's advantage:</strong> Pioneers who master the Launchpad on Testnet NOW will be perfectly positioned to participate in the earliest and best Mainnet launches — getting tokens at the lowest possible rates before anyone else.</p></div>
     </div>
 
-    <!-- Why Africa Must Pay Attention -->
     <div style="background:linear-gradient(135deg,rgba(232,82,10,0.12),rgba(123,45,139,0.12));border:2px solid rgba(232,82,10,0.4);border-radius:18px;padding:24px;margin-bottom:28px;">
-      <div style="font-weight:800;color:#E8520A;font-size:1rem;margin-bottom:12px;text-align:center;">🌍 Why African Pioneers Must Act NOW</div>
+      <div style="font-weight:800;color:#E8520A;font-size:1rem;margin-bottom:12px;text-align:center;" id="pilaunch-big-why-title">🌍 Why African Pioneers Must Act NOW</div>
       <div class="gcv-roadmap" style="margin-bottom:14px;">
-        <div class="mstep"><div class="mn">🏆</div><div><div class="mt">First-Mover Advantage</div><div class="md">Pioneers who participate in Launchpad launches get tokens at the BEST rates. As more people join later, rates become less favourable. Africa's large pioneer community can dominate early launch participation.</div></div></div>
-        <div class="mstep"><div class="mn">🌱</div><div><div class="mt">Build Africa-Focused Projects</div><div class="md">African developers can use Pi Launchpad to launch tokens for African-specific apps — mobile money bridges, agricultural payment systems, local market platforms. Pi Launchpad could birth Africa's own DeFi ecosystem.</div></div></div>
-        <div class="mstep"><div class="mn">💰</div><div><div class="mt">Create New Income Streams</div><div class="md">By providing liquidity and participating early in launches, African pioneers can earn project tokens that grow in value as the project grows. This is a new form of income accessible to anyone with a smartphone.</div></div></div>
-        <div class="mstep"><div class="mn">📈</div><div><div class="mt">Support GCV Through Activity</div><div class="md">Every Pi committed to a Launchpad launch creates on-chain economic activity. This real utility drives Pi's price discovery — supporting the community consensus toward GCV = $314,159.</div></div></div>
+        <div class="mstep"><div class="mn">🏆</div><div><div class="mt" id="pilaunch-big-why1-title">First-Mover Advantage</div><div class="md" id="pilaunch-big-why1-body">Pioneers who participate in Launchpad launches get tokens at the BEST rates. As more people join later, rates become less favourable. Africa's large pioneer community can dominate early launch participation.</div></div></div>
+        <div class="mstep"><div class="mn">🌱</div><div><div class="mt" id="pilaunch-big-why2-title">Build Africa-Focused Projects</div><div class="md" id="pilaunch-big-why2-body">African developers can use Pi Launchpad to launch tokens for African-specific apps — mobile money bridges, agricultural payment systems, local market platforms. Pi Launchpad could birth Africa's own DeFi ecosystem.</div></div></div>
+        <div class="mstep"><div class="mn">💰</div><div><div class="mt" id="pilaunch-big-why3-title">Create New Income Streams</div><div class="md" id="pilaunch-big-why3-body">By providing liquidity and participating early in launches, African pioneers can earn project tokens that grow in value as the project grows. This is a new form of income accessible to anyone with a smartphone.</div></div></div>
+        <div class="mstep"><div class="mn">📈</div><div><div class="mt" id="pilaunch-big-why4-title">Support GCV Through Activity</div><div class="md" id="pilaunch-big-why4-body">Every Pi committed to a Launchpad launch creates on-chain economic activity. This real utility drives Pi's price discovery — supporting the community consensus toward GCV = $314,159.</div></div></div>
       </div>
     </div>
 
-    <!-- Safety Warnings -->
-    <div class="slbl">🔐 Pi Launchpad Safety — Critical Warnings</div>
+    <div class="slbl" id="pilaunch-big-safety-label">🔐 Pi Launchpad Safety — Critical Warnings</div>
     <div class="cards" style="margin-bottom:28px;">
-      <div class="card sec-warn">
-        <div class="ci">🚫</div>
-        <h3>Only Official Pi Launchpad</h3>
-        <p>Pi Launchpad is ONLY accessible inside Pi Browser. Any website, WhatsApp group, or Telegram channel claiming to offer "Pi Launchpad" tokens outside Pi Browser is a SCAM. Never send Pi to external addresses.</p>
-      </div>
-      <div class="card sec-warn">
-        <div class="ci">🎭</div>
-        <h3>Fake Launchpad Scams</h3>
-        <p>Scammers will create fake "Pi Launchpad" websites to steal your Pi. Always access Launchpad directly through Pi Browser — never through links sent in messages. Pi will never ask you to participate via WhatsApp.</p>
-      </div>
-      <div class="card sec-warn">
-        <div class="ci">💸</div>
-        <h3>No Upfront Fees</h3>
-        <p>Legitimate Pi Launchpad participation never requires you to pay fees to a person or send Pi to an individual's wallet. If anyone asks you to send Pi to their username to "reserve your Launchpad spot" — it's a scam.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">✅</div>
-        <h3>Research Every Project</h3>
-        <p>Before committing Pi to any launch, research the project thoroughly. Does it have a working app? What does the app do? Is there real utility? Only support projects you genuinely understand and believe in.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">📊</div>
-        <h3>Never Commit More Than You Can Afford</h3>
-        <p>Start with a small amount. Pi Launchpad on Testnet uses test tokens — but on Mainnet your real Pi is at stake. Only commit amounts you are fully comfortable with losing if a project fails to deliver.</p>
-      </div>
-      <div class="card sec-ok">
-        <div class="ci">🔗</div>
-        <h3>Pi Network Never DMs First</h3>
-        <p>Pi Network will never contact you directly to invite you to a Launchpad opportunity. All official Launchpad projects are only found INSIDE Pi Browser. Ignore all unsolicited messages about Launchpad.</p>
-      </div>
+      <div class="card sec-warn"><div class="ci">🚫</div><h3 id="pilaunch-big-sf1-title">Only Official Pi Launchpad</h3><p id="pilaunch-big-sf1-body">Pi Launchpad is ONLY accessible inside Pi Browser. Any website, WhatsApp group, or Telegram channel claiming to offer "Pi Launchpad" tokens outside Pi Browser is a SCAM. Never send Pi to external addresses.</p></div>
+      <div class="card sec-warn"><div class="ci">🎭</div><h3 id="pilaunch-big-sf2-title">Fake Launchpad Scams</h3><p id="pilaunch-big-sf2-body">Scammers will create fake "Pi Launchpad" websites to steal your Pi. Always access Launchpad directly through Pi Browser — never through links sent in messages. Pi will never ask you to participate via WhatsApp.</p></div>
+      <div class="card sec-warn"><div class="ci">💸</div><h3 id="pilaunch-big-sf3-title">No Upfront Fees</h3><p id="pilaunch-big-sf3-body">Legitimate Pi Launchpad participation never requires you to pay fees to a person or send Pi to an individual's wallet. If anyone asks you to send Pi to their username to "reserve your Launchpad spot" — it's a scam.</p></div>
+      <div class="card sec-ok"><div class="ci">✅</div><h3 id="pilaunch-big-sf4-title">Research Every Project</h3><p id="pilaunch-big-sf4-body">Before committing Pi to any launch, research the project thoroughly. Does it have a working app? What does the app do? Is there real utility? Only support projects you genuinely understand and believe in.</p></div>
+      <div class="card sec-ok"><div class="ci">📊</div><h3 id="pilaunch-big-sf5-title">Never Commit More Than You Can Afford</h3><p id="pilaunch-big-sf5-body">Start with a small amount. Pi Launchpad on Testnet uses test tokens — but on Mainnet your real Pi is at stake. Only commit amounts you are fully comfortable with losing if a project fails to deliver.</p></div>
+      <div class="card sec-ok"><div class="ci">🔗</div><h3 id="pilaunch-big-sf6-title">Pi Network Never DMs First</h3><p id="pilaunch-big-sf6-body">Pi Network will never contact you directly to invite you to a Launchpad opportunity. All official Launchpad projects are only found INSIDE Pi Browser. Ignore all unsolicited messages about Launchpad.</p></div>
     </div>
 
-    <!-- FAQ -->
-    <div class="slbl">❓ Pi Launchpad FAQ — Africa Pioneers</div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>Is Pi Launchpad available right now?</span><span class="farr">▾</span></div>
-      <div class="fa">Yes — Pi Launchpad is live on Testnet since March 2026. It uses test tokens (not real Pi) so you can explore and learn safely. A second test token SLICE was just released. Mainnet launch is coming — use Testnet to prepare now!</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>Do I need KYC to use Pi Launchpad?</span><span class="farr">▾</span></div>
-      <div class="fa">Yes. KYC verification is required to participate in Pi Launchpad. Complete your KYC inside the Pi app first. Without KYC your Pi Wallet is not fully active and you cannot participate in launches.</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>What is the difference between staking and committing?</span><span class="farr">▾</span></div>
-      <div class="fa">Staking = reserving your Pi (like raising your hand). Committing = actually sending Pi to the pool (like paying). You MUST do both to earn tokens. Staking alone earns you nothing. Many pioneers in the first test launch made this mistake — do not repeat it!</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>Can African developers launch their own projects on Pi Launchpad?</span><span class="farr">▾</span></div>
-      <div class="fa">Yes! Any developer with a working Pi app can apply to launch through Pi Launchpad. This is a massive opportunity for African developers to create Pi-powered solutions for Africa's 1.4 billion people — and raise Pi liquidity from the community.</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>Where does my Pi go when I commit to a launch?</span><span class="farr">▾</span></div>
-      <div class="fa">Your Pi goes into a liquidity pool — NOT into the project team's wallet. This pool pairs your Pi with the new project token, making it immediately tradeable on PiDEX. This design prevents rug pulls and ensures the token has real liquidity from launch day.</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>What happens to Testnet tokens after Mainnet launches?</span><span class="farr">▾</span></div>
-      <div class="fa">Testnet tokens (like the test token and SLICE) will NOT transfer to Mainnet. They are only for practice and learning. When Mainnet launches, new real token launches will begin. Your advantage is that you will already know how the system works!</div>
-    </div>
-    <div class="fi" onclick="this.classList.toggle('on')">
-      <div class="fq"><span>How is Pi Launchpad different from regular crypto ICOs?</span><span class="farr">▾</span></div>
-      <div class="fa">Traditional crypto ICOs often raise money with just a whitepaper — no working product. Pi Launchpad requires projects to have a WORKING APP before launching. Money goes to liquidity pools, not founders. This makes Pi Launchpad far safer for pioneers than typical crypto fundraising.</div>
-    </div>
+    <div class="slbl" id="pilaunch-big-faq-label">❓ Pi Launchpad FAQ — Africa Pioneers</div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pilaunch-big-faq1-q">Is Pi Launchpad available right now?</span><span class="farr">▾</span></div><div class="fa" id="pilaunch-big-faq1-a">Yes — Pi Launchpad is live on Testnet since March 2026. It uses test tokens (not real Pi) so you can explore and learn safely. A second test token SLICE was just released. Mainnet launch is coming — use Testnet to prepare now!</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pilaunch-big-faq2-q">Do I need KYC to use Pi Launchpad?</span><span class="farr">▾</span></div><div class="fa" id="pilaunch-big-faq2-a">Yes. KYC verification is required to participate in Pi Launchpad. Complete your KYC inside the Pi app first. Without KYC your Pi Wallet is not fully active and you cannot participate in launches.</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pilaunch-big-faq3-q">What is the difference between staking and committing?</span><span class="farr">▾</span></div><div class="fa" id="pilaunch-big-faq3-a">Staking = reserving your Pi (like raising your hand). Committing = actually sending Pi to the pool (like paying). You MUST do both to earn tokens. Staking alone earns you nothing. Many pioneers in the first test launch made this mistake — do not repeat it!</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pilaunch-big-faq4-q">Can African developers launch their own projects on Pi Launchpad?</span><span class="farr">▾</span></div><div class="fa" id="pilaunch-big-faq4-a">Yes! Any developer with a working Pi app can apply to launch through Pi Launchpad. This is a massive opportunity for African developers to create Pi-powered solutions for Africa's 1.4 billion people — and raise Pi liquidity from the community.</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pilaunch-big-faq5-q">Where does my Pi go when I commit to a launch?</span><span class="farr">▾</span></div><div class="fa" id="pilaunch-big-faq5-a">Your Pi goes into a liquidity pool — NOT into the project team's wallet. This pool pairs your Pi with the new project token, making it immediately tradeable on PiDEX. This design prevents rug pulls and ensures the token has real liquidity from launch day.</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pilaunch-big-faq6-q">What happens to Testnet tokens after Mainnet launches?</span><span class="farr">▾</span></div><div class="fa" id="pilaunch-big-faq6-a">Testnet tokens (like the test token and SLICE) will NOT transfer to Mainnet. They are only for practice and learning. When Mainnet launches, new real token launches will begin. Your advantage is that you will already know how the system works!</div></div>
+    <div class="fi" onclick="this.classList.toggle('on')"><div class="fq"><span id="pilaunch-big-faq7-q">How is Pi Launchpad different from regular crypto ICOs?</span><span class="farr">▾</span></div><div class="fa" id="pilaunch-big-faq7-a">Traditional crypto ICOs often raise money with just a whitepaper — no working product. Pi Launchpad requires projects to have a WORKING APP before launching. Money goes to liquidity pools, not founders. This makes Pi Launchpad far safer for pioneers than typical crypto fundraising.</div></div>
 
-    <!-- Final CTA -->
     <div style="background:linear-gradient(135deg,rgba(123,45,139,0.2),rgba(245,197,24,0.12));border:2px solid rgba(245,197,24,0.4);border-radius:18px;padding:28px;text-align:center;margin-top:8px;">
       <div style="font-size:1.5rem;margin-bottom:10px;">🚀</div>
-      <p style="font-weight:800;color:#F5C518;font-size:1rem;margin-bottom:8px;">Your Next Step — Practice on Testnet Now!</p>
-      <p style="color:#B8A8D8;font-size:.86rem;line-height:1.7;margin-bottom:20px;">Open Pi Browser → Search "Pi Launchpad" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!</p>
+      <p style="font-weight:800;color:#F5C518;font-size:1rem;margin-bottom:8px;" id="pilaunch-big-cta-title">Your Next Step — Practice on Testnet Now!</p>
+      <p style="color:#B8A8D8;font-size:.86rem;line-height:1.7;margin-bottom:20px;" id="pilaunch-big-cta-body">Open Pi Browser → Search "Pi Launchpad" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <button class="btn btn-gold" onclick="sc('pidex')">🔄 Review PiDEX First</button>
-        <button class="btn btn-teal" onclick="toggleChat()">🤖 Ask AI About Launchpad</button>
+        <button class="btn btn-gold" onclick="sc('pidex')" id="pilaunch-big-cta-btn1">🔄 Review PiDEX First</button>
+        <button class="btn btn-teal" onclick="toggleChat()" id="pilaunch-big-cta-btn2">🤖 Ask AI About Launchpad</button>
       </div>
-      <p style="color:#7A6A9A;font-size:.75rem;margin-top:16px;">Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍</p>
+      <p style="color:#7A6A9A;font-size:.75rem;margin-top:16px;" id="pilaunch-big-cta-footer">Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍</p>
     </div>
 
-  </div><!-- end pilaunchpad-content -->
+  </div>
 </section>
 
 <!-- ══ MERCHANTS ══ -->
