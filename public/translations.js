@@ -398,7 +398,9 @@ en: {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"}
+
+'}'
 
 sn: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Murikidze kuChigalex1",
@@ -511,9 +513,7 @@ sn: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Wagadzirira kupinda maPi Launchpad?",
   "pilaunch-cta-body":"Chidzidzo chizere chePi Launchpad mukati meChigalex1 — kuongorora mapurojekiti, kuStake zvakachengeteka, kuCommit zvakanaka, uye kuwana token reward.",
 
-
-sn: {
-"pidex-big-badge":"🔄 Nhengo Chete · Chinhu Chitsva",
+sn: {"pidex-big-badge":"🔄 Nhengo Chete · Chinhu Chitsva",
 "pidex-big-title":"PiDEX — Exchange yaPi Pachayo",
 "pidex-big-lock-title":"Nhengo Chete",
 "pidex-big-lock-sub":"Chidzidzo chizere chePiDEX. Vhura ne0.01π.",
@@ -682,7 +682,8 @@ sn: {
 "pilaunch-big-cta-btn1":"🔄 Ongorora PiDEX",
 "pilaunch-big-cta-btn2":"🤖 Bvunza AI",
 "pilaunch-big-cta-footer":"Testnet iri kushanda. Africa inofanira kugadzirira. 🌍"
-},
+  }
+'}'
 
 nd: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamukelekile e-Chigalex1",
@@ -792,8 +793,7 @@ nd: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza ku-Pi Launchpad?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka ngokuphephile, ukuthembisa ngendlela efanele, nokuzuza imivuzo.",
 
-nd: {
-"pidex-big-badge":"🔄 Amalungu Kuphela",
+nd: {"pidex-big-badge":"🔄 Amalungu Kuphela",
 "pidex-big-title":"I-PiDEX",
 "pidex-big-lock-title":"Amalungu Kuphela",
 "pidex-big-lock-sub":"Umhlahlandlela ophelele we-PiDEX. Vula nge-0.01π.",
@@ -962,7 +962,9 @@ nd: {
 "pilaunch-big-cta-btn1":"🔄 Buyekeza i-PiDEX",
 "pilaunch-big-cta-btn2":"🤖 Buza i-AI",
 "pilaunch-big-cta-footer":"I-Afrika kumele izilungiselele. 🌍"
-}
+    }
+
+'}'
 
 zu: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamukelekile e-Chigalex1",
