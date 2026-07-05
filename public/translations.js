@@ -400,8 +400,6 @@ en: {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
 "pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"}
 
-'}'
-
 sn: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Murikidze kuChigalex1",
 "gate-sub":"Kusimbisa vanamaiguru nezvikwata munyika dzose 54 dzeAfrica kupinda muPi enclosed ecosystem economy.",
@@ -681,9 +679,7 @@ sn: {"pidex-big-badge":"🔄 Nhengo Chete · Chinhu Chitsva",
 "pilaunch-big-cta-body":"Vhura Pi Browser → Tsvaga Launchpad → Dzidzira.",
 "pilaunch-big-cta-btn1":"🔄 Ongorora PiDEX",
 "pilaunch-big-cta-btn2":"🤖 Bvunza AI",
-"pilaunch-big-cta-footer":"Testnet iri kushanda. Africa inofanira kugadzirira. 🌍"
-  }
-'}'
+"pilaunch-big-cta-footer":"Testnet iri kushanda. Africa inofanira kugadzirira.🌍}
 
 nd: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamukelekile e-Chigalex1",
@@ -961,10 +957,7 @@ nd: {"pidex-big-badge":"🔄 Amalungu Kuphela",
 "pilaunch-big-cta-body":"Vula Pi Browser → Sesha Launchpad → Zijwayeze.",
 "pilaunch-big-cta-btn1":"🔄 Buyekeza i-PiDEX",
 "pilaunch-big-cta-btn2":"🤖 Buza i-AI",
-"pilaunch-big-cta-footer":"I-Afrika kumele izilungiselele. 🌍"
-    }
-
-'}'
+"pilaunch-big-cta-footer":"I-Afrika kumele izilungiselele.🌍}
 
 zu: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamukelekile e-Chigalex1",
@@ -1241,7 +1234,7 @@ zu :{"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍}
 
 xh: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Wamkelekile e-Chigalex1",
@@ -1518,7 +1511,7 @@ xh :{"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready."},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready."}
 
 af: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Welkom by Chigalex1",
