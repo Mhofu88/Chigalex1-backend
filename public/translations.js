@@ -1230,9 +1230,7 @@ zu: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo.",
 
-const bigsection_translations = {
-
-zu :{"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
