@@ -3071,7 +3071,7 @@ pt :{"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
 }
 
 sw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
@@ -3350,7 +3350,7 @@ sw {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
 "pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
-},
+}
 
 am: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"እንኳን ወደ Chigalex1 በደህና መጡ",
@@ -3628,7 +3628,7 @@ am  {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
 "pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
-},
+}
 
 rw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Murakaza neza kuri Chigalex1",
@@ -3905,8 +3905,8 @@ rw  {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 lg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Tukuwakilidde ku Chigalex1",
@@ -4183,8 +4183,8 @@ lg {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 so: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Ku soo dhawoow Chigalex1",
@@ -4461,8 +4461,8 @@ so {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 ha: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Barka da zuwa Chigalex1",
@@ -4739,8 +4739,8 @@ ha {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 yo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Ẹ káàbọ̀ sí Chigalex1",
@@ -5017,8 +5017,8 @@ yo {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 ig: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Nnọọ na Chigalex1",
@@ -5295,8 +5295,8 @@ ig  {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 tw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Akwaaba Chigalex1",
@@ -5573,8 +5573,8 @@ tw {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 wo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Dal Hual ak Chigalex1",
@@ -5851,8 +5851,8 @@ wo {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 fr: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Bienvenue sur Chigalex1",
@@ -6129,8 +6129,8 @@ fr {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 ar: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"مرحباً بك في Chigalex1",
@@ -6407,8 +6407,8 @@ ar {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 ber: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Ansuf ɣer Chigalex1",
@@ -6685,8 +6685,8 @@ ber {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 ln: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Boyei na Chigalex1",
@@ -6963,8 +6963,8 @@ in {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
-},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+}
 
 kg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Kiyenga mu Chigalex1",
@@ -7241,10 +7241,12 @@ kg  {"pidex-big-badge":"🔄 Members Only · New Feature",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍."
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
 }
 
-}; // end translations
+}; 
+
+// end translations
 
 // ══ setLang function ══
 function setLang(l) {
