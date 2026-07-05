@@ -465,15 +465,7 @@ sn: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "footer-ref":"Referral: chigalex1","footer-nations":"Nyika 54 · Mitauro 25",
 "cb-title":"Chigalex1 AI Assistant","cb-sub":"Nhengo chete · Nditende mibvunzo yePi",
 "cb-welcome":"👋 Mhoroi! Ndini AI yenyu yeChigalex1 — munyanzvi wePi weAfrica. Nditende nezveKYC, KYB, Mapa yePi, GCV kana security!",
-"pidex-big-badge":"🔄 Nhengo Chete · Chinhu Chitsva",
-"pidex-big-title":"PiDEX — Exchange yaPi Pachayo",
-"pidex-big-lock-title":"Nhengo Chete",
-"pidex-big-lock-sub":"Chidzidzo chizere chePiDEX. Vhura ne0.01π.",
-"pidex-big-what-card-title":"PiDEX Chii?",
-"pidex-big-what-card-body":"Exchange isina mutungamiri yakavakwa mukati mePi Network.",
-"pidex-big-why-card-title":"Sei Africa?",
-"pidex-big-why-card-body":"Hapana bank account inodiwa. Tengesa Pi kubva pafoni yako.",
- 
+
 // ── PiDEX ──
   "lbl-pidex":"🔁 Nhengo Chete",
   "sec-pidex-title":"PiDEX — Pi Decentralized Exchange",
