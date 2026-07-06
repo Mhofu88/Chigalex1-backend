@@ -2175,7 +2175,7 @@ tn: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-tn :{"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -2453,7 +2453,7 @@ ny: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-ny :{"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -2731,7 +2731,7 @@ pt: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-pt :{"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -3009,7 +3009,7 @@ sw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-sw {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -3287,7 +3287,7 @@ am: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-am  {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -3565,7 +3565,7 @@ rw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-rw  {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -3843,7 +3843,7 @@ lg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-lg {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -4121,7 +4121,7 @@ so: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-so {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -4399,7 +4399,7 @@ ha: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-ha {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -4677,7 +4677,7 @@ yo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-yo {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -4955,7 +4955,7 @@ ig: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-ig  {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -5232,8 +5232,7 @@ tw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-body":"Pi Launchpad ɛkwan kɛse wɔ Chigalex1 mu — hwɛ nnwuma, kora, kamfo na nya awieeɛ.",
 
 const bigsection_translations = {
-
-tw {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -5511,7 +5510,7 @@ wo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-wo {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -5789,7 +5788,7 @@ fr: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-fr {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -6067,7 +6066,7 @@ ar: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-ar {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -6345,7 +6344,7 @@ ber: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-ber {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -6623,7 +6622,7 @@ ln: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-in {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
@@ -6901,7 +6900,7 @@ kg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-kg  {"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
