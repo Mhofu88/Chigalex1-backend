@@ -1343,7 +1343,7 @@ xh: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 const bigsection_translations = {
 
-xh :{"pidex-big-badge":"🔄 Members Only · New Feature",
+"pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
 "pidex-big-lock-sub":"Full PiDEX guide — what it is, how to use it, and how Africa benefits. Unlock with 0.01π.",
