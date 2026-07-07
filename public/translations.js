@@ -7024,7 +7024,7 @@ kg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"}
 
 }; 
 
