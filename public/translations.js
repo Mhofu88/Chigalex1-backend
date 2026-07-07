@@ -223,8 +223,6 @@ en: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Ready to participate in Pi Launchpad?",
   "pilaunch-cta-body":"Full Pi Launchpad guide inside Chigalex1 — how to evaluate projects, stake safely, commit correctly, and earn token rewards across the Pi ecosystem.",
 
-const bigsection_translations = {
-
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -511,8 +509,6 @@ sn: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Wagadzirira kupinda maPi Launchpad?",
   "pilaunch-cta-body":"Chidzidzo chizere chePi Launchpad mukati meChigalex1 — kuongorora mapurojekiti, kuStake zvakachengeteka, kuCommit zvakanaka, uye kuwana token reward.",
 
-const translations = {
-
 "pidex-big-badge":"🔄 Nhengo Chete · Chinhu Chitsva",
 "pidex-big-title":"PiDEX — Exchange yaPi Pachayo",
 "pidex-big-lock-title":"Nhengo Chete",
@@ -791,8 +787,6 @@ nd: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza ku-Pi Launchpad?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka ngokuphephile, ukuthembisa ngendlela efanele, nokuzuza imivuzo.",
 
-const bigsection_translations = {
-
 "pidex-big-badge":"🔄 Amalungu Kuphela",
 "pidex-big-title":"I-PiDEX",
 "pidex-big-lock-title":"Amalungu Kuphela",
@@ -1063,8 +1057,6 @@ zu: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ Sebenzisa i-Pi Launchpad kuphela ku-Pi Browser esemthethweni.",
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo.",
-
-const translations = {
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
@@ -1341,8 +1333,6 @@ xh: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Ulungele ukuthatha inxaxheba?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo.",
 
-const bigsection_translations = {
-
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -1618,8 +1608,6 @@ af: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Gereed om aan Pi Launchpad deel te neem?",
   "pilaunch-cta-body":"Volledige Pi Launchpad-gids binne Chigalex1 — projekte evalueer, veilig insit, korrek verbind en tokenbelonings verdien.",
 
-const bigsection_translations = {
-
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -1894,8 +1882,6 @@ st {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ Sebedisa Pi Launchpad feela ho Pi Browser ya semolao.",
   "pilaunch-cta-title":"📚 O itokiselitse ho kenela Pi Launchpad?",
   "pilaunch-cta-body":"Tataiso e felletseng ya Pi Launchpad kahare ho Chigalex1 — ho hlahloba merero, ho bea, ho ineela le ho fumana meputso.",
-
-const bigsection_translations = {
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
@@ -2173,8 +2159,6 @@ tn: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 A o ikagile go tsaya karolo mo Pi Launchpad?",
   "pilaunch-cta-body":"Kaedi e feletseng ya Pi Launchpad mo Chigalex1 — go sekaseka merero, go bea, go ikopanya le go amogela meputso.",
 
-const bigsection_translations = {
-
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -2450,8 +2434,6 @@ ny: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ Gwiritsani ntchito Pi Launchpad chabe mkati mwa Pi Browser yachilungamo.",
   "pilaunch-cta-title":"📚 Mwakonzeka kulowa mu Pi Launchpad?",
   "pilaunch-cta-body":"Chongolero chonse cha Pi Launchpad mkati mwa Chigalex1 — kuyesa mapulojekiti, kuika, kulumbira, ndi kupeza mphoto.",
-
-const bigsection_translations = {
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
@@ -2729,8 +2711,6 @@ pt: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Pronto para participar no Pi Launchpad?",
   "pilaunch-cta-body":"Guia completo do Pi Launchpad dentro do Chigalex1 — avaliar projetos, fazer stake, commit correto e ganhar recompensas.",
 
-const bigsection_translations = {
-
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -3005,9 +2985,7 @@ sw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-1":"⚠️ Staking peke yake HAIKUPI tokens — LAZIMA PIA uahidi.",
   "pilaunch-warn-2":"⚠️ Tumia Pi Launchpad ndani ya Pi Browser rasmi pekee.",
   "pilaunch-cta-title":"📚 Uko tayari kushiriki kwenye Pi Launchpad?",
-  "pilaunch-cta-body":"Mwongozo kamili wa Pi Launchpad ndani ya Chigalex1 — kutathmini miradi, kuweka, kuahidi, na kupata tuzo.",
-
-const bigsection_translations = {
+  "pilaunch-cta-body":"Mwongozo kamili wa Pi Launchpad ndani ya Chigalex1 — kutathmini miradi, kuweka, kuahidi, na kupata tuzo.", 
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
@@ -3284,9 +3262,7 @@ am: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ Pi Launchpad Pi Browser ብቻ ውስጥ ይጠቀሙ።",
   "pilaunch-cta-title":"📚 Pi Launchpad ለመሳተፍ ዝግጁ ነዎት?",
   "pilaunch-cta-body":"ሙሉ Pi Launchpad ስልጠና Chigalex1 ውስጥ — ፕሮጀክቶች መገምገም፣ stake ማድረግ፣ commit ማድረግ እና token ሽልማቶች ማግኘት።.",
-
-const bigsection_translations = {
-
+ 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -3561,9 +3537,7 @@ rw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-1":"⚠️ Staking gusa NTIKUHA tokens — UGOMBA NANONE kwemeza.",
   "pilaunch-warn-2":"⚠️ Koresha Pi Launchpad muri Pi Browser rasmi gusa.",
   "pilaunch-cta-title":"📚 Witeguye kugira uruhare muri Pi Launchpad?",
-  "pilaunch-cta-body":"Amabwiriza yuzuye ya Pi Launchpad muri Chigalex1 — gusuzuma imishinga, gushyira, kwemeza, no kubona ibitambo.",
-
-const bigsection_translations = {
+  "pilaunch-cta-body":"Amabwiriza yuzuye ya Pi Launchpad muri Chigalex1 — gusuzuma imishinga, gushyira, kwemeza, no kubona ibitambo.", 
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
@@ -3839,9 +3813,7 @@ lg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-1":"⚠️ Staking wokka TEKIKUWA tokens — OFUNIKA NAAWE okuwandiika.",
   "pilaunch-warn-2":"⚠️ Kozesa Pi Launchpad mu Pi Browser akakasiziddwa wokka.",
   "pilaunch-cta-title":"📚 Otegekeddwa okuweera mu Pi Launchpad?",
-  "pilaunch-cta-body":"Ekyokulabirako kwekimu kya Pi Launchpad mu Chigalex1 — okukebera ebikolwa, okukomya, okuwandiika n'okufuna emikisa.",
-
-const bigsection_translations = {
+  "pilaunch-cta-body":"Ekyokulabirako kwekimu kya Pi Launchpad mu Chigalex1 — okukebera ebikolwa, okukomya, okuwandiika n'okufuna emikisa.", 
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
@@ -4117,9 +4089,7 @@ so: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-1":"⚠️ Staking oo keliya KUMA SIINAYSO tokens — WAAD KALE AHAYN inaad ballan-qaadato.",
   "pilaunch-warn-2":"⚠️ Pi Launchpad ku isticmaal Pi Browser rasmi ah oo keliya.",
   "pilaunch-cta-title":"📚 Ma diyaar u tahay inaad ka qaybgasho Pi Launchpad?",
-  "pilaunch-cta-body":"Hagid buuxda Pi Launchpad gudaha Chigalex1 — qiimaynta mashaariicda, dhigidda, ballan-qaadashada saxda ah, iyo helida abaalmarinta.",
-
-const bigsection_translations = {
+  "pilaunch-cta-body":"Hagid buuxda Pi Launchpad gudaha Chigalex1 — qiimaynta mashaariicda, dhigidda, ballan-qaadashada saxda ah, iyo helida abaalmarinta.", 
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
