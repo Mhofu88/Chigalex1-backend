@@ -7025,12 +7025,8 @@ kg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
 "pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"
-}
 
 }; 
-
-});
-
 
 // end translations
 
