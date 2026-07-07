@@ -4366,9 +4366,7 @@ ha: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ Yi amfani da Pi Launchpad a cikin Pi Browser na hukuma kawai.",
   "pilaunch-cta-title":"📚 Shin ka shirya shiga Pi Launchpad?",
   "pilaunch-cta-body":"Cikakken jagora na Pi Launchpad a cikin Chigalex1 — kimanta ayyuka, kulle, daukan alkawari, da kuma samun lada.",
-
-const bigsection_translations = {
-
+ 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -4643,9 +4641,7 @@ yo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-1":"⚠️ Staking nìkan KÒ FÚN ọ NÍ tokens — O GBỌ̀DỌ̀ TÚN ṣe àdéhùn.",
   "pilaunch-warn-2":"⚠️ Lo Pi Launchpad nìkan ní inú Pi Browser àkọ́kọ́.",
   "pilaunch-cta-title":"📚 Ṣé o ṣetán láti kópa ní Pi Launchpad?",
-  "pilaunch-cta-body":"Ìtọ́ni kíkún Pi Launchpad ní Chigalex1 — ṣàyẹ̀wò iṣẹ́ akanṣe, títú, àdéhùn, àti jíjó àwọn àfikún.",
-
-const bigsection_translations = {
+  "pilaunch-cta-body":"Ìtọ́ni kíkún Pi Launchpad ní Chigalex1 — ṣàyẹ̀wò iṣẹ́ akanṣe, títú, àdéhùn, àti jíjó àwọn àfikún.", 
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
@@ -4923,8 +4919,6 @@ ig: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Ị dị njide ịsonye na Pi Launchpad?",
   "pilaunch-cta-body":"Nduzi nke ọha Pi Launchpad n'ime Chigalex1 — nyochaa ihe ọrụ, tinye, kwenye, nweta ụgwọ.",
 
-const bigsection_translations = {
-
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -5200,8 +5194,7 @@ tw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ Di Pi Launchpad nko ara wɔ Pi Browser a ɛyɛ sem mu.",
   "pilaunch-cta-title":"📚 Wo atenase kɔ Pi Launchpad mu?",
   "pilaunch-cta-body":"Pi Launchpad ɛkwan kɛse wɔ Chigalex1 mu — hwɛ nnwuma, kora, kamfo na nya awieeɛ.",
-
-const bigsection_translations = {
+ 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -5477,9 +5470,7 @@ wo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ Saaxi Pi Launchpad ci Pi Browser bu dëkk rekk.",
   "pilaunch-cta-title":"📚 Danga soxor dugg Pi Launchpad?",
   "pilaunch-cta-body":"Jàng bu yëp Pi Launchpad ci Chigalex1 — xooloo yëgël, staking, committing ak yegg rewards.",
-
-const bigsection_translations = {
-
+ 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -5754,9 +5745,7 @@ fr: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-1":"⚠️ Le staking seul NE VOUS DONNE PAS de tokens — VOUS DEVEZ AUSSI commiter.",
   "pilaunch-warn-2":"⚠️ Utilisez Pi Launchpad uniquement dans Pi Browser officiel.",
   "pilaunch-cta-title":"📚 Prêt à participer à Pi Launchpad?",
-  "pilaunch-cta-body":"Guide complet Pi Launchpad dans Chigalex1 — évaluer les projets, staker, commiter et gagner des récompenses.",
-
-const bigsection_translations = {
+  "pilaunch-cta-body":"Guide complet Pi Launchpad dans Chigalex1 — évaluer les projets, staker, commiter et gagner des récompenses.", 
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
@@ -6033,9 +6022,7 @@ ar: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ استخدم Pi Launchpad فقط في Pi Browser الرسمي.",
   "pilaunch-cta-title":"📚 هل أنت مستعد للمشاركة في Pi Launchpad؟",
   "pilaunch-cta-body":"دليل Pi Launchpad الكامل داخل Chigalex1 — تقييم المشاريع والاحتجاز والالتزام الصحيح وكسب المكافآت.",
-
-const bigsection_translations = {
-
+ 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -6310,9 +6297,7 @@ ber: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-1":"⚠️ Staking kan UMA YAFK-AK tokens — Ilaq ad kemmdeḍ.",
   "pilaunch-warn-2":"⚠️ Sexdem Pi Launchpad deg Pi Browser s wiss garu kan.",
   "pilaunch-cta-title":"📚 Tḥulliḍ i Pi Launchpad?",
-  "pilaunch-cta-body":"Tataɣt tameqqrant n Pi Launchpad deg Chigalex1 — taɣulin ɣef imahilen, staking, committing u usɣur n tokens.",
-
-const bigsection_translations = {
+  "pilaunch-cta-body":"Tataɣt tameqqrant n Pi Launchpad deg Chigalex1 — taɣulin ɣef imahilen, staking, committing u usɣur n tokens.", 
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
@@ -6589,9 +6574,7 @@ ln: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ Kozala kobuka Pi Launchpad na Pi Browser ya sembo kaka.",
   "pilaunch-cta-title":"📚 Otinda kokota na Pi Launchpad?",
   "pilaunch-cta-body":"Tataïso mobimba ya Pi Launchpad na Chigalex1 — kotala misala, kotalia, kokangama mpe kolata récompenses.",
-
-const bigsection_translations = {
-
+ 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -6867,8 +6850,6 @@ kg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ Dia Pi Launchpad mu Pi Browser ya sembo kaka.",
   "pilaunch-cta-title":"📚 Okebele kokota mu Pi Launchpad?",
   "pilaunch-cta-body":"Nduzi ya makasi ya Pi Launchpad mu Chigalex1 — kotala misala, staking, committing mpe kozwa récompenses.",
-
-const bigsection_translations = {
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
