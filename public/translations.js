@@ -7029,6 +7029,9 @@ kg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 
 }; 
 
+});
+
+
 // end translations
 
 // ══ setLang function ══
