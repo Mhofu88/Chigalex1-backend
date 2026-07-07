@@ -1783,7 +1783,7 @@ af: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
 "pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"}
 
-st {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
+st: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"O Amoheletswe ho Chigalex1",
 "gate-sub":"Ho matlafatsa baetapele le dikgwebo ho dinaha tsohle tse 54 tsa Afrika ho kena ekonoming ya Pi enclosed ecosystem.",
 "fee-desc-txt":"Tefo e le nngwe feela · Phihlello ya bophelo bohle",
