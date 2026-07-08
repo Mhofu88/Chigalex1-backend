@@ -1327,8 +1327,7 @@ xh: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Ulungele ukuthatha inxaxheba?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo.",
 
-
-pidex-big-badge":"🔄 Amalungu Kuphela · Imboniso Entsha",
+"pidex-big-badge":"🔄 Amalungu Kuphela · Imboniso Entsha",
 "pidex-big-title":"I-PiDEX — Utshintshiselwano lwe-Pi Ngokwalo",
 "pidex-big-lock-title":"Amalungu Kuphela",
 "pidex-big-lock-sub":"Isikhokelo esipheleleyo se-PiDEX. Vula nge-0.01π.",
