@@ -1057,7 +1057,6 @@ zu: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Ulungele ukubamba iqhaza?",
   "pilaunch-cta-body":"Umhlahlandlela ophelele we-Pi Launchpad ku-Chigalex1 — ukuhlola amaphrojekthi, ukubeka, ukuthembisa, nokuzuza imivuzo.",
 
-// zu — replace English pidex-big-*/pilaunch-big-* placeholders with these
 "pidex-big-badge":"🔄 Amalungu Kuphela · Isici Esisha",
 "pidex-big-title":"I-PiDEX — Ukushintshanisa kwe-Pi Uqobo",
 "pidex-big-lock-title":"Amalungu Kuphela",
