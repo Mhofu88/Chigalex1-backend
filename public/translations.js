@@ -3115,7 +3115,7 @@ sw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-body":"Fungua Pi Browser → Tafuta Launchpad → Fanya mazoezi.",
 "pilaunch-big-cta-btn1":"🔄 Kagua PiDEX",
 "pilaunch-big-cta-btn2":"🤖 Uliza AI",
-"pilaunch-big-cta-footer":"Afrika lazima iwe tayari. 🌍"},
+"pilaunch-big-cta-footer":"Afrika lazima iwe tayari.🌍"},
 
 am: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"እንኳን ወደ Chigalex1 በደህና መጡ",
@@ -3385,8 +3385,7 @@ am: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-body":"Pi Browser ይክፈቱ → Launchpad ይፈልጉ → ይለማመዱ።",
 "pilaunch-big-cta-btn1":"🔄 PiDEXን ይገምግሙ",
 "pilaunch-big-cta-btn2":"🤖 AI ን ይጠይቁ",
-"pilaunch-big-cta-footer":"አፍሪካ ዝግጁ መሆን አለባት።
- 🌍"},
+"pilaunch-big-cta-footer":"አፍሪካ ዝግጁ መሆን አለባት።. 🌍"},
 
 rw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Murakaza neza kuri Chigalex1",
