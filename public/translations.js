@@ -6,6 +6,7 @@ const translations = {
 
 en: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Welcome to Chigalex1",
+
 "gate-sub":"Empowering pioneers and businesses across all 54 African nations to join the Pi enclosed ecosystem economy.",
 "fee-desc-txt":"One-time membership · Lifetime access to all training",
 "btn-login-txt":"Login with Pi Network",
