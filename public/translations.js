@@ -3656,7 +3656,7 @@ rw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-body":"Fungura Pi Browser → Shaka Launchpad → Wimenyereze.",
 "pilaunch-big-cta-btn1":"🔄 Suzuma PiDEX",
 "pilaunch-big-cta-btn2":"🤖 Baza AI",
-"pilaunch-big-cta-footer":"Afurika igomba kwiteguye. 🌍},
+"pilaunch-big-cta-footer":"Afurika igomba kwiteguye. 🌍"},
 
 lg: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Tukuwakilidde ku Chigalex1",
