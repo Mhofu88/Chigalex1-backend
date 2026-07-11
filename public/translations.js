@@ -4468,6 +4468,11 @@ ha: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-btn2":"🤖 Tambayi AI",
 "pilaunch-big-cta-footer":"Afirka dole ta shirya. 🌍"},
 
+
+
+
+
+
 yo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Ẹ káàbọ̀ sí Chigalex1",
 "gate-sub":"Ìfúnni agbára fún àwọn aṣáájú àti iṣowo ní gbogbo orílẹ̀-èdè 54 ti Áfríkà láti darapọ̀ mọ́ ètò ọrọ-ajé Pi.",
@@ -4567,6 +4572,12 @@ yo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-warn-2":"⚠️ Lo Pi Launchpad nìkan ní inú Pi Browser àkọ́kọ́.",
   "pilaunch-cta-title":"📚 Ṣé o ṣetán láti kópa ní Pi Launchpad?",
   "pilaunch-cta-body":"Ìtọ́ni kíkún Pi Launchpad ní Chigalex1 — ṣàyẹ̀wò iṣẹ́ akanṣe, títú, àdéhùn, àti jíjó àwọn àfikún.", 
+
+
+
+
+
+
 
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
@@ -4742,6 +4753,12 @@ yo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
 "pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"},
+
+
+
+
+
+
 
 ig: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Nnọọ na Chigalex1",
@@ -4843,6 +4860,11 @@ ig: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Ị dị njide ịsonye na Pi Launchpad?",
   "pilaunch-cta-body":"Nduzi nke ọha Pi Launchpad n'ime Chigalex1 — nyochaa ihe ọrụ, tinye, kwenye, nweta ụgwọ.",
 
+
+
+
+
+
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -5017,6 +5039,12 @@ ig: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
 "pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"},
+
+
+
+
+
+
 
 tw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Akwaaba Chigalex1",
@@ -5118,6 +5146,10 @@ tw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Wo atenase kɔ Pi Launchpad mu?",
   "pilaunch-cta-body":"Pi Launchpad ɛkwan kɛse wɔ Chigalex1 mu — hwɛ nnwuma, kora, kamfo na nya awieeɛ.",
  
+
+
+
+
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -5292,6 +5324,12 @@ tw: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
 "pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"},
+
+
+
+
+
+
 
 wo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Dal Hual ak Chigalex1",
@@ -5393,6 +5431,16 @@ wo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Danga soxor dugg Pi Launchpad?",
   "pilaunch-cta-body":"Jàng bu yëp Pi Launchpad ci Chigalex1 — xooloo yëgël, staking, committing ak yegg rewards.",
  
+
+
+
+
+
+
+
+
+
+
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -5567,6 +5615,12 @@ wo: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
 "pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"},
+
+
+
+
+
+
 
 fr: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"Bienvenue sur Chigalex1",
@@ -5668,6 +5722,12 @@ fr: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
   "pilaunch-cta-title":"📚 Prêt à participer à Pi Launchpad?",
   "pilaunch-cta-body":"Guide complet Pi Launchpad dans Chigalex1 — évaluer les projets, staker, commiter et gagner des récompenses.", 
 
+
+
+
+
+
+
 "pidex-big-badge":"🔄 Members Only · New Feature",
 "pidex-big-title":"PiDEX — Pi's Own Exchange",
 "pidex-big-lock-title":"Members Only",
@@ -5841,7 +5901,175 @@ fr: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "pilaunch-big-cta-body":"Open Pi Browser → Search \"Pi Launchpad\" → Explore the SLICE test token launch → Practice staking AND committing → Be ready when Mainnet launches!",
 "pilaunch-big-cta-btn1":"🔄 Review PiDEX First",
 "pilaunch-big-cta-btn2":"🤖 Ask AI About Launchpad",
-"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready. 🌍"},
+"pilaunch-big-cta-footer":"Pi Launchpad Testnet is live now. Mainnet coming soon. Africa must be ready"pidex-big-badge":"🔄 Membres Uniquement · Nouvelle Fonctionnalité",
+"pidex-big-title":"PiDEX — La Propre Bourse de Pi",
+"pidex-big-lock-title":"Membres Uniquement",
+"pidex-big-lock-sub":"Guide complet PiDEX. Débloquez avec 0,01π.",
+"pidex-big-what-card-title":"Qu'est-ce que PiDEX?",
+"pidex-big-what-card-body":"Une bourse décentralisée construite au sein de Pi Network.",
+"pidex-big-why-card-title":"Pourquoi l'Afrique?",
+"pidex-big-why-card-body":"Aucun compte bancaire requis. Échangez du Pi directement depuis votre téléphone.",
+"pidex-big-explain-title":"🔄 Qu'est-ce que PiDEX?",
+"pidex-big-explain-sub":"La Propre Bourse Intégrée de Pi Network",
+"pidex-big-explain-p1":"Un marché où les gens échangent des tokens, sans intermédiaire.",
+"pidex-big-explain-p2":"PiDEX utilise un AMM pour fixer des prix équitables.",
+"pidex-big-explain-tip":"PiDEX = un marché au sein de Pi où vous pouvez échanger votre Pi.",
+"pidex-big-concepts-label":"📚 Concepts Clés",
+"pidex-big-c1-title":"Échanges Pair-à-Pair",
+"pidex-big-c1-body":"Vous négociez directement, sans banque ni courtier.",
+"pidex-big-c2-title":"Pools de Liquidité",
+"pidex-big-c2-body":"Les pionniers ajoutent du Pi à un pool partagé.",
+"pidex-big-c3-title":"AMM",
+"pidex-big-c3-body":"Une formule fixe les prix automatiquement.",
+"pidex-big-c4-title":"Vérification des Tokens",
+"pidex-big-c4-body":"Pi Network examine les tokens avant leur inscription.",
+"pidex-big-c5-title":"Découverte du Prix",
+"pidex-big-c5-body":"Chaque échange est un vote pour la vraie valeur de Pi.",
+"pidex-big-c6-title":"Frais de Gas",
+"pidex-big-c6-body":"Les frais sont maintenus très bas.",
+"pidex-big-steps-label":"📱 Comment Accéder",
+"pidex-big-s1-title":"Ouvrez Pi Browser",
+"pidex-big-s1-desc":"Lancez l'application Pi Browser sur votre téléphone.",
+"pidex-big-s2-title":"Ouvrez Pi Wallet",
+"pidex-big-s2-desc":"Touchez l'icône Wallet.",
+"pidex-big-s3-title":"Trouvez l'Onglet DEX",
+"pidex-big-s3-desc":"Cherchez \"DEX\".",
+"pidex-big-s4-title":"Choisissez une Paire de Tokens",
+"pidex-big-s4-desc":"Choisissez les tokens à échanger.",
+"pidex-big-s5-title":"Entrez le Montant",
+"pidex-big-s5-desc":"Vérifiez le taux.",
+"pidex-big-s6-title":"Confirmez",
+"pidex-big-s6-desc":"La blockchain gère le reste.",
+"pidex-big-gcv-title":"📈 PiDEX + GCV",
+"pidex-big-gcv-p1":"Chaque échange contribue à la découverte du prix.",
+"pidex-big-gcv-p2":"La vraie valeur de Pi devient visible sur la chaîne.",
+"pidex-big-gcv-tip":"Les pionniers africains construisent le dossier pour le GCV.",
+"pidex-big-safety-label":"🔐 Sécurité",
+"pidex-big-sf1-title":"Utilisez Uniquement le PiDEX Officiel",
+"pidex-big-sf1-body":"Tout site en dehors de Pi Browser est une arnaque.",
+"pidex-big-sf2-title":"Ne Partagez Jamais votre Phrase Secrète",
+"pidex-big-sf2-body":"Rien ne demande jamais votre phrase secrète.",
+"pidex-big-sf3-title":"Faux Tokens",
+"pidex-big-sf3-body":"Vérifiez toujours le nom exact du token et l'adresse.",
+"pidex-big-sf4-title":"Commencez Toujours Petit",
+"pidex-big-sf4-body":"Votre premier échange doit être un petit montant.",
+"pidex-big-sf5-title":"Vérifiez Chaque Transaction",
+"pidex-big-sf5-body":"Vérifiez toujours les détails avant de confirmer.",
+"pidex-big-sf6-title":"Liens Officiels Uniquement",
+"pidex-big-sf6-body":"minepi.com uniquement.",
+"pidex-big-faq-label":"❓ Questions Fréquentes",
+"pidex-big-faq1-q":"Ai-je besoin du KYC?",
+"pidex-big-faq1-a":"Oui, avant d'accéder.",
+"pidex-big-faq2-q":"Combien de Pi ai-je besoin?",
+"pidex-big-faq2-a":"Aucun minimum officiel, commencez petit.",
+"pidex-big-faq3-q":"Un téléphone Android basique?",
+"pidex-big-faq3-a":"Oui, s'il peut exécuter Pi Browser.",
+"pidex-big-faq4-q":"Est-ce la même chose que vendre du Pi sur une bourse externe?",
+"pidex-big-faq4-a":"Non, cela fonctionne au sein de l'écosystème.",
+"pidex-big-faq5-q":"Puis-je fournir de la liquidité?",
+"pidex-big-faq5-a":"Oui! Vous gagnez une part des frais.",
+"pidex-big-faq6-q":"Quels tokens puis-je échanger?",
+"pidex-big-faq6-a":"Uniquement les tokens vérifiés par Pi.",
+"pidex-big-cta-title":"🔄 Prêt?",
+"pidex-big-cta-body":"Ouvrez Pi Browser → Wallet → Cherchez DEX.",
+"pidex-big-cta-btn":"🚀 Suivant: Pi Launchpad →",
+"pilaunch-big-badge":"🚀 Membres Uniquement",
+"pilaunch-big-title":"Pi Launchpad",
+"pilaunch-big-lock-title":"Membres Uniquement",
+"pilaunch-big-lock-sub":"Guide complet. Débloquez avec 0,01π.",
+"pilaunch-big-what-card-title":"Qu'est-ce que Launchpad?",
+"pilaunch-big-what-card-body":"Une plateforme où de nouveaux projets lancent leurs tokens.",
+"pilaunch-big-safe-card-title":"Sécurisé par Conception",
+"pilaunch-big-safe-card-body":"Les projets doivent avoir une application fonctionnelle.",
+"pilaunch-big-status-title":"STATUT ACTUEL",
+"pilaunch-big-status-body":"Testnet, SLICE vient d'être lancé.",
+"pilaunch-big-explain-title":"🚀 Qu'est-ce que Launchpad?",
+"pilaunch-big-explain-sub":"Marché Communautaire",
+"pilaunch-big-explain-p1":"Une nouvelle boutique — payez un petit montant maintenant.",
+"pilaunch-big-explain-p2":"Les pionniers soutiennent les projets et reçoivent des tokens.",
+"pilaunch-big-explain-p3":"Le Pi va dans les pools de liquidité, pas chez les fondateurs.",
+"pilaunch-big-explain-tip":"Un moyen sûr de soutenir de nouveaux projets tôt.",
+"pilaunch-big-concepts-label":"📚 Concepts Clés",
+"pilaunch-big-c1-title":"Produit d'Abord",
+"pilaunch-big-c1-body":"Le projet doit avoir une application fonctionnelle.",
+"pilaunch-big-c2-title":"Tokens de l'Écosystème",
+"pilaunch-big-c2-body":"Ce ne sont pas des Pi, ce sont de nouveaux tokens du projet.",
+"pilaunch-big-c3-title":"Pools de Liquidité",
+"pilaunch-big-c3-body":"Le Pi va dans un pool, pas dans le portefeuille du fondateur.",
+"pilaunch-big-c4-title":"Staking de Pi",
+"pilaunch-big-c4-body":"Verrouillage temporaire pour montrer l'intérêt.",
+"pilaunch-big-c5-title":"Engagement (Committing)",
+"pilaunch-big-c5-body":"Envoi réel de Pi vers le lancement.",
+"pilaunch-big-c6-title":"Avantage d'Accès Anticipé",
+"pilaunch-big-c6-body":"Les premiers participants obtiennent les meilleurs taux.",
+"pilaunch-big-confusing-title":"⚠️ Staking vs Engagement",
+"pilaunch-big-confusing-body":"Beaucoup ont fait du staking mais ne se sont pas engagés.",
+"pilaunch-big-staking-label":"📌 STAKING",
+"pilaunch-big-staking-body":"Réservation\nPAS SUFFISANT!",
+"pilaunch-big-committing-label":"✅ ENGAGEMENT",
+"pilaunch-big-committing-body":"Envoyé réellement\nTokens obtenus!",
+"pilaunch-big-confusing-tip":"Faites les deux.",
+"pilaunch-big-steps-label":"📱 Comment Participer",
+"pilaunch-big-s1-title":"Ouvrez Pi Browser",
+"pilaunch-big-s1-desc":"Le seul moyen d'accéder.",
+"pilaunch-big-s2-title":"Trouvez l'Application",
+"pilaunch-big-s2-desc":"Cherchez \"Pi Launchpad\".",
+"pilaunch-big-s3-title":"Parcourez les Lancements",
+"pilaunch-big-s3-desc":"Voyez quels projets lancent des tokens.",
+"pilaunch-big-s4-title":"Faites du Staking avec votre Pi",
+"pilaunch-big-s4-desc":"Réservez votre place.",
+"pilaunch-big-s5-title":"Engagez-vous",
+"pilaunch-big-s5-desc":"Envoyez réellement votre Pi.",
+"pilaunch-big-s6-title":"Recevez des Tokens",
+"pilaunch-big-s6-desc":"Ils apparaissent dans votre Wallet.",
+"pilaunch-big-testmain-title":"📡 Testnet vs Mainnet",
+"pilaunch-big-testnet-label":"📡 TESTNET",
+"pilaunch-big-testnet-body":"Uniquement Test-Pi\nPratiquez gratuitement!",
+"pilaunch-big-mainnet-label":"🌍 MAINNET",
+"pilaunch-big-mainnet-body":"Pi réel\nCeux qui ont appris gagnent!",
+"pilaunch-big-testmain-tip":"Les pionniers qui apprennent maintenant seront prêts.",
+"pilaunch-big-why-title":"🌍 Pourquoi Agir Maintenant",
+"pilaunch-big-why1-title":"Avantage du Premier Arrivé",
+"pilaunch-big-why1-body":"Les premiers participants obtiennent les meilleurs taux.",
+"pilaunch-big-why2-title":"Projets Axés sur l'Afrique",
+"pilaunch-big-why2-body":"Les développeurs peuvent lancer des tokens africains.",
+"pilaunch-big-why3-title":"Nouvelles Sources de Revenus",
+"pilaunch-big-why3-body":"Les tokens gagnent en valeur avec le projet.",
+"pilaunch-big-why4-title":"Soutenir le GCV",
+"pilaunch-big-why4-body":"L'activité stimule la découverte du prix.",
+"pilaunch-big-safety-label":"🔐 Sécurité",
+"pilaunch-big-sf1-title":"Launchpad Officiel Uniquement",
+"pilaunch-big-sf1-body":"En dehors de Pi Browser, c'est une arnaque.",
+"pilaunch-big-sf2-title":"Arnaques Launchpad",
+"pilaunch-big-sf2-body":"Accédez directement via Pi Browser.",
+"pilaunch-big-sf3-title":"Aucun Frais Anticipé",
+"pilaunch-big-sf3-body":"N'envoyez jamais de Pi à un individu.",
+"pilaunch-big-sf4-title":"Recherchez Chaque Projet",
+"pilaunch-big-sf4-body":"Vérifiez s'il a une application fonctionnelle.",
+"pilaunch-big-sf5-title":"Ne Vous Engagez Jamais Au-Delà de vos Moyens",
+"pilaunch-big-sf5-body":"Commencez avec un petit montant.",
+"pilaunch-big-sf6-title":"Pi Ne Contacte Jamais en Premier",
+"pilaunch-big-sf6-body":"Ignorez les messages non sollicités.",
+"pilaunch-big-faq-label":"❓ Questions Fréquentes",
+"pilaunch-big-faq1-q":"Est-ce disponible maintenant?",
+"pilaunch-big-faq1-a":"Oui, sur Testnet depuis mars 2026.",
+"pilaunch-big-faq2-q":"Ai-je besoin du KYC?",
+"pilaunch-big-faq2-a":"Oui, c'est nécessaire.",
+"pilaunch-big-faq3-q":"Différence entre staking et engagement?",
+"pilaunch-big-faq3-a":"Staking = réserver. Engagement = envoyer.",
+"pilaunch-big-faq4-q":"Les développeurs africains peuvent-ils lancer des projets?",
+"pilaunch-big-faq4-a":"Oui! Tout développeur avec une application fonctionnelle.",
+"pilaunch-big-faq5-q":"Où va mon Pi?",
+"pilaunch-big-faq5-a":"Vers un pool de liquidité, pas vers le fondateur.",
+"pilaunch-big-faq6-q":"Qu'advient-il des tokens Testnet après Mainnet?",
+"pilaunch-big-faq6-a":"Ils ne seront pas transférés vers Mainnet.",
+"pilaunch-big-faq7-q":"En quoi diffère-t-il des ICO classiques?",
+"pilaunch-big-faq7-a":"Nécessite d'abord une application fonctionnelle.",
+"pilaunch-big-cta-title":"Prochaine Étape!",
+"pilaunch-big-cta-body":"Ouvrez Pi Browser → Cherchez Launchpad → Pratiquez.",
+"pilaunch-big-cta-btn1":"🔄 Revoir PiDEX",
+"pilaunch-big-cta-btn2":"🤖 Demander à l'IA",
+"pilaunch-big-cta-footer":"L'Afrique doit être prête. 🌍"},
 
 ar: {"gate-badge-txt":"🌍 Africa Pi Network Education Hub",
 "gate-title":"مرحباً بك في Chigalex1",
