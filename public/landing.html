@@ -964,7 +964,7 @@ async function submitApp(){
   if(!name||!country||!pi||!why){alert('Please fill all required fields.');return;}
   const btn=document.getElementById('btn-submit-app');
   btn.disabled=true;btn.textContent='Submitting...';
-  try{await fetch('/ambassador/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,country,pi,phone:document.getElementById('f-phone').value.trim(),lang:document.getElementById('f-lang').value,why,biz:document.getElementById('f-biz').value.trim(),timestamp:new Date().toISOString()})});}catch(e){}
+  try{await fetch('/ambassador/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,country,pi_username:pi,phone:document.getElementById('f-phone').value.trim(),lang:document.getElementById('f-lang').value,why,biz:document.getElementById('f-biz').value.trim(),timestamp:new Date().toISOString()})});}catch(e){}
   btn.disabled=false;btn.innerHTML='✅ Submitted!';
   const ok=document.getElementById('form-ok');ok.style.display='block';ok.scrollIntoView({behavior:'smooth'});
 }
