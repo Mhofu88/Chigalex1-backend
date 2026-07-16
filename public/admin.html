@@ -44,6 +44,17 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:#7B2D8B;}
 .top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
 .spin{display:inline-block;width:12px;height:12px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;margin-right:6px;vertical-align:middle;}
 @keyframes sp{to{transform:rotate(360deg)}}
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7c3aed">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
 </style>
 </head>
 <body>
