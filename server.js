@@ -17,7 +17,7 @@ app.use("/", subscriptionsRouter);
 app.use("/listings", listingsRouter);
 app.use("/payments", paymentsRouter);
 app.use("/auth", authRouter);
-}
+
 
 // ════════════════════════════════════════════
 // ── REDIS ──
