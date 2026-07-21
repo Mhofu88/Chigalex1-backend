@@ -8,11 +8,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use("/", subscriptionsRouter);   // exposes /pricing and /admin/subscriptions etc.
-app.use("/listings", listingsRouter);
-app.use("/payments", paymentsRouter);
-app.use("/auth", authRouter);
-
 // ════════════════════════════════════════════
 // ── REDIS ──
 // ════════════════════════════════════════════
