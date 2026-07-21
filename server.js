@@ -8,17 +8,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const { router: subscriptionsRouter } = require("./subscriptions-admin");
-const listingsRouter = require("./listings");
-const paymentsRouter = require("./payments");
-const { router: authRouter } = require("./auth");
-
-app.use("/", subscriptionsRouter);
-app.use("/listings", listingsRouter);
-app.use("/payments", paymentsRouter);
-app.use("/auth", authRouter);
-
-
 // ════════════════════════════════════════════
 // ── REDIS ──
 // ════════════════════════════════════════════
