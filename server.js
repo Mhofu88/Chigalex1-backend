@@ -191,8 +191,15 @@ app.post('/admin/update-pricing', async (req, res) => {
     return res.status(400).json({ error: 'Invalid pricing type. Must be: membership, advert, or merchant' });
   }
 
-const subscriptionsRouter = require("./subscriptions-admin");
-app.use("/", subscriptionsRouter);
+const { router: subscriptionsRouter } = require("./subscriptions-admin");
+const listingsRouter = require("./listings");
+const paymentsRouter = require("./payments");
+const { router: authRouter } = require("./auth");
+
+app.use("/", subscriptionsRouter);   // exposes /pricing and /admin/subscriptions etc.
+app.use("/listings", listingsRouter);
+app.use("/payments", paymentsRouter);
+app.use("/auth", authRouter);
 
   const numValue = parseFloat(value);
   if (isNaN(numValue) || numValue <= 0) {
