@@ -91,6 +91,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:#7B2D8B;}
     <button class="tab-btn" onclick="swTab('membership',this)">🎟️ Membership</button>
     <button class="tab-btn" onclick="swTab('rewards',this)">🏆 Rewards</button>
     <button class="tab-btn" onclick="swTab('members',this)">👥 Members</button>
+<button class="tab-btn" onclick="swTab('bizapp',this)">BizApp ZW</button>    
   </div>
 
   <!-- ══ TAB: AMBASSADORS ══ -->
@@ -277,7 +278,51 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:#7B2D8B;}
       <div id="membersList" style="margin-top:14px;"></div>
     </div>
   </div><!-- end tab-membership -->
+    
+  <!-- TAB: BIZAPP ZW -->
+  <div id="tab-bizapp" style="display:none;">
 
+    <div class="card">
+      <h3>Subscription Plans</h3>
+      <p style="color:#B8A8D8;font-size:.82rem;margin-bottom:16px;">Edit rate, duration, adverts included, and description (40 words max) for each plan.</p>
+      <div id="bizapp-plans"></div>
+      <button class="btn-sm" style="background:linear-gradient(135deg,#7B2D8B,#9B59B6);margin-top:10px;" onclick="loadBizappPlans()">Load Plans</button>
+    </div>
+
+    <div class="card">
+      <h3>Extra Advert Charge</h3>
+      <p style="color:#B8A8D8;font-size:.82rem;margin-bottom:12px;">Cost per advert beyond a plan's included amount.</p>
+      <div class="row">
+        <div class="fg"><label>Rate</label><input id="bizapp-extra-rate" placeholder="e.g. 2 USD or 1 Pi"/></div>
+        <button class="btn-sm btn-gold" onclick="saveBizappAdvertCharge()">Save</button>
+      </div>
+      <div class="result" id="bizapp-advert-result"></div>
+    </div>
+
+    <div class="card">
+      <h3>Payment Options</h3>
+      <div id="bizapp-payment-options" style="margin-bottom:14px;"></div>
+      <div class="row">
+        <div class="fg"><label>Method</label><input id="bizapp-method" placeholder="ecocash"/></div>
+        <div class="fg"><label>Detail</label><input id="bizapp-detail" placeholder="+263772951579"/></div>
+      </div>
+      <div class="row">
+        <label style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:#B8A8D8;">
+          <input type="checkbox" id="bizapp-enabled" checked style="width:auto;margin:0;"/> Enabled
+        </label>
+        <button class="btn-sm btn-teal" onclick="saveBizappPaymentOption()">Save Method</button>
+      </div>
+      <div class="result" id="bizapp-payment-result"></div>
+    </div>
+
+    <div class="card">
+      <h3>Pending Listing Payments</h3>
+      <button class="btn-sm" style="background:linear-gradient(135deg,#7B2D8B,#9B59B6);" onclick="loadBizappPending()">Load Pending</button>
+      <div id="bizapp-pending" style="margin-top:14px;"></div>
+    </div>
+
+  </div><!-- end tab-bizapp -->
+    
   <!-- ══ TAB: REWARDS ══ -->
   <div id="tab-rewards" style="display:none;">
 
@@ -673,6 +718,122 @@ async function loadPlatformReserve(){
 }
 
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// -- BIZAPP ZW FUNCTIONS --
+// Reuses the same api() helper, BASE, and ADMIN_KEY already defined above --
+// api() already sends the x-admin-key header on every call.
+
+async function loadBizappPlans(){
+  try{
+    const d = await api('/admin/subscriptions');
+    const plans = d.plans || [];
+    document.getElementById('bizapp-plans').innerHTML = plans.map(p=>`
+      <div style="background:#2A2048;border-radius:12px;padding:16px;margin-bottom:12px;">
+        <div style="font-weight:800;color:#F5C518;margin-bottom:10px;">${esc(p.name)} (${esc(p.id)})</div>
+        <div class="row">
+          <div class="fg"><label>Rate</label><input id="bp-rate-${p.id}" value="${esc(p.rate||'')}"/></div>
+          <div class="fg"><label>Duration (days)</label><input id="bp-duration-${p.id}" type="number" value="${p.duration_days||''}"/></div>
+          <div class="fg"><label>Adverts included</label><input id="bp-adverts-${p.id}" type="number" value="${p.adverts_included||''}"/></div>
+        </div>
+        <label style="font-size:.74rem;color:#B8A8D8;display:block;margin-bottom:4px;font-weight:600;">Description (max 40 words)</label>
+        <textarea id="bp-desc-${p.id}">${esc(p.description||'')}</textarea>
+        <div id="bp-count-${p.id}" style="font-size:.72rem;color:#7A6A9A;margin-bottom:8px;"></div>
+        <button class="btn-sm btn-teal" onclick="saveBizappPlan('${p.id}')">Save ${esc(p.name)}</button>
+        <div class="result" id="bp-result-${p.id}"></div>
+      </div>
+    `).join('');
+    plans.forEach(p=>{
+      const ta = document.getElementById('bp-desc-'+p.id);
+      const counter = document.getElementById('bp-count-'+p.id);
+      const update = ()=>{
+        const words = ta.value.trim().split(/\s+/).filter(Boolean).length;
+        counter.textContent = words+' / 40 words';
+        counter.style.color = words>40 ? '#FF7043' : '#7A6A9A';
+      };
+      ta.addEventListener('input', update);
+      update();
+    });
+  }catch(e){ document.getElementById('bizapp-plans').innerHTML='<p style="color:#FF7043;font-size:.84rem;">Error loading plans.</p>'; }
+}
+
+async function saveBizappPlan(id){
+  const rate = document.getElementById('bp-rate-'+id).value;
+  const duration_days = document.getElementById('bp-duration-'+id).value;
+  const adverts_included = document.getElementById('bp-adverts-'+id).value;
+  const description = document.getElementById('bp-desc-'+id).value;
+  const resultId = 'bp-result-'+id;
+  const words = description.trim().split(/\s+/).filter(Boolean).length;
+  if(words>40){ showResult(resultId,'Description is over the 40-word limit.',true); return; }
+  try{
+    const d = await api('/admin/subscriptions/'+id, 'PUT', {rate, duration_days, adverts_included, description});
+    showResult(resultId, d.message || d.error || JSON.stringify(d), !!d.error);
+  }catch(e){ showResult(resultId,'Error: '+e.message,true); }
+}
+
+async function saveBizappAdvertCharge(){
+  const rate = document.getElementById('bizapp-extra-rate').value.trim();
+  if(!rate){ showResult('bizapp-advert-result','Please enter a rate.',true); return; }
+  try{
+    const d = await api('/admin/advert-charges','PUT',{rate});
+    showResult('bizapp-advert-result', d.message || d.error, !!d.error);
+  }catch(e){ showResult('bizapp-advert-result','Error: '+e.message,true); }
+}
+
+async function loadBizappPaymentOptions(){
+  try{
+    const d = await api('/admin/payment-options');
+    const enabled = d.enabled || [];
+    const details = d.details || {};
+    document.getElementById('bizapp-payment-options').innerHTML = enabled.length
+      ? enabled.map(m=>`<div style="background:#2A2048;border-radius:10px;padding:10px 14px;margin-bottom:6px;">[ON] <strong>${esc(m)}</strong>: ${esc(details[m]||'')}</div>`).join('')
+      : '<p style="color:#7A6A9A;font-size:.84rem;">No payment methods enabled yet.</p>';
+  }catch(e){ document.getElementById('bizapp-payment-options').innerHTML='<p style="color:#FF7043;font-size:.84rem;">Error loading payment options.</p>'; }
+}
+
+async function saveBizappPaymentOption(){
+  const method = document.getElementById('bizapp-method').value.trim();
+  const detail = document.getElementById('bizapp-detail').value.trim();
+  const enabled = document.getElementById('bizapp-enabled').checked;
+  if(!method){ showResult('bizapp-payment-result','Please enter a method name.',true); return; }
+  try{
+    const d = await api('/admin/payment-options','PUT',{method, enabled, detail});
+    showResult('bizapp-payment-result', d.message || d.error, !!d.error);
+    loadBizappPaymentOptions();
+  }catch(e){ showResult('bizapp-payment-result','Error: '+e.message,true); }
+}
+
+async function loadBizappPending(){
+  try{
+    const d = await api('/payments/pending');
+    const payments = d.payments || [];
+    const el = document.getElementById('bizapp-pending');
+    if(!payments.length){ el.innerHTML='<p style="color:#7A6A9A;font-size:.84rem;">Nothing pending.</p>'; return; }
+    el.innerHTML = payments.map(p=>`
+      <div style="background:#2A2048;border-radius:10px;padding:12px;margin-bottom:8px;">
+        <div style="font-size:.82rem;margin-bottom:8px;">
+          Listing: ${esc(p.listing_id)}<br>Plan: ${esc(p.plan)} - Ref: ${esc(p.ecocash_reference)} - Amount: ${esc(p.amount||'n/a')}
+        </div>
+        <button class="btn-sm btn-gold" onclick="approveBizappPayment('${p.id}')">Approve</button>
+        <button class="btn-sm btn-red" onclick="rejectBizappPayment('${p.id}')">Reject</button>
+      </div>
+    `).join('');
+  }catch(e){ document.getElementById('bizapp-pending').innerHTML='<p style="color:#FF7043;font-size:.84rem;">Error loading pending payments.</p>'; }
+}
+
+async function approveBizappPayment(id){
+  try{
+    const d = await api('/payments/'+id+'/approve','POST');
+    alert(d.message || d.error);
+    loadBizappPending();
+  }catch(e){ alert('Error: '+e.message); }
+}
+
+async function rejectBizappPayment(id){
+  try{
+    const d = await api('/payments/'+id+'/reject','POST');
+    alert(d.message || d.error);
+    loadBizappPending();
+  }catch(e){ alert('Error: '+e.message); }  
 </script>
 </body>
 </html>
