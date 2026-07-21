@@ -441,7 +441,7 @@ function swTab(name, btn){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   ['ambassadors','pricing','membership','rewards','members','bizapp'].forEach(t=>{      
-    const el=document.getElementById('tab-'+t); a 
+    const el=document.getElementById('tab-'+t); 
     if(el) el.style.display = (t===name)?'block':'none';
   });
 }
@@ -833,7 +833,8 @@ async function rejectBizappPayment(id){
     const d = await api('/payments/'+id+'/reject','POST');
     alert(d.message || d.error);
     loadBizappPending();
-  }catch(e){ alert('Error: '+e.message); }  
+  }catch(e){ alert('Error: '+e.message); }
+}
 </script>
 </body>
 </html>
