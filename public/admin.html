@@ -440,8 +440,8 @@ function logout(){
 function swTab(name, btn){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
-  ['ambassadors','pricing','membership','rewards','members'].forEach(t=>{
-    const el=document.getElementById('tab-'+t);
+  ['ambassadors','pricing','membership','rewards','members','bizapp'].forEach(t=>{      
+    const el=document.getElementById('tab-'+t); a 
     if(el) el.style.display = (t===name)?'block':'none';
   });
 }
