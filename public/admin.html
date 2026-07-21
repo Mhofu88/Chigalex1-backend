@@ -74,6 +74,182 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:#7B2D8B;}
   <div id="loginErr" style="color:#FF7043;font-size:.8rem;margin-top:10px;text-align:center;"></div>
 </div>
 
+<!-- ============================================================
+     BizApp ZW Admin Section
+     Paste this whole block into admin.html wherever you want it
+     to appear (e.g. as a new card, next to your tier rewards section).
+     Uses the same API_BASE + authToken pattern as your existing admin JS —
+     adjust the variable names below if yours differ.
+     ============================================================ -->
+<div class="admin-card" id="bizapp-admin-section">
+  <h2>BizApp ZW</h2>
+
+  <!-- ---------- Subscription Plans ---------- -->
+  <h3>Subscription Plans</h3>
+  <div id="bizapp-plans-list">Loading plans…</div>
+
+  <!-- ---------- Advert Charges ---------- -->
+  <h3>Advert Charges</h3>
+  <div class="admin-field">
+    <label>Extra advert rate (beyond a plan's included adverts)</label>
+    <input type="text" id="bizapp-extra-advert-rate" placeholder="e.g. 2 USD or 1 Pi">
+    <button onclick="bizappSaveAdvertCharge()">Save</button>
+  </div>
+
+  <!-- ---------- Payment Options ---------- -->
+  <h3>Payment Options</h3>
+  <div id="bizapp-payment-options">Loading payment options…</div>
+  <div class="admin-field">
+    <label>Add / update a payment method</label>
+    <input type="text" id="bizapp-new-method" placeholder="method name, e.g. ecocash">
+    <input type="text" id="bizapp-new-detail" placeholder="account detail, e.g. +263772951579">
+    <label><input type="checkbox" id="bizapp-new-enabled" checked> Enabled</label>
+    <button onclick="bizappSavePaymentOption()">Save method</button>
+  </div>
+
+  <!-- ---------- Pending Listing Payments (EcoCash review) ---------- -->
+  <h3>Pending Listing Payments</h3>
+  <div id="bizapp-pending-payments">Loading…</div>
+</div>
+
+<script>
+// Assumes API_BASE and authToken already exist in your admin.html —
+// rename these two lines to match your existing variables if different.
+const BIZAPP_API_BASE = typeof API_BASE !== "undefined" ? API_BASE : "https://chigalex1-backend.onrender.com";
+function bizappToken() { return typeof authToken !== "undefined" ? authToken : localStorage.getItem("admin_token"); }
+
+async function bizappApi(path, options = {}) {
+  const res = await fetch(`${BIZAPP_API_BASE}${path}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${bizappToken()}`,
+      ...(options.headers || {}),
+    },
+  });
+  return res.json();
+}
+
+// ---- Subscription plans ----
+async function bizappLoadPlans() {
+  const data = await bizappApi("/admin/subscriptions");
+  const el = document.getElementById("bizapp-plans-list");
+  el.innerHTML = "";
+  (data.plans || []).forEach((plan) => {
+    const row = document.createElement("div");
+    row.className = "admin-field";
+    row.innerHTML = `
+      <strong>${plan.name}</strong> (${plan.id})
+      <label>Rate</label><input type="text" id="rate-${plan.id}" value="${plan.rate || ""}">
+      <label>Duration (days)</label><input type="number" id="duration-${plan.id}" value="${plan.duration_days || ""}">
+      <label>Adverts included</label><input type="number" id="adverts-${plan.id}" value="${plan.adverts_included || ""}">
+      <label>Description (max 40 words)</label>
+      <textarea id="desc-${plan.id}">${plan.description || ""}</textarea>
+      <div id="wordcount-${plan.id}" style="font-size:0.8rem; color:#666;"></div>
+      <button onclick="bizappSavePlan('${plan.id}')">Save ${plan.name}</button>
+    `;
+    el.appendChild(row);
+    const textarea = document.getElementById(`desc-${plan.id}`);
+    const counter = document.getElementById(`wordcount-${plan.id}`);
+    const updateCount = () => {
+      const words = textarea.value.trim().split(/\s+/).filter(Boolean).length;
+      counter.textContent = `${words} / 40 words`;
+      counter.style.color = words > 40 ? "#c1440e" : "#666";
+    };
+    textarea.addEventListener("input", updateCount);
+    updateCount();
+  });
+}
+
+async function bizappSavePlan(id) {
+  const rate = document.getElementById(`rate-${id}`).value;
+  const duration_days = document.getElementById(`duration-${id}`).value;
+  const adverts_included = document.getElementById(`adverts-${id}`).value;
+  const description = document.getElementById(`desc-${id}`).value;
+
+  const wordCount = description.trim().split(/\s+/).filter(Boolean).length;
+  if (wordCount > 40) {
+    alert("Description is over the 40-word limit — please shorten it.");
+    return;
+  }
+
+  const result = await bizappApi(`/admin/subscriptions/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({ rate, duration_days, adverts_included, description }),
+  });
+  alert(result.message || result.error);
+}
+
+// ---- Advert charges ----
+async function bizappLoadAdvertCharge() {
+  const data = await bizappApi("/admin/advert-charges");
+  document.getElementById("bizapp-extra-advert-rate").value = data.extra_advert_rate || "";
+}
+async function bizappSaveAdvertCharge() {
+  const rate = document.getElementById("bizapp-extra-advert-rate").value;
+  const result = await bizappApi("/admin/advert-charges", {
+    method: "PUT",
+    body: JSON.stringify({ rate }),
+  });
+  alert(result.message || result.error);
+}
+
+// ---- Payment options ----
+async function bizappLoadPaymentOptions() {
+  const data = await bizappApi("/admin/payment-options");
+  const el = document.getElementById("bizapp-payment-options");
+  const enabled = data.enabled || [];
+  const details = data.details || {};
+  el.innerHTML = enabled.length
+    ? enabled.map((m) => `<div>✅ <strong>${m}</strong>: ${details[m] || ""}</div>`).join("")
+    : "<div>No payment methods enabled yet.</div>";
+}
+async function bizappSavePaymentOption() {
+  const method = document.getElementById("bizapp-new-method").value.trim();
+  const detail = document.getElementById("bizapp-new-detail").value.trim();
+  const enabled = document.getElementById("bizapp-new-enabled").checked;
+  if (!method) { alert("Enter a method name first."); return; }
+  const result = await bizappApi("/admin/payment-options", {
+    method: "PUT",
+    body: JSON.stringify({ method, enabled, detail }),
+  });
+  alert(result.message || result.error);
+  bizappLoadPaymentOptions();
+}
+
+// ---- Pending listing payments ----
+async function bizappLoadPendingPayments() {
+  const data = await bizappApi("/payments/pending");
+  const el = document.getElementById("bizapp-pending-payments");
+  const payments = data.payments || [];
+  if (!payments.length) { el.innerHTML = "<div>Nothing pending.</div>"; return; }
+  el.innerHTML = payments.map((p) => `
+    <div class="admin-field">
+      Listing: ${p.listing_id} — Plan: ${p.plan} — Ref: ${p.ecocash_reference} — Amount: ${p.amount || "n/a"}
+      <button onclick="bizappApprovePayment('${p.id}')">Approve</button>
+      <button onclick="bizappRejectPayment('${p.id}')">Reject</button>
+    </div>
+  `).join("");
+}
+async function bizappApprovePayment(id) {
+  const result = await bizappApi(`/payments/${id}/approve`, { method: "POST" });
+  alert(result.message || result.error);
+  bizappLoadPendingPayments();
+}
+async function bizappRejectPayment(id) {
+  const result = await bizappApi(`/payments/${id}/reject`, { method: "POST" });
+  alert(result.message || result.error);
+  bizappLoadPendingPayments();
+}
+
+// ---- Init ----
+bizappLoadPlans();
+bizappLoadAdvertCharge();
+bizappLoadPaymentOptions();
+bizappLoadPendingPayments();
+</script>
+
+
 <!-- MAIN PANEL -->
 <div class="panel" id="mainPanel">
   <div class="top-bar">
