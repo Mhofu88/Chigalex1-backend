@@ -191,6 +191,9 @@ app.post('/admin/update-pricing', async (req, res) => {
     return res.status(400).json({ error: 'Invalid pricing type. Must be: membership, advert, or merchant' });
   }
 
+const subscriptionsRouter = require("./subscriptions-admin");
+app.use("/", subscriptionsRouter);
+
   const numValue = parseFloat(value);
   if (isNaN(numValue) || numValue <= 0) {
     return res.status(400).json({ error: 'Value must be a positive number' });
