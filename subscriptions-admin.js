@@ -1,19 +1,18 @@
 // Subscription plans, advert charges, and payment options — admin-configurable.
-// Public GET /pricing lets the listings page display current rates.
-// Everything else under /admin/* requires admin login (same ADMIN_USERNAMES pattern as payments.js).
+// Public GET /pricing lets the listings page display current rates (no auth needed).
+// Everything under /admin/* is protected by the same x-admin-key header your
+// existing admin routes already use (checked against process.env.ADMIN_KEY).
 
 const express = require("express");
 const { redis } = require("./redis-client");
-const { requireAuth } = require("./auth");
 
 const router = express.Router();
-
-const ADMIN_USERNAMES = ["chigalex1"]; // keep in sync with payments.js
 const MAX_DESCRIPTION_WORDS = 40;
 
-function requireAdmin(req, res, next) {
-  if (!ADMIN_USERNAMES.includes(req.user.username)) {
-    return res.status(403).json({ error: "admin access only" });
+function requireAdminKey(req, res, next) {
+  const key = req.headers["x-admin-key"];
+  if (!key || key !== process.env.ADMIN_KEY) {
+    return res.status(401).json({ error: "unauthorized" });
   }
   next();
 }
@@ -46,7 +45,7 @@ async function ensurePlansSeeded() {
       id: "annual",
       name: "Annual",
       duration_days: 365,
-      adverts_included: 5, // per month, over the year
+      adverts_included: 5,
       rate: "",
       description: "Full year, up to 5 adverts per month.",
     },
@@ -62,7 +61,6 @@ async function ensurePlansSeeded() {
 ensurePlansSeeded();
 
 // ---- Public: pricing for the listings page ----
-// GET /pricing
 router.get("/pricing", async (req, res) => {
   const ids = await redis.smembers("subscription_plans:all");
   const plans = await Promise.all(ids.map((id) => redis.hgetall(`subscription_plans:${id}`)));
@@ -72,15 +70,13 @@ router.get("/pricing", async (req, res) => {
 });
 
 // ---- Admin: view & edit subscription plans ----
-// GET /admin/subscriptions
-router.get("/admin/subscriptions", requireAuth, requireAdmin, async (req, res) => {
+router.get("/admin/subscriptions", requireAdminKey, async (req, res) => {
   const ids = await redis.smembers("subscription_plans:all");
   const plans = await Promise.all(ids.map((id) => redis.hgetall(`subscription_plans:${id}`)));
   res.json({ plans });
 });
 
-// PUT /admin/subscriptions/:id  { rate, duration_days, adverts_included, description }
-router.put("/admin/subscriptions/:id", requireAuth, requireAdmin, async (req, res) => {
+router.put("/admin/subscriptions/:id", requireAdminKey, async (req, res) => {
   const { id } = req.params;
   const existing = await redis.hgetall(`subscription_plans:${id}`);
   if (!existing || !existing.id) return res.status(404).json({ error: "plan not found" });
@@ -101,31 +97,27 @@ router.put("/admin/subscriptions/:id", requireAuth, requireAdmin, async (req, re
   res.json({ message: "Plan updated" });
 });
 
-// ---- Admin: advert charges (cost per extra advert beyond a plan's included amount) ----
-// GET /admin/advert-charges
-router.get("/admin/advert-charges", requireAuth, requireAdmin, async (req, res) => {
+// ---- Admin: advert charges ----
+router.get("/admin/advert-charges", requireAdminKey, async (req, res) => {
   const charge = await redis.hgetall("advert_charges:extra");
   res.json({ extra_advert_rate: charge?.rate || "" });
 });
 
-// PUT /admin/advert-charges  { rate }
-router.put("/admin/advert-charges", requireAuth, requireAdmin, async (req, res) => {
+router.put("/admin/advert-charges", requireAdminKey, async (req, res) => {
   const { rate } = req.body;
   if (rate === undefined) return res.status(400).json({ error: "rate is required" });
   await redis.hset("advert_charges:extra", { rate: String(rate) });
   res.json({ message: "Advert charge updated" });
 });
 
-// ---- Admin: payment options (which methods are currently accepted) ----
-// GET /admin/payment-options
-router.get("/admin/payment-options", requireAuth, requireAdmin, async (req, res) => {
+// ---- Admin: payment options ----
+router.get("/admin/payment-options", requireAdminKey, async (req, res) => {
   const enabled = await redis.smembers("payment_options:enabled");
-  const details = await redis.hgetall("payment_options:details"); // e.g. { ecocash: "+263...", pi: "" }
+  const details = await redis.hgetall("payment_options:details");
   res.json({ enabled, details });
 });
 
-// PUT /admin/payment-options  { method, enabled: true/false, detail }
-router.put("/admin/payment-options", requireAuth, requireAdmin, async (req, res) => {
+router.put("/admin/payment-options", requireAdminKey, async (req, res) => {
   const { method, enabled, detail } = req.body;
   if (!method) return res.status(400).json({ error: "method is required" });
 
@@ -140,4 +132,4 @@ router.put("/admin/payment-options", requireAuth, requireAdmin, async (req, res)
   res.json({ message: "Payment option updated" });
 });
 
-module.exports = router;
+module.exports = { router, requireAdminKey };
