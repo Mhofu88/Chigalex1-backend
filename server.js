@@ -186,9 +186,6 @@ app.post('/admin/update-pricing', async (req, res) => {
     return res.status(403).json({ error: 'Admin access required' });
   }
 
-const subscriptionsRouter = require("./subscriptions-admin");
-app.use("/", subscriptionsRouter);
-
   const validTypes = ['membership', 'advert', 'merchant'];
   if (!validTypes.includes(type)) {
     return res.status(400).json({ error: 'Invalid pricing type. Must be: membership, advert, or merchant' });
