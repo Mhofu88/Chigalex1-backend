@@ -835,7 +835,7 @@ async function rejectBizappPayment(id){
     loadBizappPending();
   }catch(e){ alert('Error: '+e.message); }
 }
-/ -- APP DEVELOPMENT PACKAGES (Starter/Business/Pro) --
+// -- APP DEVELOPMENT PACKAGES (Starter/Business/Pro) --
 async function loadAppDevPackages(){
   try{
     const d = await api('/admin/app-dev-packages');
