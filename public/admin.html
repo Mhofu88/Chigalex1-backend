@@ -754,10 +754,11 @@ async function loadAppDevPackages(){
       ta.addEventListener('input', update);
       update();
     });
-  }catch(e){ document.getElementById('bizapp-appdev-packages').innerHTML='<p style="color:#FF7043;font-size:.84rem;">Error loading packages.</p>'; }
+
+}catch(e){ document.getElementById('bizapp-appdev-packages').innerHTML='<p style="color:#FF7043;font-size:.84rem;">Error: '+e.message+'</p>'; }    
 }
 
-async function saveAppDevPackage(id){
+  async function saveAppDevPackage(id){
   const rate = document.getElementById('adp-rate-'+id).value;
   const tagline = document.getElementById('adp-tagline-'+id).value;
   const description = document.getElementById('adp-desc-'+id).value;
