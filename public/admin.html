@@ -835,6 +835,53 @@ async function rejectBizappPayment(id){
     loadBizappPending();
   }catch(e){ alert('Error: '+e.message); }
 }
+
+/ -- APP DEVELOPMENT PACKAGES (Starter/Business/Pro) --
+async function loadAppDevPackages(){
+  try{
+    const d = await api('/admin/app-dev-packages');
+    const packages = d.packages || [];
+    document.getElementById('bizapp-appdev-packages').innerHTML = packages.map(p=>`
+      <div style="background:#2A2048;border-radius:12px;padding:16px;margin-bottom:12px;">
+        <div style="font-weight:800;color:#F5C518;margin-bottom:10px;">${esc(p.name)} (${esc(p.id)})</div>
+        <div class="row">
+          <div class="fg"><label>Rate</label><input id="adp-rate-${p.id}" value="${esc(p.rate||'')}"/></div>
+          <div class="fg"><label>Tagline</label><input id="adp-tagline-${p.id}" value="${esc(p.tagline||'')}"/></div>
+        </div>
+        <label style="font-size:.74rem;color:#B8A8D8;display:block;margin-bottom:4px;font-weight:600;">Description (max 40 words)</label>
+        <textarea id="adp-desc-${p.id}">${esc(p.description||'')}</textarea>
+        <div id="adp-count-${p.id}" style="font-size:.72rem;color:#7A6A9A;margin-bottom:8px;"></div>
+        <button class="btn-sm btn-teal" onclick="saveAppDevPackage('${p.id}')">Save ${esc(p.name)}</button>
+        <div class="result" id="adp-result-${p.id}"></div>
+      </div>
+    `).join('');
+    packages.forEach(p=>{
+      const ta = document.getElementById('adp-desc-'+p.id);
+      const counter = document.getElementById('adp-count-'+p.id);
+      const update = ()=>{
+        const words = ta.value.trim().split(/\s+/).filter(Boolean).length;
+        counter.textContent = words+' / 40 words';
+        counter.style.color = words>40 ? '#FF7043' : '#7A6A9A';
+      };
+      ta.addEventListener('input', update);
+      update();
+    });
+  }catch(e){ document.getElementById('bizapp-appdev-packages').innerHTML='<p style="color:#FF7043;font-size:.84rem;">Error loading packages.</p>'; }
+}
+
+async function saveAppDevPackage(id){
+  const rate = document.getElementById('adp-rate-'+id).value;
+  const tagline = document.getElementById('adp-tagline-'+id).value;
+  const description = document.getElementById('adp-desc-'+id).value;
+  const resultId = 'adp-result-'+id;
+  const words = description.trim().split(/\s+/).filter(Boolean).length;
+  if(words>40){ showResult(resultId,'Description is over the 40-word limit.',true); return; }
+  try{
+    const d = await api('/admin/app-dev-packages/'+id, 'PUT', {rate, tagline, description});
+    showResult(resultId, d.message || d.error || JSON.stringify(d), !!d.error);
+  }catch(e){ showResult(resultId,'Error: '+e.message,true); }
+}
+  
 </script>
 </body>
 </html>
