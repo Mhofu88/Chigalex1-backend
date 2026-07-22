@@ -18,6 +18,9 @@ app.use("/listings", listingsRouter);
 app.use("/payments", paymentsRouter);
 app.use("/auth", authRouter);
 
+const appDevRouter = require("./app-dev-packages");
+app.use("/", appDevRouter);
+
 // ════════════════════════════════════════════
 // ── REDIS ──
 // ════════════════════════════════════════════
