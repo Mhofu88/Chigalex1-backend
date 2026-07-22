@@ -884,8 +884,7 @@ async function rejectBizappPayment(id){
     loadBizappPending();
   }catch(e){ alert('Error: '+e.message); }
 }
-
-function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function esc(s){ return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 </script>
 </body>
 </html>
