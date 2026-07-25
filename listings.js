@@ -26,13 +26,24 @@ function parseImages(raw) {
 
 // POST /listings — create a new listing (requires login)
 router.post("/", requireAuth, async (req, res) => {
-  const { business_name, category, description, contact } = req.body;
+  const { business_name, category, description, contact, plan } = req.body;
   if (!business_name || !category || !contact) {
     return res.status(400).json({ error: "business_name, category, and contact are required" });
   }
   const wordCount = (description || "").trim().split(/\s+/).filter(Boolean).length;
   if (wordCount > 40) {
     return res.status(400).json({ error: "description must be 40 words or fewer" });
+  }
+
+  // Pull the chosen plan's photo allowance so the customer can attach
+  // images right away — the listing still stays "pending" until an
+  // admin approves the payment, so nothing goes live prematurely.
+  let imagesAllowed = "0";
+  if (plan) {
+    const planConfig = await redis.hgetall(`subscription_plans:${plan}`);
+    if (planConfig && planConfig.max_images !== undefined) {
+      imagesAllowed = String(Number(planConfig.max_images) || 0);
+    }
   }
 
   const id = `l_${Date.now()}`;
@@ -45,7 +56,8 @@ router.post("/", requireAuth, async (req, res) => {
     contact,
     status: "pending", // becomes "active" once payment is approved
     images: "[]",
-    images_allowed: "0", // set for real once a plan is approved (see payments.js)
+    images_allowed: imagesAllowed,
+    chosen_plan: plan || "",
     created_at: new Date().toISOString(),
   };
 
