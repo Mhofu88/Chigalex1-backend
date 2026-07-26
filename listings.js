@@ -24,37 +24,47 @@ function parseImages(raw) {
     return [];
   }
 }
+// POST /listings/:id/images — owner adds an image URL (already uploaded to ImgBB by the frontend)
+router.post("/:id/images", requireAuth, async (req, res) => {
+  const { url } = req.body;
+  if (!url) return res.status(400).json({ error: "url is required" });
 
-// POST /listings — create a new listing (requires login)
-router.post("/", requireAuth, async (req, res) => {
-  const { business_name, category, description, contact } = req.body;
-  if (!business_name || !category || !contact) {
-    return res.status(400).json({ error: "business_name, category, and contact are required" });
+  const listing = await redis.hgetall(`listings:${req.params.id}`);
+  if (!listing || !listing.id) return res.status(404).json({ error: "listing not found" });
+  if (listing.owner_id !== req.user.id) return res.status(403).json({ error: "this is not your listing" });
+
+  // Atomic check-and-push via Lua so concurrent uploads can't race past the limit
+  const luaScript = `
+    local key = KEYS[1]
+    local url = ARGV[1]
+    local raw = redis.call('HGET', key, 'images')
+    local allowed = tonumber(redis.call('HGET', key, 'images_allowed') or '0')
+    local images
+    if raw and raw ~= '' then
+      images = cjson.decode(raw)
+    else
+      images = {}
+    end
+    if #images >= allowed then
+      return cjson.encode({error = true, allowed = allowed, count = #images})
+    end
+    table.insert(images, url)
+    local newRaw = cjson.encode(images)
+    redis.call('HSET', key, 'images', newRaw)
+    return cjson.encode({error = false, images = images, allowed = allowed})
+  `;
+
+  const result = JSON.parse(
+    await redis.eval(luaScript, 1, `listings:${req.params.id}`, url)
+  );
+
+  if (result.error) {
+    return res.status(400).json({
+      error: `Your plan allows ${result.allowed} image(s) — you've already used all of them.`,
+    });
   }
-  const wordCount = (description || "").trim().split(/\s+/).filter(Boolean).length;
-  if (wordCount > 40) {
-    return res.status(400).json({ error: "description must be 40 words or fewer" });
-  }
 
-  const id = `l_${Date.now()}`;
-  const listing = {
-    id,
-    owner_id: req.user.id,
-    business_name,
-    category,
-    description: description || "",
-    contact,
-    status: "pending", // becomes "active" once payment is approved
-    images: "[]",
-    images_allowed: "1", // baseline allowance so a photo can be added before payment; increases on approval if the plan allows more
-    created_at: new Date().toISOString(),
-  };
-
-  await redis.hset(`listings:${id}`, listing);
-  await redis.sadd(`listings:by-category:${category}`, id);
-  await redis.sadd(`listings:by-owner:${req.user.id}`, id);
-
-  res.json({ message: "Listing created — submit payment to activate it", listing });
+  res.json({ message: "Image added", images: result.images, remaining: result.allowed - result.images.length });
 });
 
 // GET /listings?category=retail — browse active listings, optionally by category
