@@ -137,30 +137,6 @@ router.delete("/:id", requireAdminKey, async (req, res) => {
   res.json({ message: "Listing deleted" });
 });
 
-// POST /listings/:id/images — owner adds an image URL (already uploaded to ImgBB by the frontend)
-router.post("/:id/images", requireAuth, async (req, res) => {
-  const { url } = req.body;
-  if (!url) return res.status(400).json({ error: "url is required" });
-
-  const listing = await redis.hgetall(`listings:${req.params.id}`);
-  if (!listing || !listing.id) return res.status(404).json({ error: "listing not found" });
-  if (listing.owner_id !== req.user.id) return res.status(403).json({ error: "this is not your listing" });
-
-  const images = parseImages(listing.images);
-  const allowed = Number(listing.images_allowed || 0);
-
-  if (images.length >= allowed) {
-    return res.status(400).json({
-      error: `Your plan allows ${allowed} image(s) — you've already used all of them.`,
-    });
-  }
-
-  images.push(url);
-  await redis.hset(`listings:${req.params.id}`, { images: JSON.stringify(images) });
-
-  res.json({ message: "Image added", images, remaining: allowed - images.length });
-});
-
 // DELETE /listings/:id/images — owner removes one image by URL, freeing up a slot
 router.delete("/:id/images", requireAuth, async (req, res) => {
   const { url } = req.body;
