@@ -117,6 +117,34 @@ router.get("/admin/all", requireAdminKey, async (req, res) => {
   const parsed = listings.filter((l) => l && l.id).map((l) => ({ ...l, images: parseImages(l.images) }));
   res.json({ listings: parsed });
 });
+// PUT /listings/:id/activate — admin: directly activate a listing on a
+// given plan, without a submitted payment (for manual/test approvals).
+router.put("/:id/activate", requireAdminKey, async (req, res) => {
+  const { plan } = req.body;
+  if (!plan) return res.status(400).json({ error: "plan is required" });
+
+  const listing = await redis.hgetall(`listings:${req.params.id}`);
+  if (!listing || !listing.id) return res.status(404).json({ error: "listing not found" });
+
+  const planConfig = await redis.hgetall(`subscription_plans:${plan}`);
+  const durationDays = planConfig?.duration_days ? Number(planConfig.duration_days) : 30;
+  const advertsIncluded = planConfig?.adverts_included ? Number(planConfig.adverts_included) : 1;
+  const maxImages = planConfig?.max_images ? Number(planConfig.max_images) : 1;
+
+  const expiry = new Date();
+  expiry.setDate(expiry.getDate() + durationDays);
+
+  await redis.hset(`listings:${req.params.id}`, {
+    status: "active",
+    plan,
+    subscription_expiry: expiry.toISOString(),
+    adverts_included: String(advertsIncluded),
+    adverts_used: "0",
+    images_allowed: String(maxImages),
+  });
+
+  res.json({ message: "Listing activated", subscription_expiry: expiry.toISOString() });
+});
 
 // GET /listings/:id — view a single listing
 router.get("/:id", async (req, res) => {
