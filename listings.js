@@ -24,6 +24,24 @@ function parseImages(raw) {
     return [];
   }
 }
+// POST /listings — create a new listing (starts pending, images_allowed = 1)
+router.post("/", requireAuth, async (req, res) => {
+  const { business_name, category, description, contact } = req.body;
+  if (!business_name || !contact) {
+    return res.status(400).json({ error: "business_name and contact are required" });
+  }
+  const id = "l_" + Date.now();
+  const listing = {
+    id, owner_id: req.user.id, business_name, category: category || "other",
+    description: description || "", contact, status: "pending",
+    images: "[]", images_allowed: "1", created_at: new Date().toISOString(),
+  };
+  await redis.hset(`listings:${id}`, listing);
+  await redis.sadd("listings:all", id);
+  await redis.sadd(`listings:by-owner:${req.user.id}`, id);
+  if (category) await redis.sadd(`listings:by-category:${category}`, id);
+  res.json({ message: "Listing created", listing });
+});
 // POST /listings/:id/images — owner adds an image URL (already uploaded to ImgBB by the frontend)
 router.post("/:id/images", requireAuth, async (req, res) => {
   const { url } = req.body;
