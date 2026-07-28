@@ -45,6 +45,49 @@ router.post("/", requireAuth, async (req, res) => {
   if (category) await redis.sadd(`listings:by-category:${category}`, id);
   res.json({ message: "Listing created", listing });
 });
+// POST /listings/:id/upload-image — owner uploads a photo file directly;
+// the backend forwards it to ImgBB and stores the resulting URL. This keeps
+// ImgBB entirely server-side, so a phone whose VPN/ISP blocks api.imgbb.com
+// can still add photos — the browser only ever talks to our own domain.
+router.post("/:id/upload-image", requireAuth, upload.single("image"), async (req, res) => {
+  if (!req.file) return res.status(400).json({ error: "image file is required" });
+
+  const listing = await redis.hgetall(`listings:${req.params.id}`);
+  if (!listing || !listing.id) return res.status(404).json({ error: "listing not found" });
+  if (listing.owner_id !== req.user.id) return res.status(403).json({ error: "this is not your listing" });
+
+  const images = parseImages(listing.images);
+  const allowed = Number(listing.images_allowed || 0);
+  if (images.length >= allowed) {
+    return res.status(400).json({ error: `You've used all ${allowed} photo slot(s) on this plan.` });
+  }
+
+  const IMGBB_API_KEY = process.env.IMGBB_API_KEY;
+  if (!IMGBB_API_KEY) return res.status(500).json({ error: "IMGBB_API_KEY is not set on the server" });
+
+  try {
+    const form = new URLSearchParams();
+    form.append("image", req.file.buffer.toString("base64"));
+
+    const uploadRes = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+      method: "POST",
+      body: form,
+    });
+    const uploadData = await uploadRes.json();
+    if (!uploadData.success) {
+      return res.status(502).json({ error: "ImgBB upload failed: " + (uploadData.error?.message || "unknown error") });
+    }
+
+    const url = uploadData.data.url;
+    images.push(url);
+    await redis.hset(`listings:${req.params.id}`, { images: JSON.stringify(images) });
+
+    res.json({ message: "Photo added", url, remaining: allowed - images.length });
+  } catch (e) {
+    res.status(500).json({ error: "Upload failed: " + e.message });
+  }
+});
+
 // POST /listings/:id/images — owner adds an image URL (already uploaded to ImgBB by the frontend)
 router.post("/:id/images", requireAuth, async (req, res) => {
   const { url } = req.body;
