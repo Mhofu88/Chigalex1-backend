@@ -730,9 +730,8 @@ async function loadPlatformReserve(){
       '</div>';
   }catch(e){ document.getElementById('reserveResult').innerHTML='<p style="color:#FF7043;font-size:.84rem;">Error loading reserve data.</p>'; }
 }
-
-function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  
 // -- BIZAPP ZW FUNCTIONS --
 // Reuses the same api() helper, BASE, and ADMIN_KEY already defined above --
 // api() already sends the x-admin-key header on every call.
