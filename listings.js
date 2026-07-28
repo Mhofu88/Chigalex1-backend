@@ -20,6 +20,7 @@ const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 
 const router = express.Router();
 
 function parseImages(raw) {
+  if (Array.isArray(raw)) return raw;
   try {
     const arr = JSON.parse(raw || "[]");
     return Array.isArray(arr) ? arr : [];
@@ -27,6 +28,7 @@ function parseImages(raw) {
     return [];
   }
 }
+
 // POST /listings — create a new listing (starts pending, images_allowed = 1)
 router.post("/", requireAuth, async (req, res) => {
   const { business_name, category, description, contact } = req.body;
