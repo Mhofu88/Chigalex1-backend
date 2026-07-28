@@ -876,9 +876,8 @@ async function loadBizappPending(){
         <button class="btn-sm btn-red" onclick="rejectBizappPayment('${p.id}')">Reject</button>
       </div>
     `).join('');
-  }catch(e){ document.getElementById('bizapp-pending').innerHTML='<p style="color:#FF7043;font-size:.84rem;">Error loading pending payments.</p>'; }
-}
-
+}catch(e){ document.getElementById('bizapp-pending').innerHTML='<p style="color:#FF7043;font-size:.84rem;">Error: '+e.message+'</p>'; }
+ }
 async function approveBizappPayment(id){
   try{
     const d = await api('/payments/'+id+'/approve','POST');
