@@ -25,7 +25,16 @@ function wordCount(str) {
 // only fills in plans that don't exist yet.
 async function ensurePlansSeeded() {
   const defaults = {
-    onetime: {
+ free: {
+      id: "free",
+      name: "Free Slot",
+      duration_days: 2,
+      adverts_included: 1,
+      max_images: 1,
+      rate: "",
+      description: "Try it free for 2 days — one photo, one advert. First-time advertisers only.",
+    },   
+onetime: {
       id: "onetime",
       name: "One-Time",
       duration_days: 14,
