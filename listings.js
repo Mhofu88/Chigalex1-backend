@@ -190,17 +190,46 @@ router.put("/:id/activate", requireAdminKey, async (req, res) => {
     adverts_used: "0",
     images_allowed: String(maxImages),
   });
-
   res.json({ message: "Listing activated", subscription_expiry: expiry.toISOString() });
 });
+// POST /listings/:id/claim-free — owner claims their one-time free trial slot.
+// Each account gets exactly one free activation, ever — enforced server-side.
+router.post("/:id/claim-free", requireAuth, async (req, res) => {
+  const listing = await redis.hgetall(`listings:${req.params.id}`);
+  if (!listing || !listing.id) return res.status(404).json({ error: "listing not found" });
+  if (listing.owner_id !== req.user.id) return res.status(403).json({ error: "this is not your listing" });
 
+  const alreadyUsed = await redis.sismember("free_slot:used", req.user.id);
+  if (alreadyUsed) {
+    return res.status(400).json({ error: "You've already used your free slot — choose a paid plan to activate this listing." });
+  }
+
+  const planConfig = await redis.hgetall("subscription_plans:free");
+  const durationDays = planConfig?.duration_days ? Number(planConfig.duration_days) : 2;
+  const advertsIncluded = planConfig?.adverts_included ? Number(planConfig.adverts_included) : 1;
+  const maxImages = planConfig?.max_images ? Number(planConfig.max_images) : 1;
+
+  const expiry = new Date();
+  expiry.setDate(expiry.getDate() + durationDays);
+
+  await redis.hset(`listings:${req.params.id}`, {
+    status: "active",
+    plan: "free",
+    subscription_expiry: expiry.toISOString(),
+    adverts_included: String(advertsIncluded),
+    adverts_used: "0",
+    images_allowed: String(maxImages),
+  });
+  await redis.sadd("free_slot:used", req.user.id);
+
+  res.json({ message: "Free slot activated! Your listing is live for 2 days.", subscription_expiry: expiry.toISOString() });
+});
 // GET /listings/:id — view a single listing
 router.get("/:id", async (req, res) => {
   const listing = await redis.hgetall(`listings:${req.params.id}`);
   if (!listing || !listing.id) return res.status(404).json({ error: "listing not found" });
   res.json({ listing: { ...listing, images: parseImages(listing.images) } });
 });
-
 // PUT /listings/:id — owner edits their own listing
 router.put("/:id", requireAuth, async (req, res) => {
   const listing = await redis.hgetall(`listings:${req.params.id}`);
