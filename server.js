@@ -3,8 +3,6 @@ const cors = require('cors');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const paynowRouter = require("./paynow");
-app.use("/", paynowRouter);
 app.use(cors());
 app.use(express.json());
 const { router: subscriptionsRouter } = require("./subscriptions-admin");
@@ -12,7 +10,8 @@ const listingsRouter = require("./listings");
 const paymentsRouter = require("./payments");
 const { router: authRouter } = require("./auth");
 const appDevRouter = require("./app-dev-packages");
-
+const paynowRouter = require("./paynow");
+app.use("/", paynowRouter);
 app.use("/", subscriptionsRouter);
 app.use("/listings", listingsRouter);
 app.use("/payments", paymentsRouter);
