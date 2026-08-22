@@ -15,6 +15,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ════════════════════════════════════════════
 const { router: subscriptionsRouter } = require("./subscriptions-admin");
 const listingsRouter = require("./listings");
+const gcvRouter = require("./bizapp-gcv-admin");
+app.use("/", gcvRouter);
 const paymentsRouter = require("./payments");
 const { router: authRouter } = require("./auth");
 
