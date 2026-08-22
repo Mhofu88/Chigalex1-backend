@@ -2,6 +2,21 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const app = express();
+// EMERGENCY FIX - Force fresh admin.html - No cache!
+app.get('/admin.html', (req, res) => {
+  res.set({
+    'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+    'Pragma': 'no-cache',
+    'Expires': '0'
+  });
+  res.sendFile(__dirname + '/public/admin.html');
+});
+
+// Also add v2 route for testing
+app.get('/admin-v2.html', (req, res) => {
+  res.set({ 'Cache-Control': 'no-store' });
+  res.sendFile(__dirname + '/public/admin.html');
+});
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
