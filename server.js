@@ -2,21 +2,19 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const app = express();
-// NUCLEAR - Always serve LIVE from GitHub RAW - bypass local file!
-app.get(['/admin.html','/admin'], async (req,res)=>{
-  try{
-    const https = require('https');
-    https.get('https://raw.githubusercontent.com/Mhofu88/Chigalex1-backend/refs/heads/main/public/admin.html', (r)=>{
-      let d=''; r.on('data',c=>d+=c); r.on('end',()=>{
-        res.set({'Cache-Control':'no-store','Content-Type':'text/html'});
-        res.send(d);
-      });
-    }).on('error',()=>{
-      res.sendFile(__dirname + '/public/admin.html');
+// NUCLEAR - Always serve LIVE from GitHub RAW
+app.get(['/admin.html','/admin'], (req,res)=>{
+  const https = require('https');
+  https.get('https://raw.githubusercontent.com/Mhofu88/Chigalex1-backend/refs/heads/main/public/admin.html', (r)=>{
+    let d=''; 
+    r.on('data',c=>d+=c); 
+    r.on('end',()=>{
+      res.set({'Cache-Control':'no-store','Content-Type':'text/html'});
+      res.send(d);
     });
-  }catch(e){
-    res.sendFile(__dirname + '/public/admin.html');
-  }
+  }).on('error',()=>{
+    res.sendFile(require('path').join(__dirname,'public','admin.html'));
+  });
 });
 const PORT = process.env.PORT || 3000;
 
