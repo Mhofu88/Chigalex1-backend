@@ -33,6 +33,10 @@ const gcvRouter = require("./bizapp-gcv-admin");
 app.use("/", gcvRouter);
 const pkgRouter = require("./bizapp-packages-admin");
 app.use("/", pkgRouter);
+// LIVE Packages - Fixes 250/599/999 editing
+const pkgRouter = require("./bizapp-packages-admin");
+app.use("/", pkgRouter);
+console.log("✅ Packages router LIVE - 250/599/999 editable!");
 const paymentsRouter = require("./payments");
 const { router: authRouter } = require("./auth");
 
