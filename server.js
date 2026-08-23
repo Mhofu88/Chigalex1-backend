@@ -2,18 +2,25 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const app = express();
-// NUCLEAR - Always serve LIVE from GitHub RAW
+let cachedAdmin=null, cacheTime=0;
 app.get(['/admin.html','/admin'], (req,res)=>{
+  const now=Date.now();
+  if(cachedAdmin && (now-cacheTime)<30000){ // 30 sec cache
+    res.set({'Cache-Control':'no-store','Content-Type':'text/html'});
+    return res.send(cachedAdmin);
+  }
   const https = require('https');
   https.get('https://raw.githubusercontent.com/Mhofu88/Chigalex1-backend/refs/heads/main/public/admin.html', (r)=>{
     let d=''; 
     r.on('data',c=>d+=c); 
     r.on('end',()=>{
+      cachedAdmin=d; cacheTime=now;
       res.set({'Cache-Control':'no-store','Content-Type':'text/html'});
       res.send(d);
     });
   }).on('error',()=>{
-    res.sendFile(require('path').join(__dirname,'public','admin.html'));
+    if(cachedAdmin) res.send(cachedAdmin);
+    else res.sendFile(require('path').join(__dirname,'public','admin.html'));
   });
 });
 const PORT = process.env.PORT || 3000;
