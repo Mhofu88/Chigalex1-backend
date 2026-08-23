@@ -2,26 +2,17 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const app = express();
-let cachedAdmin=null, cacheTime=0;
+
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Simple LOCAL admin - No GitHub fetch, No blink!
 app.get(['/admin.html','/admin'], (req,res)=>{
-  const now=Date.now();
-  if(cachedAdmin && (now-cacheTime)<30000){ // 30 sec cache
-    res.set({'Cache-Control':'no-store','Content-Type':'text/html'});
-    return res.send(cachedAdmin);
-  }
-  const https = require('https');
-  https.get('https://raw.githubusercontent.com/Mhofu88/Chigalex1-backend/refs/heads/main/public/admin.html', (r)=>{
-    let d=''; 
-    r.on('data',c=>d+=c); 
-    r.on('end',()=>{
-      cachedAdmin=d; cacheTime=now;
-      res.set({'Cache-Control':'no-store','Content-Type':'text/html'});
-      res.send(d);
-    });
-  }).on('error',()=>{
-    if(cachedAdmin) res.send(cachedAdmin);
-    else res.sendFile(require('path').join(__dirname,'public','admin.html'));
-  });
+  res.set({'Cache-Control':'no-store'});
+  res.sendFile(path.join(__dirname,'public','admin.html'));
 });
 const PORT = process.env.PORT || 3000;
 app.use(cors());
