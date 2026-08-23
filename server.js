@@ -17,13 +17,13 @@ app.get(['/admin.html','/admin'], (req,res)=>{
   });
 });
 const PORT = process.env.PORT || 3000;
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
 // ════════════════════════════════════════════
 // ── EXTRA ROUTERS (listings, payments, auth, subscriptions) ──
-// Mounted once at startup
+// Mounted once at startup - NO DUPLICATES
 // ════════════════════════════════════════════
 const { router: subscriptionsRouter } = require("./subscriptions-admin");
 const listingsRouter = require("./listings");
@@ -31,12 +31,15 @@ const gcvRouter = require("./bizapp-gcv-admin");
 const pkgRouter = require("./bizapp-packages-admin");
 const paymentsRouter = require("./payments");
 const { router: authRouter } = require("./auth");
-const paymentsRouter = require("./payments");
-const { router: authRouter } = require("./auth");
-app.use("/", subscriptionsRouter);   // exposes /pricing and /admin/subscriptions etc.
+// Mount LIVE routers
+app.use("/", gcvRouter);              // GCV config
+app.use("/", pkgRouter);              // 250/599/999 Packages LIVE!
+app.use("/", subscriptionsRouter);    // Pricing & subs
 app.use("/listings", listingsRouter);
 app.use("/payments", paymentsRouter);
 app.use("/auth", authRouter);
+
+console.log("✅ All routers LIVE: GCV + Packages 250/599/999 editable!");
 
 // ════════════════════════════════════════════
 // ── REDIS ──
