@@ -21,22 +21,27 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-
 // ════════════════════════════════════════════
 // ── EXTRA ROUTERS (listings, payments, auth, subscriptions) ──
-// Mounted once at startup — must NOT live inside a route handler,
-// or they only register the first time that handler runs.
+// Mounted once at startup
 // ════════════════════════════════════════════
 const { router: subscriptionsRouter } = require("./subscriptions-admin");
 const listingsRouter = require("./listings");
 const gcvRouter = require("./bizapp-gcv-admin");
+const pkgRouter = require("./bizapp-packages-admin"); // <-- ONLY ONCE!
+const paymentsRouter = require("./payments");
+const { router: authRouter } = require("./auth");
+
+// Mount them
 app.use("/", gcvRouter);
-const pkgRouter = require("./bizapp-packages-admin");
-app.use("/", pkgRouter);
-// LIVE Packages - Fixes 250/599/999 editing
-const pkgRouter = require("./bizapp-packages-admin");
-app.use("/", pkgRouter);
-console.log("✅ Packages router LIVE - 250/599/999 editable!");
+app.use("/", pkgRouter); // LIVE 250/599/999
+app.use("/", subscriptionsRouter);
+app.use("/listings", listingsRouter);
+app.use("/", paymentsRouter);
+app.use("/", authRouter);
+
+console.log("✅ All routers LIVE: GCV + Packages 250/599/999 editable!");
+
 const paymentsRouter = require("./payments");
 const { router: authRouter } = require("./auth");
 
