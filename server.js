@@ -14,10 +14,6 @@ app.get(['/admin.html','/admin'], (req,res)=>{
   res.set({'Cache-Control':'no-store'});
   res.sendFile(path.join(__dirname,'public','admin.html'));
 });
-const PORT = process.env.PORT || 3000;
-app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
 
 // ════════════════════════════════════════════
 // ── EXTRA ROUTERS (listings, payments, auth, subscriptions) ──
