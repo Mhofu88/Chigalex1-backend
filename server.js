@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const { router: subscriptionsRouter } = require("./subscriptions-admin");
 const listingsRouter = require("./listings");
 const gcvRouter = require("./bizapp-gcv-admin");
-const pkgRouter = require("./bizapp-packages-admin"); // <-- ONLY ONCE!
+const pkgRouter = require("./bizapp-packages-admin");
 const paymentsRouter = require("./payments");
 const { router: authRouter } = require("./auth");
 const paymentsRouter = require("./payments");
