@@ -31,20 +31,8 @@ const gcvRouter = require("./bizapp-gcv-admin");
 const pkgRouter = require("./bizapp-packages-admin"); // <-- ONLY ONCE!
 const paymentsRouter = require("./payments");
 const { router: authRouter } = require("./auth");
-
-// Mount them
-app.use("/", gcvRouter);
-app.use("/", pkgRouter); // LIVE 250/599/999
-app.use("/", subscriptionsRouter);
-app.use("/listings", listingsRouter);
-app.use("/", paymentsRouter);
-app.use("/", authRouter);
-
-console.log("✅ All routers LIVE: GCV + Packages 250/599/999 editable!");
-
 const paymentsRouter = require("./payments");
 const { router: authRouter } = require("./auth");
-
 app.use("/", subscriptionsRouter);   // exposes /pricing and /admin/subscriptions etc.
 app.use("/listings", listingsRouter);
 app.use("/payments", paymentsRouter);
