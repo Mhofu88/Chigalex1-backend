@@ -465,7 +465,57 @@ app.get('/health', (req, res) => {
 app.get('/api', (req, res) => {
   res.json({ message: 'Chigalex1 Backend Online ✅', referral: 'chigalex1' });
 });
+// ═══════════════════════════════
+// — TERMS OF SERVICE —
+// ═══════════════════════════════
+app.get('/terms', (req, res) => {
+  res.send(`<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>Terms of Service - Chigalex1</title>
+<style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;line-height:1.6;color:#222;background:#f9f9f9;padding:24px}
+.container{max-width:700px;margin:0 auto;background:#fff;padding:32px;border-radius:8px}
+h1{color:#4b0082;margin-bottom:8px}
+.updated{color:#777;font-size:14px;margin-bottom:24px}
+h2{color:#4b0082;margin-top:24px;margin-bottom:8px;font-size:18px}
+p{margin-bottom:12px}
+</style></head><body>
+<div class="container">
+<h1>Terms of Service</h1>
+<p class="updated">Last updated: ${new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
 
+<h2>1. Acceptance of Terms</h2>
+<p>By accessing or using the Chigalex1 app ("the App") through the Pi Browser, you agree to these Terms of Service. If you do not agree, please discontinue use of the App.</p>
+
+<h2>2. Description of Service</h2>
+<p>Chigalex1 is an educational platform within the Pi Network ecosystem, providing training content, business tools, and an ambassador program for Pioneers across Africa. Certain features require a one-time or recurring payment in Pi (π).</p>
+
+<h2>3. Payments</h2>
+<p>All payments are processed in π through the Pi SDK. Payments are final once confirmed on the Pi blockchain. Chigalex1 does not process payments in fiat currency or any token other than Pi.</p>
+
+<h2>4. Ambassador Program</h2>
+<p>Users may apply to become Ambassadors and earn tiered rewards (Starter, Bronze, Silver, Gold, Diamond) based on referral activity. Reward eligibility and payout amounts are determined solely by Chigalex1 and may be adjusted at any time.</p>
+
+<h2>5. User Conduct</h2>
+<p>Users agree not to misuse the referral system, submit false ambassador applications, or attempt to manipulate the leaderboard or reward system.</p>
+
+<h2>6. Account & Access</h2>
+<p>Access to the App requires authentication via the Pi SDK. Chigalex1 is not responsible for issues arising from a user's Pi account, wallet, or KYC status.</p>
+
+<h2>7. No Financial Advice</h2>
+<p>Content provided through the App is for educational purposes only and does not constitute financial, legal, or investment advice.</p>
+
+<h2>8. Limitation of Liability</h2>
+<p>Chigalex1 is provided "as is." We are not liable for losses resulting from blockchain network issues, Pi Network platform changes, or third-party wallet errors.</p>
+
+<h2>9. Changes to Terms</h2>
+<p>These Terms may be updated periodically. Continued use of the App after changes constitutes acceptance of the revised Terms.</p>
+
+<h2>10. Contact</h2>
+<p>For questions about these Terms, contact us via our WhatsApp community group.</p>
+</div>
+</body></html>`);
+});
 // ════════════════════════════════════════════
 // ── PI DOMAIN VALIDATION KEY ──
 // ════════════════════════════════════════════
