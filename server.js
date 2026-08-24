@@ -1870,8 +1870,63 @@ app.get('/ambassador/admin/scan-applications', async (req, res) => {
   } catch(err) {
     res.status(500).json({ error: 'Failed to scan applications' });
   }
-});
-
+});  
+function browseFreely(){
+  document.getElementById('gate').style.display='none';
+  loadFaqs();
+  renderAdverts();
+  loadPricing();
+  loadLeaderboard('all');
+}
+async function piLogin(){
+  const btn=document.getElementById('loginBtn');
+  btn.disabled=true; btn.innerHTML='<span class="spin"></span>Connecting to Pi...'; setErr('');
+  try{
+    const auth=await Pi.authenticate(['username','payments'],handleIncomplete);
+    piUser=auth.user;
+    alert("Your UID: " + piUser.uid); // TEMPORARY - remove after collecting test UIDs
+    document.getElementById('uinfo').style.display='block';
+    document.getElementById('uinfo').innerHTML='✅ Logged in as <strong style="color:#F5C518;">@'+piUser.username+'</strong>';
+    btn.style.display='none';
+    if(OWNER_ACCOUNTS.includes(piUser.username.toLowerCase())){
+      document.getElementById('ownerBadge').style.display='block';
+      document.getElementById('feeBox').style.display='none';
+      document.getElementById('enterBtn').style.display='block';
+      isPaid=true; return;
+    }
+try{
+      const r=await fetch(API+'/check-membership?username='+encodeURIComponent(piUser.username));
+      const d=await r.json();
+      if(d.paid){ isPaid=true; document.getElementById('enterBtn').style.display='block'; }
+      else{ document.getElementById('payBtn').style.display='block'; document.getElementById('browseBtn').style.display='block'; }
+    }catch(e){ document.getElementById('payBtn').style.display='block'; document.getElementById('browseBtn').style.display='block'; }
+  }catch(e){
+    setErr('Login failed. Make sure you are in the Pi Browser app.');
+    btn.disabled=false; btn.innerHTML='🔐 Login with Pi Network';
+  }
+  }    
+  async function piPay(){
+  const btn=document.getElementById('payBtn');
+  btn.disabled=true; btn.innerHTML='<span class="spin"></span>Opening Pi payment...'; setErr('');
+  try{
+    await Pi.createPayment({
+      amount:0.01,
+      memo:'Chigalex1 Africa Pi Hub Membership',
+      metadata:{username:piUser.username,app:'chigalex1'}
+    },{
+      onReadyForServerApproval:async(paymentId)=>{ try{await fetch(API+'/approve-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({paymentId})});}catch(e){} },
+      onReadyForServerCompletion:async(paymentId,txid)=>{
+        try{
+          const r=await fetch(API+'/complete-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({paymentId,txid,username:piUser.username})});
+          if(!r.ok){setErr('Payment verification failed. Contact support.');resetPayBtn();return;}
+          const d=await r.json();
+          if(d.success||d.paid||d.status==='paid'){isPaid=true;openApp();}
+          else{setErr('Payment verification failed. Contact support.');resetPayBtn();}
+        }catch(e){isPaid=true;openApp();}
+      },
+      onCancel:()=>{setErr('Payment cancelled.');resetPayBtn();},
+      onError:(e)=>{setErr('Payment error: '+(e.message||e));resetPayBtn();}
+    });
 // 11. ADMIN: RESET PERIOD
 app.post('/ambassador/admin/reset-period', async (req, res) => {
   if (!requireRedis(res)) return;
