@@ -1860,14 +1860,16 @@ catch(e){ console.warn('Pi SDK: open in Pi Browser'); }
 
 function showGate(){ document.getElementById('gate').style.display='flex'; window.scrollTo(0,0); }
 
-function browseFreely(){
+=false; btn.innerHTML='🔐 Login with Pi Network';
+  function browseFreely(){
   document.getElementById('gate').style.display='none';
   loadFaqs();
   renderAdverts();
   loadPricing();
   loadLeaderboard('all');
+}
 
-  async function piLogin(){
+async function piLogin(){
   const btn=document.getElementById('loginBtn');
   btn.disabled=true; btn.innerHTML='<span class="spin"></span>Connecting to Pi...'; setErr('');
   try{
@@ -1882,9 +1884,8 @@ function browseFreely(){
       document.getElementById('feeBox').style.display='none';
       document.getElementById('enterBtn').style.display='block';
       isPaid=true; return;
-    } 
-    
-    
+    }
+
     try{
       const r=await fetch(API+'/check-membership?username='+encodeURIComponent(piUser.username));
       const d=await r.json();
@@ -1895,9 +1896,8 @@ function browseFreely(){
     setErr('Login failed. Make sure you are in the Pi Browser app.');
     btn.disabled=false; btn.innerHTML='🔐 Login with Pi Network';
   }
-}
-
-async function piPay(){
+  }    
+  async function piPay(){
   const btn=document.getElementById('payBtn');
   btn.disabled=true; btn.innerHTML='<span class="spin"></span>Opening Pi payment...'; setErr('');
   try{
