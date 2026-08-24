@@ -1866,16 +1866,14 @@ function browseFreely(){
   renderAdverts();
   loadPricing();
   loadLeaderboard('all');
-}
 
-async function piLogin(){
+  async function piLogin(){
   const btn=document.getElementById('loginBtn');
   btn.disabled=true; btn.innerHTML='<span class="spin"></span>Connecting to Pi...'; setErr('');
   try{
     const auth=await Pi.authenticate(['username','payments'],handleIncomplete);
     piUser=auth.user;
     alert("Your UID: " + piUser.uid); // TEMPORARY - remove after collecting test UIDs
-document.getElementById('uinfo').styl...
     document.getElementById('uinfo').style.display='block';
     document.getElementById('uinfo').innerHTML='✅ Logged in as <strong style="color:#F5C518;">@'+piUser.username+'</strong>';
     btn.style.display='none';
@@ -1884,7 +1882,9 @@ document.getElementById('uinfo').styl...
       document.getElementById('feeBox').style.display='none';
       document.getElementById('enterBtn').style.display='block';
       isPaid=true; return;
-    }
+    } 
+    
+    
     try{
       const r=await fetch(API+'/check-membership?username='+encodeURIComponent(piUser.username));
       const d=await r.json();
