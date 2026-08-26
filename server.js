@@ -1,6 +1,3 @@
-hen legacy-core.js then routes/translations.js
-5. Render auto-deploys after each commit - wait 2 mins at end.
-server.js - 3KB / 3121 chars
 const express=require('express');const cors=require('cors');const path=require('path');const app=express();
 const {PORT}=require('./config');const {redis,requireRedis,trackEvent}=require('./utils/redis');
 const {sanitizeString,isValidUsername,isValidEmail,validateAdminKey}=require('./utils/validators');
@@ -17,7 +14,7 @@ if(subscriptionsMod&&subscriptionsMod.router)app.use("/",subscriptionsMod.router
 if(listingsRouter)app.use("/api/listings",listingsRouter);
 if(paymentsRouter)app.use("/payments",paymentsRouter);
 if(authMod&&authMod.router)app.use("/auth",authMod.router);
-if(merchantMod)app.use("/",merchantMod);if(referralMod)app.use("/",referralMod);erver.js - 3KB / 3121 chars
+if(merchantMod)app.use("/",merchantMod);if(referralMod)app.use("/",referralMod);
 const express=require('express');const cors=require('cors');const path=require('path');const app=express();
 const {PORT}=require('./config');const {redis,requireRedis,trackEvent}=require('./utils/redis');
 const {sanitizeString,isValidUsername,isValidEmail,validateAdminKey}=require('./utils/validators');
