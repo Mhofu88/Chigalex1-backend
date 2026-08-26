@@ -1,0 +1,693 @@
+module.exports = function(app, ctx){
+  const { redis, requireRedis, trackEvent, sanitizeString, isValidUsername, isValidEmail, validateAdminKey, rateLimit, getFAQs, getQuestions } = ctx;
+  const path=require('path');
+  const ADMIN_ACCOUNTS=['chigalex1','vc_chigalex','admin'];
+  async function getAllAmbassadors(){
+    try{
+      const ids = await redis.zrange('ambassador:index',0,-1);
+      if(!ids.length) return [];
+      const pipe=redis.pipeline();
+      ids.forEach(id=>pipe.get(`ambassador:${id}`));
+      const res=await pipe.exec();
+      return res.map(r=>{try{return typeof r==='string'?JSON.parse(r):r}catch{return null}}).filter(Boolean);
+    }catch{return []}
+  }
+  function calculateTier(recruits){
+    if(recruits>=50) return {name:'diamond',reward:5};
+    if(recruits>=20) return {name:'gold',reward:2};
+    if(recruits>=10) return {name:'silver',reward:1};
+    if(recruits>=5) return {name:'bronze',reward:0.5};
+    if(recruits>=1) return {name:'starter',reward:0.1};
+    return {name:'none',reward:0};
+  }
+  async function notifyAmbassador(username,message){
+    try{
+      const key=`notifications:${username}`;
+      const ex=await redis.get(key);
+      const list=ex?(typeof ex==='string'?JSON.parse(ex):ex):[];
+      list.unshift({message,date:new Date().toISOString(),read:false});
+      await redis.set(key,JSON.stringify(list.slice(0,50)));
+    }catch(e){}
+  }
+async function getFAQs(lang = null) {
+  const ids = await redis.zrange('faq:index', 0, -1);
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`faq:${id}`));
+  const results = await pipeline.exec();
+  const faqs = results.map(r => r).filter(Boolean);
+  return lang ? faqs.filter(f => !f.lang || f.lang === lang || f.lang === 'all') : faqs;
+}
+
+async function getQuestions(filter = 'all') {
+  const key = filter === 'answered' ? 'question:index:answered' : 'question:index:all';
+  const ids = await redis.zrange(key, 0, -1, { rev: true });
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`question:${id}`));
+  const results = await pipeline.exec();
+  return results.filter(Boolean);
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING CONFIG (DYNAMIC — Redis-backed) ──
+// Defaults below are used only if Redis has no value yet.
+// ════════════════════════════════════════════
+const DEFAULT_PRICING = {
+  membership: 0.1,
+  advert: 0.3,
+  merchant: 0.5,
+};
+
+async function getPricing() {
+  if (!redis) return DEFAULT_PRICING;
+  try {
+    const stored = await redis.get('config:pricing');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      return { ...DEFAULT_PRICING, ...parsed };
+    }
+    return DEFAULT_PRICING;
+  } catch (e) {
+    console.error('getPricing error:', e);
+    return DEFAULT_PRICING;
+  }
+}
+
+async function setPricing(type, value) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getPricing();
+  current[type] = value;
+  await redis.set('config:pricing', JSON.stringify(current));
+  return current;
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING ENDPOINTS ──
+// ════════════════════════════════════════════
+
+// PUBLIC — used by index.html loadPricing()
+app.get('/api/pricing', async (req, res) => {
+  try {
+    const p = await getPricing();
+    res.json({
+      membership: p.membership,
+      advert: p.advert,
+      merchant: p.merchant,
+      currency: 'π',
+      formatted: {
+        membership: `${p.membership}π`,
+        advert: `${p.advert}π`,
+        merchant: `${p.merchant}π`,
+      }
+    });
+  } catch (e) {
+    res.json({
+      membership: DEFAULT_PRICING.membership,
+      advert: DEFAULT_PRICING.advert,
+      merchant: DEFAULT_PRICING.merchant,
+      currency: 'π',
+    });
+  }
+});
+
+// ADMIN ONLY — used by admin.html pricing tab
+app.post('/admin/update-pricing', async (req, res) => {
+  const { admin_username, type, value } = req.body;
+
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  const validTypes = ['membership', 'advert', 'merchant'];
+  if (!validTypes.includes(type)) {
+    return res.status(400).json({ error: 'Invalid pricing type. Must be: membership, advert, or merchant' });
+  }
+
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue <= 0) {
+    return res.status(400).json({ error: 'Value must be a positive number' });
+  }
+
+  if (!requireRedis(res)) return;
+
+  try {
+    const updated = await setPricing(type, numValue);
+    res.json({
+      success: true,
+      message: `✅ ${type} price updated to ${numValue}π — live everywhere instantly!`,
+      pricing: updated,
+    });
+
+} catch (e) {
+    console.error('Update pricing error:', e);
+    res.status(500).json({ error: 'Failed to update pricing' });
+  }
+});
+
+// TIER CONFIG — Redis-backed (same pattern as pricing)
+async function getTierConfig() {
+  if (!redis) return TIER_CONFIG;
+  try {
+    const stored = await redis.get('config:tiers');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      // Merge with defaults so any missing tiers still work
+      return { ...TIER_CONFIG, ...parsed };
+    }
+    return TIER_CONFIG;
+  } catch (e) {
+    return TIER_CONFIG;
+  }
+}
+
+async function setTierConfig(tierName, pi_per_recruit, bonus_on_entry) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getTierConfig();
+  if (!current[tierName]) throw new Error(`Unknown tier: ${tierName}`);
+  current[tierName] = {
+    ...current[tierName],
+    pi_per_recruit: parseFloat(pi_per_recruit),
+    bonus_on_entry: parseFloat(bonus_on_entry),
+  };
+  await redis.set('config:tiers', JSON.stringify(current));
+  return current;
+}
+
+app.post('/admin/update-tier', async (req, res) => {
+  const { admin_username, tier, pi_per_recruit, bonus_on_entry } = req.body;
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+  const validTiers = ['starter', 'bronze', 'silver', 'gold', 'diamond'];
+  if (!validTiers.includes(tier)) {
+    return res.status(400).json({ error: 'Invalid tier name' });
+  }
+  if (isNaN(parseFloat(pi_per_recruit)) || isNaN(parseFloat(bonus_on_entry))) {
+    return res.status(400).json({ error: 'pi_per_recruit and bonus_on_entry must be numbers' });
+  }
+  if (!requireRedis(res)) return;
+  try {
+    const updated = await setTierConfig(tier, pi_per_recruit, bonus_on_entry);
+    res.json({
+      success: true,
+      message: `✅ ${tier} tier updated — ${pi_per_recruit}π/recruit · ${bonus_on_entry}π entry bonus. Live immediately!`,
+      tiers: updated,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+
+
+
+
+
+
+
+legacy-core.js - 69KB / 71343 chars
+module.exports = function(app, ctx){
+  const { redis, requireRedis, trackEvent, sanitizeString, isValidUsername, isValidEmail, validateAdminKey, rateLimit, getFAQs, getQuestions } = ctx;
+  const path=require('path');
+  const ADMIN_ACCOUNTS=['chigalex1','vc_chigalex','admin'];
+  async function getAllAmbassadors(){
+    try{
+      const ids = await redis.zrange('ambassador:index',0,-1);
+      if(!ids.length) return [];
+      const pipe=redis.pipeline();
+      ids.forEach(id=>pipe.get(`ambassador:${id}`));
+      const res=await pipe.exec();
+      return res.map(r=>{try{return typeof r==='string'?JSON.parse(r):r}catch{return null}}).filter(Boolean);
+    }catch{return []}
+  }
+  function calculateTier(recruits){
+    if(recruits>=50) return {name:'diamond',reward:5};
+    if(recruits>=20) return {name:'gold',reward:2};
+    if(recruits>=10) return {name:'silver',reward:1};
+    if(recruits>=5) return {name:'bronze',reward:0.5};
+    if(recruits>=1) return {name:'starter',reward:0.1};
+    return {name:'none',reward:0};
+  }
+  async function notifyAmbassador(username,message){
+    try{
+      const key=`notifications:${username}`;
+      const ex=await redis.get(key);
+      const list=ex?(typeof ex==='string'?JSON.parse(ex):ex):[];
+      list.unshift({message,date:new Date().toISOString(),read:false});
+      await redis.set(key,JSON.stringify(list.slice(0,50)));
+    }catch(e){}
+  }
+async function getFAQs(lang = null) {
+  const ids = await redis.zrange('faq:index', 0, -1);
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`faq:${id}`));
+  const results = await pipeline.exec();
+  const faqs = results.map(r => r).filter(Boolean);
+  return lang ? faqs.filter(f => !f.lang || f.lang === lang || f.lang === 'all') : faqs;
+}
+
+async function getQuestions(filter = 'all') {
+  const key = filter === 'answered' ? 'question:index:answered' : 'question:index:all';
+  const ids = await redis.zrange(key, 0, -1, { rev: true });
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`question:${id}`));
+  const results = await pipeline.exec();
+  return results.filter(Boolean);
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING CONFIG (DYNAMIC — Redis-backed) ──
+// Defaults below are used only if Redis has no value yet.
+// ════════════════════════════════════════════
+const DEFAULT_PRICING = {
+  membership: 0.1,
+  advert: 0.3,
+  merchant: 0.5,
+};
+
+async function getPricing() {
+  if (!redis) return DEFAULT_PRICING;
+  try {
+    const stored = await redis.get('config:pricing');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      return { ...DEFAULT_PRICING, ...parsed };
+    }
+    return DEFAULT_PRICING;
+  } catch (e) {
+    console.error('getPricing error:', e);
+    return DEFAULT_PRICING;
+  }
+}
+
+async function setPricing(type, value) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getPricing();
+  current[type] = value;
+  await redis.set('config:pricing', JSON.stringify(current));
+  return current;
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING ENDPOINTS ──
+// ════════════════════════════════════════════
+
+// PUBLIC — used by index.html loadPricing()
+app.get('/api/pricing', async (req, res) => {
+  try {
+    const p = await getPricing();
+    res.json({
+      membership: p.membership,
+      advert: p.advert,
+      merchant: p.merchant,
+      currency: 'π',
+      formatted: {
+        membership: `${p.membership}π`,
+        advert: `${p.advert}π`,
+        merchant: `${p.merchant}π`,
+      }
+    });
+  } catch (e) {
+    res.json({
+      membership: DEFAULT_PRICING.membership,
+      advert: DEFAULT_PRICING.advert,
+      merchant: DEFAULT_PRICING.merchant,
+      currency: 'π',
+    });
+  }
+});
+
+// ADMIN ONLY — used by admin.html pricing tab
+app.post('/admin/update-pricing', async (req, res) => {
+  const { admin_username, type, value } = req.body;
+
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  const validTypes = ['membership', 'advert', 'merchant'];
+  if (!validTypes.includes(type)) {
+    return res.status(400).json({ error: 'Invalid pricing type. Must be: membership, advert, or merchant' });
+  }
+
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue <= 0) {
+    return res.status(400).json({ error: 'Value must be a positive number' });
+  }
+
+  if (!requireRedis(res)) return;
+
+  try {
+    const updated = await setPricing(type, numValue);
+    res.json({
+      success: true,
+      message: `✅ ${type} price updated to ${numValue}π — live everywhere instantly!`,
+      pricing: updated,
+    });
+
+} catch (e) {
+    console.error('Update pricing error:', e);
+    res.status(500).json({ error: 'Failed to update pricing' });
+  }
+});
+
+// TIER CONFIG — Redis-backed (same pattern as pricing)
+async function getTierConfig() {
+  if (!redis) return TIER_CONFIG;
+  try {
+    const stored = await redis.get('config:tiers');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      // Merge with defaults so any missing tiers still work
+      return { ...TIER_CONFIG, ...parsed };
+    }
+    return TIER_CONFIG;
+  } catch (e) {
+    return TIER_CONFIG;
+  }
+}
+
+async function setTierConfig(tierName, pi_per_recruit, bonus_on_entry) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getTierConfig();
+  if (!current[tierName]) throw new Error(`Unknown tier: ${tierName}`);
+  current[tierName] = {
+    ...current[tierName],
+    pi_per_recruit: parseFloat(pi_per_recruit),
+    bonus_on_entry: parseFloat(bonus_on_entry),
+  };
+  await redis.set('config:tiers', JSON.stringify(current));
+  return current;
+}
+
+app.post('/admin/update-tier', async (req, res) => {
+  const { admin_username, tier, pi_per_recruit, bonus_on_entry } = req.body;
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+  const validTiers = ['starter', 'bronze', 'silver', 'gold', 'diamond'];
+  if (!validTiers.includes(tier)) {
+    return res.status(400).json({ error: 'Invalid tier name' });
+  }
+  if (isNaN(parseFloat(pi_per_recruit)) || isNaN(parseFloat(bonus_on_entry))) {
+    return res.status(400).json({ error: 'pi_per_recruit and bonus_on_entry must be numbers' });
+  }
+  if (!requireRedis(res)) return;
+  try {
+    const updated = await setTierConfig(tier, pi_per_recruit, bonus_on_entry);
+    res.json({
+      success: true,
+      message: `✅ ${tier} tier updated — ${pi_per_recruit}π/recruit · ${bonus_on_entry}π entry bonus. Live immediately!`,
+      tiers: updated,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Also update calculateTier() to use Redis config — add this helper:
+async function calculateTierAsync(recruits) {
+  const config = await getTierConfig();
+  const tiers = Object.values(config).sort((a, b) => b.min_recruits - a.min_recruits);
+  for (const tier of tiers) {
+    if (recruits >= tier.min_recruits) return tier;
+  }
+  return null;
+}
+// Note: Use calculateTierAsync() in record-recruit and dashboard routes
+// instead of the synchronous calculateTier() once this is deployed.
+
+
+// ════════════════════════════════════════════
+// ── AMBASSADOR / TIER CONFIG & HELPERS ──
+// ════════════════════════════════════════════
+const ADMIN_ACCOUNTS = ['chigalex1', 'admin2', 'dorisyin', 'chigodop'];
+
+const TIER_CONFIG = {
+  starter: {
+    name: 'Starter', emoji: '🌱',
+    min_recruits: 1, max_recruits: 4,
+    pi_per_recruit: 0.005, bonus_on_entry: 0.01,
+    color: '#00D4AA',
+  },
+  bronze: {
+    name: 'Bronze', emoji: '🥉',
+    min_recruits: 5, max_recruits: 9,
+    pi_per_recruit: 0.01, bonus_on_entry: 0.05,
+    color: '#CD7F32',
+  },
+  silver: {
+    name: 'Silver', emoji: '🥈',
+    min_recruits: 10, max_recruits: 19,
+    pi_per_recruit: 0.02, bonus_on_entry: 0.1,
+    color: '#C0C0C0',
+  },
+  gold: {
+    name: 'Gold', emoji: '🏅',
+    min_recruits: 20, max_recruits: 49,
+    pi_per_recruit: 0.05, bonus_on_entry: 0.25,
+    color: '#F5C518',
+  },
+  diamond: {
+    name: 'Diamond', emoji: '⭐',
+    min_recruits: 50, max_recruits: Infinity,
+    pi_per_recruit: 0.1, bonus_on_entry: 1.0,
+    color: '#9B59B6',
+  }
+};
+
+function getPeriodKey() {
+  const now = new Date();
+  const month = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  const week = `${now.getFullYear()}-W${String(Math.ceil(now.getDate()/7)).padStart(2,'0')}`;
+  return { month, week };
+}
+
+function calculateTier(recruits) {
+  if (recruits >= 50) return TIER_CONFIG.diamond;
+  if (recruits >= 20) return TIER_CONFIG.gold;
+  if (recruits >= 10) return TIER_CONFIG.silver;
+  if (recruits >= 5)  return TIER_CONFIG.bronze;
+  if (recruits >= 1)  return TIER_CONFIG.starter;
+  return null;
+}
+
+function calculateTotalPiEarned(recruitHistory) {
+  let total = 0;
+  let currentTier = null;
+  recruitHistory.forEach((recruit, index) => {
+    const recruitNumber = index + 1;
+    const tier = calculateTier(recruitNumber);
+    if (!tier) return;
+    total += tier.pi_per_recruit;
+    if (!currentTier || currentTier.name !== tier.name) {
+      total += tier.bonus_on_entry;
+      currentTier = tier;
+    }
+  });
+  return parseFloat(total.toFixed(4));
+}
+
+function buildRewardBreakdown(recruits) {
+  const breakdown = [];
+  let runningTotal = 0;
+  Object.values(TIER_CONFIG).forEach(tier => {
+    const recruitsInTier = Math.min(
+      Math.max(0, recruits - tier.min_recruits + 1),
+      tier.max_recruits - tier.min_recruits + 1
+    );
+    if (recruitsInTier > 0) {
+      const tierEarnings = (recruitsInTier * tier.pi_per_recruit) + tier.bonus_on_entry;
+      runningTotal += tierEarnings;
+      breakdown.push({
+        tier: tier.name,
+        emoji: tier.emoji,
+        recruits_in_tier: recruitsInTier,
+        per_recruit: tier.pi_per_recruit,
+        entry_bonus: tier.bonus_on_entry,
+        tier_total: parseFloat(tierEarnings.toFixed(4)),
+        running_total: parseFloat(runningTotal.toFixed(4)),
+      });
+    }
+  });
+  return breakdown;
+}
+
+async function notifyAmbassador(pi_username, message) {
+  if (!redis) return;
+  try {
+    const notifKey = `notifications:${pi_username}`;
+    let notifs = [];
+    const existing = await redis.get(notifKey);
+    if (existing) notifs = typeof existing === 'string' ? JSON.parse(existing) : existing;
+    notifs.unshift({ message, timestamp: new Date().toISOString(), read: false });
+    if (notifs.length > 50) notifs = notifs.slice(0, 50);
+    await redis.set(notifKey, JSON.stringify(notifs));
+    console.log(`📲 Notification queued for @${pi_username}: ${message}`);
+  } catch(e) {
+    console.error('Notification error:', e);
+  }
+}
+
+async function getAllAmbassadors() {
+  if (!redis) return [];
+  try {
+    const keys = await redis.keys('ambassador:*');
+    if (!keys || keys.length === 0) return [];
+    const ambassadors = [];
+    for (const key of keys) {
+      try {
+        const data = await redis.get(key);
+        if (data) {
+          const amb = typeof data === 'string' ? JSON.parse(data) : data;
+          ambassadors.push(amb);
+        }
+      } catch(e) {
+        // Skip keys with wrong type (Hash records from old referral system)
+        console.warn(`Skipping key ${key} — wrong Redis type:`, e.message);
+      }
+    }
+    return ambassadors;
+  } catch(e) {
+    console.error('Redis getAllAmbassadors error:', e);
+    return [];
+  }
+}
+
+// Helper: treat admin accounts as always "paid" for AI access
+function OWNER_USERNAMES_INCLUDE(username) {
+  return ADMIN_ACCOUNTS.includes((username || '').toLowerCase());
+}
+
+// ════════════════════════════════════════════
+// ── HEALTH CHECK ──
+// ════════════════════════════════════════════
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    app: 'Chigalex1 – Africa Pi Network Education Hub',
+    referral: 'chigalex1',
+    redis: redis ? 'connected' : 'not configured'
+  });
+});
+
+app.get('/api', (req, res) => {
+  res.json({ message: 'Chigalex1 Backend Online ✅', referral: 'chigalex1' });
+});
+
+// ════════════════════════════════════════════
+// ── TEST APP-TO-USER PAYOUT (temporary — for Mainnet eligibility) ──
+// ════════════════════════════════════════════
+app.post('/admin/test-payout', async (req, res) => {
+  try {
+    const adminKey = req.headers['x-admin-key'];
+    if (adminKey !== process.env.ADMIN_KEY) {
+      return res.status(403).json({ error: 'Unauthorized' });
+    }
+
+    const { uid, amount, memo } = req.body;
+
+    if (!uid || !amount) {
+      return res.status(400).json({ error: 'uid and amount are required' });
+    }
+
+    const paymentData = {
+      amount: amount,
+      memo: memo || 'Chigalex1 test payout',
+      metadata: { type: 'mainnet_eligibility_test' },
+      uid: uid
+    };
+
+    const paymentId = await pi.createPayment(paymentData);
+    const txid = await pi.submitPayment(paymentId);
+    const completedPayment = await pi.completePayment(paymentId, txid);
+
+    res.json({ success: true, paymentId, txid, completedPayment });
+  } catch (error) {
+    console.error('Payout error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ════════════════════════════════════════════
+// ── PI DOMAIN VALIDATION KEY ──
+// ════════════════════════════════════════════
+app.get('/validation-key.txt', (req, res) => {
+  res.type('text/plain');
+  res.send('236a7d2fc7000f53414c56e1c9c76dc347c4441dfc11f039510034d0b24bc597f11107a84ddd15c46ae3c2c9ab059c6e6196425298fac76c415d4c061e01ebd7');
+});
+
+// ════════════════════════════════════════════
+// ── PRIVACY POLICY ──
+// ════════════════════════════════════════════
+app.get('/privacy', (req, res) => {
+  res.send(`<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy – Chigalex1</title>
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;background:#0D0A1A;color:#F0EBF8;padding:40px 20px;max-width:800px;margin:0 auto;line-height:1.75;}h1{font-size:1.8rem;font-weight:800;color:#F5C518;margin-bottom:6px;}.sub{color:#9B59B6;font-size:.9rem;margin-bottom:32px;}h2{font-size:1.1rem;font-weight:700;color:#00D4AA;margin:28px 0 10px;}p{color:#B8A8D8;font-size:.93rem;margin-bottom:12px;}ul{color:#B8A8D8;font-size:.93rem;padding-left:20px;margin-bottom:12px;}ul li{margin-bottom:6px;}.pi{color:#F5C518;font-weight:700;}.warn{color:#FF7043;}a{color:#9B59B6;}.back{display:inline-block;margin-top:32px;background:linear-gradient(135deg,#7B2D8B,#9B59B6);color:#fff;padding:10px 22px;border-radius:100px;text-decoration:none;font-weight:700;font-size:.9rem;}.logo{font-size:2rem;margin-bottom:8px;}</style>
+</head><body>
+<div class="logo">π</div>
+<h1>Privacy Policy</h1>
+<p class="sub">Chigalex1 – Africa Pi Network Education Hub · Last updated: May 2026</p>
+<h2>1. Who We Are</h2>
+<p><strong class="pi">Chigalex1</strong> is an independent educational platform and community DApp created to help pioneers and businesses across Africa register on Pi Network, complete KYC and KYB verification, and list on Map of Pi. Chigalex1 is operated under the Africa Pi GCV Industry Alliance and is <span class="warn">not affiliated with Pi Network or SocialChain Inc.</span></p>
+<h2>2. Information We Collect</h2>
+<ul>
+<li><strong>Pi Username</strong> — collected when you authenticate via Pi Network login.</li>
+<li><strong>Payment Transaction ID (txid)</strong> — collected to confirm your membership payment.</li>
+<li><strong>Name and Email (optional)</strong> — collected only if you submit a question.</li>
+<li><strong>Questions submitted</strong> — stored so the administrator can publish answers.</li>
+</ul>
+<p>We do <strong>not</strong> collect passwords, passphrases, national ID information, or sensitive financial data.</p>
+<h2>3. Data Storage</h2>
+<p>All data is stored securely using Upstash Redis with encryption in transit and at rest.</p>
+<h2>4. Pi Network Authentication</h2>
+<p>Chigalex1 uses the official Pi Network SDK. We only receive your Pi username and payment confirmation — we never receive or store your passphrase or private keys.</p>
+<p><strong class="warn">Never share your 24-word Pi passphrase with anyone — including Chigalex1.</strong></p>
+<h2>5. Your Rights</h2>
+<p>You may request deletion of your data by submitting a question with the subject "Data Deletion Request". We will process it within 30 days.</p>
+<h2>6. Contact</h2>
+<p>For privacy concerns, contact us through the Chigalex1 Ask the Administrator feature at <a href="/">chigalex1-backend.onrender.com</a>.</p>
+<a href="/" class="back">← Back to Chigalex1</a>
+</body></html>`);
+});
+
+// ════════════════════════════════════════════
+// ── TERMS OF SERVICE ──
+// ════════════════════════════════════════════
+app.get('/terms', (req, res) => {
+  res.send(`<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Terms of Service – Chigalex1</title>
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;background:#0D0A1A;color:#F0EBF8;padding:40px 20px;max-width:800px;margin:0 auto;line-height:1.75;}h1{font-size:1.8rem;font-weight:800;color:#F5C518;margin-bottom:6px;}.sub{color:#9B59B6;font-size:.9rem;margin-bottom:32px;}h2{font-size:1.1rem;font-weight:700;color:#00D4AA;margin:28px 0 10px;}p{color:#B8A8D8;font-size:.93rem;margin-bottom:12px;}ul{color:#B8A8D8;font-size:.93rem;padding-left:20px;margin-bottom:12px;}ul li{margin-bottom:6px;}.pi{color:#F5C518;font-weight:700;}.warn{color:#FF7043;}a{color:#9B59B6;}.back{display:inline-block;margin-top:32px;background:linear-gradient(135deg,#7B2D8B,#9B59B6);color:#fff;padding:10px 22px;border-radius:100px;text-decoration:none;font-weight:700;font-size:.9rem;}.logo{font-size:2rem;margin-bottom:8px;}.highlight{background:rgba(245,197,24,0.1);border:1px solid rgba(245,197,24,0.3);border-radius:10px;padding:14px 18px;margin:16px 0;}</style>
+</head><body>
+<div class="logo">π</div>
+<h1>Terms of Service</h1>
+<p class="sub">Chigalex1 – Africa Pi Network Education Hub · Last updated: May 2026</p>
+<div class="highlight"><p style="color:#F5C518;font-weight:700;">Important Notice</p><p>Chigalex1 is an <strong>independent community educational platform</strong> and is not affiliated with, endorsed by, or officially connected to Pi Network or SocialChain Inc.</p></div>
+<h2>1. Acceptance of Terms</h2>
+<p>By using Chigalex1, you agree to be bound by these Terms. If you do not agree, please do not use the App.</p>
+<h2>2. Description of Service</h2>
+<p><strong class="pi">Chigalex1</strong> provides step-by-step training on Pi Network registration, KYC, KYB, Map of Pi, and Pi security across all 54 African countries in 25 languages.</p>
+<h2>3. Membership Fee</h2>
+<p>Access requires a <strong>one-time fee of 0.01 Pi (0.01π)</strong>. This is a community app access fee and is <span class="warn">NOT a charge by Pi Network or SocialChain Inc.</span></p>
+<h2>4. Security Warning</h2>
+<p><strong class="warn">Chigalex1 will NEVER ask for your 24-word Pi passphrase.</strong> Anyone who does is attempting fraud.</p>
+<h2>5. Disclaimer of Affiliation</h2>
+<p>Chigalex1 is <span class="warn">NOT affiliated with Pi Network or SocialChain Inc.</span> All Pi Network trademarks belong to their respective owners.</p>
+<h2>6. Contact</h2>
+<p>Submit questions at <a href="/">chigalex1-backend.onrender.com</a></p>
+<a href="/" class="back">← Back to Chigalex1</a>
+</body></html>`);
+});
+
+// ════════════════════════════════════════════
+// ── MEMBERSHIP ROUTES ──
+// ════════════════════════════════════════════
+app.get('/check-membership', rateLimit(30, 60_000), async (req, res) => {
+  const username = sanitizeString(req.query.username, 64);
+  if (!isValidUsername(username)) return res.status(400).json({ error: 'Invalid us
