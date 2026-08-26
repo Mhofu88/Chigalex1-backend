@@ -1,0 +1,1 @@
+module.exports={PORT:process.env.PORT||10000,ADMIN_ACCOUNTS:['chigalex1','vc_chigalex','admin']};
