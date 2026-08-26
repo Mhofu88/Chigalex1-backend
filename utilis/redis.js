@@ -1,4 +1,3 @@
-let redis=null;try{const{Redis}=require('@upstash/redis');redis=Redis.fromEnv();console.log('✅ Redis connected');}catch(e){console.warn('⚠️ Redis not configured');}
-function requireRedis(res){if(!redis){res.status(503).json({error:'Redis not configured'});return false;}return true;}
-async function trackEvent(ev){if(!redis)return;try{const day=new Date().toISOString().slice(0,10);await redis.incr(`analytics:${day}:${ev}`);await redis.incr(`analytics:total:${ev}`);}catch(e){}}
-module.exports={redis,requireRedis,trackEvent,getRedis:()=>redis};
+const store=new Map();function rateLimit(max=20,win=60000){return(req,res,next)=>{const ip=req.headers['x-forwarded-for']?.split(',')[0].trim()||req.socket.remoteAddress||'unknown';const now=Date.now();const e=store.get(ip);if(!e||now>e.resetAt){store.set(ip,{count:1,resetAt:now+win});return next();}e.count++;if(e.count>max)return res.status(429).json({error:'Too many requests'});next();};}
+setInterval(()=>{const now=Date.now();for(const[k,v]of store){if(now>v.resetAt)store.delete(k);}},300000);
+module.exports={rateLimit};
