@@ -43,3 +43,52 @@ try{
 app.get('/health',(req,res)=>res.json({status:'ok',version:'v2.1-resilient',languages:25}));
 app.get('*',(req,res)=>{res.sendFile(path.join(__dirname,'public','index.html'),err=>{if(err)res.send('<h1>Chigalex1 LIVE V2.1</h1>');});});
 app.listen(PORT,()=>console.log(`🚀 Chigalex1 V2.1 LIVE ${PORT}`));
+
+// ════════════════════════════════════════════
+// PASTE THIS AT LINE 45 - RIGHT AFTER Pi SDK LOAD
+// ════════════════════════════════════════════
+app.get('/pi-payments-status', (req, res) => {
+  res.json({
+    pi_api_key_set: !!process.env.PI_API_KEY,
+    pi_api_key_prefix: process.env.PI_API_KEY ? process.env.PI_API_KEY.slice(0,8)+'...' : 'NOT SET',
+    app_wallet_seed_set: !!process.env.APP_WALLET_SEED,
+    time: new Date().toISOString()
+  });
+});
+
+app.post(['/approve-payment', '/api/payments/approve'], async (req, res) => {
+  const paymentId = req.body.paymentId || req.body.payment_id;
+  if (!paymentId) return res.status(400).json({ error: 'paymentId required' });
+  const apiKey = process.env.PI_API_KEY;
+  if (!apiKey) return res.status(500).json({ error: 'PI_API_KEY not set in Render Environment' });
+  try {
+    const response = await fetch(`https://api.minepi.com/v2/payments/${encodeURIComponent(paymentId)}/approve`, {
+      method: 'POST',
+      headers: { 'Authorization': `Key ${apiKey}`, 'Content-Type': 'application/json' }
+    });
+    const data = await response.json();
+    if (!response.ok) return res.status(response.status).json({ error: 'Pi API approve failed', pi_response: data });
+    res.json({ success: true, approved: true, data });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post(['/complete-payment', '/api/payments/complete'], async (req, res) => {
+  const paymentId = req.body.paymentId || req.body.payment_id;
+  const txid = req.body.txid;
+  const username = (req.body.username || 'Chigalex1').toString().slice(0,64);
+  if (!paymentId || !txid) return res.status(400).json({ error: 'paymentId and txid required' });
+  const apiKey = process.env.PI_API_KEY;
+  if (!apiKey) return res.status(500).json({ error: 'PI_API_KEY not set' });
+  try {
+    const response = await fetch(`https://api.minepi.com/v2/payments/${encodeURIComponent(paymentId)}/complete`, {
+      method: 'POST',
+      headers: { 'Authorization': `Key ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ txid })
+    });
+    const data = await response.json();
+    if (!response.ok) return res.status(response.status).json({ error: 'Pi API complete failed', pi_response: data });
+    res.json({ success: true, completed: true, username, txid, data });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+console.log('✅ Pi Payments FIX loaded');
+// ════════════════════════════════════════════
