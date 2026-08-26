@@ -165,6 +165,134 @@ app.post(['/complete-payment', '/api/payments/complete'], rateLimit(20, 60_000),
 console.log('✅ Pi Payments FIX loaded - /approve-payment, /complete-payment');
 
 // ════════════════════════════════════════════
+// ── TESTNET APP-TO-USER 5 TRANSACTIONS FIX ──
+// Paste this AFTER the previous Pi Payments fix
+// ════════════════════════════════════════════
+
+app.get('/api/testnet/a2u/status', async (req, res) => {
+  const hasTestnetKey = !!process.env.PI_API_KEY_TESTNET;
+  const hasSeed = !!process.env.APP_WALLET_SEED;
+  let count = 0;
+  let wallets = [];
+  if (redis) {
+    try {
+      const keys = await redis.keys('a2u:testnet:*');
+      count = keys.length;
+      const vals = await Promise.all(keys.map(k => redis.get(k)));
+      wallets = vals.filter(Boolean).map(v => {
+        try { return typeof v === 'string' ? JSON.parse(v) : v; } catch { return {raw: v}; }
+      });
+    } catch(e) { console.warn('Redis a2u fetch failed', e.message); }
+  }
+  res.json({
+    testnet_key_set: hasTestnetKey,
+    testnet_key_prefix: process.env.PI_API_KEY_TESTNET ? process.env.PI_API_KEY_TESTNET.slice(0,8)+'...' : 'NOT SET',
+    app_wallet_seed_set: hasSeed,
+    completed_a2u_count: count,
+    unique_wallets: wallets,
+    need: 5,
+    remaining: Math.max(0, 5 - count)
+  });
+});
+
+// Create App-to-User payment (Testnet) - sends Pi FROM app wallet TO user
+app.post('/api/testnet/a2u/create', rateLimit(10, 60_000), async (req, res) => {
+  const { uid, username, amount } = req.body;
+  const finalUid = uid || req.body.user_uid;
+  const finalUsername = (username || 'testuser').toString().slice(0,64);
+  const finalAmount = parseFloat(amount) || 1; // 1 Testnet Pi default
+  
+  if (!finalUid) return res.status(400).json({ error: 'uid required - Pi user UID (get from Pi.authenticate)' });
+  
+  const apiKey = process.env.PI_API_KEY_TESTNET || process.env.PI_API_KEY;
+  const seed = process.env.APP_WALLET_SEED;
+  
+  if (!apiKey) return res.status(500).json({ error: 'PI_API_KEY_TESTNET not set' });
+  if (!seed) return res.status(500).json({ error: 'APP_WALLET_SEED not set' });
+  
+  try {
+    console.log(`🔄 Creating A2U Testnet ${finalAmount}π to ${finalUsername} (${finalUid})`);
+    
+    // Step 1: Create A2U payment via Pi API
+    const createRes = await fetch('https://api.minepi.com/v2/payments', {
+      method: 'POST',
+      headers: { 
+        'Authorization': `Key ${apiKey}`, 
+        'Content-Type': 'application/json' 
+      },
+      body: JSON.stringify({
+        amount: finalAmount,
+        memo: `Chigalex1 Testnet A2U to ${finalUsername}`,
+        metadata: { type: 'testnet_a2u', to: finalUsername },
+        uid: finalUid
+      })
+    });
+    
+    const createData = await createRes.json();
+    console.log('Pi A2U create response:', createRes.status, JSON.stringify(createData).slice(0,1000));
+    
+    if (!createRes.ok) {
+      return res.status(createRes.status).json({ error: 'Pi API create A2U failed', pi_response: createData });
+    }
+    
+    const paymentId = createData.identifier || createData.id;
+    if (!paymentId) return res.status(500).json({ error: 'No paymentId returned', pi_response: createData });
+    
+    // Step 2: Try to submit blockchain transaction using pi-backend if available
+    let submitResult = null;
+    try {
+      if (typeof PiNetwork !== 'undefined' || pi) {
+        const PiBackend = require('pi-backend');
+        const piInstance = new PiBackend(apiKey, seed);
+        // pi-backend has submitPayment method for A2U
+        if (piInstance.submitPayment) {
+          submitResult = await piInstance.submitPayment(paymentId);
+          console.log('pi-backend submitPayment result:', JSON.stringify(submitResult).slice(0,500));
+        }
+      }
+    } catch (piErr) {
+      console.warn('pi-backend submit failed (may need manual completion):', piErr.message);
+    }
+    
+    // Step 3: Save to Redis
+    if (redis) {
+      try {
+        const record = {
+          paymentId,
+          uid: finalUid,
+          username: finalUsername,
+          amount: finalAmount,
+          created_at: new Date().toISOString(),
+          pi_response: createData,
+          submit_result: submitResult
+        };
+        await redis.set(`a2u:testnet:${finalUid}`, JSON.stringify(record));
+        await redis.sadd('a2u:testnet:uids', finalUid);
+      } catch (redisErr) {
+        console.warn('Redis save failed', redisErr.message);
+      }
+    }
+    
+    res.json({ 
+      success: true, 
+      paymentId, 
+      amount: finalAmount, 
+      to: finalUsername,
+      uid: finalUid,
+      pi_response: createData,
+      submit_result: submitResult,
+      note: submitResult ? 'A2U payment created and submitted!' : 'A2U payment created - may need to complete via Pi blockchain. Check develop.pi Testnet.'
+    });
+    
+  } catch (e) {
+    console.error('A2U create error:', e);
+    res.status(500).json({ error: e.message, stack: e.stack?.slice(0,500) });
+  }
+});
+
+console.log('✅ Testnet A2U routes loaded - /api/testnet/a2u/*');
+
+// ════════════════════════════════════════════
 // ── REST OF YOUR ORIGINAL SERVER.JS BELOW ──
 // (Keep everything else as it was - pricing, ambassador, etc)
 // For brevity, we include only essential health + catch-all
