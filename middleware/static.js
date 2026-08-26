@@ -1,0 +1,1 @@
+const path=require('path');const express=require('express');module.exports=(app)=>{app.use(express.static(path.join(__dirname,'..','public')));app.get(['/admin.html','/admin'],(req,res)=>{res.set({'Cache-Control':'no-store'});res.sendFile(path.join(__dirname,'..','public','admin.html'));});};
