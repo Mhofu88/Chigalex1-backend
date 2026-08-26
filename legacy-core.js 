@@ -1,0 +1,774 @@
+module.exports = function(app, ctx){
+  const { redis, requireRedis, trackEvent, sanitizeString, isValidUsername, isValidEmail, validateAdminKey, rateLimit, getFAQs, getQuestions } = ctx;
+  const path=require('path');
+  const ADMIN_ACCOUNTS=['chigalex1','vc_chigalex','admin'];
+  async function getAllAmbassadors(){
+    try{
+      const ids = await redis.zrange('ambassador:index',0,-1);
+      if(!ids.length) return [];
+      const pipe=redis.pipeline();
+      ids.forEach(id=>pipe.get(`ambassador:${id}`));
+      const res=await pipe.exec();
+      return res.map(r=>{try{return typeof r==='string'?JSON.parse(r):r}catch{return null}}).filter(Boolean);
+    }catch{return []}
+  }
+  function calculateTier(recruits){
+    if(recruits>=50) return {name:'diamond',reward:5};
+    if(recruits>=20) return {name:'gold',reward:2};
+    if(recruits>=10) return {name:'silver',reward:1};
+    if(recruits>=5) return {name:'bronze',reward:0.5};
+    if(recruits>=1) return {name:'starter',reward:0.1};
+    return {name:'none',reward:0};
+  }
+
+legacy-core.js - 69KB / 71343 chars
+module.exports = function(app, ctx){
+  const { redis, requireRedis, trackEvent, sanitizeString, isValidUsername, isValidEmail, validateAdminKey, rateLimit, getFAQs, getQuestions } = ctx;
+  const path=require('path');
+  const ADMIN_ACCOUNTS=['chigalex1','vc_chigalex','admin'];
+  async function getAllAmbassadors(){
+    try{
+      const ids = await redis.zrange('ambassador:index',0,-1);
+      if(!ids.length) return [];
+      const pipe=redis.pipeline();
+      ids.forEach(id=>pipe.get(`ambassador:${id}`));
+      const res=await pipe.exec();
+      return res.map(r=>{try{return typeof r==='string'?JSON.parse(r):r}catch{return null}}).filter(Boolean);
+    }catch{return []}
+  }
+  function calculateTier(recruits){
+    if(recruits>=50) return {name:'diamond',reward:5};
+    if(recruits>=20) return {name:'gold',reward:2};
+    if(recruits>=10) return {name:'silver',reward:1};
+    if(recruits>=5) return {name:'bronze',reward:0.5};
+    if(recruits>=1) return {name:'starter',reward:0.1};
+    return {name:'none',reward:0};
+  }
+  async function notifyAmbassador(username,message){
+    try{
+      const key=`notifications:${username}`;
+      const ex=await redis.get(key);
+      const list=ex?(typeof ex==='string'?JSON.parse(ex):ex):[];
+      list.unshift({message,date:new Date().toISOString(),read:false});
+      await redis.set(key,JSON.stringify(list.slice(0,50)));
+    }catch(e){}
+  }
+async function getFAQs(lang = null) {
+  const ids = await redis.zrange('faq:index', 0, -1);
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`faq:${id}`));
+  const results = await pipeline.exec();
+  const faqs = results.map(r => r).filter(Boolean);
+  return lang ? faqs.filter(f => !f.lang || f.lang === lang || f.lang === 'all') : faqs;
+}
+
+async function getQuestions(filter = 'all') {
+  const key = filter === 'answered' ? 'question:index:answered' : 'question:index:all';
+  const ids = await redis.zrange(key, 0, -1, { rev: true });
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`question:${id}`));
+  const results = await pipeline.exec();
+  return results.filter(Boolean);
+  }
+gacy-core.js - 69KB / 71343 chars
+module.exports = function(app, ctx){
+  const { redis, requireRedis, trackEvent, sanitizeString, isValidUsername, isValidEmail, validateAdminKey, rateLimit, getFAQs, getQuestions } = ctx;
+  const path=require('path');
+  const ADMIN_ACCOUNTS=['chigalex1','vc_chigalex','admin'];
+  async function getAllAmbassadors(){
+    try{
+      const ids = await redis.zrange('ambassador:index',0,-1);
+      if(!ids.length) return [];
+      const pipe=redis.pipeline();
+      ids.forEach(id=>pipe.get(`ambassador:${id}`));
+      const res=await pipe.exec();
+      return res.map(r=>{try{return typeof r==='string'?JSON.parse(r):r}catch{return null}}).filter(Boolean);
+    }catch{return []}
+  }
+  function calculateTier(recruits){
+    if(recruits>=50) return {name:'diamond',reward:5};
+    if(recruits>=20) return {name:'gold',reward:2};
+    if(recruits>=10) return {name:'silver',reward:1};
+    if(recruits>=5) return {name:'bronze',reward:0.5};
+    if(recruits>=1) return {name:'starter',reward:0.1};
+    return {name:'none',reward:0};
+  }
+  async function notifyAmbassador(username,message){
+    try{
+      const key=`notifications:${username}`;
+      const ex=await redis.get(key);
+      const list=ex?(typeof ex==='string'?JSON.parse(ex):ex):[];
+      list.unshift({message,date:new Date().toISOString(),read:false});
+      await redis.set(key,JSON.stringify(list.slice(0,50)));
+    }catch(e){}
+  }
+async function getFAQs(lang = null) {
+  const ids = await redis.zrange('faq:index', 0, -1);
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`faq:${id}`));
+  const results = await pipeline.exec();
+  const faqs = results.map(r => r).filter(Boolean);
+  return lang ? faqs.filter(f => !f.lang || f.lang === lang || f.lang === 'all') : faqs;
+}
+
+async function getQuestions(filter = 'all') {
+  const key = filter === 'answered' ? 'question:index:answered' : 'question:index:all';
+  const ids = await redis.zrange(key, 0, -1, { rev: true });
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`question:${id}`));
+  const results = await pipeline.exec();
+  return results.filter(Boolean);
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING CONFIG (DYNAMIC — Redis-backed) ──
+// Defaults below are used only if Redis has no value yet.
+// ════════════════════════════════════════════
+const DEFAULT_PRICING = {
+  membership: 0.1,
+  advert: 0.3,
+  merchant: 0.5,
+};
+
+async function getPricing() {
+  if (!redis) return DEFAULT_PRICING;
+  try {
+    const stored = await redis.get('config:pricing');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      return { ...DEFAULT_PRICING, ...parsed };
+    }
+    return DEFAULT_PRICING;
+  } catch (e) {
+    console.error('getPricing error:', e);
+    return DEFAULT_PRICING;
+  }
+}
+
+async function setPricing(type, value) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getPricing();
+  current[type] = value;
+  await redis.set('config:pricing', JSON.stringify(current));
+  return current;
+  }
+gacy-core.js - 69KB / 71343 chars
+module.exports = function(app, ctx){
+  const { redis, requireRedis, trackEvent, sanitizeString, isValidUsername, isValidEmail, validateAdminKey, rateLimit, getFAQs, getQuestions } = ctx;
+  const path=require('path');
+  const ADMIN_ACCOUNTS=['chigalex1','vc_chigalex','admin'];
+  async function getAllAmbassadors(){
+    try{
+      const ids = await redis.zrange('ambassador:index',0,-1);
+      if(!ids.length) return [];
+      const pipe=redis.pipeline();
+      ids.forEach(id=>pipe.get(`ambassador:${id}`));
+      const res=await pipe.exec();
+      return res.map(r=>{try{return typeof r==='string'?JSON.parse(r):r}catch{return null}}).filter(Boolean);
+    }catch{return []}
+  }
+  function calculateTier(recruits){
+    if(recruits>=50) return {name:'diamond',reward:5};
+    if(recruits>=20) return {name:'gold',reward:2};
+    if(recruits>=10) return {name:'silver',reward:1};
+    if(recruits>=5) return {name:'bronze',reward:0.5};
+    if(recruits>=1) return {name:'starter',reward:0.1};
+    return {name:'none',reward:0};
+  }
+  async function notifyAmbassador(username,message){
+    try{
+      const key=`notifications:${username}`;
+      const ex=await redis.get(key);
+      const list=ex?(typeof ex==='string'?JSON.parse(ex):ex):[];
+      list.unshift({message,date:new Date().toISOString(),read:false});
+      await redis.set(key,JSON.stringify(list.slice(0,50)));
+    }catch(e){}
+  }
+async function getFAQs(lang = null) {
+  const ids = await redis.zrange('faq:index', 0, -1);
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`faq:${id}`));
+  const results = await pipeline.exec();
+  const faqs = results.map(r => r).filter(Boolean);
+  return lang ? faqs.filter(f => !f.lang || f.lang === lang || f.lang === 'all') : faqs;
+}
+
+async function getQuestions(filter = 'all') {
+  const key = filter === 'answered' ? 'question:index:answered' : 'question:index:all';
+  const ids = await redis.zrange(key, 0, -1, { rev: true });
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`question:${id}`));
+  const results = await pipeline.exec();
+  return results.filter(Boolean);
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING CONFIG (DYNAMIC — Redis-backed) ──
+// Defaults below are used only if Redis has no value yet.
+// ════════════════════════════════════════════
+const DEFAULT_PRICING = {
+  membership: 0.1,
+  advert: 0.3,
+  merchant: 0.5,
+};
+
+async function getPricing() {
+  if (!redis) return DEFAULT_PRICING;
+  try {
+    const stored = await redis.get('config:pricing');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      return { ...DEFAULT_PRICING, ...parsed };
+    }
+    return DEFAULT_PRICING;
+  } catch (e) {
+    console.error('getPricing error:', e);
+    return DEFAULT_PRICING;
+  }
+}
+
+async function setPricing(type, value) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getPricing();
+  current[type] = value;
+  await redis.set('config:pricing', JSON.stringify(current));
+  return current;
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING ENDPOINTS ──
+// ════════════════════════════════════════════
+
+// PUBLIC — used by index.html loadPricing()
+app.get('/api/pricing', async (req, res) => {
+  try {
+    const p = await getPricing();
+    res.json({
+      membership: p.membership,
+      advert: p.advert,
+      merchant: p.merchant,
+      currency: 'π',
+      formatted: {
+        membership: `${p.membership}π`,
+        advert: `${p.advert}π`,
+        merchant: `${p.merchant}π`,
+      }
+    });
+  } catch (e) {
+    res.json({
+      membership: DEFAULT_PRICING.membership,
+      advert: DEFAULT_PRICING.advert,
+      merchant: DEFAULT_PRICING.merchant,
+      currency: 'π',
+    });
+  }
+});
+
+// ADMIN ONLY — used by admin.html pricing tab
+app.post('/admin/update-pricing', async (req, res) => {
+  const { admin_username, type, value } = req.body;
+
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  const validTypes = ['membership', 'advert', 'merchant'];
+  if (!validTypes.includes(type)) {
+    return res.status(400).json({ error: 'Invalid pricing type. Must be: membership, advert, or merchant' });
+  }
+
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue <= 0) {
+    return res.status(400).json({ error: 'Value must be a positive number' });
+  }
+
+  if (!requireRedis(res)) return;
+
+  try {
+    const updated = await setPricing(type, numValue);
+    res.json({
+      success: true,
+      message: `✅ ${type} price updated to ${numValue}π — live everywhere instantly!`,
+      pricing: updated,
+    });
+
+} catch (e) {
+    console.error('Update pricing error:', e);
+    res.status(500).json({ error: 'Failed to update pricing' });
+  }
+});
+gacy-core.js - 69KB / 71343 chars
+module.exports = function(app, ctx){
+  const { redis, requireRedis, trackEvent, sanitizeString, isValidUsername, isValidEmail, validateAdminKey, rateLimit, getFAQs, getQuestions } = ctx;
+  const path=require('path');
+  const ADMIN_ACCOUNTS=['chigalex1','vc_chigalex','admin'];
+  async function getAllAmbassadors(){
+    try{
+      const ids = await redis.zrange('ambassador:index',0,-1);
+      if(!ids.length) return [];
+      const pipe=redis.pipeline();
+      ids.forEach(id=>pipe.get(`ambassador:${id}`));
+      const res=await pipe.exec();
+      return res.map(r=>{try{return typeof r==='string'?JSON.parse(r):r}catch{return null}}).filter(Boolean);
+    }catch{return []}
+  }
+  function calculateTier(recruits){
+    if(recruits>=50) return {name:'diamond',reward:5};
+    if(recruits>=20) return {name:'gold',reward:2};
+    if(recruits>=10) return {name:'silver',reward:1};
+    if(recruits>=5) return {name:'bronze',reward:0.5};
+    if(recruits>=1) return {name:'starter',reward:0.1};
+    return {name:'none',reward:0};
+  }
+  async function notifyAmbassador(username,message){
+    try{
+      const key=`notifications:${username}`;
+      const ex=await redis.get(key);
+      const list=ex?(typeof ex==='string'?JSON.parse(ex):ex):[];
+      list.unshift({message,date:new Date().toISOString(),read:false});
+      await redis.set(key,JSON.stringify(list.slice(0,50)));
+    }catch(e){}
+  }
+async function getFAQs(lang = null) {
+  const ids = await redis.zrange('faq:index', 0, -1);
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`faq:${id}`));
+  const results = await pipeline.exec();
+  const faqs = results.map(r => r).filter(Boolean);
+  return lang ? faqs.filter(f => !f.lang || f.lang === lang || f.lang === 'all') : faqs;
+}
+
+async function getQuestions(filter = 'all') {
+  const key = filter === 'answered' ? 'question:index:answered' : 'question:index:all';
+  const ids = await redis.zrange(key, 0, -1, { rev: true });
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`question:${id}`));
+  const results = await pipeline.exec();
+  return results.filter(Boolean);
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING CONFIG (DYNAMIC — Redis-backed) ──
+// Defaults below are used only if Redis has no value yet.
+// ════════════════════════════════════════════
+const DEFAULT_PRICING = {
+  membership: 0.1,
+  advert: 0.3,
+  merchant: 0.5,
+};
+
+async function getPricing() {
+  if (!redis) return DEFAULT_PRICING;
+  try {
+    const stored = await redis.get('config:pricing');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      return { ...DEFAULT_PRICING, ...parsed };
+    }
+    return DEFAULT_PRICING;
+  } catch (e) {
+    console.error('getPricing error:', e);
+    return DEFAULT_PRICING;
+  }
+}
+
+async function setPricing(type, value) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getPricing();
+  current[type] = value;
+  await redis.set('config:pricing', JSON.stringify(current));
+  return current;
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING ENDPOINTS ──
+// ════════════════════════════════════════════
+
+// PUBLIC — used by index.html loadPricing()
+app.get('/api/pricing', async (req, res) => {
+  try {
+    const p = await getPricing();
+    res.json({
+      membership: p.membership,
+      advert: p.advert,
+      merchant: p.merchant,
+      currency: 'π',
+      formatted: {
+        membership: `${p.membership}π`,
+        advert: `${p.advert}π`,
+        merchant: `${p.merchant}π`,
+      }
+    });
+  } catch (e) {
+    res.json({
+      membership: DEFAULT_PRICING.membership,
+      advert: DEFAULT_PRICING.advert,
+      merchant: DEFAULT_PRICING.merchant,
+      currency: 'π',
+    });
+  }
+});
+
+// ADMIN ONLY — used by admin.html pricing tab
+app.post('/admin/update-pricing', async (req, res) => {
+  const { admin_username, type, value } = req.body;
+
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  const validTypes = ['membership', 'advert', 'merchant'];
+  if (!validTypes.includes(type)) {
+    return res.status(400).json({ error: 'Invalid pricing type. Must be: membership, advert, or merchant' });
+  }
+
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue <= 0) {
+    return res.status(400).json({ error: 'Value must be a positive number' });
+  }
+
+  if (!requireRedis(res)) return;
+
+  try {
+    const updated = await setPricing(type, numValue);
+    res.json({
+      success: true,
+      message: `✅ ${type} price updated to ${numValue}π — live everywhere instantly!`,
+      pricing: updated,
+    });
+
+} catch (e) {
+    console.error('Update pricing error:', e);
+    res.status(500).json({ error: 'Failed to update pricing' });
+  }
+});
+
+// TIER CONFIG — Redis-backed (same pattern as pricing)
+async function getTierConfig() {
+  if (!redis) return TIER_CONFIG;
+  try {
+    const stored = await redis.get('config:tiers');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      // Merge with defaults so any missing tiers still work
+      return { ...TIER_CONFIG, ...parsed };
+    }
+    return TIER_CONFIG;
+  } catch (e) {
+    return TIER_CONFIG;
+  }
+}
+
+async function setTierConfig(tierName, pi_per_recruit, bonus_on_entry) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getTierConfig();
+  if (!current[tierName]) throw new Error(`Unknown tier: ${tierName}`);
+  current[tierName] = {
+    ...current[tierName],
+    pi_per_recruit: parseFloat(pi_per_recruit),
+    bonus_on_entry: parseFloat(bonus_on_entry),
+  };
+  await redis.set('config:tiers', JSON.stringify(current));
+  return current;
+}
+
+app.post('/admin/update-tier', async (req, res) => {
+  const { admin_username, tier, pi_per_recruit, bonus_on_entry } = req.body;
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+  const validTiers = ['starter', 'bronze', 'silver', 'gold', 'diamond'];
+  if (!validTiers.includes(tier)) {
+    return res.status(400).json({ error: 'Invalid tier name' });
+  }
+  if (isNaN(parseFloat(pi_per_recruit)) || isNaN(parseFloat(bonus_on_entry))) {
+    return res.status(400).json({ error: 'pi_per_recruit and bonus_on_entry must be numbers' });
+  }
+  if (!requireRedis(res)) return;
+  try {
+    const updated = await setTierConfig(tier, pi_per_recruit, bonus_on_entry);
+    res.json({
+      success: true,
+      message: `✅ ${tier} tier updated — ${pi_per_recruit}π/recruit · ${bonus_on_entry}π entry bonus. Live immediately!`,
+      tiers: updated,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+gacy-core.js - 69KB / 71343 chars
+module.exports = function(app, ctx){
+  const { redis, requireRedis, trackEvent, sanitizeString, isValidUsername, isValidEmail, validateAdminKey, rateLimit, getFAQs, getQuestions } = ctx;
+  const path=require('path');
+  const ADMIN_ACCOUNTS=['chigalex1','vc_chigalex','admin'];
+  async function getAllAmbassadors(){
+    try{
+      const ids = await redis.zrange('ambassador:index',0,-1);
+      if(!ids.length) return [];
+      const pipe=redis.pipeline();
+      ids.forEach(id=>pipe.get(`ambassador:${id}`));
+      const res=await pipe.exec();
+      return res.map(r=>{try{return typeof r==='string'?JSON.parse(r):r}catch{return null}}).filter(Boolean);
+    }catch{return []}
+  }
+  function calculateTier(recruits){
+    if(recruits>=50) return {name:'diamond',reward:5};
+    if(recruits>=20) return {name:'gold',reward:2};
+    if(recruits>=10) return {name:'silver',reward:1};
+    if(recruits>=5) return {name:'bronze',reward:0.5};
+    if(recruits>=1) return {name:'starter',reward:0.1};
+    return {name:'none',reward:0};
+  }
+  async function notifyAmbassador(username,message){
+    try{
+      const key=`notifications:${username}`;
+      const ex=await redis.get(key);
+      const list=ex?(typeof ex==='string'?JSON.parse(ex):ex):[];
+      list.unshift({message,date:new Date().toISOString(),read:false});
+      await redis.set(key,JSON.stringify(list.slice(0,50)));
+    }catch(e){}
+  }
+async function getFAQs(lang = null) {
+  const ids = await redis.zrange('faq:index', 0, -1);
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`faq:${id}`));
+  const results = await pipeline.exec();
+  const faqs = results.map(r => r).filter(Boolean);
+  return lang ? faqs.filter(f => !f.lang || f.lang === lang || f.lang === 'all') : faqs;
+}
+
+async function getQuestions(filter = 'all') {
+  const key = filter === 'answered' ? 'question:index:answered' : 'question:index:all';
+  const ids = await redis.zrange(key, 0, -1, { rev: true });
+  if (!ids.length) return [];
+  const pipeline = redis.pipeline();
+  ids.forEach(id => pipeline.hgetall(`question:${id}`));
+  const results = await pipeline.exec();
+  return results.filter(Boolean);
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING CONFIG (DYNAMIC — Redis-backed) ──
+// Defaults below are used only if Redis has no value yet.
+// ════════════════════════════════════════════
+const DEFAULT_PRICING = {
+  membership: 0.1,
+  advert: 0.3,
+  merchant: 0.5,
+};
+
+async function getPricing() {
+  if (!redis) return DEFAULT_PRICING;
+  try {
+    const stored = await redis.get('config:pricing');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      return { ...DEFAULT_PRICING, ...parsed };
+    }
+    return DEFAULT_PRICING;
+  } catch (e) {
+    console.error('getPricing error:', e);
+    return DEFAULT_PRICING;
+  }
+}
+
+async function setPricing(type, value) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getPricing();
+  current[type] = value;
+  await redis.set('config:pricing', JSON.stringify(current));
+  return current;
+  }
+
+// ════════════════════════════════════════════
+// ── PRICING ENDPOINTS ──
+// ════════════════════════════════════════════
+
+// PUBLIC — used by index.html loadPricing()
+app.get('/api/pricing', async (req, res) => {
+  try {
+    const p = await getPricing();
+    res.json({
+      membership: p.membership,
+      advert: p.advert,
+      merchant: p.merchant,
+      currency: 'π',
+      formatted: {
+        membership: `${p.membership}π`,
+        advert: `${p.advert}π`,
+        merchant: `${p.merchant}π`,
+      }
+    });
+  } catch (e) {
+    res.json({
+      membership: DEFAULT_PRICING.membership,
+      advert: DEFAULT_PRICING.advert,
+      merchant: DEFAULT_PRICING.merchant,
+      currency: 'π',
+    });
+  }
+});
+
+// ADMIN ONLY — used by admin.html pricing tab
+app.post('/admin/update-pricing', async (req, res) => {
+  const { admin_username, type, value } = req.body;
+
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+
+  const validTypes = ['membership', 'advert', 'merchant'];
+  if (!validTypes.includes(type)) {
+    return res.status(400).json({ error: 'Invalid pricing type. Must be: membership, advert, or merchant' });
+  }
+
+  const numValue = parseFloat(value);
+  if (isNaN(numValue) || numValue <= 0) {
+    return res.status(400).json({ error: 'Value must be a positive number' });
+  }
+
+  if (!requireRedis(res)) return;
+
+  try {
+    const updated = await setPricing(type, numValue);
+    res.json({
+      success: true,
+      message: `✅ ${type} price updated to ${numValue}π — live everywhere instantly!`,
+      pricing: updated,
+    });
+
+} catch (e) {
+    console.error('Update pricing error:', e);
+    res.status(500).json({ error: 'Failed to update pricing' });
+  }
+});
+
+// TIER CONFIG — Redis-backed (same pattern as pricing)
+async function getTierConfig() {
+  if (!redis) return TIER_CONFIG;
+  try {
+    const stored = await redis.get('config:tiers');
+    if (stored) {
+      const parsed = typeof stored === 'string' ? JSON.parse(stored) : stored;
+      // Merge with defaults so any missing tiers still work
+      return { ...TIER_CONFIG, ...parsed };
+    }
+    return TIER_CONFIG;
+  } catch (e) {
+    return TIER_CONFIG;
+  }
+}
+
+async function setTierConfig(tierName, pi_per_recruit, bonus_on_entry) {
+  if (!redis) throw new Error('Redis not configured');
+  const current = await getTierConfig();
+  if (!current[tierName]) throw new Error(`Unknown tier: ${tierName}`);
+  current[tierName] = {
+    ...current[tierName],
+    pi_per_recruit: parseFloat(pi_per_recruit),
+    bonus_on_entry: parseFloat(bonus_on_entry),
+  };
+  await redis.set('config:tiers', JSON.stringify(current));
+  return current;
+}
+
+app.post('/admin/update-tier', async (req, res) => {
+  const { admin_username, tier, pi_per_recruit, bonus_on_entry } = req.body;
+  if (!ADMIN_ACCOUNTS.includes((admin_username || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+  const validTiers = ['starter', 'bronze', 'silver', 'gold', 'diamond'];
+  if (!validTiers.includes(tier)) {
+    return res.status(400).json({ error: 'Invalid tier name' });
+  }
+  if (isNaN(parseFloat(pi_per_recruit)) || isNaN(parseFloat(bonus_on_entry))) {
+    return res.status(400).json({ error: 'pi_per_recruit and bonus_on_entry must be numbers' });
+  }
+  if (!requireRedis(res)) return;
+  try {
+    const updated = await setTierConfig(tier, pi_per_recruit, bonus_on_entry);
+    res.json({
+      success: true,
+      message: `✅ ${tier} tier updated — ${pi_per_recruit}π/recruit · ${bonus_on_entry}π entry bonus. Live immediately!`,
+      tiers: updated,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Also update calculateTier() to use Redis config — add this helper:
+async function calculateTierAsync(recruits) {
+  const config = await getTierConfig();
+  const tiers = Object.values(config).sort((a, b) => b.min_recruits - a.min_recruits);
+  for (const tier of tiers) {
+    if (recruits >= tier.min_recruits) return tier;
+  }
+  return null;
+}
+// Note: Use calculateTierAsync() in record-recruit and dashboard routes
+// instead of the synchronous calculateTier() once this is deployed.
+
+
+// ════════════════════════════════════════════
+// ── AMBASSADOR / TIER CONFIG & HELPERS ──
+// ════════════════════════════════════════════
+const ADMIN_ACCOUNTS = ['chigalex1', 'admin2', 'dorisyin', 'chigodop'];
+
+const TIER_CONFIG = {
+  starter: {
+    name: 'Starter', emoji: '🌱',
+    min_recruits: 1, max_recruits: 4,
+    pi_per_recruit: 0.005, bonus_on_entry: 0.01,
+    color: '#00D4AA',
+  },
+  bronze: {
+    name: 'Bronze', emoji: '🥉',
+    min_recruits: 5, max_recruits: 9,
+    pi_per_recruit: 0.01, bonus_on_entry: 0.05,
+    color: '#CD7F32',
+  },
+  silver: {
+    name: 'Silver', emoji: '🥈',
+    min_recruits: 10, max_recruits: 19,
+    pi_per_recruit: 0.02, bonus_on_entry: 0.1,
+    color: '#C0C0C0',
+  },
+  gold: {
+    name: 'Gold', emoji: '🏅',
+    min_recruits: 20, max_recruits: 49,
+    pi_per_recruit: 0.05, bonus_on_entry: 0.25,
+    color: '#F5C518',
+  },
+  diamond: {
+    name: 'Diamond', emoji: '⭐',
+    min_recruits: 50, max_recruits: Infinity,
+    pi_per_recruit: 0.1, bonus_on_entry: 1.0,
+    color: '#9B59B6',
+  }
+};
+
+function getPeriodKey() {
+  const now = new Date();
+  const month = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  const week = `${now.getFullYear()}-W${String(Math.ceil(now.getDate()/7)).padStart(2,'0')}`;
+  return { month, week };
+}
+
+function calculateTier(recruits) {
+  if (recruits >= 50) return TIER_CONFIG.diamond;
+  if (recruits >= 20) return TIER_CONFIG.gold;
+  if (recruits >= 10) return TIER_CONFIG.silver;
+  if (recruits >= 5)  return TIER_CONFIG.bronze;
+  if (recruits >= 1)  return TIER_CONFIG.starter;
+  return null;
+}
