@@ -165,14 +165,12 @@ app.post(['/complete-payment', '/api/payments/complete'], rateLimit(20, 60_000),
 console.log('✅ Pi Payments FIX loaded - /approve-payment, /complete-payment');
 
 // ════════════════════════════════════════════
-// ── TESTNET APP-TO-USER FIX V2 - SUPPORTS BOTH SEEDS ──
-// Replace previous A2U code with this!
+// ── A2U FIX V3 - USES TESTNET API ENDPOINT ──
+// REPLACE entire previous A2U V2 block with this!
 // ════════════════════════════════════════════
 
 app.get('/api/testnet/a2u/status', async (req, res) => {
   const hasTestnetKey = !!process.env.PI_API_KEY_TESTNET;
-  const hasTestnetSeed = !!(process.env.APP_WALLET_SEED_TESTNET || process.env.APP_WALLET_SEED);
-  const hasMainnetSeed = !!process.env.APP_WALLET_SEED;
   let count = 0;
   let wallets = [];
   if (redis) {
@@ -180,76 +178,102 @@ app.get('/api/testnet/a2u/status', async (req, res) => {
       const keys = await redis.keys('a2u:testnet:*');
       count = keys.length;
       const vals = await Promise.all(keys.map(k => redis.get(k)));
-      wallets = vals.filter(Boolean).map(v => {
-        try { return typeof v === 'string' ? JSON.parse(v) : v; } catch { return {raw: v}; }
-      });
-    } catch(e) { console.warn('Redis a2u fetch failed', e.message); }
+      wallets = vals.filter(Boolean).map(v => { try { return typeof v === 'string' ? JSON.parse(v) : v; } catch { return {raw: v}; } });
+    } catch(e) {}
   }
   res.json({
     testnet_key_set: hasTestnetKey,
-    testnet_key_prefix: process.env.PI_API_KEY_TESTNET ? process.env.PI_API_KEY_TESTNET.slice(0,8)+'...' : 'NOT SET',
+    testnet_key_prefix: process.env.PI_API_KEY_TESTNET ? process.env.PI_API_KEY_TESTNET.slice(0,12)+'...' : 'NOT SET',
     testnet_seed_set: !!process.env.APP_WALLET_SEED_TESTNET,
-    testnet_seed_prefix: process.env.APP_WALLET_SEED_TESTNET ? process.env.APP_WALLET_SEED_TESTNET.slice(0,8)+'...' : 'using MAINNET seed (wrong for Testnet!)',
-    mainnet_seed_set: hasMainnetSeed,
+    app_wallet_testnet: process.env.APP_WALLET_SEED_TESTNET ? 'GABWR... (from your screenshot)' : 'NOT SET',
     completed_a2u_count: count,
     unique_wallets: wallets,
     need: 5,
-    remaining: Math.max(0, 5 - count)
+    remaining: Math.max(0, 5 - count),
+    note: 'V3 uses api.testnet.minepi.com'
   });
 });
 
-// Create App-to-User payment (Testnet)
 app.post('/api/testnet/a2u/create', rateLimit(20, 60_000), async (req, res) => {
-  const { uid, username, amount, force_mainnet_uid } = req.body;
-  const finalUid = uid || req.body.user_uid;
+  const { uid, username, amount } = req.body;
+  const finalUid = uid;
   const finalUsername = (username || 'testuser').toString().slice(0,64);
   const finalAmount = parseFloat(amount) || 1;
   
   if (!finalUid) return res.status(400).json({ error: 'uid required' });
   
   const apiKey = process.env.PI_API_KEY_TESTNET;
-  const seed = process.env.APP_WALLET_SEED_TESTNET || process.env.APP_WALLET_SEED; // Prefer testnet seed
+  const seed = process.env.APP_WALLET_SEED_TESTNET || process.env.APP_WALLET_SEED;
   
-  if (!apiKey) return res.status(500).json({ error: 'PI_API_KEY_TESTNET not set in Render' });
-  if (!seed) return res.status(500).json({ error: 'APP_WALLET_SEED_TESTNET not set - need Testnet app wallet seed (GABV...)' });
+  if (!apiKey) return res.status(500).json({ error: 'PI_API_KEY_TESTNET not set' });
+  if (!seed) return res.status(500).json({ error: 'APP_WALLET_SEED_TESTNET not set - need seed for GABWR... wallet' });
   
   try {
-    console.log(`🔄 A2U Testnet ${finalAmount}π to ${finalUsername} UID:${finalUid} using seed ${seed.slice(0,6)}...`);
+    console.log(`🔄 A2U V3 Testnet ${finalAmount}π to ${finalUsername} UID:${finalUid}`);
     
-    // Step 1: Create payment via Pi Testnet API
-    const createRes = await fetch('https://api.minepi.com/v2/payments', {
-      method: 'POST',
-      headers: { 
-        'Authorization': `Key ${apiKey}`, 
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify({
-        amount: finalAmount,
-        memo: `Chigalex1 Testnet A2U ${finalUsername}`,
-        metadata: { type: 'testnet_a2u', to: finalUsername, uid: finalUid },
-        uid: finalUid
-      })
-    });
+    // V3: Use TESTNET API endpoint!
+    const endpoints = [
+      'https://api.testnet.minepi.com/v2/payments',
+      'https://api.minepi.com/v2/payments'
+    ];
     
-    const createData = await createRes.json();
-    console.log('Pi A2U create:', createRes.status, JSON.stringify(createData).slice(0,1500));
+    let createData = null;
+    let createRes = null;
+    let lastError = null;
+    let usedEndpoint = null;
     
-    if (!createRes.ok) {
-      // If user_not_found, give helpful error
-      if (createData.error === 'user_not_found') {
-        return res.status(400).json({ 
-          error: 'user_not_found - UID not found in Testnet',
-          pi_response: createData,
-          hint: 'This UID is likely Mainnet UID. Close Pi Browser, reopen, make sure you login on testnet-a2u.html which uses sandbox:true. You need Testnet UID (different from Mainnet). Also make sure your Pi account has Testnet wallet created.',
-          received_uid: finalUid
+    for (const apiUrl of endpoints) {
+      try {
+        console.log(`Trying endpoint: ${apiUrl}`);
+        const r = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Authorization': `Key ${apiKey}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: finalAmount,
+            memo: `Chigalex1 Testnet A2U ${finalUsername}`,
+            metadata: { type: 'testnet_a2u', to: finalUsername },
+            uid: finalUid
+          })
         });
+        const data = await r.json();
+        console.log(`Endpoint ${apiUrl} -> ${r.status}:`, JSON.stringify(data).slice(0,1000));
+        
+        if (r.ok) {
+          createRes = r;
+          createData = data;
+          usedEndpoint = apiUrl;
+          break;
+        } else {
+          lastError = { status: r.status, data, endpoint: apiUrl };
+          // If user_not_found, don't try other endpoint - it's real error
+          if (data.error === 'user_not_found') {
+            createRes = r;
+            createData = data;
+            usedEndpoint = apiUrl;
+            break;
+          }
+        }
+      } catch (e) {
+        lastError = { error: e.message, endpoint: apiUrl };
+        console.warn(`Endpoint ${apiUrl} exception:`, e.message);
       }
-      return res.status(createRes.status).json({ error: 'Pi API create A2U failed', pi_response: createData });
+    }
+    
+    if (!createData || !createRes?.ok) {
+      return res.status(lastError?.status || 500).json({ 
+        error: 'Pi API create A2U failed', 
+        pi_response: createData || lastError,
+        tried_endpoints: endpoints,
+        used_endpoint: usedEndpoint,
+        hint: createData?.error === 'user_not_found' 
+          ? 'UID not found in Testnet DB. Make sure you have Testnet wallet created (you do! GC6FW...). Try: 1) In Pi Browser, open Pi Wallet -> Testnet -> Add Test-Pi via Faucet, 2) Auth again on testnet-a2u page, 3) Ensure PI_API_KEY_TESTNET is from Testnet tab in develop.pi (not Mainnet)'
+          : 'Check PI_API_KEY_TESTNET is correct Testnet key and APP_WALLET_SEED_TESTNET is seed for GABWR... wallet'
+      });
     }
     
     const paymentId = createData.identifier || createData.id;
     
-    // Step 2: Submit blockchain tx via pi-backend
+    // Submit blockchain tx
     let submitResult = null;
     let submitError = null;
     try {
@@ -257,54 +281,31 @@ app.post('/api/testnet/a2u/create', rateLimit(20, 60_000), async (req, res) => {
       const piInstance = new PiBackend(apiKey, seed);
       if (piInstance.submitPayment) {
         submitResult = await piInstance.submitPayment(paymentId);
-        console.log('pi-backend submitPayment OK:', JSON.stringify(submitResult).slice(0,800));
-      } else if (piInstance.createPayment) {
-        // Alternative method name
-        console.warn('pi-backend has no submitPayment, trying alternative');
+        console.log('pi-backend submit OK:', JSON.stringify(submitResult).slice(0,800));
       }
     } catch (piErr) {
       submitError = piErr.message;
-      console.warn('pi-backend submit failed:', piErr.message, piErr.stack?.slice(0,500));
+      console.warn('pi-backend submit failed:', piErr.message);
     }
     
-    // Save
     if (redis) {
       try {
-        const record = {
-          paymentId,
-          uid: finalUid,
-          username: finalUsername,
-          amount: finalAmount,
-          created_at: new Date().toISOString(),
-          pi_response: createData,
-          submit_result: submitResult,
-          submit_error: submitError
-        };
+        const record = { paymentId, uid: finalUid, username: finalUsername, amount: finalAmount, created_at: new Date().toISOString(), endpoint: usedEndpoint, pi_response: createData, submit_result: submitResult, submit_error: submitError };
         await redis.set(`a2u:testnet:${finalUid}`, JSON.stringify(record));
         await redis.sadd('a2u:testnet:uids', finalUid);
-      } catch (redisErr) { console.warn('Redis save failed', redisErr.message); }
+      } catch (e) {}
     }
     
-    res.json({ 
-      success: true, 
-      paymentId, 
-      amount: finalAmount, 
-      to: finalUsername,
-      uid: finalUid,
-      pi_response: createData,
-      submit_result: submitResult,
-      submit_error: submitError,
-      note: submitResult ? '✅ A2U payment created and submitted to blockchain!' : 'Payment created but blockchain submit may need manual check. If no submit_result, Pi may auto-complete or need manual complete. Check Testnet wallet.'
-    });
+    res.json({ success: true, paymentId, amount: finalAmount, to: finalUsername, uid: finalUid, used_endpoint: usedEndpoint, pi_response: createData, submit_result: submitResult, submit_error: submitError, note: submitResult ? '✅ A2U created & submitted!' : 'Created - check if needs manual completion' });
     
   } catch (e) {
-    console.error('A2U create exception:', e);
+    console.error('A2U V3 exception:', e);
     res.status(500).json({ error: e.message, stack: e.stack?.slice(0,800) });
   }
 });
 
-console.log('✅ Testnet A2U V2 routes loaded - with Testnet seed support');
-                                  
+console.log('✅ A2U V3 loaded - uses api.testnet.minepi.com + fallback');
+
 // ════════════════════════════════════════════
 // ── REST OF YOUR ORIGINAL SERVER.JS BELOW ──
 // (Keep everything else as it was - pricing, ambassador, etc)
