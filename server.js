@@ -164,178 +164,69 @@ app.post(['/complete-payment', '/api/payments/complete'], rateLimit(20, 60_000),
 
 console.log('✅ Pi Payments FIX loaded - /approve-payment, /complete-payment');
 
-// ════════════════════════════════════════════
-// ── A2U FIX V3 - USES TESTNET API ENDPOINT ──
-// REPLACE entire previous A2U V2 block with this!
-// ════════════════════════════════════════════
-
+// FIX V4.2 - ROBUST status + direct (no slice crashes)
 app.get('/api/testnet/a2u/status', async (req, res) => {
-  const hasTestnetKey = !!process.env.PI_API_KEY_TESTNET;
-  let count = 0;
-  let wallets = [];
-  if (redis) {
-    try {
-      const keys = await redis.keys('a2u:testnet:*');
-      count = keys.length;
-      const vals = await Promise.all(keys.map(k => redis.get(k)));
-      wallets = vals.filter(Boolean).map(v => { try { return typeof v === 'string' ? JSON.parse(v) : v; } catch { return {raw: v}; } });
-    } catch(e) {}
-  }
-  res.json({
-    testnet_key_set: hasTestnetKey,
-    testnet_key_prefix: process.env.PI_API_KEY_TESTNET ? process.env.PI_API_KEY_TESTNET.slice(0,12)+'...' : 'NOT SET',
-    testnet_seed_set: !!process.env.APP_WALLET_SEED_TESTNET,
-    app_wallet_testnet: process.env.APP_WALLET_SEED_TESTNET ? 'GABWR... (from your screenshot)' : 'NOT SET',
-    completed_a2u_count: count,
-    unique_wallets: wallets,
-    need: 5,
-    remaining: Math.max(0, 5 - count),
-    note: 'V3 uses api.testnet.minepi.com'
-  });
-});
-
-app.post('/api/testnet/a2u/create', rateLimit(20, 60_000), async (req, res) => {
-  const { uid, username, amount } = req.body;
-  const finalUid = uid;
-  const finalUsername = (username || 'testuser').toString().slice(0,64);
-  const finalAmount = parseFloat(amount) || 1;
-  
-  if (!finalUid) return res.status(400).json({ error: 'uid required' });
-  
-  const apiKey = process.env.PI_API_KEY_TESTNET;
-  const seed = process.env.APP_WALLET_SEED_TESTNET || process.env.APP_WALLET_SEED;
-  
-  if (!apiKey) return res.status(500).json({ error: 'PI_API_KEY_TESTNET not set' });
-  if (!seed) return res.status(500).json({ error: 'APP_WALLET_SEED_TESTNET not set - need seed for GABWR... wallet' });
-  
   try {
-    console.log(`🔄 A2U V3 Testnet ${finalAmount}π to ${finalUsername} UID:${finalUid}`);
-    
-    // V3: Use TESTNET API endpoint!
-    const endpoints = [
-      'https://api.testnet.minepi.com/v2/payments',
-      'https://api.minepi.com/v2/payments'
-    ];
-    
-    let createData = null;
-    let createRes = null;
-    let lastError = null;
-    let usedEndpoint = null;
-    
-    for (const apiUrl of endpoints) {
+    const hasTestnetKey = !!process.env.PI_API_KEY_TESTNET;
+    const hasTestnetSeed = !!process.env.APP_WALLET_SEED_TESTNET;
+    let count = 0;
+    let wallets = [];
+    let appWallet = 'NOT SET';
+    if (hasTestnetSeed) {
       try {
-        console.log(`Trying endpoint: ${apiUrl}`);
-        const r = await fetch(apiUrl, {
-          method: 'POST',
-          headers: { 'Authorization': `Key ${apiKey}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            amount: finalAmount,
-            memo: `Chigalex1 Testnet A2U ${finalUsername}`,
-            metadata: { type: 'testnet_a2u', to: finalUsername },
-            uid: finalUid
-          })
-        });
-        const data = await r.json();
-        console.log(`Endpoint ${apiUrl} -> ${r.status}:`, JSON.stringify(data).slice(0,1000));
-        
-        if (r.ok) {
-          createRes = r;
-          createData = data;
-          usedEndpoint = apiUrl;
-          break;
-        } else {
-          lastError = { status: r.status, data, endpoint: apiUrl };
-          // If user_not_found, don't try other endpoint - it's real error
-          if (data.error === 'user_not_found') {
-            createRes = r;
-            createData = data;
-            usedEndpoint = apiUrl;
-            break;
-          }
-        }
-      } catch (e) {
-        lastError = { error: e.message, endpoint: apiUrl };
-        console.warn(`Endpoint ${apiUrl} exception:`, e.message);
-      }
+        const StellarSdk = require('stellar-sdk');
+        const kp = StellarSdk.Keypair.fromSecret(process.env.APP_WALLET_SEED_TESTNET);
+        appWallet = kp.publicKey();
+      } catch(e){ appWallet = 'Error deriving: '+e.message; }
     }
-    
-    if (!createData || !createRes?.ok) {
-      return res.status(lastError?.status || 500).json({ 
-        error: 'Pi API create A2U failed', 
-        pi_response: createData || lastError,
-        tried_endpoints: endpoints,
-        used_endpoint: usedEndpoint,
-        hint: createData?.error === 'user_not_found' 
-          ? 'UID not found in Testnet DB. Make sure you have Testnet wallet created (you do! GC6FW...). Try: 1) In Pi Browser, open Pi Wallet -> Testnet -> Add Test-Pi via Faucet, 2) Auth again on testnet-a2u page, 3) Ensure PI_API_KEY_TESTNET is from Testnet tab in develop.pi (not Mainnet)'
-          : 'Check PI_API_KEY_TESTNET is correct Testnet key and APP_WALLET_SEED_TESTNET is seed for GABWR... wallet'
-      });
-    }
-    
-    const paymentId = createData.identifier || createData.id;
-    
-    // Submit blockchain tx
-    let submitResult = null;
-    let submitError = null;
-    try {
-      const PiBackend = require('pi-backend');
-      const piInstance = new PiBackend(apiKey, seed);
-      if (piInstance.submitPayment) {
-        submitResult = await piInstance.submitPayment(paymentId);
-        console.log('pi-backend submit OK:', JSON.stringify(submitResult).slice(0,800));
-      }
-    } catch (piErr) {
-      submitError = piErr.message;
-      console.warn('pi-backend submit failed:', piErr.message);
-    }
-    
     if (redis) {
       try {
-        const record = { paymentId, uid: finalUid, username: finalUsername, amount: finalAmount, created_at: new Date().toISOString(), endpoint: usedEndpoint, pi_response: createData, submit_result: submitResult, submit_error: submitError };
-        await redis.set(`a2u:testnet:${finalUid}`, JSON.stringify(record));
-        await redis.sadd('a2u:testnet:uids', finalUid);
-      } catch (e) {}
+        const keys = await redis.keys('a2u:testnet:*');
+        const addrKeys = keys.filter(k => k.includes(':addr:'));
+        const uidKeys = keys.filter(k => !k.includes(':addr:'));
+        count = new Set([...addrKeys.map(k => k.split(':').pop()), ...uidKeys.map(k => k.split(':').pop())]).size;
+        // Get wallets
+        const vals = await Promise.all(uidKeys.slice(0,20).map(k => redis.get(k)));
+        wallets = vals.filter(Boolean).map(v => { try { return typeof v === 'string' ? JSON.parse(v) : v; } catch { return {}; } }).slice(0,10);
+      } catch(e){ console.warn('Redis count error', e.message); }
     }
-    
-    res.json({ success: true, paymentId, amount: finalAmount, to: finalUsername, uid: finalUid, used_endpoint: usedEndpoint, pi_response: createData, submit_result: submitResult, submit_error: submitError, note: submitResult ? '✅ A2U created & submitted!' : 'Created - check if needs manual completion' });
-    
-  } catch (e) {
-    console.error('A2U V3 exception:', e);
-    res.status(500).json({ error: e.message, stack: e.stack?.slice(0,800) });
+    res.json({
+      testnet_key_set: hasTestnetKey,
+      testnet_key_prefix: hasTestnetKey ? (process.env.PI_API_KEY_TESTNET||'').substring(0,12)+'...' : 'NOT SET',
+      testnet_seed_set: hasTestnetSeed,
+      app_wallet_testnet: appWallet,
+      completed_a2u_count: count,
+      unique_wallets: wallets,
+      need: 5,
+      remaining: Math.max(0, 5 - count),
+      version: 'V4.2 robust'
+    });
+  } catch(e){
+    res.status(500).json({ error: e.message, stack: e.stack?.slice(0,500) });
   }
 });
 
-console.log('✅ A2U V3 loaded - uses api.testnet.minepi.com + fallback');
-
-// FIX V4.1 - Stellar SDK constructor
 app.post('/api/testnet/a2u/direct', rateLimit(20, 60_000), async (req, res) => {
   const { uid, username, walletAddress, amount } = req.body;
   const finalUsername = (username || 'testuser').toString().slice(0,64);
   const finalAmount = (parseFloat(amount) || 1).toString();
-  const destAddress = walletAddress || req.body.address;
-  const finalUid = uid || 'direct-'+Date.now();
+  const destAddress = (walletAddress || req.body.address || '').trim();
+  const finalUid = (uid || 'direct-'+Date.now()).toString();
   
-  if (!destAddress || !destAddress.startsWith('G')) {
-    return res.status(400).json({ error: 'walletAddress required (G...)' });
+  if (!destAddress || destAddress.length < 20 || !destAddress.startsWith('G')) {
+    return res.status(400).json({ error: 'walletAddress required - must start with G', received: destAddress?.slice(0,20) });
   }
   
   const seed = process.env.APP_WALLET_SEED_TESTNET;
-  if (!seed) return res.status(500).json({ error: 'APP_WALLET_SEED_TESTNET not set' });
+  if (!seed) return res.status(500).json({ error: 'APP_WALLET_SEED_TESTNET not set in Render' });
   
   try {
-    console.log(`🔄 DIRECT V4.1: ${finalAmount} from GABWR... to ${destAddress}`);
+    console.log(`🔄 DIRECT V4.2: ${finalAmount} from AppWallet to ${destAddress.slice(0,12)}...`);
     
     const StellarSdk = require('stellar-sdk');
-    // Try both Server constructors (old vs new SDK)
-    let server;
-    try {
-      server = new StellarSdk.Server('https://api.testnet.minepi.com');
-    } catch(e) {
-      server = new StellarSdk.Horizon.Server('https://api.testnet.minepi.com');
-    }
-    
+    const server = new StellarSdk.Server('https://api.testnet.minepi.com');
     const sourceKeys = StellarSdk.Keypair.fromSecret(seed);
     const sourcePublicKey = sourceKeys.publicKey();
-    console.log(`Source: ${sourcePublicKey}`);
     
     const sourceAccount = await server.loadAccount(sourcePublicKey);
     const fee = await server.fetchBaseFee();
@@ -354,11 +245,11 @@ app.post('/api/testnet/a2u/direct', rateLimit(20, 60_000), async (req, res) => {
     
     tx.sign(sourceKeys);
     const result = await server.submitTransaction(tx);
-    console.log('Direct success:', result.hash);
+    console.log('Direct V4.2 success hash:', result.hash);
     
     if (redis) {
       try {
-        const record = { type: 'direct_blockchain', txHash: result.hash, from: sourcePublicKey, to: destAddress, uid: finalUid, username: finalUsername, amount: finalAmount, created_at: new Date().toISOString() };
+        const record = { type: 'direct', txHash: result.hash, from: sourcePublicKey, to: destAddress, uid: finalUid, username: finalUsername, amount: finalAmount, created_at: new Date().toISOString() };
         await redis.set(`a2u:testnet:${finalUid}`, JSON.stringify(record));
         await redis.set(`a2u:testnet:addr:${destAddress}`, JSON.stringify(record));
       } catch(e){}
@@ -367,55 +258,57 @@ app.post('/api/testnet/a2u/direct', rateLimit(20, 60_000), async (req, res) => {
     res.json({ success: true, txHash: result.hash, from: sourcePublicKey, to: destAddress, amount: finalAmount, ledger: result.ledger });
     
   } catch (e) {
-    console.error('Direct V4.1 error:', e);
-    // Try Pi Network passphrase as fallback
-    try {
-      console.log('Retrying with Pi Testnet passphrase...');
-      const StellarSdk = require('stellar-sdk');
-      const server = new StellarSdk.Server('https://api.testnet.minepi.com');
-      const sourceKeys = StellarSdk.Keypair.fromSecret(seed);
-      const sourceAccount = await server.loadAccount(sourceKeys.publicKey());
-      const fee = await server.fetchBaseFee();
-      const tx = new StellarSdk.TransactionBuilder(sourceAccount, {
-        fee: fee.toString(),
-        networkPassphrase: 'Pi Testnet' // Pi's custom passphrase
-      })
-      .addOperation(StellarSdk.Operation.payment({
-        destination: destAddress,
-        asset: StellarSdk.Asset.native(),
-        amount: finalAmount
-      }))
-      .setTimeout(30)
-      .build();
-      tx.sign(sourceKeys);
-      const result = await server.submitTransaction(tx);
-      return res.json({ success: true, txHash: result.hash, from: sourceKeys.publicKey(), to: destAddress, amount: finalAmount, note: 'Used Pi Testnet passphrase' });
-    } catch (e2) {
-      res.status(500).json({ error: e2.message || e.message, first_error: e.message, details: e.response?.data || e.message });
+    console.error('Direct V4.2 error:', e);
+    const errData = e.response?.data || {};
+    // Try Pi passphrase fallback
+    if ((e.message||'').includes('network') || errData?.extras?.result_codes) {
+      try {
+        const StellarSdk = require('stellar-sdk');
+        const server = new StellarSdk.Server('https://api.testnet.minepi.com');
+        const sourceKeys = StellarSdk.Keypair.fromSecret(seed);
+        const sourceAccount = await server.loadAccount(sourceKeys.publicKey());
+        const fee = await server.fetchBaseFee();
+        const tx = new StellarSdk.TransactionBuilder(sourceAccount, {
+          fee: fee.toString(),
+          networkPassphrase: 'Pi Testnet'
+        })
+        .addOperation(StellarSdk.Operation.payment({
+          destination: destAddress,
+          asset: StellarSdk.Asset.native(),
+          amount: finalAmount
+        }))
+        .setTimeout(30)
+        .build();
+        tx.sign(sourceKeys);
+        const result = await server.submitTransaction(tx);
+        return res.json({ success: true, txHash: result.hash, from: sourceKeys.publicKey(), to: destAddress, amount: finalAmount, note: 'Pi Testnet passphrase used' });
+      } catch (e2) {
+        return res.status(500).json({ error: e2.message, first_error: e.message, details: errData, hint: 'Check app wallet has balance and dest wallet exists (faucet)' });
+      }
     }
+    res.status(500).json({ error: e.message, details: errData, hint: 'App wallet needs Test-Pi? Dest wallet must exist via faucet' });
   }
 });
 
 app.get('/api/testnet/a2u/transactions', async (req, res) => {
   try {
     const seed = process.env.APP_WALLET_SEED_TESTNET;
-    if (!seed) return res.status(500).json({ error: 'No testnet seed' });
+    if (!seed) return res.status(500).json({ error: 'No testnet seed', app_wallet: 'NOT SET' });
     const StellarSdk = require('stellar-sdk');
-    let server;
-    try { server = new StellarSdk.Server('https://api.testnet.minepi.com'); }
-    catch { server = new StellarSdk.Horizon.Server('https://api.testnet.minepi.com'); }
+    const server = new StellarSdk.Server('https://api.testnet.minepi.com');
     const sourceKeys = StellarSdk.Keypair.fromSecret(seed);
     const account = await server.loadAccount(sourceKeys.publicKey());
-    const payments = await server.payments().forAccount(sourceKeys.publicKey()).limit(10).order('desc').call();
+    let payments = { records: [] };
+    try { payments = await server.payments().forAccount(sourceKeys.publicKey()).limit(10).order('desc').call(); } catch(e){ console.warn('payments fetch fail', e.message); }
     res.json({
       app_wallet: sourceKeys.publicKey(),
       balances: account.balances,
-      recent: payments.records.map(p => ({ to: p.to, amount: p.amount, at: p.created_at }))
+      recent: (payments.records||[]).map(p => ({ to: p.to||p.account||'', amount: p.amount||'', at: p.created_at||'' }))
     });
-  } catch(e){ res.status(500).json({ error: e.message }); }
+  } catch(e){ res.status(500).json({ error: e.message, stack: e.stack?.slice(0,800) }); }
 });
 
-console.log('✅ A2U V4.1 DIRECT fixed - Server constructor');
+console.log('✅ V4.2 ROBUST loaded');
 
 // ════════════════════════════════════════════
 // ── REST OF YOUR ORIGINAL SERVER.JS BELOW ──
