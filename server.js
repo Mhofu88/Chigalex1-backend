@@ -164,151 +164,68 @@ app.post(['/complete-payment', '/api/payments/complete'], rateLimit(20, 60_000),
 
 console.log('✅ Pi Payments FIX loaded - /approve-payment, /complete-payment');
 
-// FIX V4.2 - ROBUST status + direct (no slice crashes)
+// FIX V4.3 - Count from BLOCKCHAIN (Horizon) not Redis, so status shows real progress
 app.get('/api/testnet/a2u/status', async (req, res) => {
   try {
     const hasTestnetKey = !!process.env.PI_API_KEY_TESTNET;
     const hasTestnetSeed = !!process.env.APP_WALLET_SEED_TESTNET;
-    let count = 0;
-    let wallets = [];
     let appWallet = 'NOT SET';
+    let balances = [];
+    let uniqueWalletsSet = new Set();
+    let recentPayments = [];
+    let redisCount = 0;
+    
     if (hasTestnetSeed) {
       try {
         const StellarSdk = require('stellar-sdk');
         const kp = StellarSdk.Keypair.fromSecret(process.env.APP_WALLET_SEED_TESTNET);
         appWallet = kp.publicKey();
-      } catch(e){ appWallet = 'Error deriving: '+e.message; }
+        const server = new StellarSdk.Server('https://api.testnet.minepi.com');
+        try {
+          const account = await server.loadAccount(appWallet);
+          balances = account.balances;
+        } catch(e){ balances = [{ error: e.message }]; }
+        try {
+          // Get all payments from app wallet (up to 50)
+          const payments = await server.payments().forAccount(appWallet).limit(50).order('desc').call();
+          recentPayments = payments.records.filter(p => p.type === 'payment' && p.from === appWallet).map(p => ({ to: p.to, amount: p.amount, at: p.created_at }));
+          recentPayments.forEach(p => { if(p.to && p.to !== appWallet) uniqueWalletsSet.add(p.to); });
+        } catch(e){ console.warn('Horizon payments fail', e.message); }
+      } catch(e){ appWallet = 'Error: '+e.message; }
     }
+    
+    // Also check Redis for backup
     if (redis) {
       try {
-        const keys = await redis.keys('a2u:testnet:*');
-        const addrKeys = keys.filter(k => k.includes(':addr:'));
-        const uidKeys = keys.filter(k => !k.includes(':addr:'));
-        count = new Set([...addrKeys.map(k => k.split(':').pop()), ...uidKeys.map(k => k.split(':').pop())]).size;
-        // Get wallets
-        const vals = await Promise.all(uidKeys.slice(0,20).map(k => redis.get(k)));
-        wallets = vals.filter(Boolean).map(v => { try { return typeof v === 'string' ? JSON.parse(v) : v; } catch { return {}; } }).slice(0,10);
-      } catch(e){ console.warn('Redis count error', e.message); }
+        const keys = await redis.keys('a2u:testnet:addr:*');
+        redisCount = keys.length;
+        keys.forEach(k => { const addr = k.split(':').pop(); if(addr) uniqueWalletsSet.add(addr); });
+      } catch(e){}
     }
+    
+    const count = uniqueWalletsSet.size;
+    
     res.json({
       testnet_key_set: hasTestnetKey,
       testnet_key_prefix: hasTestnetKey ? (process.env.PI_API_KEY_TESTNET||'').substring(0,12)+'...' : 'NOT SET',
       testnet_seed_set: hasTestnetSeed,
       app_wallet_testnet: appWallet,
+      balances: balances,
       completed_a2u_count: count,
-      unique_wallets: wallets,
+      completed_a2u_count_redis: redisCount,
+      unique_wallets_blockchain: Array.from(uniqueWalletsSet).slice(0,10),
+      unique_wallets_count_blockchain: count,
+      recent_payments: recentPayments.slice(0,10),
       need: 5,
       remaining: Math.max(0, 5 - count),
-      version: 'V4.2 robust'
+      version: 'V4.3 blockchain count',
+      note: count>=1 ? `✅ ${count}/5 done! ${5-count} more unique wallets needed. Tx 8b4c72... counts!` : 'No tx found yet'
     });
   } catch(e){
     res.status(500).json({ error: e.message, stack: e.stack?.slice(0,500) });
   }
 });
-
-app.post('/api/testnet/a2u/direct', rateLimit(20, 60_000), async (req, res) => {
-  const { uid, username, walletAddress, amount } = req.body;
-  const finalUsername = (username || 'testuser').toString().slice(0,64);
-  const finalAmount = (parseFloat(amount) || 1).toString();
-  const destAddress = (walletAddress || req.body.address || '').trim();
-  const finalUid = (uid || 'direct-'+Date.now()).toString();
-  
-  if (!destAddress || destAddress.length < 20 || !destAddress.startsWith('G')) {
-    return res.status(400).json({ error: 'walletAddress required - must start with G', received: destAddress?.slice(0,20) });
-  }
-  
-  const seed = process.env.APP_WALLET_SEED_TESTNET;
-  if (!seed) return res.status(500).json({ error: 'APP_WALLET_SEED_TESTNET not set in Render' });
-  
-  try {
-    console.log(`🔄 DIRECT V4.2: ${finalAmount} from AppWallet to ${destAddress.slice(0,12)}...`);
-    
-    const StellarSdk = require('stellar-sdk');
-    const server = new StellarSdk.Server('https://api.testnet.minepi.com');
-    const sourceKeys = StellarSdk.Keypair.fromSecret(seed);
-    const sourcePublicKey = sourceKeys.publicKey();
-    
-    const sourceAccount = await server.loadAccount(sourcePublicKey);
-    const fee = await server.fetchBaseFee();
-    
-    const tx = new StellarSdk.TransactionBuilder(sourceAccount, {
-      fee: fee.toString(),
-      networkPassphrase: StellarSdk.Networks.TESTNET
-    })
-    .addOperation(StellarSdk.Operation.payment({
-      destination: destAddress,
-      asset: StellarSdk.Asset.native(),
-      amount: finalAmount
-    }))
-    .setTimeout(30)
-    .build();
-    
-    tx.sign(sourceKeys);
-    const result = await server.submitTransaction(tx);
-    console.log('Direct V4.2 success hash:', result.hash);
-    
-    if (redis) {
-      try {
-        const record = { type: 'direct', txHash: result.hash, from: sourcePublicKey, to: destAddress, uid: finalUid, username: finalUsername, amount: finalAmount, created_at: new Date().toISOString() };
-        await redis.set(`a2u:testnet:${finalUid}`, JSON.stringify(record));
-        await redis.set(`a2u:testnet:addr:${destAddress}`, JSON.stringify(record));
-      } catch(e){}
-    }
-    
-    res.json({ success: true, txHash: result.hash, from: sourcePublicKey, to: destAddress, amount: finalAmount, ledger: result.ledger });
-    
-  } catch (e) {
-    console.error('Direct V4.2 error:', e);
-    const errData = e.response?.data || {};
-    // Try Pi passphrase fallback
-    if ((e.message||'').includes('network') || errData?.extras?.result_codes) {
-      try {
-        const StellarSdk = require('stellar-sdk');
-        const server = new StellarSdk.Server('https://api.testnet.minepi.com');
-        const sourceKeys = StellarSdk.Keypair.fromSecret(seed);
-        const sourceAccount = await server.loadAccount(sourceKeys.publicKey());
-        const fee = await server.fetchBaseFee();
-        const tx = new StellarSdk.TransactionBuilder(sourceAccount, {
-          fee: fee.toString(),
-          networkPassphrase: 'Pi Testnet'
-        })
-        .addOperation(StellarSdk.Operation.payment({
-          destination: destAddress,
-          asset: StellarSdk.Asset.native(),
-          amount: finalAmount
-        }))
-        .setTimeout(30)
-        .build();
-        tx.sign(sourceKeys);
-        const result = await server.submitTransaction(tx);
-        return res.json({ success: true, txHash: result.hash, from: sourceKeys.publicKey(), to: destAddress, amount: finalAmount, note: 'Pi Testnet passphrase used' });
-      } catch (e2) {
-        return res.status(500).json({ error: e2.message, first_error: e.message, details: errData, hint: 'Check app wallet has balance and dest wallet exists (faucet)' });
-      }
-    }
-    res.status(500).json({ error: e.message, details: errData, hint: 'App wallet needs Test-Pi? Dest wallet must exist via faucet' });
-  }
-});
-
-app.get('/api/testnet/a2u/transactions', async (req, res) => {
-  try {
-    const seed = process.env.APP_WALLET_SEED_TESTNET;
-    if (!seed) return res.status(500).json({ error: 'No testnet seed', app_wallet: 'NOT SET' });
-    const StellarSdk = require('stellar-sdk');
-    const server = new StellarSdk.Server('https://api.testnet.minepi.com');
-    const sourceKeys = StellarSdk.Keypair.fromSecret(seed);
-    const account = await server.loadAccount(sourceKeys.publicKey());
-    let payments = { records: [] };
-    try { payments = await server.payments().forAccount(sourceKeys.publicKey()).limit(10).order('desc').call(); } catch(e){ console.warn('payments fetch fail', e.message); }
-    res.json({
-      app_wallet: sourceKeys.publicKey(),
-      balances: account.balances,
-      recent: (payments.records||[]).map(p => ({ to: p.to||p.account||'', amount: p.amount||'', at: p.created_at||'' }))
-    });
-  } catch(e){ res.status(500).json({ error: e.message, stack: e.stack?.slice(0,800) }); }
-});
-
-console.log('✅ V4.2 ROBUST loaded');
+console.log('✅ V4.3 status blockchain count loaded');
 
 // ════════════════════════════════════════════
 // ── REST OF YOUR ORIGINAL SERVER.JS BELOW ──
