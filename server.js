@@ -164,68 +164,52 @@ app.post(['/complete-payment', '/api/payments/complete'], rateLimit(20, 60_000),
 
 console.log('✅ Pi Payments FIX loaded - /approve-payment, /complete-payment');
 
-// FIX V4.3 - Count from BLOCKCHAIN (Horizon) not Redis, so status shows real progress
+// V4.4 - FINAL STATUS - Blockchain count + no HTML crash
 app.get('/api/testnet/a2u/status', async (req, res) => {
+  res.setHeader('Content-Type','application/json');
   try {
-    const hasTestnetKey = !!process.env.PI_API_KEY_TESTNET;
-    const hasTestnetSeed = !!process.env.APP_WALLET_SEED_TESTNET;
+    const StellarSdk = require('stellar-sdk');
     let appWallet = 'NOT SET';
     let balances = [];
     let uniqueWalletsSet = new Set();
     let recentPayments = [];
-    let redisCount = 0;
     
-    if (hasTestnetSeed) {
+    if (process.env.APP_WALLET_SEED_TESTNET) {
       try {
-        const StellarSdk = require('stellar-sdk');
         const kp = StellarSdk.Keypair.fromSecret(process.env.APP_WALLET_SEED_TESTNET);
         appWallet = kp.publicKey();
         const server = new StellarSdk.Server('https://api.testnet.minepi.com');
         try {
           const account = await server.loadAccount(appWallet);
           balances = account.balances;
-        } catch(e){ balances = [{ error: e.message }]; }
+        } catch(e){ balances = [{ error: 'Load account: '+e.message }]; }
         try {
-          // Get all payments from app wallet (up to 50)
-          const payments = await server.payments().forAccount(appWallet).limit(50).order('desc').call();
+          const payments = await server.payments().forAccount(appWallet).limit(100).order('desc').call();
           recentPayments = payments.records.filter(p => p.type === 'payment' && p.from === appWallet).map(p => ({ to: p.to, amount: p.amount, at: p.created_at }));
           recentPayments.forEach(p => { if(p.to && p.to !== appWallet) uniqueWalletsSet.add(p.to); });
-        } catch(e){ console.warn('Horizon payments fail', e.message); }
-      } catch(e){ appWallet = 'Error: '+e.message; }
-    }
-    
-    // Also check Redis for backup
-    if (redis) {
-      try {
-        const keys = await redis.keys('a2u:testnet:addr:*');
-        redisCount = keys.length;
-        keys.forEach(k => { const addr = k.split(':').pop(); if(addr) uniqueWalletsSet.add(addr); });
-      } catch(e){}
+        } catch(e){}
+      } catch(e){ appWallet = 'Seed error: '+e.message; }
     }
     
     const count = uniqueWalletsSet.size;
-    
     res.json({
-      testnet_key_set: hasTestnetKey,
-      testnet_key_prefix: hasTestnetKey ? (process.env.PI_API_KEY_TESTNET||'').substring(0,12)+'...' : 'NOT SET',
-      testnet_seed_set: hasTestnetSeed,
+      testnet_key_set: !!process.env.PI_API_KEY_TESTNET,
+      testnet_seed_set: !!process.env.APP_WALLET_SEED_TESTNET,
       app_wallet_testnet: appWallet,
       balances: balances,
       completed_a2u_count: count,
-      completed_a2u_count_redis: redisCount,
-      unique_wallets_blockchain: Array.from(uniqueWalletsSet).slice(0,10),
-      unique_wallets_count_blockchain: count,
-      recent_payments: recentPayments.slice(0,10),
+      unique_wallets_blockchain: Array.from(uniqueWalletsSet),
+      recent_payments: recentPayments.slice(0,15),
       need: 5,
       remaining: Math.max(0, 5 - count),
-      version: 'V4.3 blockchain count',
-      note: count>=1 ? `✅ ${count}/5 done! ${5-count} more unique wallets needed. Tx 8b4c72... counts!` : 'No tx found yet'
+      version: 'V4.4 final',
+      note: count >=5 ? '🎉 5/5 COMPLETE! Go to develop.pi!' : `✅ ${count}/5 done! ${5-count} more needed`
     });
   } catch(e){
-    res.status(500).json({ error: e.message, stack: e.stack?.slice(0,500) });
+    res.status(200).json({ error: 'Status error: '+e.message, completed_a2u_count: 0, version: 'V4.4 error' });
   }
 });
-console.log('✅ V4.3 status blockchain count loaded');
+console.log('✅ V4.4 status loaded');
 
 // ════════════════════════════════════════════
 // ── REST OF YOUR ORIGINAL SERVER.JS BELOW ──
