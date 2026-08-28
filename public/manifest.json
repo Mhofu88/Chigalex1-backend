@@ -1,0 +1,22 @@
+{
+  "name": "Chigalex1 Backend - API & Admin Dashboard",
+  "short_name": "C1 Backend",
+  "description": "Chigalex1 Backend API for BizAppZW & Pi University - Listings, Auth, Pi Payments, GCV $314,159",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a12",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://chigalex1-backend.onrender.com/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://chigalex1-backend.onrender.com/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
