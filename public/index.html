@@ -54,16 +54,21 @@
   const langs={en:"🇬🇧 EN English",af:"🇿🇦 AF Afrikaans",zu:"🇿🇦 ZU Zulu",xh:"🇿🇦 XH Xhosa",st:"🇿🇦 ST Sotho",fr:"🇫🇷 FR French",pt:"🇵🇹 PT Portuguese",sw:"🇹🇿 SW Swahili"};
   function applyLang(l){localStorage.setItem('chigalex_lang',l);localStorage.setItem('selectedLanguage',l);const u=new URL(location.href);u.searchParams.set('lang',l);location.href=u.toString();}
   setTimeout(()=>{
-    // 1. Restore Africa logo next to C
-       const cLogo=document.querySelector('img[alt="Chigalex1"], header img, nav img');
-    if(cLogo){
-      cLogo.src='/logo.png?v=7';
+      // 1. KILL orange C DIV and replace with sea-water logo
+    document.querySelectorAll('div').forEach(d=>{
+      if(d.innerText.trim()==='C' && d.children.length===0 && d.offsetWidth<70){
+        d.outerHTML=`<img id="africalogo" src="/logo.png?v=8" alt="Africa" style="width:44px;height:44px;border-radius:50%;border:2px solid #f5c518;object-fit:cover;margin-right:8px;display:block;">`;
+      }
+    });
+    const cLogo=document.querySelector('img[alt="Chigalex1"], header img, nav img');
+    if(cLogo && !cLogo.src.includes('logo.png')){
+      cLogo.src='/logo.png?v=8';
       cLogo.id='africalogo';
       cLogo.alt='Africa';
       cLogo.style='width:44px;height:44px;border-radius:50%;border:2px solid #f5c518;object-fit:cover;margin-right:8px;display:block!important;';
       cLogo.onerror=null;
-    } 
-     // 2. Move language selector INTO header (right side, aligned)
+    }  
+    // 2. Move language selector INTO header (right side, aligned)
     const sel=document.getElementById('langFix')||document.createElement('select');
     sel.id='langFix';
     sel.innerHTML=''; Object.keys(langs).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=langs[k];sel.appendChild(o);});
