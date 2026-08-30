@@ -55,19 +55,15 @@
   function applyLang(l){localStorage.setItem('chigalex_lang',l);localStorage.setItem('selectedLanguage',l);const u=new URL(location.href);u.searchParams.set('lang',l);location.href=u.toString();}
   setTimeout(()=>{
     // 1. Restore Africa logo next to C
-    const cLogo=document.querySelector('img[alt="Chigalex1"], header img, nav img');
-    // Add Africa logo if logo.png exists, otherwise keep emoji
-    const headerTitle=document.querySelector('header div, nav div');
-    if(!document.getElementById('africaLogo')){
-      const img=document.createElement('img');
-      img.id='africaLogo'; img.src='/logo.png'; img.alt='Africa';
-      img.style='width:32px;height:32px;border-radius:50%;margin-right:8px;border:1px solid gold;object-fit:cover;';
-      img.onerror=function(){this.style.display='none'}; // hide if file missing
-      const titleRow=document.querySelector('div:has(> div)');
-      // Try to insert before C logo
-      if(cLogo && cLogo.parentElement){ cLogo.parentElement.insertBefore(img, cLogo); }
-    }
-    // 2. Move language selector INTO header (right side, aligned)
+       const cLogo=document.querySelector('img[alt="Chigalex1"], header img, nav img');
+    if(cLogo){
+      cLogo.src='/logo.png?v=7';
+      cLogo.id='africalogo';
+      cLogo.alt='Africa';
+      cLogo.style='width:44px;height:44px;border-radius:50%;border:2px solid #f5c518;object-fit:cover;margin-right:8px;display:block!important;';
+      cLogo.onerror=null;
+    } 
+     // 2. Move language selector INTO header (right side, aligned)
     const sel=document.getElementById('langFix')||document.createElement('select');
     sel.id='langFix';
     sel.innerHTML=''; Object.keys(langs).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=langs[k];sel.appendChild(o);});
