@@ -51,36 +51,34 @@
 <body>
 <script>
 (function(){
-  const langs={en:"🇬🇧 EN English",af:"🇿🇦 AF Afrikaans",zu:"🇿🇦 ZU Zulu",xh:"🇿🇦 XH Xhosa",st:"🇿🇦 ST Sotho",fr:"🇫🇷 FR French",pt:"🇵🇹 PT Portuguese",sw:"🇹🇿 SW Swahili"};
-  function applyLang(l){localStorage.setItem('chigalex_lang',l);localStorage.setItem('selectedLanguage',l);const u=new URL(location.href);u.searchParams.set('lang',l);location.href=u.toString();}
-  setTimeout(()=>{
-      // 1. KILL orange C DIV and replace with sea-water logo
-    document.querySelectorAll('div').forEach(d=>{
-      if(d.innerText.trim()==='C' && d.children.length===0 && d.offsetWidth<70){
-        d.outerHTML=`<img id="africalogo" src="/logo.png?v=8" alt="Africa" style="width:44px;height:44px;border-radius:50%;border:2px solid #f5c518;object-fit:cover;margin-right:8px;display:block;">`;
-      }
-    });
-    const cLogo=document.querySelector('img[alt="Chigalex1"], header img, nav img');
-    if(cLogo && !cLogo.src.includes('logo.png')){
-      cLogo.src='/logo.png?v=8';
-      cLogo.id='africalogo';
-      cLogo.alt='Africa';
-      cLogo.style='width:44px;height:44px;border-radius:50%;border:2px solid #f5c518;object-fit:cover;margin-right:8px;display:block!important;';
-      cLogo.onerror=null;
-    }  
-    // 2. Move language selector INTO header (right side, aligned)
-    const sel=document.getElementById('langFix')||document.createElement('select');
-    sel.id='langFix';
-    sel.innerHTML=''; Object.keys(langs).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=langs[k];sel.appendChild(o);});
-    sel.value=localStorage.getItem('chigalex_lang')||'en';
-    sel.onchange=e=>applyLang(e.target.value);
-   sel.style='position:fixed;top:52px;left:50%;transform:translateX(-50%);width:92%;max-width:320px;background:#0f0f0f;color:#f5c518;border:1.5px solid #f5c518;border-radius:24px;padding:7px 14px;font-weight:bold;font-size:15px;z-index:1000;text-align:center;';
-   const headerEl=document.querySelector('header, nav');
-    if(headerEl){ headerEl.style.position='relative'; headerEl.appendChild(sel); }
-  },1200);
+ const langs={en:"🇬🇧 EN English",af:"🇿🇦 AF Afrikaans",zu:"🇿🇦 ZU Zulu",xh:"🇿🇦 XH Xhosa",st:"🇱🇸 ST Sotho",fr:"🇫🇷 FR French",sw:"🇹🇿 SW Swahili",pt:"🇲🇿 PT Portuguese",ar:"🇪🇬 AR Arabic",ha:"🇳🇬 HA Hausa",yo:"🇳🇬 YO Yoruba",ig:"🇳🇬 IG Igbo"};
+ function applyLang(l){localStorage.setItem('chigalex_lang',l);localStorage.setItem('selectedLanguage',l);location.reload();}
+ function killC(){
+   document.querySelectorAll('div').forEach(d=>{
+     if(d.innerText && d.innerText.trim()==='C' && d.innerText.length===1 && d.children.length===0){
+       d.outerHTML=`<img id="africalogo" src="/logo.png?v=9" alt="Africa" style="width:44px;height:44px;border-radius:50%;border:2px solid #f5c518;object-fit:cover;margin-right:8px;display:block;flex-shrink:0;">`;
+     }
+   });
+   document.querySelectorAll('header img, nav img, img[alt="Chigalex1"]').forEach(img=>{
+     if(img &&!img.src.includes('logo.png')){
+       img.src='/logo.png?v=9'; img.id='africalogo'; img.alt='Africa';
+       img.style='width:44px;height:44px;border-radius:50%;border:2px solid #f5c518;object-fit:cover;margin-right:8px;display:block!important;';
+       img.onerror=null;
+     }
+   });
+ }
+ setTimeout(killC,400);
+ setTimeout(killC,1200);
+ setInterval(killC,1000);
+ new MutationObserver(killC).observe(document.body,{childList:true,subtree:true});
+ const sel=document.getElementById('langFix')||document.createElement('select');
+ sel.id='langFix'; sel.innerHTML=''; Object.keys(langs).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=langs[k];sel.appendChild(o);});
+ sel.value=localStorage.getItem('chigalex_lang')||'en'; sel.onchange=e=>applyLang(e.target.value);
+ sel.style='position:fixed;top:54px;left:50%;transform:translateX(-50%);width:92%;max-width:360px;background:#0f0f0f;color:#fff;padding:10px;border-radius:12px;z-index:99999;border:1px solid #f5c518;font-weight:bold;';
+ const addSel=()=>{if(!document.getElementById('langFix'))document.body.appendChild(sel);};
+ setTimeout(addSel,600); setTimeout(addSel,2000);
 })();
-</script>
-  <div id="root"></div>
+</script>  <div id="root"></div>
   <div id="piAdsBox" style="background:#111;border:1px solid gold;border-radius:12px;padding:12px;margin:10px;text-align:center;">
 <div id="pi-ad-container" style="min-height:80px;background:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;">
 <button id="showAdBtn" style="background:gold;color:black;padding:10px 20px;border-radius:20px;font-weight:bold;">▶️ Show Pi Ad</button>
