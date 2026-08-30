@@ -50,10 +50,19 @@
 </head>
 <body>
 <style>
-header img, nav img, #africalogo { width:44px!important; height:44px!important; border-radius:50%!important; border:2px solid #f5c518!important; object-fit:cover!important; }
-img[alt="Chigalex1"] { content: url('/logo.png')!important; }
+header img, nav img, #africalogo {
+  width:44px!important;
+  height:44px!important;
+  border-radius:50%!important;
+  border:2px solid #f5c518!important;
+  object-fit:cover!important;
+  display:block!important;
+}
+img[alt="Chigalex1"] {
+  content: url('/logo.png')!important;
+}
 </style>
-<script> 
+  <script> 
 (function(){
   const langs={en:"🇬🇧 EN English",af:"🇿🇦 AF Afrikaans",zu:"🇿🇦 ZU Zulu",xh:"🇿🇦 XH Xhosa",st:"🇿🇦 ST Sotho",fr:"🇫🇷 FR French",pt:"🇵🇹 PT Portuguese",sw:"🇹🇿 SW Swahili"};
   function applyLang(l){localStorage.setItem('chigalex_lang',l);localStorage.setItem('selectedLanguage',l);const u=new URL(location.href);u.searchParams.set('lang',l);location.href=u.toString();}
