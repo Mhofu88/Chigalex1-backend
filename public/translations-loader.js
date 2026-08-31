@@ -2,7 +2,7 @@ const SUPPORTED_LANGS=["en","sn","nd","zu","xh","af","st","tn","ny","pt","sw","a
 let currentLang=localStorage.getItem('chigalex_lang')||'en';let translations={};
 async function loadLanguage(lang){
  if(!SUPPORTED_LANGS.includes(lang))lang='en';
- try{const res=await fetch(`/api/translations/${lang}`);translations=await res.json();currentLang=lang;localStorage.setItem('chigalex_lang',lang);applyTranslations();}
+ try{const res=await fetch(`https://chigalex1-backend.onrender.com/api/translations/${lang}`);   ;translations=await res.json();currentLang=lang;localStorage.setItem('chigalex_lang',lang);applyTranslations();}
  catch(e){if(lang!=='en')loadLanguage('en');}
 }
 function applyTranslations(){document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(translations[k])el.innerText=translations[k];});}
