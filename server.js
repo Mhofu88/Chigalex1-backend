@@ -306,14 +306,6 @@ app.get('/api/translations/list', async (req, res) => {
     languages: ["en","sn","nd","zu","xh","af","st","tn","pt","ny","sw","am","rw","lg","so","ha","yo","ig","tw","wo","fr","ar","ber","ln","kg"]
   });
 });
-
-// Catch-all - serve index.html for SPA
-app.get('*', (req, res) => {
-  const indexPath = path.join(__dirname, 'public', 'index.html');
-  res.sendFile(indexPath, (err) => {
-    if (err) res.status(404).send('Not found');
-  });
-});
 // Add translations API
 const fs = require('fs');
 app.get('/api/translations/:lang', (req, res) => {
@@ -325,6 +317,13 @@ app.get('/api/translations/:lang', (req, res) => {
   } catch(e){
     res.status(500).json({error: 'Not found'});
   }
+});
+// Catch-all - serve index.html for SPA
+app.get('*', (req, res) => {
+  const indexPath = path.join(__dirname, 'public', 'index.html');
+  res.sendFile(indexPath, (err) => {
+    if (err) res.status(404).send('Not found');
+  });
 });
 app.listen(PORT, () => {
   console.log(`🚀 Chigalex1 FIXED on port ${PORT}`);
