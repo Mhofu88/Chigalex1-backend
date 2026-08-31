@@ -314,18 +314,16 @@ app.get('*', (req, res) => {
     if (err) res.status(404).send('Not found');
   });
 });
+// Add translations API
 const fs = require('fs');
-const path = require('path');
-
 app.get('/api/translations/:lang', (req, res) => {
-  const lang = req.params.lang;
-  const file = path.join(__dirname, 'locales', `${lang}.json`);
+  const file = path.join(__dirname, 'locales', `${req.params.lang}.json`);
   const fallback = path.join(__dirname, 'locales', 'en.json');
   try {
     const target = fs.existsSync(file) ? file : fallback;
     res.json(JSON.parse(fs.readFileSync(target, 'utf8')));
-  } catch (e) {
-    res.status(500).json({error: 'Translation not found'});
+  } catch(e){
+    res.status(500).json({error: 'Not found'});
   }
 });
 app.listen(PORT, () => {
