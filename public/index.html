@@ -92,138 +92,6 @@
 </head>
 <body>
 
-<script id="V6-TRANSLATOR">
-// V6 - GUARANTEED TRANSLATION - FINAL
-console.log('🔥 V6 Translator Loading...');
-(function(){
-  const BACKEND = "https://chigalex1-backend.onrender.com";
-  const LANGS = {
-    en:"🇺🇸 EN English", sn:"🇿🇼 SN Shona", nd:"🇿🇼 ND Ndebele",
-    zu:"🇿🇦 ZU Zulu", xh:"🇿🇦 XH Xhosa", af:"🇿🇦 AF Afrikaans",
-    st:"🇱🇸 ST Sotho", tn:"🇧🇼 TN Tswana", ny:"🇲🇼 NY Chichewa",
-    pt:"🇲🇿 PT Portuguese", sw:"🇹🇿 SW Swahili", am:"🇪🇹 AM Amharic",
-    rw:"🇷🇼 RW Kinyarwanda", lg:"🇺🇬 LG Luganda", so:"🇸🇴 SO Somali",
-    ha:"🇳🇬 HA Hausa", yo:"🇳🇬 YO Yoruba", ig:"🇳🇬 IG Igbo",
-    tw:"🇬🇭 TW Twi", wo:"🇸🇳 WO Wolof", fr:"🇫🇷 FR French",
-    ar:"🇸🇦 AR Arabic", ber:"ⵜⵎⵣⵖ BER Berber", ln:"🇨🇩 LN Lingala", kg:"🇨🇩 KG Kongo"
-  };
-  
-  async function loadLangV6(lang){
-    if(!LANGS[lang]) lang='en';
-    console.log('🌍 Loading', lang);
-    try{
-      const res = await fetch(`${BACKEND}/api/translations/${lang}?_=${Date.now()}`);
-      if(!res.ok) throw new Error('HTTP '+res.status);
-      const data = await res.json();
-      console.log(`✅ ${lang} loaded:`, Object.keys(data).length, 'keys', data['hero-h1']);
-      window.ChigalexTranslations = {current:lang, data:data};
-      localStorage.setItem('chigalex_lang', lang);
-      localStorage.setItem('selectedLanguage', lang);
-      
-      // Apply now and repeatedly
-      const apply = () => {
-        let count=0;
-        // Find all H1
-        document.querySelectorAll('h1').forEach(h1=>{
-          if(h1.textContent.includes('Onboarding') && data['hero-h1']){
-            console.log('Translating H1:', h1.textContent, '->', data['hero-h1']);
-            h1.textContent = data['hero-h1'];
-            count++;
-          }
-        });
-        // Find hero P - long paragraph
-        document.querySelectorAll('p').forEach(p=>{
-          if(p.textContent.includes('Official training hub of Africa Pi') && data['hero-p']){
-            console.log('Translating P');
-            p.textContent = data['hero-p'];
-            count++;
-          }
-        });
-        // Banner
-        document.querySelectorAll('div,span').forEach(el=>{
-          if(el.childNodes.length!==1 || el.childNodes[0].nodeType!==3) return;
-          const t = el.textContent.trim();
-          if(t==='SPONSORED • PI POWERED • AFRICA GCV INDUSTRY ALLIANCE' && data['banner-title']){
-            el.textContent = data['banner-title']; count++;
-          }
-          if(t==='AFRICA PI NETWORK EDUCATION HUB' && data['hero-badge']){
-            el.textContent = data['hero-badge']; count++;
-          }
-          if(t==='50M+ Pioneers Worldwide' && data['pi-fact-pioneers']){
-            el.textContent = data['pi-fact-pioneers']; count++;
-          }
-          if(t==='54 African Nations' && data['pi-fact-nations']){
-            el.textContent = data['pi-fact-nations']; count++;
-          }
-        });
-        // Generic: if data key is English sentence (future proof)
-        document.querySelectorAll('*').forEach(el=>{
-          if(el.childNodes.length===1 && el.childNodes[0].nodeType===3){
-            const txt = el.textContent.trim();
-            if(data[txt]){ el.textContent = data[txt]; count++; }
-          }
-        });
-        console.log(`🔄 Applied ${count} translations for ${lang}`);
-        return count;
-      };
-      
-      apply();
-      setTimeout(apply, 500);
-      setTimeout(apply, 1500);
-      setTimeout(apply, 3000);
-      setTimeout(apply, 5000);
-      
-      // Keep watching
-      const obs = new MutationObserver(()=>apply());
-      obs.observe(document.body, {childList:true, subtree:true, characterData:true});
-      setTimeout(()=>obs.disconnect(), 10000);
-      
-      const sel=document.getElementById('langFix');
-      if(sel) sel.value=lang;
-      
-      // Show success banner
-      const banner = document.createElement('div');
-      banner.textContent = `✅ ${lang.toUpperCase()} Loaded: ${data['hero-h1']?.substring(0,50) || Object.keys(data).length+' keys'}`;
-      banner.style='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:green;color:white;padding:10px 20px;border-radius:20px;z-index:99999;font-weight:bold';
-      document.body.appendChild(banner);
-      setTimeout(()=>banner.remove(), 4000);
-      
-    }catch(e){
-      console.error('❌ Translation failed', e);
-      alert('Translation failed: '+e.message+' - Check backend CORS');
-    }
-  }
-
-  // Build selector
-  function initSel(){
-    let sel=document.getElementById('langFix');
-    if(!sel){
-      sel=document.createElement('select');
-      sel.id='langFix';
-      document.body.insertBefore(sel, document.body.firstChild);
-    }
-    sel.innerHTML='';
-    Object.keys(LANGS).forEach(k=>{
-      const o=document.createElement('option'); o.value=k; o.textContent=LANGS[k]; sel.appendChild(o);
-    });
-    sel.value=localStorage.getItem('chigalex_lang')||'en';
-    sel.style='position:fixed;top:54px;left:50%;transform:translateX(-50%);width:92%;max-width:360px;background:#0f0f0f;color:gold;border:1px solid gold;padding:10px;border-radius:12px;z-index:9999;font-weight:bold';
-    sel.onchange=e=>loadLangV6(e.target.value);
-    // Load initial
-    setTimeout(()=>loadLangV6(sel.value), 1000);
-  }
-
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded', initSel);
-  }else{
-    initSel();
-  }
-
-  window.setChigalexLang = loadLangV6;
-  window.loadLangV6 = loadLangV6;
-})();
-</script>
-
   <div id="root"></div>
   <div id="piAdsBox" style="background:#111;border:1px solid gold;border-radius:12px;padding:12px;margin:10px;text-align:center;">
 <div id="pi-ad-container" style="min-height:80px;background:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;">
@@ -258,139 +126,66 @@ Error generating stack: `+u.message+`
 <script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script>
 
 <script>
-// V5 FINAL - MAP ENGLISH TO ZULU KEYS
+
+
+
+
+
+
+
+
+
+
+
+
+<!--... rest of your page... -->
+
+<script id="V8-FULL-TRANSLATOR">
+console.log('V8 Full Translator - 495 keys');
 (function(){
-  const BACKEND = "https://chigalex1-backend.onrender.com";
-  const LANGS = {"en":"🇺🇸 EN English","sn":"🇿🇼 SN Shona","nd":"🇿🇼 ND Ndebele","zu":"🇿🇦 ZU Zulu","xh":"🇿🇦 XH Xhosa","af":"🇿🇦 AF Afrikaans","st":"🇱🇸 ST Sotho","tn":"🇧🇼 TN Tswana","ny":"🇲🇼 NY Chichewa","pt":"🇲🇿 PT Portuguese","sw":"🇹🇿 SW Swahili","am":"🇪🇹 AM Amharic","rw":"🇷🇼 RW Kinyarwanda","lg":"🇺🇬 LG Luganda","so":"🇸🇴 SO Somali","ha":"🇳🇬 HA Hausa","yo":"🇳🇬 YO Yoruba","ig":"🇳🇬 IG Igbo","tw":"🇬🇭 TW Twi","wo":"🇸🇳 WO Wolof","fr":"🇫🇷 FR French","ar":"🇸🇦 AR Arabic","ber":"ⵜⵎⵣⵖ BER Berber","ln":"🇨🇩 LN Lingala","kg":"🇨🇩 KG Kongo"};
-  const EN_TO_KEY = {
-    "Onboarding": "hero-h1", // partial
-    "All of Africa": "hero-h1", // we will replace whole H1
-    "Official training hub of Africa Pi GCV Industry Alliance. We educate, verify, and connect 54 nations to build a real enclosed Pi economy at GCV $314,159.": "hero-p",
-    "50M+ Pioneers Worldwide": "pi-fact-pioneers",
-    "54 African Nations": "pi-fact-nations",
-    "SPONSORED • PI POWERED • AFRICA GCV INDUSTRY ALLIANCE": "banner-title",
-    "AFRICA PI NETWORK EDUCATION HUB": "hero-badge"
-  };
-
-  window.ChigalexTranslations = window.ChigalexTranslations || {supported:Object.keys(LANGS), current: localStorage.getItem('chigalex_lang')||'en', data:{}};
-
+  const BACKEND="https://chigalex1-backend.onrender.com";
+  let enData=null;
+  async function loadEn(){
+    if(enData) return enData;
+    const r=await fetch(BACKEND+"/api/translations/en?_="+Date.now());
+    enData=await r.json(); return enData;
+  }
   async function loadLang(lang){
-    if(!Object.keys(LANGS).includes(lang)) lang='en';
     try{
-      const r = await fetch(`${BACKEND}https://chigalex1-backend.onrender.com/api/translations/${lang}?t=${Date.now()}`);
-      const data = await r.json();
-      window.ChigalexTranslations.current = lang;
-      window.ChigalexTranslations.data = data;
-      localStorage.setItem('chigalex_lang', lang);
-      console.log(`✅ V5 Loaded ${lang} ${Object.keys(data).length} keys`);
-
-      // Apply
-      applyTranslations(data);
-      // Re-apply after React renders
-      setTimeout(()=>applyTranslations(data), 500);
-      setTimeout(()=>applyTranslations(data), 1500);
-      setTimeout(()=>applyTranslations(data), 3000);
-
-      const sel=document.getElementById('langFix');
-      if(sel) sel.value=lang;
-    }catch(e){ console.error(e); }
-  }
-
-  function applyTranslations(data){
-    // 1. data-i18n
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const k=el.getAttribute('data-i18n');
-      if(data[k]) el.textContent=data[k];
-    });
-
-    // 2. Direct text replacement for React (hardcoded English)
-    // Hero H1 - special handling because it's split into spans
-    const h1Candidates = document.querySelectorAll('h1');
-    h1Candidates.forEach(h1=>{
-      if(h1.textContent.includes('Onboarding') && data['hero-h1']){
-        h1.textContent = data['hero-h1'];
-      }
-    });
-
-    // Hero P
-    document.querySelectorAll('p').forEach(p=>{
-      const txt = p.textContent.trim();
-      if(txt.startsWith('Official training hub') && data['hero-p']){
-        p.textContent = data['hero-p'];
-      }
-    });
-
-    // Banner
-    const banners = document.querySelectorAll('*');
-    for(let el of banners){
-      if(el.childNodes.length===1 && el.childNodes[0].nodeType===3){
-        const txt = el.textContent.trim();
-        if(txt==='SPONSORED • PI POWERED • AFRICA GCV INDUSTRY ALLIANCE' && data['banner-title']){
-          el.textContent = data['banner-title'];
+      const en=await loadEn();
+      const res=await fetch(BACKEND+"/api/translations/"+lang+"?_="+Date.now());
+      if(!res.ok) throw new Error('HTTP '+res.status+' - Your '+lang+'.json broken');
+      const data=await res.json();
+      const engToTrans={};
+      for(let k in data){ if(en[k]) engToTrans[en[k].trim()]=data[k]; }
+      const apply=()=>{
+        let c=0;
+        const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null);
+        let node;
+        while(node=walker.nextNode()){
+          const p=node.parentElement;
+          if(!p||['SCRIPT','STYLE','SELECT','OPTION'].includes(p.tagName)) continue;
+          const orig=node.nodeValue.trim();
+          if(orig.length<3) continue;
+          if(engToTrans[orig]){ node.nodeValue=engToTrans[orig]; c++; }
         }
-        if(txt==='50M+ Pioneers Worldwide' && data['pi-fact-pioneers']){
-          el.textContent = '✅ ' + data['pi-fact-pioneers'];
-        }
-        if(txt==='54 African Nations' && data['pi-fact-nations']){
-          el.textContent = '✅ ' + data['pi-fact-nations'];
-        }
-        if(txt==='AFRICA PI NETWORK EDUCATION HUB' && data['hero-badge']){
-          el.textContent = data['hero-badge'];
-        }
-      }
-    }
-
-    // More generic: if element's text is exactly a key from en.json, replace
-    // We need en.json mapping - for now use the keys we know
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
-    let node;
-    while(node = walker.nextNode()){
-      const parent = node.parentElement;
-      if(!parent || ['SCRIPT','STYLE','SELECT','OPTION'].includes(parent.tagName)) continue;
-      const orig = node.nodeValue;
-      const trimmed = orig.trim();
-      if(trimmed.length<3) continue;
-      // If data has direct mapping for this English? 
-      // For now handle hero-p long text
-      if(trimmed.includes('Official training hub of Africa Pi GCV Industry Alliance') && data['hero-p']){
-        node.nodeValue = data['hero-p'];
-      }
-    }
+        return c;
+      };
+      apply(); setTimeout(apply,600); setTimeout(apply,1800); setTimeout(apply,3500);
+      let t; window.addEventListener('scroll',()=>{ clearTimeout(t); t=setTimeout(apply,200); });
+      new MutationObserver(apply).observe(document.body,{childList:true,subtree:true});
+      localStorage.setItem('chigalex_lang',lang);
+      const sel=document.getElementById('langFix'); if(sel) sel.value=lang;
+      const banner=document.createElement('div');
+      banner.textContent='✅ '+lang.toUpperCase()+': '+Object.keys(data).length+' phrases - Scroll!';
+      banner.style='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#00c853;color:white;padding:12px 24px;border-radius:24px;z-index:99999;font-weight:bold';
+      document.body.appendChild(banner); setTimeout(()=>banner.remove(),5000);
+    }catch(e){ console.error(e); alert('Failed '+lang+': '+e.message); }
   }
-
-  // Build selector
-  let sel = document.getElementById('langFix');
-  if(!sel){
-    sel = document.createElement('select');
-    sel.id='langFix';
-    document.body.prepend(sel);
-  }
-  sel.innerHTML='';
-  Object.keys(LANGS).forEach(k=>{
-    const o=document.createElement('option');o.value=k;o.textContent=LANGS[k];sel.appendChild(o);
-  });
-  sel.value=localStorage.getItem('chigalex_lang')||'en';
-  sel.style='position:fixed;top:54px;left:50%;transform:translateX(-50%);width:92%;max-width:360px;background:#0f0f0f;color:gold;border:1px solid gold;padding:10px;border-radius:12px;z-index:9999;font-weight:bold';
-  sel.onchange=e=>loadLang(e.target.value);
-
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',()=>loadLang(sel.value));
-  }else{
-    setTimeout(()=>loadLang(sel.value), 800);
-  }
-
-  window.setChigalexLang = loadLang;
-
-  // Watch for React re-renders
-  new MutationObserver(()=>{
-    if(window.ChigalexTranslations.data && Object.keys(window.ChigalexTranslations.data).length>0){
-      applyTranslations(window.ChigalexTranslations.data);
-    }
-  }).observe(document.body, {childList:true, subtree:true});
-
+  window.setChigalexLang=loadLang;
+  setTimeout(()=>{ const s=document.getElementById('langFix'); if(s){ s.onchange=e=>loadLang(e.target.value); loadLang(s.value); } },1000);
 })();
 </script>
-
 <!-- loader removed -->
 <script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script><script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script><script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
 </html>
