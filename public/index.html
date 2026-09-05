@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chigalex1 - Africa Pi Network Education Hub</title>
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<style>
+body{margin:0;font-family:system-ui;background:#0a0a0a;color:#fff;line-height:1.6}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#111;border-bottom:1px solid #333;position:sticky;top:0;z-index:1000}
+.logo{display:flex;align-items:center;gap:10px;font-weight:bold;font-size:20px}
+#langFix{padding:8px 12px;border-radius:8px;background:#222;color:#fff;border:1px solid #444;min-width:140px}
+.hero{padding:40px 20px;text-align:center}
+.badge{display:inline-block;background:#1a1a1a;padding:6px 14px;border-radius:20px;font-size:14px;border:1px solid #333}
+.h1{font-size:28px;font-weight:bold;margin:20px 0;line-height:1.2}
+.card{background:#1a1a1a;border:1px solid #333;border-radius:16px;padding:20px;margin:16px;}
+.btn{background:#00c853;color:#fff;border:none;padding:14px 28px;border-radius:24px;font-weight:bold;cursor:pointer;display:inline-block;margin:8px;font-size:16px}
+.btn-yellow{background:#ffcc00;color:#000}
+#piAdsBox{margin:12px;padding:14px;background:#000;border:2px solid #ffcc00;border-radius:16px;text-align:center}
+#showAdBtn{background:#ffcc00;color:#000;border:none;padding:12px 24px;border-radius:24px;font-weight:bold;cursor:pointer}
+.grid{display:grid;grid-template-columns:1fr;gap:16px;padding:0 16px}
+.status{padding:10px;background:#222;border-radius:8px;margin:10px;font-size:13px;text-align:center;display:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <img src="https://raw.githubusercontent.com/Mhofu88/Chigalex1-backend/main/public/logo.png" width="36" height="36" style="border-radius:50%" onerror="this.style.display='none'">
+    <span>Chigalex1</span>
+    <span style="background:#ff9800;color:#fff;padding:2px 6px;border-radius:4px;font-size:11px">⚠️ Beta</span>
+  </div>
+  <select id="langFix">
+    <option value="en">🇺🇸 EN English</option>
+    <option value="zu">🇿🇦 ZU Zulu</option>
+    <option value="xh">🇿🇦 XH Xhosa</option>
+    <option value="af">🇿🇦 AF Afrikaans</option>
+    <option value="st">🇿🇦 ST Sesotho</option>
+    <option value="tn">🇿🇦 TN Setswana</option>
+    <option value="sn">🇿🇼 SN Shona</option>
+    <option value="nd">🇿🇼 ND Ndebele</option>
+    <option value="ny">🇲🇼 NY Chichewa</option>
+    <option value="lg">🇺🇬 LG Luganda</option>
+    <option value="sw">🇹🇿 SW Swahili</option>
+    <option value="am">🇪🇹 AM Amharic</option>
+    <option value="ha">🇳🇬 HA Hausa</option>
+    <option value="yo">🇳🇬 YO Yoruba</option>
+    <option value="ig">🇳🇬 IG Igbo</option>
+    <option value="fr">🇫🇷 FR French</option>
+    <option value="pt">🇵🇹 PT Portuguese</option>
+    <option value="ar">🇸🇦 AR Arabic</option>
+    <option value="ber">ⵜⵎⴰⵣⵉⵖⵜ BER Berber</option>
+    <option value="wo">🇸🇳 WO Wolof</option>
+    <option value="tw">🇬🇭 TW Twi</option>
+    <option value="rw">🇷🇼 RW Kinyarwanda</option>
+    <option value="ln">🇨🇩 LN Lingala</option>
+    <option value="kg">🇨🇩 KG Kikongo</option>
+    <option value="so">🇸🇴 SO Somali</option>
+  </select>
+</header>
+
+<div id="piAdsBox"><div id="pi-ad-container"><button id="showAdBtn">▶️ Show Pi Ad</button></div></div>
+
+<div class="hero">
+  <div class="badge">🌍 Africa Pi Network Education Hub</div>
+  <div class="h1">Onboarding All of Africa to Pi Network</div>
+  <p style="color:#aaa">Empowering pioneers and businesses across all 54 African nations to join the Pi enclosed ecosystem economy.</p>
+  <p>· 54 Countries · 25 Languages</p>
+  <div style="margin-top:20px">
+    <button class="btn" id="btnLogin" onclick="loginPi()">Login with Pi Network</button>
+    <button class="btn btn-yellow" id="btnPay" onclick="payPi()">Pay 0.01π & Unlock Full Training</button>
+  </div>
+  <p style="margin-top:12px;font-size:13px;color:#888">⚠️ Must be opened inside the Pi Browser app</p>
+  <div id="status" class="status"></div>
+</div>
+
+<div class="card"><h2 style="text-align:center">🌍 AFRICA Pi Network Education Hub</h2><p style="text-align:center">Official training hub of Africa Pi GCV • 50M+ Pioneers • 54 African Nations</p></div>
+
+<div class="grid">
+  <div class="card"><h3>North Africa</h3><p>Algeria, Egypt, Libya, Morocco, Sudan, Tunisia</p></div>
+  <div class="card"><h3>West Africa</h3><p>Nigeria, Ghana, Senegal, Ivory Coast, 16 countries</p></div>
+  <div class="card"><h3>East Africa</h3><p>Kenya, Ethiopia, Tanzania, Uganda, 8 countries</p></div>
+  <div class="card"><h3>Southern Africa</h3><p>South Africa, Zimbabwe, Zambia, 10 countries</p></div>
+</div>
+
+<div class="card" style="text-align:center">
+  <h3>Africa Pi Network Education</h3>
+  <p>One-time membership · Lifetime access to all training</p>
+  <button class="btn" onclick="browseFree()">Browse Free Content First</button>
+  <button class="btn" onclick="enterHub()">Enter Training Hub</button>
+</div>
+
+<script>
+try{ Pi.init({ version: "2.0", sandbox: false }); }catch(e){}
+
+function showStatus(msg, isError=false){
+  const s=document.getElementById('status');
+  s.style.display='block'; s.textContent=msg;
+  s.style.background=isError?'#5a1a1a':'#1a5a1a';
+  setTimeout(()=>s.style.display='none',4000);
+}
+async function showPiAd(){
+  const b=document.getElementById('showAdBtn');
+  try{ b.textContent='Loading...'; b.disabled=true; await Pi.Ads.showAd("interstitial"); b.textContent='✅ Ad Watched!'; showStatus('Thanks for supporting!'); }
+  catch(e){ b.textContent='Try later'; showStatus('Ad not available', true); setTimeout(()=>{b.textContent='▶️ Show Pi Ad'; b.disabled=false;},2000); }
+}
+async function loginPi(){
+  const btn=document.getElementById('btnLogin');
+  try{ btn.textContent='Connecting...'; btn.disabled=true;
+    const auth=await Pi.authenticate(['username','payments'], p=>{});
+    localStorage.setItem('pi_user', JSON.stringify(auth.user));
+    showStatus('✅ Welcome '+auth.user.username+'!'); btn.textContent='✅ '+auth.user.username;
+  }catch(e){ showStatus('Login failed - Open in Pi Browser', true); btn.textContent='Login with Pi Network'; btn.disabled=false; }
+}
+async function payPi(){
+  const btn=document.getElementById('btnPay');
+  try{
+    btn.textContent='Creating payment...'; btn.disabled=true;
+    if(!localStorage.getItem('pi_user')){ showStatus('Please login first'); await loginPi(); }
+    const paymentData={amount:0.01,memo:"Chigalex1 Full Training - Lifetime",metadata:{type:"membership"}};
+    await Pi.createPayment(paymentData,{
+      onReadyForServerApproval: async (pid)=>{
+        showStatus('Approving...');
+        try{ await fetch("https://chigalex1-backend.onrender.com/api/payments/approve",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({paymentId:pid})}); }catch(e){}
+      },
+      onReadyForServerCompletion: async (pid,txid)=>{
+        showStatus('Completing...');
+        try{
+          await fetch("https://chigalex1-backend.onrender.com/api/payments/complete",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({paymentId:pid,txid})});
+          showStatus('✅ Payment successful! Training unlocked!'); btn.textContent='✅ Unlocked'; btn.disabled=false;
+        }catch(e){}
+      },
+      onCancel: ()=>{ showStatus('Payment cancelled',true); btn.textContent='Pay 0.01π & Unlock Full Training'; btn.disabled=false; },
+      onError: (err)=>{ showStatus('Payment error: '+err,true); btn.textContent='Pay 0.01π & Unlock Full Training'; btn.disabled=false; }
+    });
+  }catch(e){ showStatus('Payment failed: '+e.message,true); btn.textContent='Pay 0.01π & Unlock Full Training'; btn.disabled=false; }
+}
+function browseFree(){ showStatus('Browsing free content...'); }
+function enterHub(){ if(!localStorage.getItem('pi_user')){showStatus('Please login first'); loginPi(); return;} showStatus('Entering Training Hub...'); }
+document.getElementById('showAdBtn')?.addEventListener('click',showPiAd);
+</script>
+
+<script id="V8-ALL-25-LANGUAGES">
+console.log('V8 ALL 25 Languages - 495 keys');
+(function(){
+  const BACKEND="https://chigalex1-backend.onrender.com";
+  let enData=null;
+  async function loadEn(){
+    if(enData) return enData;
+    const r=await fetch(BACKEND+"/api/translations/en?_="+Date.now());
+    if(!r.ok) throw new Error('EN failed '+r.status);
+    enData=await r.json(); return enData;
+  }
+  async function loadLang(lang){
+    try{
+      const en=await loadEn();
+      console.log('Loading',lang);
+      const res=await fetch(BACKEND+"/api/translations/"+lang+"?_="+Date.now());
+      if(!res.ok){
+        const txt=await res.text();
+        throw new Error('HTTP '+res.status+' - '+lang+'.json broken: '+txt.substring(0,100));
+      }
+      const data=await res.json();
+      if(Object.keys(data).length<100) throw new Error(lang+' only '+Object.keys(data).length+' keys');
+      const engToTrans={};
+      for(let k in data){ if(en[k]) engToTrans[en[k].trim()]=data[k]; }
+      let count=0;
+      const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null);
+      let node;
+      while(node=walker.nextNode()){
+        const p=node.parentElement;
+        if(!p||['SCRIPT','STYLE','SELECT','OPTION'].includes(p.tagName)) continue;
+        const orig=node.nodeValue.trim();
+        if(orig.length<2) continue;
+        if(engToTrans[orig]){ node.nodeValue=engToTrans[orig]; count++; }
+      }
+      localStorage.setItem('chigalex_lang',lang);
+      const sel=document.getElementById('langFix'); if(sel) sel.value=lang;
+      const banner=document.createElement('div');
+      banner.textContent='✅ '+lang.toUpperCase()+': '+count+'/'+Object.keys(data).length+' translated';
+      banner.style='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#00c853;color:white;padding:12px 24px;border-radius:24px;z-index:99999;font-weight:bold';
+      document.body.appendChild(banner); setTimeout(()=>banner.remove(),5000);
+      console.log('Translated',count,'for',lang);
+    }catch(e){
+      console.error(e);
+      alert('Failed '+lang+': '+e.message+'\n\nYour '+lang+'.json still has header line or invalid JSON. Upload clean file from ZIP I gave you!');
+    }
+  }
+  window.setChigalexLang=loadLang;
+  setTimeout(()=>{
+    const s=document.getElementById('langFix');
+    if(s){
+      s.onchange=e=>loadLang(e.target.value);
+      const saved=localStorage.getItem('chigalex_lang') || 'en';
+      loadLang(saved);
+    }
+  },800);
+})();
+</script>
+
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+</html>
